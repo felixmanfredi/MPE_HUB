@@ -140,7 +140,6 @@
 			(psnegative no)
 			(psa4output no)
 			(plot_black_and_white yes)
-			(plotinvisibletext no)
 			(sketchpadsonfab no)
 			(plotpadnumbers no)
 			(hidednponfab no)
@@ -15068,7 +15067,7 @@
 		(descr "JST EH series connector, B3B-EH-A (http://www.jst-mfg.com/product/pdf/eng/eEH.pdf), generated with kicad-footprint-generator")
 		(tags "connector JST EH vertical")
 		(property "Reference" "J2"
-			(at 2.5 -2.8 90)
+			(at 2.5 -3.35 90)
 			(layer "F.SilkS")
 			(uuid "f4fa417d-0810-4e1b-a213-da67405ed3ca")
 			(effects
@@ -55608,6 +55607,19 @@
 			(justify left bottom)
 		)
 	)
+	(gr_text "GND"
+		(at 64.7 82.5 0)
+		(layer "F.SilkS")
+		(uuid "187da6b9-9033-4ec6-ac31-60738a0582ac")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.25)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+	)
 	(gr_text "485-"
 		(at 92.525 100.6 0)
 		(layer "F.SilkS")
@@ -55699,6 +55711,19 @@
 			(justify left bottom)
 		)
 	)
+	(gr_text "24V"
+		(at 64.8 77.3 0)
+		(layer "F.SilkS")
+		(uuid "3f5d6cf1-f05b-4f9a-8021-f6f133966ae8")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.25)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+	)
 	(gr_text "C_0"
 		(at 137.35 69.65 90)
 		(layer "F.SilkS")
@@ -55742,6 +55767,19 @@
 		(at 56.325 104.525 0)
 		(layer "F.SilkS")
 		(uuid "4881d68f-c61e-4cd8-94ff-abc437a7ae75")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.25)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "PWM"
+		(at 64.7 80 0)
+		(layer "F.SilkS")
+		(uuid "518924b1-32ae-4736-9e5a-9dd69517bc07")
 		(effects
 			(font
 				(size 1 1)
@@ -55868,7 +55906,7 @@
 			(justify left bottom)
 		)
 	)
-	(gr_text "32"
+	(gr_text "37"
 		(at 150.325 117.475 0)
 		(layer "F.SilkS")
 		(uuid "8e344580-1788-45d3-b4bb-67d07e060c2c")
@@ -55972,7 +56010,7 @@
 			(justify left bottom)
 		)
 	)
-	(gr_text "33"
+	(gr_text "36"
 		(at 150.225 120.1 0)
 		(layer "F.SilkS")
 		(uuid "aef222e3-aab6-4c5c-8a44-7ddef099012b")
