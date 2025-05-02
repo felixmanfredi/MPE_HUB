@@ -1,5 +1,5 @@
-#ifndef FLASH_FIRMWARE_H
-#define FLASH_FIRMWARE_H
+#ifndef HUB_FIRMWARE_H
+#define HUB_FIRMWARE_H
 
 #include <Arduino.h>
 #include <SimpleCLI.h>          // Include per includere interfaccia a linea di comando

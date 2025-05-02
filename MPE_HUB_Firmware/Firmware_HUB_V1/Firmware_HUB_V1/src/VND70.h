@@ -23,11 +23,14 @@ class VND70 {
         // Inizializza i pin di tutti i componenti registrati
         static void begin();
 
-        // Azione 1 sul componente (es. attiva pinA)
-        static void enable_channel_0(uint8_t id);
+        // Spegne le uscite dell'istenza "ID"
+        static void standby(uint8_t ID);
 
-        // Azione 2 sul componente (es. attiva pinB)
-        static void enable_channel_1(uint8_t id);
+        // Azione sul canale 0 del componente "ID" (true -> ON; false -> OFF)
+        static void channel_0(uint8_t ID, bool channel_state);
+
+        // Azione sul canale 1 del componente "ID" (true -> ON; false -> OFF)
+        static void channel_1(uint8_t ID, bool channel_state);
 
     private:
         static const uint8_t MAX_COMPONENTS = 10;

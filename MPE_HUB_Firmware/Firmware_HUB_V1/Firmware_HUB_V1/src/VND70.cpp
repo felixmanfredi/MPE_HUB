@@ -28,24 +28,32 @@ void VND70::begin() {
     }
 }
 
-void VND70::enable_channel_0(uint8_t ID) {
+void VND70::standby(uint8_t ID) {
     int8_t idx = findIndex(ID);
     if (idx < 0) return;
-    digitalWrite(components[idx].EnableChannel0, LOW);
-    /*digitalWrite(components[idx].EnableChannel1, HIGH);
+    digitalWrite(components[idx].EnableChannel0, HIGH);
+    digitalWrite(components[idx].EnableChannel1, HIGH);
     digitalWrite(components[idx].SensingEnable, HIGH);
     digitalWrite(components[idx].SEL_0, HIGH);
-    digitalWrite(components[idx].SEL_1, HIGH);*/
+    digitalWrite(components[idx].SEL_1, HIGH);
 }
 
-void VND70::enable_channel_1(uint8_t ID) {
+void VND70::channel_0(uint8_t ID, bool channel_state) {
     int8_t idx = findIndex(ID);
     if (idx < 0) return;
-    digitalWrite(components[idx].EnableChannel1, LOW);
-    /*digitalWrite(components[idx].EnableChannel0, HIGH);
-    digitalWrite(components[idx].SensingEnable, HIGH);
-    digitalWrite(components[idx].SEL_0, HIGH);
-    digitalWrite(components[idx].SEL_1, HIGH);*/
+    if (channel_state)
+        digitalWrite(components[idx].EnableChannel0, LOW);
+    else
+        digitalWrite(components[idx].EnableChannel0, HIGH);
+}
+
+void VND70::channel_1(uint8_t ID, bool channel_state) {
+    int8_t idx = findIndex(ID);
+    if (idx < 0) return;
+    if (channel_state)
+        digitalWrite(components[idx].EnableChannel1, LOW);
+    else
+        digitalWrite(components[idx].EnableChannel1, HIGH);
 }
 
 int8_t VND70::findIndex(uint8_t ID) {
