@@ -13,7 +13,7 @@ void setup() {
 
     Serial2.begin(9600, RX_485, TX_485);    // begin RS485
     Serial.begin(9600);                     // begin porta seriale USB
-    while (!Serial) { delay(10); }          // attendo inizializzazione seriale
+    //while (!Serial) { delay(10); }          // attendo inizializzazione seriale
 
     //initialize();
     /* Setup e verifica comandi CLI */

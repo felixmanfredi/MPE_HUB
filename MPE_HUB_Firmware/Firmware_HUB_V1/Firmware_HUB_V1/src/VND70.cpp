@@ -32,7 +32,7 @@ void VND70::standby(uint8_t ID) {
     int8_t idx = findIndex(ID);
     if (idx < 0) return;
     digitalWrite(components[idx].EnableChannel0, HIGH);
-    digitalWrite(components[idx].EnableChannel1, HIGH);
+    digitalWrite(components[idx].EnableChannel1, LOW);
     digitalWrite(components[idx].SensingEnable, HIGH);
     digitalWrite(components[idx].SEL_0, HIGH);
     digitalWrite(components[idx].SEL_1, HIGH);
