@@ -20,8 +20,8 @@ void VND70::begin() {
         pinMode(components[i].SensingEnable, OUTPUT);
         pinMode(components[i].SEL_0, OUTPUT);
         pinMode(components[i].SEL_1, OUTPUT);
-        digitalWrite(components[i].EnableChannel0, HIGH);   // C'è un MOSFET intermedio che inverte la logica
-        digitalWrite(components[i].EnableChannel1, HIGH);
+        digitalWrite(components[i].EnableChannel0, LOW);   // C'è un MOSFET intermedio che inverte la logica
+        digitalWrite(components[i].EnableChannel1, LOW);
         digitalWrite(components[i].SensingEnable, HIGH);
         digitalWrite(components[i].SEL_0, HIGH);
         digitalWrite(components[i].SEL_1, HIGH);
@@ -32,7 +32,7 @@ void VND70::standby(uint8_t ID) {
     int8_t idx = findIndex(ID);
     if (idx < 0) return;
     digitalWrite(components[idx].EnableChannel0, HIGH);
-    digitalWrite(components[idx].EnableChannel1, LOW);
+    digitalWrite(components[idx].EnableChannel1, HIGH);
     digitalWrite(components[idx].SensingEnable, HIGH);
     digitalWrite(components[idx].SEL_0, HIGH);
     digitalWrite(components[idx].SEL_1, HIGH);
