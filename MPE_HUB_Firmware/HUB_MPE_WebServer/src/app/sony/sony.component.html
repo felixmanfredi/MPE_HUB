@@ -1,0 +1,247 @@
+<!-- <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <button type="button" class="btn btn-primary">Button</button>
+    </div>
+  </div> -->
+
+  <!-- <div class="card">
+    <div class="card-header">
+      <h2>Sony </h2>
+      <div class="status-indicator" [style.backgroundColor]="getStateColor()"></div>
+    </div>
+    
+    <div class="card-body" *ngIf="sonyData; else loading">
+      <div class="info-group">
+        <div class="info-item">
+          <span class="label">Stato:</span>
+          <span class="value" [ngClass]="sonyData.state">{{ sonyData.state }}</span>
+        </div>
+        
+        <div class="info-item">
+          <span class="label">Alimentazione:</span>
+          <span class="value">{{ sonyData.isPowered ? 'Acceso' : 'Spento' }}</span>
+        </div>
+        
+        <div class="info-item">
+          <span class="label">Tensione:</span>
+          <span class="value">{{ sonyData.tensione }} V</span>
+        </div>
+        
+        <div class="info-item">
+          <span class="label">Corrente:</span>
+          <span class="value">{{ sonyData.corrente }} A</span>
+        </div>
+        
+        <div class="info-item">
+          <span class="label">Potenza:</span>
+          <span class="value">{{ sonyData.potenza }} W</span>
+        </div>
+      </div>
+      
+      <div class="controls">
+        <button 
+          class="power-button" 
+          [ngClass]="{'on': sonyData.isPowered, 'off': !sonyData.isPowered, 'updating': isUpdating}"
+          [disabled]="isUpdating"
+          (click)="togglePower()">
+          <span *ngIf="!isUpdating">{{ sonyData.isPowered ? 'Spegni' : 'Accendi' }}</span>
+          <span *ngIf="isUpdating">Aggiornamento...</span>
+        </button>
+      </div>
+    </div>
+    
+    <ng-template #loading>
+      <div class="loading-container">
+        <div class="spinner"></div>
+        <p>Caricamento dati...</p>
+      </div>
+    </ng-template>
+  </div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+
+  <div class="card">
+    <div class="card-header">
+      <i class="fas fa-camera"></i>
+      <h2>Sony <span *ngIf="isUpdating"><div class="spinner-header"></div></span></h2>
+      <div class="status-indicator" [style.backgroundColor]="getStateColor()"></div>
+    </div>
+  
+    <div class="card-body" *ngIf="sonyData; else loading">
+      <div class="info-group">
+        <div class="info-item">
+          <span class="label">State:</span>
+          <span class="value" [ngClass]="sonyData.state">{{ sonyData.state }}</span>
+        </div>
+  
+        <div class="info-item" [ngClass]="{'is-connected-error': sonyData && sonyData.state === 'error'}">
+          <span class="label">Connection:</span>
+          <div class="status-indicator" [style.backgroundColor]="sonyData ? getStatusColor(sonyData.isConnected) : ''"></div>
+        </div>
+  
+        <div class="info-item">
+          <span class="label">Voltage:</span>
+          <span class="value">{{ (sonyData.tensione / 1000).toFixed(2) }} V</span>
+        </div>
+  
+        <div class="info-item">
+          <span class="label">Current:</span>
+          <span class="value">{{ (sonyData.corrente / 1000).toFixed(2) }} A</span>
+        </div>
+  
+        <div class="info-item">
+          <span class="label">Power:</span>
+          <span class="value">{{ (sonyData.potenza / 1000).toFixed(2) }} W</span>
+        </div>
+  
+        <div class="info-item power-item">
+          <span class="label">Turn:</span>
+          <div class="power-slider-container">
+            <label class="switch" [class.disabled]="isUpdating">
+              <input type="checkbox" [(ngModel)]="sonyData.isPowered" [disabled]="isUpdating" (change)="togglePower()">
+              <span class="slider round"></span>
+            </label>
+            <span class="power-status" [class.disabled]="isUpdating">{{ sonyData.isPowered ? 'On' : 'Off' }}</span>
+          </div>
+        </div>
+
+
+        <div class="info-item power-item">
+          <span class="label">Photo:</span>
+          <div class="power-slider-container">
+            <label class="switch" [class.disabled]="isUpdating">
+              <input type="checkbox"
+                     [checked]="isPhoto"
+                     [disabled]="isUpdating"
+                     (change)="triggerPhoto()">
+              <span class="slider round"></span>
+            </label>
+            <span class="power-status" [class.disabled]="isUpdating">
+              {{ isPhoto ? 'Photo...' : 'Ready' }}
+            </span>
+            <span class="value">{{ (sonyData.expTime / 1000).toFixed(2) }} mS</span> -->
+            
+            <!-- <input type="number" 
+                   [(ngModel)]="sonyData.takePicture" 
+                   min="100" 
+                   step="100" 
+                   placeholder="ms"
+                   style="width: 80px; margin-left: 10px;"
+                   [disabled]="isPhoto || isUpdating"> -->
+          <!--</div>
+        </div>
+
+
+      </div>
+    </div>
+  
+    <ng-template #loading>
+      <div class="loading-container">
+        <div class="spinner"></div>
+        <p>Loading data...</p>
+      </div>
+    </ng-template>
+  </div> -->
+
+
+
+
+
+
+
+
+  <div class="card">
+  <div class="card-header">
+    <i class="fas fa-camera"></i>
+    <h2>Sony <span *ngIf="isUpdating"><div class="spinner-header"></div></span></h2>
+    <div class="status-indicator" [style.backgroundColor]="getStateColor()"></div>
+  </div>
+
+  <div class="card-body" *ngIf="sonyData">
+    <div class="info-group">
+      <div class="info-item">
+        <span class="label">State:</span>
+        <span class="value" [ngClass]="sonyData.state">{{ sonyData.state }}</span>
+      </div>
+
+      <div class="info-item" [ngClass]="{'is-connected-error': sonyData.state === 'error'}">
+        <span class="label">Connection:</span>
+        <div class="status-indicator" [style.backgroundColor]="getStatusColor(sonyData.isConnected)"></div>
+      </div>
+
+      <div class="info-item">
+        <span class="label">Voltage:</span>
+        <span class="value" *ngIf="sonyData.tensione !== undefined && sonyData.tensione !== null">
+          {{ (sonyData.tensione / 1000).toFixed(2) }} V
+        </span>
+        <span class="value loading-placeholder" *ngIf="sonyData.tensione === undefined || sonyData.tensione === null">--</span>
+      </div>
+
+      <div class="info-item">
+        <span class="label">Current:</span>
+        <span class="value" *ngIf="sonyData.corrente !== undefined && sonyData.corrente !== null">
+          {{ (sonyData.corrente / 1000).toFixed(2) }} A
+        </span>
+        <span class="value loading-placeholder" *ngIf="sonyData.corrente === undefined || sonyData.corrente === null">--</span>
+      </div>
+
+      <div class="info-item">
+        <span class="label">Power:</span>
+        <span class="value" *ngIf="sonyData.potenza !== undefined && sonyData.potenza !== null">
+          {{ (sonyData.potenza / 1000).toFixed(2) }} W
+        </span>
+        <span class="value loading-placeholder" *ngIf="sonyData.potenza === undefined || sonyData.potenza === null">--</span>
+      </div>
+
+      <div class="info-item power-item">
+        <span class="label">Turn:</span>
+        <div class="power-slider-container">
+          <label class="switch" [class.disabled]="isUpdating">
+            <input type="checkbox" [(ngModel)]="sonyData.isPowered" [disabled]="isUpdating" (change)="togglePower()">
+            <span class="slider round"></span>
+          </label>
+          <span class="power-status" [class.disabled]="isUpdating">{{ sonyData.isPowered ? 'On' : 'Off' }}</span>
+        </div>
+      </div>
+
+      <div class="info-item power-item">
+        <span class="label">Photo:</span>
+        <div class="power-slider-container">
+          <label class="switch" [class.disabled]="isUpdating">
+            <input type="checkbox"
+                   [checked]="isPhoto"
+                   [disabled]="isUpdating"
+                   (change)="triggerPhoto()">
+            <span class="slider round"></span>
+          </label>
+          <span class="power-status" [class.disabled]="isUpdating">
+            {{ isPhoto ? 'Photo...' : 'Ready' }}
+          </span>
+          <span class="value" *ngIf="sonyData.expTime !== undefined && sonyData.expTime !== null">
+            {{ (sonyData.expTime / 1000).toFixed(2) }} mS
+          </span>
+          <span class="value loading-placeholder" *ngIf="sonyData.expTime === undefined || sonyData.expTime === null">--</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="loading-container" *ngIf="!sonyData">
+    <div class="spinner"></div>
+    <p>Loading data...</p>
+  </div>
+</div>

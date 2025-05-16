@@ -1,0 +1,193 @@
+<!-- <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <button type="button" class="btn btn-primary">Button</button>
+    </div>
+  </div> -->
+
+  <!-- <div class="card">
+    <div class="card-header">
+      <h2>MCU </h2>
+      <div class="status-indicator" [style.backgroundColor]="getStateColor()"></div>
+    </div>
+    
+    <div class="card-body" *ngIf="mcuData; else loading">
+      <div class="info-group">
+        <div class="info-item">
+          <span class="label">Stato:</span>
+          <span class="value" [ngClass]="mcuData.state">{{ mcuData.state }}</span>
+        </div>
+        
+        <div class="info-item">
+          <span class="label">Alimentazione:</span>
+          <span class="value">{{ mcuData.isPowered ? 'Acceso' : 'Spento' }}</span>
+        </div>
+        
+        <div class="info-item">
+          <span class="label">Tensione:</span>
+          <span class="value">{{ mcuData.tensione }} V</span>
+        </div>
+        
+        <div class="info-item">
+          <span class="label">Corrente:</span>
+          <span class="value">{{ mcuData.corrente }} A</span>
+        </div>
+        
+        <div class="info-item">
+          <span class="label">Potenza:</span>
+          <span class="value">{{ mcuData.potenza }} W</span>
+        </div>
+      </div>
+      
+      <div class="controls">
+        <button 
+          class="power-button" 
+          [ngClass]="{'on': mcuData.isPowered, 'off': !mcuData.isPowered, 'updating': isUpdating}"
+          [disabled]="isUpdating"
+          (click)="togglePower()">
+          <span *ngIf="!isUpdating">{{ mcuData.isPowered ? 'Spegni' : 'Accendi' }}</span>
+          <span *ngIf="isUpdating">Aggiornamento...</span>
+        </button>
+      </div>
+    </div>
+    
+    <ng-template #loading>
+      <div class="loading-container">
+        <div class="spinner"></div>
+        <p>Caricamento dati...</p>
+      </div>
+    </ng-template>
+  </div> -->
+
+  <div class="card">
+    <div class="card-header">
+      <i class="fas fa-microchip"></i>
+      <h2>MCU <span *ngIf="isUpdating"><div class="spinner-header"></div></span></h2>
+      <div class="status-indicator" [style.backgroundColor]="getStateColor()"></div>
+    </div>
+  
+    <div class="card-body" *ngIf="mcuData; else loading">
+      <div class="info-group">
+        <div class="info-item">
+          <span class="label">State:</span>
+          <span class="value" [ngClass]="mcuData.state">{{ mcuData.state }}</span>
+        </div>      
+  
+        <!-- <div class="info-item" [ngClass]="{'is-connected-error': mcuData && mcuData.state === 'error'}">
+          <span class="label">Connection:</span>
+          <div class="status-indicator" [style.backgroundColor]="mcuData ? getStatusColor(mcuData.isConnected) : ''"></div>
+        </div> -->
+
+        <div class="info-item" [ngClass]="{'is-connected-error': mcuData && mcuData.state === 'error'}">
+          <span class="label">Connection:</span>
+          <div class="status-indicator" [style.backgroundColor]="mcuData ? getStatusColor(!mcuData.isConnected) : ''"></div>
+          
+        </div>
+
+        <div class="info-item">
+          <span class="label">PSU:</span>
+          <span class="value">{{ (mcuData.V3v3 / 1000) | number:'1.2-2' }} V </span>
+          <span class="value">{{ (mcuData.V5v / 1000) | number:'1.2-2' }}   V</span>
+        </div>
+
+        <!-- <span *ngIf="mcuData" style="margin-left: 18px;">{{ (mcuData.V3v3 / 1000) | number:'1.2-2' }} V    {{ (mcuData.V5v / 1000) | number:'1.2-2' }}   V</span> -->
+        <div class="info-item" 
+        [ngClass]="{'is-connected-error': mcuData && !mcuData.isUSB}">
+     <span class="label">USB:</span>
+     <div class="status-indicator"
+          [style.backgroundColor]="mcuData && mcuData.isUSB ? '#4CAF50' : 'gray'">
+     </div>
+     <!-- <span *ngIf="mcuData" style="margin-left: 18px;">{{ (mcuData.V5v / 1000) | number:'1.2-2' }} V</span> -->
+   </div>         
+
+
+        <div class="info-item power-item">
+          <span class="label">Flash:</span>
+          <div class="power-slider-container">
+            <label class="switch" [class.disabled]="isUpdating">
+              <input type="checkbox"
+                     [checked]="isFlashing"
+                     [disabled]="isUpdating"
+                     (change)="triggerFlash()">
+              <span class="slider round"></span>
+            </label>
+            <span class="power-status" [class.disabled]="isUpdating">
+              {{ isFlashing ? 'Flashing...' : 'Ready' }}
+            </span>
+            
+            <!-- <input type="number" 
+                   [(ngModel)]="flashPulseTime"
+                   min="100" 
+                   step="100" 
+                   placeholder="ms"
+                   style="width: 80px; margin-left: 10px;"
+                   [disabled]="isFlashing || isUpdating"> -->
+          </div>
+        </div>
+
+        <!-- <div class="info-item power-item">
+          <span class="label">Flash:</span>
+          <div class="power-slider-container">
+            <label class="switch" [class.disabled]="isUpdating">
+              <input type="checkbox" [(ngModel)]="mcuData.flashlights" [disabled]="isUpdating" (change)="togglePower()">
+              <span class="slider round"></span>
+            </label>
+            <span class="power-status" [class.disabled]="isUpdating">{{ mcuData.flashlights ? 'On' : 'Off' }}</span>
+          </div>
+        </div> -->
+
+        <div class="info-item">
+          <span class="label">Flash pin:</span>
+          <span class="value">{{ mcuData.flashlights ? 'HIGH' : 'LOW' }}</span>
+        </div>
+
+  
+        <div class="info-item">
+          <span class="label">Voltage:</span>
+          <span class="value">{{ (mcuData.tensione/1000).toFixed(2) }} V</span>
+        </div>
+  
+        <div class="info-item">
+          <span class="label">Current:</span>
+          <span class="value">{{ (mcuData.corrente/1000).toFixed(2) }} A</span>
+        </div>
+  
+        <div class="info-item">
+          <span class="label">Power:</span>
+          <span class="value">{{(mcuData.potenza/1000).toFixed(2) }} W</span>
+        </div>
+
+        <div class="info-item">
+          <span class="label">Temp:</span>
+          <span class="value">{{ mcuData.temperatura }} °C</span>
+        </div>
+
+        <div class="info-item" [ngClass]="{'is-connected-error': mcuData && mcuData.state === 'error'}">
+          <span class="label">Water:</span>
+          <div class="status-indicator" [style.backgroundColor]="mcuData ? getStatusColor(!mcuData.water) : ''"></div>
+        </div>      
+        
+          
+  
+        <!-- <div class="info-item power-item">
+          <span class="label">Flash:</span>
+          <div class="power-slider-container">
+            <label class="switch" [class.disabled]="isUpdating">
+              <input type="checkbox" [(ngModel)]="mcuData.flashPulseTime" [disabled]="isUpdating" (change)="triggerFlash()">
+              <span class="slider round"></span>
+            </label>
+            <span class="power-status" [class.disabled]="isUpdating">{{ mcuData.flashPulseTime ? 'On' : 'Off' }}</span>
+          </div>
+        </div> -->
+
+      </div>
+    </div>
+  
+    <ng-template #loading>
+      <div class="loading-container">
+        <div class="spinner"></div>
+        <p>Loading data...</p>
+      </div>
+    </ng-template>
+  </div>

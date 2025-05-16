@@ -1,0 +1,125 @@
+<!-- <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <button type="button" class="btn btn-primary">Button</button>
+    </div>
+  </div> -->
+
+  <!-- <div class="card">
+    <div class="card-header">
+      <h2>Jetson </h2>
+      <div class="status-indicator" [style.backgroundColor]="getStateColor()"></div>
+    </div>
+    
+    <div class="card-body" *ngIf="jetsonData; else loading">
+      <div class="info-group">
+        <div class="info-item">
+          <span class="label">Stato:</span>
+          <span class="value" [ngClass]="jetsonData.state">{{ jetsonData.state }}</span>
+        </div>
+        
+        <div class="info-item">
+          <span class="label">Alimentazione:</span>
+          <span class="value">{{ jetsonData.isPowered ? 'Acceso' : 'Spento' }}</span>
+        </div>
+        
+        <div class="info-item">
+          <span class="label">Tensione:</span>
+          <span class="value">{{ jetsonData.tensione }} V</span>
+        </div>
+        
+        <div class="info-item">
+          <span class="label">Corrente:</span>
+          <span class="value">{{ jetsonData.corrente }} A</span>
+        </div>
+        
+        <div class="info-item">
+          <span class="label">Potenza:</span>
+          <span class="value">{{ jetsonData.potenza }} W</span>
+        </div>
+      </div>
+      
+      <div class="controls">
+        <button 
+          class="power-button" 
+          [ngClass]="{'on': jetsonData.isPowered, 'off': !jetsonData.isPowered, 'updating': isUpdating}"
+          [disabled]="isUpdating"
+          (click)="togglePower()">
+          <span *ngIf="!isUpdating">{{ jetsonData.isPowered ? 'Spegni' : 'Accendi' }}</span>
+          <span *ngIf="isUpdating">Aggiornamento...</span>
+        </button>
+      </div>
+    </div>
+    
+    <ng-template #loading>
+      <div class="loading-container">
+        <div class="spinner"></div>
+        <p>Caricamento dati...</p>
+      </div>
+    </ng-template>
+  </div> -->
+
+  <div class="card">
+    <div class="card-header">
+      <i class="fas fa-laptop-code"></i>
+      <h2>Jetson <span *ngIf="isUpdating"><div class="spinner-header"></div></span></h2>
+      <div class="status-indicator" [style.backgroundColor]="getStateColor()"></div>
+    </div>
+  
+    <div class="card-body" *ngIf="jetsonData; else loading">
+      <div class="info-group">
+        <div class="info-item">
+          <span class="label">State:</span>
+          <span class="value" [ngClass]="jetsonData.state">{{ jetsonData.state }}</span>
+        </div>
+  
+        <div class="info-item" [ngClass]="{'is-connected-error': jetsonData && jetsonData.state === 'error'}">
+          <span class="label">Connection:</span>
+          <div class="status-indicator" [style.backgroundColor]="jetsonData ? getStatusColor(jetsonData.isConnected) : ''"></div>
+        </div>
+  
+        <div class="info-item">
+        <span class="label">Voltage:</span>
+        <span class="value" *ngIf="jetsonData.tensione !== undefined && jetsonData.tensione !== null">
+          {{ (jetsonData.tensione / 1000).toFixed(2) }} V
+        </span>
+        <span class="value loading-placeholder" *ngIf="jetsonData.tensione === undefined || jetsonData.tensione === null">--</span>
+      </div>
+
+      <div class="info-item">
+        <span class="label">Current:</span>
+        <span class="value" *ngIf="jetsonData.corrente !== undefined && jetsonData.corrente !== null">
+          {{ (jetsonData.corrente / 1000).toFixed(2) }} A
+        </span>
+        <span class="value loading-placeholder" *ngIf="jetsonData.corrente === undefined || jetsonData.corrente === null">--</span>
+      </div>
+
+      <div class="info-item">
+        <span class="label">Power:</span>
+        <span class="value" *ngIf="jetsonData.potenza !== undefined && jetsonData.potenza !== null">
+          {{ (jetsonData.potenza / 1000).toFixed(2) }} W
+        </span>
+        <span class="value loading-placeholder" *ngIf="jetsonData.potenza === undefined || jetsonData.potenza === null">--</span>
+      </div>
+
+      <div class="info-item power-item">
+        <span class="label">Turn:</span>
+        <div class="power-slider-container">
+          <label class="switch" [class.disabled]="isUpdating">
+            <input type="checkbox" [(ngModel)]="jetsonData.isPowered" [disabled]="isUpdating" (change)="togglePower()">
+            <span class="slider round"></span>
+          </label>
+          <span class="power-status" [class.disabled]="isUpdating">{{ jetsonData.isPowered ? 'On' : 'Off' }}</span>
+        </div>
+      </div>
+      </div>
+    </div>
+  
+    <ng-template #loading>
+      <div class="loading-container">
+        <div class="spinner"></div>
+        <p>Loading data...</p>
+      </div>
+    </ng-template>
+  </div>
