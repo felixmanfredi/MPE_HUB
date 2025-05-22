@@ -30,3 +30,13 @@ void initialize(){
     if(Serial)
         Serial.println("SPI inizializzata.");
 }
+
+// FUNZIONE CHE STAMPA IL TESTO SUL 485
+void write485(String text){
+    digitalWrite(RW_485,HIGH);                      // attivazione scrittura 485
+    delay(2);
+    Serial2.println(text);                          // stampa il testo in 485
+    Serial.println(text);                           // stampa il testo sulla seriale
+    digitalWrite(RW_485,LOW);                       // attivazione lettura 485
+    tone(BUZZER_DEBUG, 1000, 20);
+}

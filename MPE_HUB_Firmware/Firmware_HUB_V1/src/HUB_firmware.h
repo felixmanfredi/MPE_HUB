@@ -3,6 +3,7 @@
 
 #include <Arduino.h>
 #include <SimpleCLI.h>          // Include per includere interfaccia a linea di comando
+#include <ArduinoJson.h>        // Include per la creazione di json
 
 #define PIN_MOSI            7
 #define PIN_MISO            8
@@ -13,8 +14,8 @@
 #define RW_485              3   // Pin lettura/scrittura per 485 (LOW->READ) (HIGH->WRITE)
 #define RX_485              4   // Pin di rx per 485
 
-#define LED_DEBUG_1         37  // RED      // Pin di controllo del led di debug sulla scheda 
-#define LED_DEBUG_2         36  // GREEN    // Pin di controllo del led di debug sulla scheda
+#define LED_DEBUG_RED       37  // RED      // Pin di controllo del led di debug sulla scheda 
+#define LED_DEBUG_GREEN     36  // GREEN    // Pin di controllo del led di debug sulla scheda
 #define BUZZER_DEBUG        35  // Pin di controllo del buzzer di debug sulla scheda
 
 #define RST_SWITCH          38  // Pin per il reset dello switch di rete (Attivo basso)
@@ -35,7 +36,7 @@
 #define SEL_1_12V           33  // Sense MUX 1 12V [Active HIGH]
 
 // Array per la dichiarazione degli output (tutti questi controlli sono attivi alti)
-const uint8_t OUTPUT_ARRAY[]={TX_485, RW_485, LED_DEBUG_1, LED_DEBUG_2, BUZZER_DEBUG, RST_SWITCH, PWM_LIGHT};
+const uint8_t OUTPUT_ARRAY[]={TX_485, RW_485, LED_DEBUG_RED, LED_DEBUG_GREEN, BUZZER_DEBUG, RST_SWITCH, PWM_LIGHT};
 
 // Array per la dichiarazione degli input
 const uint8_t INPUT_ARRAY[]={RX_485};
@@ -64,5 +65,11 @@ void set_pin_function(const uint8_t array[], uint8_t size, byte value);
 *
 */
 void initialize();
+
+/* 
+* FUNZIONE CHE STAMPA IL TESTO SUL 485
+* @param String il testo da stampare
+*/
+void write485(String text);
 
 #endif
