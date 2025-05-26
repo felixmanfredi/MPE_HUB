@@ -340,7 +340,7 @@
 	(net 184 "unconnected-(U4-IO41-Pad37)")
 	(net 185 "unconnected-(U4-IO46-Pad44)")
 	(net 186 "/Ethernet_Module/MISO")
-	(net 187 "unconnected-(U4-IO18-Pad22)")
+	(net 187 "unconnected-(U4-IO48-Pad30)")
 	(net 188 "unconnected-(U4-RXD0-Pad40)")
 	(net 189 "unconnected-(U4-IO11-Pad15)")
 	(net 190 "/Ethernet_Module/MOSI")
@@ -473,6 +473,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "26ec3a2d-aa38-4aaa-ba36-a92bc0e28361")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C1588"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "429befe3-d7f8-462c-a548-480a5de97cbd")
 			(effects
 				(font
 					(size 1 1)
@@ -694,6 +707,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C21189"
+			(at 0 0 135)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3cec48a7-7421-4cfc-ae88-04b97bd8e0d6")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/6c690dc6-2924-45bb-9fe4-ad7635e5b003/0ccf180d-be01-44d0-8394-44e29cde8180")
 		(sheetname "/Ethernet_Module/")
@@ -901,6 +927,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "ebe8e1e9-6526-4ee1-a47e-adee78a8980a")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C14663"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d380cae7-3672-4c38-bc1b-5d6a2a3ba42e")
 			(effects
 				(font
 					(size 1 1)
@@ -1122,6 +1161,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C413726"
+			(at 0 0 135)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "dd957502-7316-4d7d-8534-b83dab8856d2")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/6c690dc6-2924-45bb-9fe4-ad7635e5b003/ee81fbb5-bfb0-4333-8392-c8d3c21285db")
 		(sheetname "/Ethernet_Module/")
@@ -1329,6 +1381,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "f0544758-0ae2-4c0f-9799-5edf253497e8")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C14663"
+			(at 0 0 135)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3f5e9af2-f2b0-49c9-9819-01a2daeae338")
 			(effects
 				(font
 					(size 1 1)
@@ -1550,6 +1615,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C23046"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "79f190cc-0bdc-46a5-8e75-355ac6f0342c")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/3023c5bd-f832-4289-aecc-ff32d60219c8/3641efb6-695e-4a0a-8981-8db652c66be6")
 		(sheetname "/Switch/")
@@ -1757,6 +1835,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "88c67828-261d-4454-986e-e63d1ffb562b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C21190"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "2bc9da9d-c801-4f78-969a-4d672f25b85d")
 			(effects
 				(font
 					(size 1 1)
@@ -2159,6 +2250,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "4d508260-a829-46d5-b5bb-c2c6f84c797e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C4275"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "438a6962-4380-4ccc-9e76-634e0c742147")
 			(effects
 				(font
 					(size 1 1)
@@ -2696,6 +2800,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C14663"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "cb1fcace-16b5-4dbc-8241-9151cce5e3e0")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "C_*")
 		(path "/3023c5bd-f832-4289-aecc-ff32d60219c8/9b02451c-e5d6-4b84-99a6-5a0dc52fde7b")
 		(sheetname "/Switch/")
@@ -2903,6 +3020,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "862c2fad-7230-4ba3-8717-c064f192a415")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C25804"
+			(at 0 0 225)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b22fb9d7-483b-4d7e-94f6-c38beb4175a7")
 			(effects
 				(font
 					(size 1 1)
@@ -3387,6 +3517,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C25804"
+			(at 0 0 45)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a0b19e84-ef9e-430b-9ca2-0994e202b056")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/6c690dc6-2924-45bb-9fe4-ad7635e5b003/a004204c-c6a0-48e6-b2a0-9202f342eb03")
 		(sheetname "/Ethernet_Module/")
@@ -3864,6 +4007,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C25804"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "88faefd1-29b9-4862-8a69-d4ae91322f3d")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/6c690dc6-2924-45bb-9fe4-ad7635e5b003/9225cb17-9033-4fc6-be3a-1a44919f9e25")
 		(sheetname "/Ethernet_Module/")
@@ -4288,6 +4444,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C18584"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e553ae6f-69a5-4479-ac03-1da0db3c91c8")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/6c690dc6-2924-45bb-9fe4-ad7635e5b003/22cdf316-5e84-4ded-bc20-419c6c0c41b1")
 		(sheetname "/Ethernet_Module/")
 		(sheetfile "W5500 - Eth.kicad_sch")
@@ -4620,6 +4789,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C105578"
+			(at 0 0 45)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "6a891323-897a-4a44-88fb-7c61398d7e1a")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/6c690dc6-2924-45bb-9fe4-ad7635e5b003/782ab40e-54b7-4ece-89e5-fc979cf7aef3")
 		(sheetname "/Ethernet_Module/")
@@ -4827,6 +5009,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "084beefc-0d5a-48d6-9fb7-6b1a5691ae0e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C21189"
+			(at 0 0 315)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "12776451-28f8-4ea1-8577-6bc3046171b5")
 			(effects
 				(font
 					(size 1 1)
@@ -5048,6 +5243,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C21190"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c8b1b638-9c73-4658-a44b-d5fda232cf8d")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/3023c5bd-f832-4289-aecc-ff32d60219c8/d05fb7f6-f524-4a97-8b7f-faeb4bb07a6e")
 		(sheetname "/Switch/")
@@ -5262,6 +5470,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C23046"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "10d8ced2-9b68-4ff8-bd2b-1c747531683e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/3023c5bd-f832-4289-aecc-ff32d60219c8/f960d922-f55f-4f9f-8ae8-54da7406887f")
 		(sheetname "/Switch/")
@@ -5469,6 +5690,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "98c38d78-dfd7-4f45-bf0b-b756bd917323")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C21189"
+			(at 0 0 135)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "033b4372-a573-43df-a252-4ab9772c1672")
 			(effects
 				(font
 					(size 1 1)
@@ -6136,6 +6370,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C1588"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3fc440b8-8d36-43ce-a2b3-1feef21a56b2")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "C_*")
 		(path "/3023c5bd-f832-4289-aecc-ff32d60219c8/4b33720b-9420-48cc-a0f9-f4a950ceb89d")
 		(sheetname "/Switch/")
@@ -6343,6 +6590,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "26a728a9-5d32-4ce2-9936-4a90c674bf74")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C14663"
+			(at 0 0 135)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3235b973-051b-4731-bace-a7d3fa521374")
 			(effects
 				(font
 					(size 1 1)
@@ -6565,6 +6825,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C14663"
+			(at 0 0 225)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "21db672e-8bdb-4b71-b575-f65c2a125e46")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/6c690dc6-2924-45bb-9fe4-ad7635e5b003/c178c573-aa98-491a-ae1e-fa117679d3b5")
 		(sheetname "/Ethernet_Module/")
 		(sheetfile "W5500 - Eth.kicad_sch")
@@ -6773,6 +7046,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "3f3d2271-4015-4c22-90ab-330614ce035f")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C25811"
+			(at 0 0 135)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "4829d88a-3a23-4ee3-b82f-0d04a4e3c2d2")
 			(effects
 				(font
 					(size 1 1)
@@ -6994,6 +7280,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C14663"
+			(at 0 0 315)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b64194a1-410c-4438-a5fb-ffe3f1839d43")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "C_*")
 		(path "/3023c5bd-f832-4289-aecc-ff32d60219c8/888e7b5e-4772-451b-9b4d-aaaeaeccef37")
 		(sheetname "/Switch/")
@@ -7201,6 +7500,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "39f1aa2f-e0bd-4505-8cc6-11201b189f4f")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C25804"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8ca2c2ac-c424-43cf-988f-148eae45275e")
 			(effects
 				(font
 					(size 1 1)
@@ -7422,6 +7734,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C1588"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "34f2c719-16fe-4354-86b2-8deb04037c4b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "C_*")
 		(path "/3023c5bd-f832-4289-aecc-ff32d60219c8/a19779b8-ee85-488c-9e3f-b3cf66a3f68b")
 		(sheetname "/Switch/")
@@ -7636,6 +7961,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C14663"
+			(at 0 0 45)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "1e217bb1-e591-4b20-abd6-ddef797d1b5e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "C_*")
 		(path "/3023c5bd-f832-4289-aecc-ff32d60219c8/d2e09e98-f273-4f07-8898-20257806b83b")
 		(sheetname "/Switch/")
@@ -7843,6 +8181,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "59ec4ea3-23ae-4d9a-bb27-4cfbc3fafe41")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C4275"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8bad169f-a5be-4e69-8f6e-c2396cba9793")
 			(effects
 				(font
 					(size 1 1)
@@ -8380,6 +8731,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C1779"
+			(at 0 0 45)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8f2986ec-ab47-454b-9dad-ecaece5bd3bc")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/6c690dc6-2924-45bb-9fe4-ad7635e5b003/7a7b66eb-ff47-4efd-8a82-dcf59e803ac9")
 		(sheetname "/Ethernet_Module/")
 		(sheetfile "W5500 - Eth.kicad_sch")
@@ -8595,6 +8959,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C14663"
+			(at 0 0 135)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "2fc24234-565b-4d53-b5c9-97bb2f54da4b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "C_*")
 		(path "/3023c5bd-f832-4289-aecc-ff32d60219c8/660b6b33-29ca-47cf-93a3-119e46d9aeb7")
 		(sheetname "/Switch/")
@@ -8802,6 +9179,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "07bd3144-423b-412e-a9be-f57ae3696c3d")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C14663"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "39d1ad23-eb6d-47f7-a670-24d39f0b373e")
 			(effects
 				(font
 					(size 1 1)
@@ -9500,6 +9890,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C14663"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ae1ea34e-2235-4467-84c5-97caf0705028")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "C_*")
 		(path "/3023c5bd-f832-4289-aecc-ff32d60219c8/c3ce833d-479b-41e2-95ba-efb099bd7aa4")
 		(sheetname "/Switch/")
@@ -9707,6 +10110,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "08714617-9b38-4c81-8d0b-25db1201efb9")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C21190"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "9de760e7-7a51-4b68-a8b2-16e4e6f48f48")
 			(effects
 				(font
 					(size 1 1)
@@ -9928,6 +10344,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C4275"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "caad1238-25ec-4a22-8053-dc8eb822e3f2")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/3023c5bd-f832-4289-aecc-ff32d60219c8/d38a5aef-aa98-48a3-a1b3-cb8f0ed5362d")
 		(sheetname "/Switch/")
@@ -10135,6 +10564,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "a38f4407-a776-4b0d-817a-3f568b7901a5")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C25804"
+			(at 0 0 225)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "280650f3-800a-491b-8998-422d34f59368")
 			(effects
 				(font
 					(size 1 1)
@@ -10356,6 +10798,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C4275"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8990949a-65f8-46cb-bfac-69ffb40ba2bd")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/6c690dc6-2924-45bb-9fe4-ad7635e5b003/9c8495ad-7d02-41e8-9434-5336a9fc6921")
 		(sheetname "/Ethernet_Module/")
@@ -10563,6 +11018,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "c3b09aeb-7ed0-4f39-8c2e-92c4860a0a2e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C14663"
+			(at 0 0 315)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "19f20db3-7147-4187-85e6-6344fad276b2")
 			(effects
 				(font
 					(size 1 1)
@@ -10784,6 +11252,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C14663"
+			(at 0 0 225)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d8ffb36f-5f27-44b5-b3b9-e22df902205e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "C_*")
 		(path "/3023c5bd-f832-4289-aecc-ff32d60219c8/b5b48682-9dfd-44eb-a7af-266699df5b80")
 		(sheetname "/Switch/")
@@ -10991,6 +11472,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "09d051bc-5d0b-47b1-aa0e-64c12511921b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C25804"
+			(at 0 0 225)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e94c78af-ca42-42e0-a430-19c5293e3a7f")
 			(effects
 				(font
 					(size 1 1)
@@ -11482,6 +11976,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C57112"
+			(at 0 0 225)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d15ab5ef-210b-42e6-bc09-35244848b683")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/6c690dc6-2924-45bb-9fe4-ad7635e5b003/512c7cc1-61cb-48ff-9cb2-5a1fded7aab2")
 		(sheetname "/Ethernet_Module/")
 		(sheetfile "W5500 - Eth.kicad_sch")
@@ -11697,6 +12204,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C15849"
+			(at 0 0 135)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "da210f84-6539-424d-b094-3cfc115a5ad7")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "C_*")
 		(path "/3023c5bd-f832-4289-aecc-ff32d60219c8/6391e7fb-713e-4111-8c49-4e56770c3a11")
 		(sheetname "/Switch/")
@@ -11904,6 +12424,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "fc42c1be-171b-4391-afe9-13e794addeca")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C1588"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "6515aadd-2d38-4be2-a603-06d2de5c72c6")
 			(effects
 				(font
 					(size 1 1)
@@ -12384,6 +12917,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C18584"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "83190c12-efda-4403-8377-e667b7e03849")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/3023c5bd-f832-4289-aecc-ff32d60219c8/ff9505d2-99ab-4066-9caa-05399bf2f8b0")
 		(sheetname "/Switch/")
 		(sheetfile "Switch_Ethernet_RTL8305NB.kicad_sch")
@@ -12712,6 +13258,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C443997"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "93e043d7-10e8-4332-be63-fb89f0ae2566")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/26b9dfe9-c957-43ca-ba2b-36e349e2ebb9/0e880fe0-78cf-4d57-94d8-1d84fa782450")
 		(sheetname "/Power_Switch1/")
 		(sheetfile "Power_Switch.kicad_sch")
@@ -12806,7 +13365,6 @@
 			(drill 0.3)
 			(layers "*.Cu" "*.Paste" "*.Mask")
 			(remove_unused_layers no)
-			(net 5 "+24V")
 			(uuid "1ec4080f-5a57-4da5-b6a5-925deb605b02")
 		)
 		(pad "" thru_hole circle
@@ -12815,7 +13373,6 @@
 			(drill 0.3)
 			(layers "*.Cu" "*.Paste" "*.Mask")
 			(remove_unused_layers no)
-			(net 5 "+24V")
 			(uuid "8ee6daf0-3cd2-4c1c-9a93-1d1000505200")
 		)
 		(pad "" thru_hole circle
@@ -12824,7 +13381,6 @@
 			(drill 0.3)
 			(layers "*.Cu" "*.Paste" "*.Mask")
 			(remove_unused_layers no)
-			(net 5 "+24V")
 			(uuid "d7473c99-caee-4dcb-b479-3a1dc991f4a9")
 		)
 		(pad "" thru_hole circle
@@ -12833,7 +13389,6 @@
 			(drill 0.3)
 			(layers "*.Cu" "*.Paste" "*.Mask")
 			(remove_unused_layers no)
-			(net 5 "+24V")
 			(uuid "a3cbbd51-978c-4e69-a26c-4662ffd1e07e")
 		)
 		(pad "" thru_hole circle
@@ -12842,7 +13397,6 @@
 			(drill 0.3)
 			(layers "*.Cu" "*.Paste" "*.Mask")
 			(remove_unused_layers no)
-			(net 5 "+24V")
 			(uuid "90bc1c4b-da13-4f45-9609-dfb2065f3f70")
 		)
 		(pad "" thru_hole circle
@@ -12851,7 +13405,6 @@
 			(drill 0.3)
 			(layers "*.Cu" "*.Paste" "*.Mask")
 			(remove_unused_layers no)
-			(net 5 "+24V")
 			(uuid "a9d4a148-864d-4461-a25e-0b0a13148976")
 		)
 		(pad "1" smd oval
@@ -13466,6 +14019,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C4275"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b48a41c5-f793-467e-9c44-d1ffa274997c")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/3023c5bd-f832-4289-aecc-ff32d60219c8/48d17ed2-c52d-4030-a05b-af56d4045037")
 		(sheetname "/Switch/")
@@ -13841,6 +14407,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C14663"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "7e16984f-c626-45c1-b104-31ec0bc6d6b4")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "C_*")
 		(path "/3023c5bd-f832-4289-aecc-ff32d60219c8/04ba0f59-597d-408c-8bfe-dc50bc6b8e7b")
 		(sheetname "/Switch/")
@@ -14048,6 +14627,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "be9f6ec8-72e3-45ab-a3d3-c5160f98049f")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C440198"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8894763f-6491-4f1f-b95e-12fb527c68f9")
 			(effects
 				(font
 					(size 1 1)
@@ -14270,6 +14862,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C25804"
+			(at 0 0 225)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8c8874a2-499b-42f9-8513-66af7722811f")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/6c690dc6-2924-45bb-9fe4-ad7635e5b003/2ff276f4-6fab-46a9-8e5a-277f211153ce")
 		(sheetname "/Ethernet_Module/")
@@ -14477,6 +15082,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "8045178f-6821-43d2-adb3-2dd026e92544")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C57112"
+			(at 0 0 315)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a74c0822-93d2-4786-85de-e6a6392eaf2f")
 			(effects
 				(font
 					(size 1 1)
@@ -14699,6 +15317,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C25804"
+			(at 0 0 225)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "af4d7fd3-c429-4809-b290-0c128c904ca7")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/6c690dc6-2924-45bb-9fe4-ad7635e5b003/60a42236-e1f4-4f2f-8dac-97ef9077da2f")
 		(sheetname "/Ethernet_Module/")
@@ -14906,6 +15537,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "5fe2ff7b-c5e7-4bfa-ac2d-2dd67a4ce18b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C2074217"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "519d7661-0d70-4a52-baf0-0454342b9128")
 			(effects
 				(font
 					(size 1 1)
@@ -15487,6 +16131,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "10ba2fc6-c2cb-471a-aae2-274c1e366734")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C21190"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "76ee60e4-11da-42f3-957c-dfa194b9e7b5")
 			(effects
 				(font
 					(size 1 1)
@@ -16234,6 +16891,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C165734"
+			(at 0 0 135)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "9596318a-a6f5-46fa-bbd5-9d4cb188eb3d")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/6c690dc6-2924-45bb-9fe4-ad7635e5b003/4df0b354-137e-4797-a70f-0936cb43045e")
 		(sheetname "/Ethernet_Module/")
 		(sheetfile "W5500 - Eth.kicad_sch")
@@ -16442,6 +17112,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "6ced35ac-1287-4cf6-87b0-505ace28ab87")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C14663"
+			(at 0 0 135)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "1eed6b2d-2bce-4c09-8229-8fd41ccd966b")
 			(effects
 				(font
 					(size 1 1)
@@ -16663,6 +17346,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C21189"
+			(at 0 0 225)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f2f04bb6-c6c8-4056-b430-8649f9fccd9e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/6c690dc6-2924-45bb-9fe4-ad7635e5b003/f0ed6507-6a0f-4726-825f-9d6bd2f03340")
 		(sheetname "/Ethernet_Module/")
@@ -16870,6 +17566,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "f41a7d51-99ab-4621-9040-4e5edb9ef7bc")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C14663"
+			(at 0 0 135)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3cee2d7a-ee3b-433c-9922-3bac862f196a")
 			(effects
 				(font
 					(size 1 1)
@@ -17085,6 +17794,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "48daf6f6-b11d-49f2-bedb-540ec6484a7d")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C21190"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ed4b44dc-e165-4bdc-a4c7-579d1f7ccaf9")
 			(effects
 				(font
 					(size 1 1)
@@ -17533,6 +18255,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C21190"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "7b2768af-8298-47c7-8949-e345804162d4")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/3023c5bd-f832-4289-aecc-ff32d60219c8/fdbf21e5-0f67-4ba3-85b8-e1b3cd6b69b1")
 		(sheetname "/Switch/")
@@ -17736,6 +18471,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "15d9c80d-ba53-47ab-be36-643328d78b63")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C70593"
+			(at 0 0 315)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "5fdd2d83-ea33-43e1-b256-fca7351b5d5f")
 			(effects
 				(font
 					(size 1 1)
@@ -18162,6 +18910,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "a880a0ad-1a76-4f2b-a2a5-e678993fb426")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C14663"
+			(at 0 0 135)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "50eff928-4530-4c95-8555-688ab2efb17e")
 			(effects
 				(font
 					(size 1 1)
@@ -18976,6 +19737,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C25804"
+			(at 0 0 45)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b640b0ca-b2f6-4e13-b25c-accd4120bda0")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/6c690dc6-2924-45bb-9fe4-ad7635e5b003/a93a6cc4-c332-4c7d-a5b6-c47e218e981c")
 		(sheetname "/Ethernet_Module/")
@@ -19666,6 +20440,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C23255"
+			(at 0 0 225)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "0c7c53ef-9288-4b90-8283-e14b1e5b0b61")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/6c690dc6-2924-45bb-9fe4-ad7635e5b003/6ed4040c-47f4-4115-ab23-b1a2a435a684")
 		(sheetname "/Ethernet_Module/")
@@ -19873,6 +20660,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "e5f94abc-584a-431c-8f9b-49f14e4364e8")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C1648"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "99db49d9-f94d-4fe6-a67d-b2db0e573e6f")
 			(effects
 				(font
 					(size 1 1)
@@ -20308,6 +21108,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C1648"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d0204dcb-edf3-4441-98fc-456f1bdc1eda")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/3023c5bd-f832-4289-aecc-ff32d60219c8/5717642f-d25d-4f3e-a5d3-8d2fb361210f")
 		(sheetname "/Switch/")
 		(sheetfile "Switch_Ethernet_RTL8305NB.kicad_sch")
@@ -20516,6 +21329,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "a32ef7b0-d7ff-48d1-9cc0-44dbc89bdb9e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C21190"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "62fb76cf-6fb5-4588-bdf2-8038bd603707")
 			(effects
 				(font
 					(size 1 1)
@@ -20733,6 +21559,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C443997"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "af770864-1fdb-4c30-b0e5-d1eefad83262")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/36a1afe1-9d7e-4453-8bd5-557c8a4303ef/0e880fe0-78cf-4d57-94d8-1d84fa782450")
 		(sheetname "/Power_Switch/")
 		(sheetfile "Power_Switch.kicad_sch")
@@ -20827,7 +21666,6 @@
 			(drill 0.3)
 			(layers "*.Cu" "*.Paste" "*.Mask")
 			(remove_unused_layers no)
-			(net 39 "+12V")
 			(uuid "09d2a002-d1f6-49ee-9927-e5eb5de7dcfc")
 		)
 		(pad "" thru_hole circle
@@ -20836,7 +21674,6 @@
 			(drill 0.3)
 			(layers "*.Cu" "*.Paste" "*.Mask")
 			(remove_unused_layers no)
-			(net 39 "+12V")
 			(uuid "6a2a4877-c814-4100-95ac-2e31a61a4924")
 		)
 		(pad "" thru_hole circle
@@ -20845,7 +21682,6 @@
 			(drill 0.3)
 			(layers "*.Cu" "*.Paste" "*.Mask")
 			(remove_unused_layers no)
-			(net 39 "+12V")
 			(uuid "41faea9f-d249-4a49-8c31-0043866a9fda")
 		)
 		(pad "" thru_hole circle
@@ -20854,7 +21690,6 @@
 			(drill 0.3)
 			(layers "*.Cu" "*.Paste" "*.Mask")
 			(remove_unused_layers no)
-			(net 39 "+12V")
 			(uuid "2c7d208a-fc45-4f7b-8e29-56aaae668113")
 		)
 		(pad "" thru_hole circle
@@ -20863,7 +21698,6 @@
 			(drill 0.3)
 			(layers "*.Cu" "*.Paste" "*.Mask")
 			(remove_unused_layers no)
-			(net 39 "+12V")
 			(uuid "4ebda199-7b63-491d-922b-3923e7faf9ba")
 		)
 		(pad "" thru_hole circle
@@ -20872,7 +21706,6 @@
 			(drill 0.3)
 			(layers "*.Cu" "*.Paste" "*.Mask")
 			(remove_unused_layers no)
-			(net 39 "+12V")
 			(uuid "edf19b47-f478-4f2e-8ed0-3fc929b0949d")
 		)
 		(pad "1" smd oval
@@ -21474,6 +22307,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C25804"
+			(at 0 0 225)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "26be7a6c-3c82-4dd1-b204-6e9664f9471a")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/6c690dc6-2924-45bb-9fe4-ad7635e5b003/270084e8-1649-4741-9294-e5b67a7358f4")
 		(sheetname "/Ethernet_Module/")
@@ -21944,6 +22790,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "d588e22a-12cf-4b1f-8723-f3953f94e3c9")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C1588"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "2b0261dd-3e8b-40fb-9cdf-ff249aaf2665")
 			(effects
 				(font
 					(size 1 1)
@@ -22792,6 +23651,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C14663"
+			(at 0 0 135)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "04a9cd52-a455-41f0-b61c-e68cf566f844")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "C_*")
 		(path "/3023c5bd-f832-4289-aecc-ff32d60219c8/75b2ccfc-daed-45a9-8869-b916eb1812bb")
 		(sheetname "/Switch/")
@@ -23463,6 +24335,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "2ea0ddd3-1c3a-48ee-ba70-d422ac50940e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C14663"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "cb3badf2-3447-40d7-9563-b95fbf78784c")
 			(effects
 				(font
 					(size 1 1)
@@ -24217,6 +25102,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C4275"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "babac063-296b-40e6-8ae7-f78867efd254")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/3023c5bd-f832-4289-aecc-ff32d60219c8/bd2fed14-fdb5-4e40-be3f-baf2e2a110e5")
 		(sheetname "/Switch/")
@@ -24424,6 +25322,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "5e98ffe4-ce1e-4b42-b68a-ec28313c94fc")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C14663"
+			(at 0 0 135)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "2530c41b-3610-45d9-8326-4b3ed8f150c7")
 			(effects
 				(font
 					(size 1 1)
@@ -24639,6 +25550,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "09ffdafc-9767-4388-8e23-cb40e4a523fe")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C14663"
+			(at 0 0 225)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "5b06edf6-c9fa-4edc-9eda-5b075d7781d2")
 			(effects
 				(font
 					(size 1 1)
@@ -25074,6 +25998,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C510088"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e06144b4-6854-443d-b673-c59d568a4084")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/6c690dc6-2924-45bb-9fe4-ad7635e5b003/1ed16ee8-bda9-4b09-bb5c-b028be4f075c")
 		(sheetname "/Ethernet_Module/")
@@ -25281,6 +26218,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "29f7cbae-02e5-41bc-a44f-773ef3c32750")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C14663"
+			(at 0 0 45)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b5a3929e-953d-4119-805c-c10b4c27a0e3")
 			(effects
 				(font
 					(size 1 1)
@@ -25916,6 +26866,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C440198"
+			(at 0 0 135)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "95231a88-bdd8-472a-aa1d-c9b91a8359fa")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/6c690dc6-2924-45bb-9fe4-ad7635e5b003/4e2476a4-5bf8-4237-b2a5-ade29dbd7a08")
 		(sheetname "/Ethernet_Module/")
 		(sheetfile "W5500 - Eth.kicad_sch")
@@ -26394,6 +27357,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C4275"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c1f23bf1-9fea-4e98-80f0-248cb3eb0030")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/3023c5bd-f832-4289-aecc-ff32d60219c8/5f43d944-81c2-4588-a870-d2e39f35c703")
 		(sheetname "/Switch/")
@@ -26601,6 +27577,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "fd490737-64f4-4689-9b1e-122ac56b9c75")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C14663"
+			(at 0 0 225)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c1619d0a-6800-4a31-bac2-c1f5efb6de73")
 			(effects
 				(font
 					(size 1 1)
@@ -26822,6 +27811,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C14663"
+			(at 0 0 315)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a9b59da5-5c1c-42ad-b60a-926de0bfd489")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "C_*")
 		(path "/3023c5bd-f832-4289-aecc-ff32d60219c8/8d6a1bcc-51ec-41cb-bf95-30c4b7ce80bc")
 		(sheetname "/Switch/")
@@ -27029,6 +28031,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "b7276a64-ec25-45b9-97cb-3fb97047198a")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C14663"
+			(at 0 0 135)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "6474e1e1-39e3-4d1d-8237-237180f03e51")
 			(effects
 				(font
 					(size 1 1)
@@ -27445,6 +28460,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "ca6e5600-07f4-47b4-9a4d-0dba29007a7a")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C14663"
+			(at 0 0 135)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "54846c67-53b4-4915-901f-a5748d3b0e37")
 			(effects
 				(font
 					(size 1 1)
@@ -27922,6 +28950,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "5cbb137c-2670-415e-b0c9-b075d996c268")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C25811"
+			(at 0 0 135)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "48a8c91a-e6e1-46b9-bf20-f4270c3b3976")
 			(effects
 				(font
 					(size 1 1)
@@ -28569,6 +29610,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C14663"
+			(at 0 0 225)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "7864160b-19b5-4b05-969c-5754fc075314")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "C_*")
 		(path "/3023c5bd-f832-4289-aecc-ff32d60219c8/3033441e-9890-49f9-b474-77dbdf987d69")
 		(sheetname "/Switch/")
@@ -28772,6 +29826,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "a4476ae7-1cd0-4a8a-be17-e40878faceba")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C18584"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ff23dc3f-10a5-4b8a-aa1f-1215c0baf2c1")
 			(effects
 				(font
 					(size 1 1)
@@ -29111,6 +30178,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C23255"
+			(at 0 0 225)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8777b5bd-e95b-4e70-b2f4-649709d3fd20")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/6c690dc6-2924-45bb-9fe4-ad7635e5b003/3f910202-ecc6-4a88-8275-651f59a5f68b")
 		(sheetname "/Ethernet_Module/")
@@ -29318,6 +30398,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "d7db7450-025c-46a6-a351-f69b4a13aaf6")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C25804"
+			(at 0 0 225)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a612968a-fe60-4622-b068-0e8c27487d79")
 			(effects
 				(font
 					(size 1 1)
@@ -29539,6 +30632,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C21189"
+			(at 0 0 45)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "23f4dc72-f9c0-405e-a6b7-523aadb923aa")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/6c690dc6-2924-45bb-9fe4-ad7635e5b003/be69c0e6-8774-4830-be82-82e4921abb02")
 		(sheetname "/Ethernet_Module/")
@@ -29742,6 +30848,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "a5f749ed-ca01-4685-83d7-b8e4cf5c8da2")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C32843"
+			(at 0 0 225)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "fa0baa07-edaf-4047-8742-ab8bc799166e")
 			(effects
 				(font
 					(size 1 1)
@@ -30370,6 +31489,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C14663"
+			(at 0 0 225)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "cc4d9beb-6b8b-4836-aa69-ce313ee275c6")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "C_*")
 		(path "/3023c5bd-f832-4289-aecc-ff32d60219c8/009eaa43-2b31-45a8-b782-80e642dc05a3")
 		(sheetname "/Switch/")
@@ -30573,6 +31705,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "e6dce2cb-b3eb-4f44-a191-a1faec1928c0")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C9006"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "5701bbb7-44f2-4f79-94fa-8b1efb1a570d")
 			(effects
 				(font
 					(size 1 1)
@@ -31056,6 +32201,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C2074217"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3af7195e-e57a-4e16-9ab4-2640a4217f72")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/6c690dc6-2924-45bb-9fe4-ad7635e5b003/93a4a60b-ed9b-4614-b677-8fc08e03ddda")
 		(sheetname "/Ethernet_Module/")
@@ -31270,6 +32428,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C14663"
+			(at 0 0 45)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e348e7b2-7775-434d-801f-ecc45150d202")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "C_*")
 		(path "/3023c5bd-f832-4289-aecc-ff32d60219c8/8115c6db-9486-4c83-a87c-c711310e9d46")
 		(sheetname "/Switch/")
@@ -31473,6 +32644,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "ebcfcf77-92f9-4fe1-8cce-000a20902186")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C18584"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "2a77864a-c075-4afd-ae82-6e1f88a6634f")
 			(effects
 				(font
 					(size 1 1)
@@ -32025,6 +33209,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C14663"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "7028bbed-0fb1-4444-a69f-7064c4e653f5")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "C_*")
 		(path "/3023c5bd-f832-4289-aecc-ff32d60219c8/7c3ba1ad-d39b-4110-8ded-3d04ebdf38a7")
 		(sheetname "/Switch/")
@@ -32232,6 +33429,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "a3eacbe8-234d-441d-83a7-40f77e17ccdf")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C21189"
+			(at 0 0 135)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "66aa851a-94d2-43d2-b46a-168e38a35226")
 			(effects
 				(font
 					(size 1 1)
@@ -32453,6 +33663,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C25804"
+			(at 0 0 45)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ba45e7d6-68df-4766-8d59-5563cccb3ffc")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/6c690dc6-2924-45bb-9fe4-ad7635e5b003/bbbcbe08-2eeb-49d7-94a3-733fbb64b5b5")
 		(sheetname "/Ethernet_Module/")
@@ -32660,6 +33883,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "dfdc0af8-602c-4147-b53c-4a7d501f7125")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C14663"
+			(at 0 0 135)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e71dfe60-ad8f-498a-b32f-fe816badfff6")
 			(effects
 				(font
 					(size 1 1)
@@ -32881,6 +34117,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C14663"
+			(at 0 0 135)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "6f77f972-6381-4bda-a796-65ab83ffb2ec")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/6c690dc6-2924-45bb-9fe4-ad7635e5b003/9bcd2bfa-72a5-479b-93fe-7cc34a87ec3c")
 		(sheetname "/Ethernet_Module/")
 		(sheetfile "W5500 - Eth.kicad_sch")
@@ -33085,6 +34334,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "1858977f-aff5-4c6f-b347-e7c5368446b5")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C18584"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "5d424b1a-4269-4e9e-b740-e780e3d4ddfe")
 			(effects
 				(font
 					(size 1 1)
@@ -33424,6 +34686,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C25804"
+			(at 0 0 45)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "bedc0bd5-8d77-4ab8-9704-5df289ada335")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/6c690dc6-2924-45bb-9fe4-ad7635e5b003/b7f1fb83-7a2b-44dd-87f8-413f3ac794aa")
 		(sheetname "/Ethernet_Module/")
@@ -33631,6 +34906,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "e1ad4cb4-a8e8-4e02-b853-7d7ccc25d61a")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C1631"
+			(at 0 0 315)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "5d7b737b-2515-491d-b510-3525200e0ff2")
 			(effects
 				(font
 					(size 1 1)
@@ -34105,6 +35393,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "44793999-9394-44ab-be6e-0269a3854870")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C3010343"
+			(at 0 0 135)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "83a61208-8c03-40d5-94c8-f617037557cb")
 			(effects
 				(font
 					(size 1 1)
@@ -35161,6 +36462,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C21122"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f54af065-bda4-48d6-9c60-fd3035f619a9")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/6c690dc6-2924-45bb-9fe4-ad7635e5b003/2636f95c-841d-413f-909c-888e4054200e")
 		(sheetname "/Ethernet_Module/")
 		(sheetfile "W5500 - Eth.kicad_sch")
@@ -35369,6 +36683,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "25daf0ba-c98c-41d4-b198-8468f0877124")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C4275"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "bc14fca8-b78b-47b3-a6c2-b758101efb2a")
 			(effects
 				(font
 					(size 1 1)
@@ -35853,6 +37180,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C4275"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f8a0d6dc-4309-4f1b-b1c0-044580cc29c1")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/3023c5bd-f832-4289-aecc-ff32d60219c8/41b8dc10-185b-4c07-ab3e-98a451411638")
 		(sheetname "/Switch/")
@@ -36060,6 +37400,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "ff9c8a16-d3c2-4ae3-8b3d-bf37f54bc5be")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C165734"
+			(at 0 0 135)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "1e92c77c-b49d-4766-a861-0bef234645dd")
 			(effects
 				(font
 					(size 1 1)
@@ -36282,6 +37635,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C1631"
+			(at 0 0 315)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8db20e41-dbd5-4114-bf80-823939e2276e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/6c690dc6-2924-45bb-9fe4-ad7635e5b003/c7f62cf9-2724-46b3-9d49-387e0209ec27")
 		(sheetname "/Ethernet_Module/")
 		(sheetfile "W5500 - Eth.kicad_sch")
@@ -36490,6 +37856,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "48f433e1-c930-4b23-9dbc-370a871bfafb")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C14663"
+			(at 0 0 225)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e720ef16-673a-4848-925f-4bf2b13dd903")
 			(effects
 				(font
 					(size 1 1)
@@ -36712,6 +38091,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C14663"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8cec004a-7956-4090-908a-ad7f3eff7898")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/6c690dc6-2924-45bb-9fe4-ad7635e5b003/ac0a0196-272d-48ed-b29c-fffbd450ae70")
 		(sheetname "/Ethernet_Module/")
 		(sheetfile "W5500 - Eth.kicad_sch")
@@ -36920,6 +38312,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "bc4ad4f6-de66-47d1-8727-dfa84fa83e3b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C25804"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "efb0f75a-d3b6-4fe6-b1f5-6b9579d40af5")
 			(effects
 				(font
 					(size 1 1)
@@ -37400,6 +38805,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C27784"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "117aa38f-0af8-4479-9123-f926f5190e89")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/0553f301-ab80-4b81-92ba-565fcdf25584")
 		(sheetname "/")
 		(sheetfile "HUB_MPE.kicad_sch")
@@ -37597,6 +39015,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "90abb07d-573c-49c1-bcb5-25f3737d3e28")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C4275"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ea3c90a6-8818-4b76-a672-040a317d43e6")
 			(effects
 				(font
 					(size 1 1)
@@ -37818,6 +39249,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C25804"
+			(at 0 0 225)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "13ab60d9-21ff-4f8e-bdbc-ad3641487e56")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/6c690dc6-2924-45bb-9fe4-ad7635e5b003/7ef30c0b-f2f4-4717-8f44-9f8d0e9b045e")
 		(sheetname "/Ethernet_Module/")
@@ -38025,6 +39469,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "a65d9f49-90e6-4409-9a0c-83344e92b213")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C14663"
+			(at 0 0 225)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "949053e4-b922-4d9e-bd6a-990cc5575541")
 			(effects
 				(font
 					(size 1 1)
@@ -38516,6 +39973,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C21189"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "9536c19e-27d3-43d3-9dbc-b17656cada0b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/3023c5bd-f832-4289-aecc-ff32d60219c8/a8288c64-56b9-4a72-a218-6b79ccf48c62")
 		(sheetname "/Switch/")
@@ -38730,6 +40200,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C21190"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a3a6a8d6-a820-4b9d-b9d7-01c6469d95b9")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/3023c5bd-f832-4289-aecc-ff32d60219c8/0af7e24c-cbc8-4e7e-b1dc-f6f12f3555f9")
 		(sheetname "/Switch/")
@@ -38937,6 +40420,20 @@
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "eab00dff-4a6c-4955-8b05-f6ba98a8fc4e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "LCSC" "C20917"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "b1d27413-853d-4383-b9d1-5b1d517eee28")
 			(effects
 				(font
 					(size 1 1)
@@ -39587,9 +41084,9 @@
 			(at -0.85 -7.03 180)
 			(size 0.4 0.8)
 			(layers "B.Cu" "B.Mask" "B.Paste")
-			(net 187 "unconnected-(U4-IO18-Pad22)")
+			(net 19 "/+12V_MULTISENSE")
 			(pinfunction "IO18")
-			(pintype "unspecified+no_connect")
+			(pintype "unspecified")
 			(uuid "0e52494a-ea1c-48c8-b9dc-c5d9d9de121c")
 		)
 		(pad "23" smd rect
@@ -39659,9 +41156,9 @@
 			(at 5.95 -7.03 180)
 			(size 0.4 0.8)
 			(layers "B.Cu" "B.Mask" "B.Paste")
-			(net 19 "/+12V_MULTISENSE")
+			(net 187 "unconnected-(U4-IO48-Pad30)")
 			(pinfunction "IO48")
-			(pintype "unspecified")
+			(pintype "unspecified+no_connect")
 			(uuid "5d4b6f3b-99ab-4725-9820-f6af3092ec3b")
 		)
 		(pad "31" smd rect
@@ -42160,6 +43657,20 @@
 				(justify mirror)
 			)
 		)
+		(property "LCSC" "C20917"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "dafbdc90-c622-4174-86a9-45cfa69c15b4")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
 		(path "/26b9dfe9-c957-43ca-ba2b-36e349e2ebb9/bdc3dd53-4069-41bb-9db5-219d5a331fbb/c55b8fba-4540-48b0-b396-066b2ba0fb91")
 		(sheetname "/Power_Switch1/MOSFET_CTRL3/")
 		(sheetfile "MOSFET_CTRL.kicad_sch")
@@ -42826,6 +44337,20 @@
 				(justify mirror)
 			)
 		)
+		(property "LCSC" "C20917"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "367ac5fa-d0e7-4d0f-878b-b85bf35c26d6")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
 		(path "/36a1afe1-9d7e-4453-8bd5-557c8a4303ef/f7066322-e500-40a9-9932-e3009dc8caae/c55b8fba-4540-48b0-b396-066b2ba0fb91")
 		(sheetname "/Power_Switch/MOSFET_CTRL2/")
 		(sheetfile "MOSFET_CTRL.kicad_sch")
@@ -43014,6 +44539,20 @@
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "b20754f0-1d66-42de-bf93-b971e75f7b0f")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "LCSC" "C20917"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "cf091827-96bf-4ffb-97d4-0e32e6631f24")
 			(effects
 				(font
 					(size 1 1)
@@ -43662,6 +45201,20 @@
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "80d257a5-1a96-4bc0-9415-4f1f4e6f3aec")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "LCSC" "C20917"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "09a7591a-6a18-4d70-89f6-af2b752cd2fd")
 			(effects
 				(font
 					(size 1 1)
@@ -44868,6 +46421,20 @@
 				(justify mirror)
 			)
 		)
+		(property "LCSC" "C20917"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "c98e2b80-6e63-4c9a-9d38-25f3897e1577")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
 		(path "/36a1afe1-9d7e-4453-8bd5-557c8a4303ef/3b3113c0-0ef0-4494-b7fc-26d3b7a06a5d/c55b8fba-4540-48b0-b396-066b2ba0fb91")
 		(sheetname "/Power_Switch/MOSFET_CTRL4/")
 		(sheetfile "MOSFET_CTRL.kicad_sch")
@@ -44999,13 +46566,13 @@
 	(footprint "Capacitor_SMD:C_0603_1608Metric"
 		(layer "B.Cu")
 		(uuid "4612b343-f816-4787-90ea-3c232afc21b8")
-		(at 147.924132 114.999999 180)
+		(at 138.05 114.9)
 		(descr "Capacitor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
 		(tags "capacitor")
 		(property "Reference" "C39"
-			(at 0 1.43 0)
+			(at -0.05 -1.35 0)
 			(layer "B.SilkS")
-			(uuid "0744deb8-7807-49f0-98b5-badbb4e029dd")
+			(uuid "c12e3dac-c2f3-4e42-9def-b4611aca270a")
 			(effects
 				(font
 					(size 1 1)
@@ -45017,7 +46584,7 @@
 		(property "Value" "100nf"
 			(at 0 -1.43 0)
 			(layer "B.Fab")
-			(uuid "e408ecea-f0a5-4b87-b8e3-02745315e2d2")
+			(uuid "62e01666-49a9-42e4-ad53-f7764b54a09e")
 			(effects
 				(font
 					(size 1 1)
@@ -45027,11 +46594,11 @@
 			)
 		)
 		(property "Datasheet" "https://lcsc.com/product-detail/Multilayer-Ceramic-Capacitors-MLCC-SMD-SMT_100nF-104-10-50V_C14663.html"
-			(at 0 0 0)
+			(at 0 0 180)
 			(unlocked yes)
 			(layer "B.Fab")
 			(hide yes)
-			(uuid "87f438b8-2b65-4669-83f7-360e45b125da")
+			(uuid "6f426311-d106-4951-9256-fc773ac28a9e")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -45041,11 +46608,11 @@
 			)
 		)
 		(property "Description" ""
-			(at 0 0 0)
+			(at 0 0 180)
 			(unlocked yes)
 			(layer "B.Fab")
 			(hide yes)
-			(uuid "fa038e4e-c7a3-4faf-8f16-4ff61f880d37")
+			(uuid "53291d18-fcd8-42f7-904e-7d05ab6f9a7c")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -45055,7 +46622,7 @@
 			)
 		)
 		(property "LCSC Part" "C14663"
-			(at 0 0 0)
+			(at 0 0 180)
 			(unlocked yes)
 			(layer "B.Fab")
 			(hide yes)
@@ -45069,7 +46636,7 @@
 			)
 		)
 		(property "LCSC" "C14663"
-			(at 0 0 0)
+			(at 0 0 180)
 			(unlocked yes)
 			(layer "B.Fab")
 			(hide yes)
@@ -45087,18 +46654,8 @@
 		(sheetfile "MCU_ESP32.kicad_sch")
 		(attr smd)
 		(fp_line
-			(start -0.14058 0.51)
-			(end 0.14058 0.51)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "B.SilkS")
-			(uuid "d0d44973-b7bd-4dac-a8ff-02ba0a64bd54")
-		)
-		(fp_line
-			(start -0.14058 -0.51)
-			(end 0.14058 -0.51)
+			(start -0.140581 -0.51)
+			(end 0.140581 -0.51)
 			(stroke
 				(width 0.12)
 				(type solid)
@@ -45107,34 +46664,14 @@
 			(uuid "f92af350-a62b-4dad-ad44-0c1bb48f9dd2")
 		)
 		(fp_line
-			(start 1.48 0.73)
-			(end 1.48 -0.73)
+			(start -0.140581 0.51)
+			(end 0.140581 0.51)
 			(stroke
-				(width 0.05)
+				(width 0.12)
 				(type solid)
 			)
-			(layer "B.CrtYd")
-			(uuid "831dc2ad-f06f-4532-92ea-067696daf04b")
-		)
-		(fp_line
-			(start 1.48 -0.73)
-			(end -1.48 -0.73)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(layer "B.CrtYd")
-			(uuid "cd429669-7b10-4fcd-94e3-a00579a5f364")
-		)
-		(fp_line
-			(start -1.48 0.73)
-			(end 1.48 0.73)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(layer "B.CrtYd")
-			(uuid "6a0a0d95-ee59-4da1-a688-88b57f1c2231")
+			(layer "B.SilkS")
+			(uuid "d0d44973-b7bd-4dac-a8ff-02ba0a64bd54")
 		)
 		(fp_line
 			(start -1.48 -0.73)
@@ -45147,24 +46684,44 @@
 			(uuid "4f350036-310a-4b6d-834c-8bc428b0bc91")
 		)
 		(fp_line
-			(start 0.8 0.4)
-			(end 0.8 -0.4)
+			(start -1.48 0.73)
+			(end 1.48 0.73)
 			(stroke
-				(width 0.1)
+				(width 0.05)
 				(type solid)
 			)
-			(layer "B.Fab")
-			(uuid "d70f41e8-9a2d-4c57-9aad-e6b3ccd70cb8")
+			(layer "B.CrtYd")
+			(uuid "6a0a0d95-ee59-4da1-a688-88b57f1c2231")
 		)
 		(fp_line
-			(start 0.8 -0.4)
-			(end -0.8 -0.4)
+			(start 1.48 -0.73)
+			(end -1.48 -0.73)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "B.CrtYd")
+			(uuid "cd429669-7b10-4fcd-94e3-a00579a5f364")
+		)
+		(fp_line
+			(start 1.48 0.73)
+			(end 1.48 -0.73)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "B.CrtYd")
+			(uuid "831dc2ad-f06f-4532-92ea-067696daf04b")
+		)
+		(fp_line
+			(start -0.8 -0.4)
+			(end -0.8 0.4)
 			(stroke
 				(width 0.1)
 				(type solid)
 			)
 			(layer "B.Fab")
-			(uuid "4b5f03ae-9ca8-41e6-bdf4-ca428fafc43d")
+			(uuid "5df59cfc-6d2f-4b1b-96aa-d62248219075")
 		)
 		(fp_line
 			(start -0.8 0.4)
@@ -45177,14 +46734,24 @@
 			(uuid "412e9569-5c9a-4852-8b34-176725d60941")
 		)
 		(fp_line
-			(start -0.8 -0.4)
-			(end -0.8 0.4)
+			(start 0.8 -0.4)
+			(end -0.8 -0.4)
 			(stroke
 				(width 0.1)
 				(type solid)
 			)
 			(layer "B.Fab")
-			(uuid "5df59cfc-6d2f-4b1b-96aa-d62248219075")
+			(uuid "4b5f03ae-9ca8-41e6-bdf4-ca428fafc43d")
+		)
+		(fp_line
+			(start 0.8 0.4)
+			(end 0.8 -0.4)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "B.Fab")
+			(uuid "d70f41e8-9a2d-4c57-9aad-e6b3ccd70cb8")
 		)
 		(fp_text user "${REFERENCE}"
 			(at 0 0 0)
@@ -45199,7 +46766,7 @@
 			)
 		)
 		(pad "1" smd roundrect
-			(at -0.775 0 180)
+			(at -0.775 0)
 			(size 0.9 0.95)
 			(layers "B.Cu" "B.Mask" "B.Paste")
 			(roundrect_rratio 0.25)
@@ -45209,7 +46776,7 @@
 			(uuid "41c9e1d8-fe65-44f6-80bf-87fbd1c07480")
 		)
 		(pad "2" smd roundrect
-			(at 0.775 0 180)
+			(at 0.775 0)
 			(size 0.9 0.95)
 			(layers "B.Cu" "B.Mask" "B.Paste")
 			(roundrect_rratio 0.25)
@@ -47368,6 +48935,20 @@
 				(justify mirror)
 			)
 		)
+		(property "LCSC" "C20917"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "9eb6a142-7d5d-467d-b0c1-d522ea7d6f1e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
 		(path "/26b9dfe9-c957-43ca-ba2b-36e349e2ebb9/ca2079b1-060f-4219-9a7e-d75eaeaaf329/c55b8fba-4540-48b0-b396-066b2ba0fb91")
 		(sheetname "/Power_Switch1/MOSFET_CTRL1/")
 		(sheetfile "MOSFET_CTRL.kicad_sch")
@@ -47556,6 +49137,20 @@
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "0396d5bc-13b3-443e-aac8-b3a396620d95")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "LCSC" "C20917"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "9e7a6dd7-a36b-42a1-a678-83ccb7748b08")
 			(effects
 				(font
 					(size 1 1)
@@ -48225,6 +49820,20 @@
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "01b27e41-e22b-42b2-a798-9388b947fa61")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "LCSC" "C21189"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "17babcc8-7e37-42b1-bbf0-ec6e11e8cb40")
 			(effects
 				(font
 					(size 1 1)
@@ -49329,6 +50938,20 @@
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "cb606a65-1fee-40e1-9071-1f77d8f0ea56")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "LCSC" "C20917"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "ee94c7a8-db9d-4eda-b1dd-1b8d4b4e5ac6")
 			(effects
 				(font
 					(size 1 1)
@@ -53422,6 +55045,20 @@
 				(justify mirror)
 			)
 		)
+		(property "LCSC" "C20917"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "531cfd5d-41c8-4b01-bd13-400754ddfba6")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
 		(path "/26b9dfe9-c957-43ca-ba2b-36e349e2ebb9/f7066322-e500-40a9-9932-e3009dc8caae/c55b8fba-4540-48b0-b396-066b2ba0fb91")
 		(sheetname "/Power_Switch1/MOSFET_CTRL2/")
 		(sheetfile "MOSFET_CTRL.kicad_sch")
@@ -53555,7 +55192,7 @@
 		(uuid "e9ebc4c7-eb6a-47a8-b619-4f5a11bac33e")
 		(at 141.224132 112.85 180)
 		(property "Reference" "D2"
-			(at 2.3 -0.05 90)
+			(at 0.024132 2.6 0)
 			(layer "B.SilkS")
 			(uuid "afd3d179-876f-48d7-aab8-c0edfa47f89d")
 			(effects
@@ -61814,60 +63451,12 @@
 		(uuid "e5f88d7b-fbc9-415d-a8f6-15714bba731e")
 	)
 	(segment
-		(start 131.925 84.625)
-		(end 131.925 74.2)
-		(width 0.16)
-		(layer "F.Cu")
-		(net 19)
-		(uuid "2c23c891-0422-4fa1-906d-46aa08fc4008")
-	)
-	(segment
-		(start 155.05 63.05)
-		(end 154 62)
-		(width 0.16)
-		(layer "F.Cu")
-		(net 19)
-		(uuid "41aeb684-cbaa-4f91-9f29-2fff4d08104d")
-	)
-	(segment
 		(start 135.875 70.25)
 		(end 149.8 70.25)
 		(width 0.16)
 		(layer "F.Cu")
 		(net 19)
-		(uuid "65bfd5fb-1592-4a70-b996-68934f655169")
-	)
-	(segment
-		(start 152.225 62)
-		(end 151.45 61.225)
-		(width 0.16)
-		(layer "F.Cu")
-		(net 19)
-		(uuid "6913b7a5-6d2a-490b-ac6f-3164afd9f5b5")
-	)
-	(segment
-		(start 147.125 112.6)
-		(end 147.125 99.825)
-		(width 0.16)
-		(layer "F.Cu")
-		(net 19)
-		(uuid "95d3afd7-b215-448e-99ff-1d999bdaad55")
-	)
-	(segment
-		(start 149.8 70.25)
-		(end 155.05 65)
-		(width 0.16)
-		(layer "F.Cu")
-		(net 19)
-		(uuid "9a06ceed-5518-40a5-b706-74a0cd4044f9")
-	)
-	(segment
-		(start 147.125 99.825)
-		(end 131.925 84.625)
-		(width 0.16)
-		(layer "F.Cu")
-		(net 19)
-		(uuid "9e8992e9-148c-4c19-86af-0d46bba09088")
+		(uuid "00065278-242b-4105-bfbe-123d819729f8")
 	)
 	(segment
 		(start 155.05 65)
@@ -61875,15 +63464,31 @@
 		(width 0.16)
 		(layer "F.Cu")
 		(net 19)
-		(uuid "a89cd1be-f524-445b-ad67-54ab391e5fdc")
+		(uuid "1c766de3-14c6-4f06-b241-3e95ee00bda8")
 	)
 	(segment
-		(start 131.925 74.2)
-		(end 135.875 70.25)
+		(start 131.925 84.625)
+		(end 131.925 74.2)
 		(width 0.16)
 		(layer "F.Cu")
 		(net 19)
-		(uuid "d8919284-ba2a-41ba-b273-7f42d528262f")
+		(uuid "43b0af7a-ab76-41ac-a9bd-58e9c466f9d0")
+	)
+	(segment
+		(start 147.125 99.825)
+		(end 131.925 84.625)
+		(width 0.16)
+		(layer "F.Cu")
+		(net 19)
+		(uuid "7463871c-f572-4f0c-8c04-97d956f2cbce")
+	)
+	(segment
+		(start 140 117.8)
+		(end 145.7 117.8)
+		(width 0.16)
+		(layer "F.Cu")
+		(net 19)
+		(uuid "79460c13-3784-41ab-a4e0-1f44b1260b15")
 	)
 	(segment
 		(start 154 62)
@@ -61891,10 +63496,58 @@
 		(width 0.16)
 		(layer "F.Cu")
 		(net 19)
-		(uuid "e1aead26-982f-42fd-a1b9-c8ae9ff02355")
+		(uuid "8f54c53d-ceda-4fee-bee1-7508587513af")
+	)
+	(segment
+		(start 145.7 117.8)
+		(end 147.125 116.375)
+		(width 0.16)
+		(layer "F.Cu")
+		(net 19)
+		(uuid "9235a3aa-1d43-42e2-80b3-c29f735855fb")
+	)
+	(segment
+		(start 131.925 74.2)
+		(end 135.875 70.25)
+		(width 0.16)
+		(layer "F.Cu")
+		(net 19)
+		(uuid "a3554c7d-d42d-4378-81de-46d2789c6cc9")
+	)
+	(segment
+		(start 147.125 116.375)
+		(end 147.125 99.825)
+		(width 0.16)
+		(layer "F.Cu")
+		(net 19)
+		(uuid "a80b3171-9f29-4f52-adf2-4decf9cdd1e8")
+	)
+	(segment
+		(start 152.225 62)
+		(end 151.45 61.225)
+		(width 0.16)
+		(layer "F.Cu")
+		(net 19)
+		(uuid "c4fe453d-3d01-4ef9-9612-43dcebd655dc")
+	)
+	(segment
+		(start 149.8 70.25)
+		(end 155.05 65)
+		(width 0.16)
+		(layer "F.Cu")
+		(net 19)
+		(uuid "e738a655-91de-42ed-afd6-9f3dd7699bbd")
+	)
+	(segment
+		(start 155.05 63.05)
+		(end 154 62)
+		(width 0.16)
+		(layer "F.Cu")
+		(net 19)
+		(uuid "f044923a-62f8-4c76-a6d9-6e43d7efd3f2")
 	)
 	(via
-		(at 147.125 112.6)
+		(at 140 117.8)
 		(size 0.5)
 		(drill 0.3)
 		(layers "F.Cu" "B.Cu")
@@ -61902,36 +63555,36 @@
 		(uuid "4cc7baec-c26e-49c8-93c9-3ec48376e740")
 	)
 	(segment
-		(start 147.149132 114.999999)
-		(end 147.149132 112.624132)
+		(start 140 116.745868)
+		(end 139.974132 116.72)
 		(width 0.16)
 		(layer "B.Cu")
 		(net 19)
-		(uuid "1330fcbd-7594-4506-ad90-07c62ba0dec3")
+		(uuid "193134cc-2c21-4b4e-a736-b5d5edf8ee46")
 	)
 	(segment
-		(start 147.149132 112.624132)
-		(end 147.125 112.6)
+		(start 140 117.8)
+		(end 140 116.745868)
 		(width 0.16)
 		(layer "B.Cu")
 		(net 19)
-		(uuid "29e8d174-09ee-43bc-b7e5-1de4d4de897b")
+		(uuid "1dc3b1af-d28b-418d-a68a-b82e7941ee2d")
 	)
 	(segment
-		(start 147.149132 114.999999)
-		(end 146.774132 115.374999)
+		(start 139.974132 116.72)
+		(end 139.974132 115.949132)
 		(width 0.16)
 		(layer "B.Cu")
 		(net 19)
-		(uuid "582e11e2-93ce-4e84-b25e-64bb536c550a")
+		(uuid "731c5c42-6618-4f92-9346-cfad68a70788")
 	)
 	(segment
-		(start 146.774132 115.374999)
-		(end 146.774132 116.72)
+		(start 139.974132 115.949132)
+		(end 138.975 114.95)
 		(width 0.16)
 		(layer "B.Cu")
 		(net 19)
-		(uuid "7541f837-4c3b-4e3d-928f-26c1891d4ea8")
+		(uuid "c17672ca-6af0-42c3-91e9-1a332d2d204e")
 	)
 	(segment
 		(start 141.672132 112.6)

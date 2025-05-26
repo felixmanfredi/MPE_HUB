@@ -56,6 +56,36 @@ void VND70::channel_1(uint8_t ID, bool channel_state) {
         digitalWrite(components[idx].EnableChannel1, HIGH);
 }
 
+int16_t VND70::readVoltage(uint8_t ID){
+    int8_t idx = findIndex(ID);
+    digitalWrite(components[idx].SensingEnable, LOW);
+    digitalWrite(components[idx].SEL_0, LOW);          // 11 per leggere la tensione sul chip
+    digitalWrite(components[idx].SEL_1, LOW);
+    delay(2);
+    int16_t temp_reading = analogRead(components[idx].MultiSense);
+    digitalWrite(components[idx].SensingEnable, HIGH);
+    return temp_reading;
+}
+
+int16_t VND70::readCurrent(uint8_t ID, uint8_t channel){
+    int8_t idx = findIndex(ID);
+    if (channel == 0){
+        digitalWrite(components[idx].SEL_0, HIGH);      // 00 per leggere la corrente sul primo canale
+        digitalWrite(components[idx].SEL_1, HIGH);
+    } else if (channel == 1){
+        digitalWrite(components[idx].SEL_0, HIGH);      // 01 per leggere la corrente sul secondo canale
+        digitalWrite(components[idx].SEL_1, LOW);
+    } else {
+        Serial.println("Lettura di corrente fallita, canale è diverso da 0 o 1");
+        return -1;
+    }
+    digitalWrite(components[idx].SensingEnable, LOW);
+    delay(2);
+    int16_t temp_reading = analogRead(components[idx].MultiSense);
+    digitalWrite(components[idx].SensingEnable, HIGH);
+    return temp_reading;
+}
+
 int8_t VND70::findIndex(uint8_t ID) {
     for (uint8_t i = 0; i < count; i++) {
         if (components[i].ID == ID) return i;

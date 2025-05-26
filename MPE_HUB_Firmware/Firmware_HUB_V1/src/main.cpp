@@ -46,6 +46,72 @@ void onOTAEnd(bool success) {
     // <Add your own code here>
 }
 
+/*---------SERVER INITIALIZE--------*/
+void server_initialize(){
+    server.on("/", HTTP_GET, [](AsyncWebServerRequest *request) {
+        request->send(200, "text/plain", "Flash light BD3D");});
+    
+    // Definizione dell'endpoint GET su /dati
+    server.on("/dati", HTTP_GET, [](AsyncWebServerRequest *request){
+        String jsonString;
+        DynamicJsonDocument jsonDoc(2048);                  // Creazione del json
+
+        jsonDoc["Current Flash 1"] = VND70::readCurrent(2, FLASH_1_CHANNEL);
+        jsonDoc["Current Flash 2"] = VND70::readCurrent(2, FLASH_2_CHANNEL);
+        jsonDoc["Voltage 24V"] = VND70::readVoltage(2);
+        jsonDoc["Chip Temp 24V"] = 23.5;
+        jsonDoc["Current BD3D"] = VND70::readCurrent(1, BD3D_CHANNEL);
+        jsonDoc["Current IPCam"] = VND70::readCurrent(1, IPCAM_CHANNEL);
+        //jsonDoc["Voltage 12V"] = VND70::readVoltage(1);
+        //jsonDoc["Chip Temp 12V"] = 23.5;
+
+        serializeJson(jsonDoc, jsonString);
+        request->send(200, "application/json", jsonString); // Invio della risposta
+    });
+
+    server.on("/lamp", HTTP_POST, [](AsyncWebServerRequest *request){
+        if (request->hasParam("state")) {
+            String Status = request->getParam("state")->value();
+            cli.parse("set Lamp " + Status);
+            request->send(200, "text/plain", "Lamp set to: " + Status);
+        } else {
+            request->send(400, "text/plain", "Missing 'state' parameter");
+        }
+    });
+
+    server.on("/lamp/power", HTTP_POST, [](AsyncWebServerRequest *request){
+        if (request->hasParam("state") && request->hasParam("power")) {
+            String Status = request->getParam("state")->value();
+            String Power = request->getParam("power")->value();
+            write485("flash standby 2");
+            request->send(200, "text/plain", "Lamp set to: " + Status + Power);
+        } else {
+            request->send(400, "text/plain", "Missing 'state' or 'power' parameter");
+        }
+    });
+
+    server.on("/IPCam", HTTP_POST, [](AsyncWebServerRequest *request){
+        if (request->hasParam("state")) {
+            String Status = request->getParam("state")->value();
+            cli.parse("set IPCam " + Status);
+            request->send(200, "text/plain", "IPCam set to: " + Status);
+        } else {
+            request->send(400, "text/plain", "Missing 'state' parameter");
+        }
+    });
+
+    server.on("/BD3D", HTTP_POST, [](AsyncWebServerRequest *request){
+        if (request->hasParam("state")) {
+            String Status = request->getParam("state")->value();
+            cli.parse("set BD3D " + Status);
+            request->send(200, "text/plain", "BD3D set to: " + Status);
+        } else {
+            request->send(400, "text/plain", "Missing 'state' parameter");
+        }
+    });
+}
+
+
 /*--------------SETUP--------------*/
 
 void setup() {
@@ -58,9 +124,9 @@ void setup() {
     VND70::begin();
 
     Serial.begin(115200);                                   // begin porta seriale USB
-    Serial2.begin(115200, SERIAL_8N1, RX_485, TX_485);      // begin RS485
+    Serial2.begin(9600, SERIAL_8N1, RX_485, TX_485);      // begin RS485
 
-    /*--OTA--*/
+    /*--WIFI--*/
     WiFi.mode(WIFI_AP);
     WiFi.softAP(ssid, password);
     IP = WiFi.softAPIP();
@@ -68,27 +134,7 @@ void setup() {
     Serial.println(IP);
     Serial.println(psramFound() ? "PSRAM Abilitata" : "PSRAM Disabilitata");
 
-
-    server.on("/", HTTP_GET, [](AsyncWebServerRequest *request) {
-    request->send(200, "text/plain", "Flash light BD3D");});
-    
-    /*
-    
-    // Definizione dell'endpoint GET su /dati
-    server.on("/dati", HTTP_GET, [](AsyncWebServerRequest *request){
-        String jsonString;
-        DynamicJsonDocument jsonDoc(1024);                  // Creazione del json
-
-        // FARE LA PROVA E SOSTITUIRE CON LETTURA DEI SENSORI
-        jsonDoc["temperatura"] = 23.5;
-        jsonDoc["umidita"] = 60;
-        jsonDoc["stato"] = "ok";
-
-        serializeJson(jsonDoc, jsonString);
-        request->send(200, "application/json", jsonString); // Invio della risposta
-    });
-    
-    */
+    server_initialize();
 
     ElegantOTA.begin(&server);                              // Start ElegantOTA
     ElegantOTA.onStart(onOTAStart);
@@ -149,7 +195,7 @@ void loop() {
     
     if (Serial2.available()) {
         String input = Serial2.readStringUntil('\n');
-        write485("# " + input);                         // genera eco
+        //write485("# " + input);                         // genera eco
         cli.parse(input);                               // manda l'input alla CLI
     }
 

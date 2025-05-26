@@ -27,13 +27,17 @@
 #define ENABLE_SENS_24V     14  // Pin attivazione sensing VND70 24V [Active HIGH]
 #define SEL_0_24V           15  // Sense MUX 0 24V [Active HIGH]
 #define SEL_1_24V           16  // Sense MUX 1 24V [Active HIGH]
+#define FLASH_1_CHANNEL     0   // Canale utilizzato per il flash 1
+#define FLASH_2_CHANNEL     1   // Canale utilizzato per il flash 2
 
-#define MULTISENSE_12V      48  // Pin lettura analogica sensing (tensione, corrente, temperatura in funzione del mux)
+#define MULTISENSE_12V      18  // Pin lettura analogica sensing (tensione, corrente, temperatura in funzione del mux)
 #define ENABLE_0_12V        21  // Pin attivazione canale 0 12V
 #define ENABLE_1_12V        34  // Pin attivazione canale 1 12V
 #define ENABLE_SENS_12V     26  // Pin attivazione sensing VND70 12V [Active HIGH]
 #define SEL_0_12V           47  // Sense MUX 0 12V [Active HIGH]
 #define SEL_1_12V           33  // Sense MUX 1 12V [Active HIGH]
+#define IPCAM_CHANNEL       0   // Canale utilizzato per l'IPCam
+#define BD3D_CHANNEL        1   // Canale utilizzato per la BlueDepth
 
 // Array per la dichiarazione degli output (tutti questi controlli sono attivi alti)
 const uint8_t OUTPUT_ARRAY[]={TX_485, RW_485, LED_DEBUG_RED, LED_DEBUG_GREEN, BUZZER_DEBUG, RST_SWITCH, PWM_LIGHT};

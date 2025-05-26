@@ -32,6 +32,12 @@ class VND70 {
         // Azione sul canale 1 del componente "ID" (true -> ON; false -> OFF)
         static void channel_1(uint8_t ID, bool channel_state);
 
+        // Lettura di tensione del componente "ID"
+        static int16_t readVoltage(uint8_t ID);
+
+        // Lettura di corrente del componente "ID" sul canale "channel"
+        static int16_t readCurrent(uint8_t ID, uint8_t channel);
+
     private:
         static const uint8_t MAX_COMPONENTS = 10;
         static VND70Pins components[];

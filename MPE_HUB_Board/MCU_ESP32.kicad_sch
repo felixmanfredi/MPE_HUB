@@ -4666,12 +4666,6 @@
 		(uuid "01e12b8f-9b0c-4ab5-b34b-95ec4ae41725")
 	)
 	(junction
-		(at 176.53 173.99)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "0aca5772-3aec-4deb-8b72-08f66fde33f3")
-	)
-	(junction
 		(at 222.25 123.19)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4906,6 +4900,12 @@
 		(uuid "e9aae33c-3278-4841-aecb-f1aa954b1181")
 	)
 	(junction
+		(at 153.67 153.67)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "ef3f074b-0392-4577-8dcd-16cd14ed298a")
+	)
+	(junction
 		(at 222.25 115.57)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4924,12 +4924,12 @@
 		(uuid "1ab70dba-f30d-4545-9565-a560f7e0637a")
 	)
 	(no_connect
-		(at 196.85 153.67)
-		(uuid "268ff08e-dc4f-49c1-9723-7adce9da77bd")
-	)
-	(no_connect
 		(at 219.71 140.97)
 		(uuid "477898fa-9860-4011-85a9-bb5a1a9c9ae6")
+	)
+	(no_connect
+		(at 196.85 173.99)
+		(uuid "6e416122-e418-428b-9164-1ddd43cbd630")
 	)
 	(no_connect
 		(at 364.49 207.01)
@@ -5539,13 +5539,13 @@
 	)
 	(wire
 		(pts
-			(xy 176.53 173.99) (xy 176.53 180.34)
+			(xy 153.67 153.67) (xy 196.85 153.67)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "4e4c252a-97af-49cc-8e61-ae08ae9c20f8")
+		(uuid "4ea4fb26-e31b-466d-894e-583337390101")
 	)
 	(wire
 		(pts
@@ -5556,16 +5556,6 @@
 			(type default)
 		)
 		(uuid "4ea6a282-896b-4411-bf5e-836e92e23571")
-	)
-	(wire
-		(pts
-			(xy 161.29 180.34) (xy 163.83 180.34)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "4eac91e7-aa23-4567-9e22-f3b0e78c0256")
 	)
 	(wire
 		(pts
@@ -5596,16 +5586,6 @@
 			(type default)
 		)
 		(uuid "51c9618d-a740-493a-b4da-3f792925ad5e")
-	)
-	(wire
-		(pts
-			(xy 167.64 173.99) (xy 176.53 173.99)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5351b577-6d1d-4ca2-be02-44dfa1c18b0f")
 	)
 	(wire
 		(pts
@@ -5756,6 +5736,16 @@
 			(type default)
 		)
 		(uuid "64c2b3a8-9d7f-47be-b2ea-060e7a2401fc")
+	)
+	(wire
+		(pts
+			(xy 144.78 153.67) (xy 153.67 153.67)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6546df40-c147-408b-a7b1-f8aeff8c5491")
 	)
 	(wire
 		(pts
@@ -5959,13 +5949,13 @@
 	)
 	(wire
 		(pts
-			(xy 176.53 173.99) (xy 196.85 173.99)
+			(xy 153.67 153.67) (xy 153.67 160.02)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "8225dc34-2fb2-49aa-9a8c-b6a6337640af")
+		(uuid "81de0708-1da6-4f8f-8d0b-f74c002b5528")
 	)
 	(wire
 		(pts
@@ -6339,13 +6329,13 @@
 	)
 	(wire
 		(pts
-			(xy 176.53 180.34) (xy 173.99 180.34)
+			(xy 153.67 160.02) (xy 151.13 160.02)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "a8aca184-8f65-457f-a2b0-c7f9694ab77b")
+		(uuid "a9fc43e1-21e0-46c9-8455-1d7a1736668c")
 	)
 	(wire
 		(pts
@@ -7167,6 +7157,16 @@
 		)
 		(uuid "ff39ffd6-b7e3-495a-9ac5-a2739975d4fa")
 	)
+	(wire
+		(pts
+			(xy 138.43 160.02) (xy 140.97 160.02)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ffe395fe-baa6-439f-b28c-40d6a6a0f1f7")
+	)
 	(label "USB_D-"
 		(at 381 204.47 180)
 		(effects
@@ -7521,20 +7521,6 @@
 			(justify right)
 		)
 		(uuid "190f1d68-5dc0-4f96-a96a-00c65471432e")
-	)
-	(hierarchical_label "GND_MCU"
-		(shape input)
-		(at 161.29 180.34 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-				(thickness 0.254)
-				(bold yes)
-				(color 0 0 0 1)
-			)
-			(justify right)
-		)
-		(uuid "1ca95f83-e16c-4a8c-8df7-7a0cd6372dfe")
 	)
 	(hierarchical_label "GND_MCU"
 		(shape input)
@@ -7931,18 +7917,6 @@
 		)
 		(uuid "90b28492-c39d-4651-aedf-baf29744222f")
 	)
-	(hierarchical_label "12V_MultiSense"
-		(shape input)
-		(at 167.64 173.99 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-				(color 0 0 194 1)
-			)
-			(justify right)
-		)
-		(uuid "9469ab86-0b3d-4d00-8624-4af165a1b59e")
-	)
 	(hierarchical_label "3V3_MCU"
 		(shape input)
 		(at 261.62 256.54 180)
@@ -8172,6 +8146,32 @@
 			(justify right)
 		)
 		(uuid "db0e089b-9dc9-4050-b83f-3771a576b0e4")
+	)
+	(hierarchical_label "GND_MCU"
+		(shape input)
+		(at 138.43 160.02 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+				(bold yes)
+				(color 0 0 0 1)
+			)
+			(justify right)
+		)
+		(uuid "de71952d-058e-4392-af48-2d8796e7139a")
+	)
+	(hierarchical_label "12V_MultiSense"
+		(shape input)
+		(at 144.78 153.67 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(color 0 0 194 1)
+			)
+			(justify right)
+		)
+		(uuid "e43fb471-f8b8-4bc7-942e-2070ca33cb5c")
 	)
 	(hierarchical_label "GND_MCU"
 		(shape input)
@@ -9471,7 +9471,7 @@
 	(symbol
 		(lib_name "CC0603KRX7R9BB104_2")
 		(lib_id "easyeda2kicad:CC0603KRX7R9BB104")
-		(at 168.91 180.34 0)
+		(at 146.05 160.02 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -9479,7 +9479,7 @@
 		(dnp no)
 		(uuid "50a54631-b956-4f60-9a0a-c7f5c035ab9a")
 		(property "Reference" "C39"
-			(at 174.752 181.864 0)
+			(at 151.892 161.544 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9488,7 +9488,7 @@
 			)
 		)
 		(property "Value" "100nf"
-			(at 175.768 177.546 0)
+			(at 152.908 157.226 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9497,7 +9497,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
-			(at 168.91 187.96 0)
+			(at 146.05 167.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9506,7 +9506,7 @@
 			)
 		)
 		(property "Datasheet" "https://lcsc.com/product-detail/Multilayer-Ceramic-Capacitors-MLCC-SMD-SMT_100nF-104-10-50V_C14663.html"
-			(at 168.91 190.5 0)
+			(at 146.05 170.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9515,7 +9515,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 168.91 180.34 0)
+			(at 146.05 160.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9524,7 +9524,7 @@
 			)
 		)
 		(property "LCSC Part" "C14663"
-			(at 168.91 193.04 0)
+			(at 146.05 172.72 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9533,7 +9533,7 @@
 			)
 		)
 		(property "LCSC" "C14663"
-			(at 171.45 182.245 0)
+			(at 148.59 161.925 0)
 			(effects
 				(font
 					(size 1.27 1.27)
