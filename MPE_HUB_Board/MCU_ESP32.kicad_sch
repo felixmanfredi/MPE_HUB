@@ -4562,6 +4562,16 @@
 		)
 		(uuid fd8ef85c-8353-468b-a8c0-b9a06cc6b939)
 	)
+	(text "SPOSTARE SENS ENABLE SU IO 48"
+		(exclude_from_sim no)
+		(at 177.038 177.8 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "147e4730-db3a-491d-9925-cb95f7eccb39")
+	)
 	(text "Porta USB non montata ma connessione con PAD"
 		(exclude_from_sim no)
 		(at 350.012 184.912 0)

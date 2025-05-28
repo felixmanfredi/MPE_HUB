@@ -58,12 +58,12 @@ void server_initialize(){
 
         jsonDoc["Current Flash 1"] = VND70::readCurrent(2, FLASH_1_CHANNEL);
         jsonDoc["Current Flash 2"] = VND70::readCurrent(2, FLASH_2_CHANNEL);
-        jsonDoc["Voltage 24V"] = VND70::readVoltage(2);
+        //jsonDoc["Voltage 24V"] = VND70::readVoltage(2);
         jsonDoc["Chip Temp 24V"] = 23.5;
         jsonDoc["Current BD3D"] = VND70::readCurrent(1, BD3D_CHANNEL);
         jsonDoc["Current IPCam"] = VND70::readCurrent(1, IPCAM_CHANNEL);
         //jsonDoc["Voltage 12V"] = VND70::readVoltage(1);
-        //jsonDoc["Chip Temp 12V"] = 23.5;
+        jsonDoc["Chip Temp 12V"] = 23.5;
 
         serializeJson(jsonDoc, jsonString);
         request->send(200, "application/json", jsonString); // Invio della risposta

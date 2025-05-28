@@ -33,7 +33,7 @@
 #define MULTISENSE_12V      18  // Pin lettura analogica sensing (tensione, corrente, temperatura in funzione del mux)
 #define ENABLE_0_12V        21  // Pin attivazione canale 0 12V
 #define ENABLE_1_12V        34  // Pin attivazione canale 1 12V
-#define ENABLE_SENS_12V     26  // Pin attivazione sensing VND70 12V [Active HIGH]
+#define ENABLE_SENS_12V     48  // Pin attivazione sensing VND70 12V [Active HIGH]
 #define SEL_0_12V           47  // Sense MUX 0 12V [Active HIGH]
 #define SEL_1_12V           33  // Sense MUX 1 12V [Active HIGH]
 #define IPCAM_CHANNEL       0   // Canale utilizzato per l'IPCam
