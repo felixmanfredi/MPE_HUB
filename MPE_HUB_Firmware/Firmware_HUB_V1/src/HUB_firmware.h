@@ -4,11 +4,14 @@
 #include <Arduino.h>
 #include <SimpleCLI.h>          // Include per includere interfaccia a linea di comando
 #include <ArduinoJson.h>        // Include per la creazione di json
+#include <SPI.h>
 
-#define PIN_MOSI            7
-#define PIN_MISO            8
-#define PIN_SCLK            9
-#define PIN_SS              10
+#define RST_GPIO            5
+#define INT_GPIO            6
+#define MISO_GPIO           8
+#define MOSI_GPIO           7
+#define SCK_GPIO            9
+#define CS_GPIO             10
 
 #define TX_485              2   // Pin di tx per 485
 #define RW_485              3   // Pin lettura/scrittura per 485 (LOW->READ) (HIGH->WRITE)
@@ -39,6 +42,10 @@
 #define IPCAM_CHANNEL       0   // Canale utilizzato per l'IPCam
 #define BD3D_CHANNEL        1   // Canale utilizzato per la BlueDepth
 
+#define _ASYNC_WEBSERVER_LOGLEVEL_       2
+// Enter a MAC address and IP address for your controller below.
+#define NUMBER_OF_MAC      20
+
 // Array per la dichiarazione degli output (tutti questi controlli sono attivi alti)
 const uint8_t OUTPUT_ARRAY[]={TX_485, RW_485, LED_DEBUG_RED, LED_DEBUG_GREEN, BUZZER_DEBUG, RST_SWITCH, PWM_LIGHT};
 
@@ -65,7 +72,6 @@ void set_pin_function(const uint8_t array[], uint8_t size, byte value);
 
 /*
 * FUNZIONE PER L'INIZIALIZZAZIONE DI TUTTE LE ISTANZE
-* Inizializzazione di: SPI
 *
 */
 void initialize();

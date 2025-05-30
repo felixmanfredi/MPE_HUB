@@ -1,7 +1,6 @@
 #include <HUB_firmware.h>
 #include <VND70.h>
-#include <WiFi.h>
-#include <ESPAsyncWebServer.h>
+#include <AsyncWebServer_ESP32_W5500.h>
 #include <ElegantOTA.h>
 
 /*------------COMANDI CLI------------*/
@@ -13,14 +12,26 @@ Command help;
 
 /*------------OTA UPDATE------------*/
 
-IPAddress IP;
-
 const char* ssid = "HUB_MPE";
 const char* password = "00000000";
 
 AsyncWebServer server(80);
 
 unsigned long ota_progress_millis = 0;
+
+byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0x01 };
+
+// Select the IP address according to your local network
+IPAddress myIP(192, 168, 0, 232);
+IPAddress myGW(192, 168, 0, 1);
+IPAddress mySN(255, 255, 255, 0);
+// Google DNS Server IP
+IPAddress myDNS(8, 8, 8, 8);
+
+void notFound(AsyncWebServerRequest *request)
+{
+    request->send(404, "text/plain", "Not found");
+}
 
 void onOTAStart() {
     // Log when OTA has started
@@ -109,12 +120,14 @@ void server_initialize(){
             request->send(400, "text/plain", "Missing 'state' parameter");
         }
     });
-}
 
+    server.onNotFound(notFound);
+}
 
 /*--------------SETUP--------------*/
 
 void setup() {
+    initialize();
     declaration_function(OUTPUT_ARRAY, sizeof(OUTPUT_ARRAY), OUTPUT);
     declaration_function(INPUT_ARRAY, sizeof(INPUT_ARRAY), INPUT);
 
@@ -123,16 +136,35 @@ void setup() {
     VND70::registerComponent(2, MULTISENSE_24V, ENABLE_0_24V, ENABLE_1_24V, ENABLE_SENS_24V, SEL_0_24V, SEL_1_24V);  // ID=2
     VND70::begin();
 
-    Serial.begin(115200);                                   // begin porta seriale USB
-    Serial2.begin(9600, SERIAL_8N1, RX_485, TX_485);      // begin RS485
+    Serial.print(F("\nStart AsyncSimpleServer_ESP32_W5500 on "));
+    Serial.print(ARDUINO_BOARD);
+    Serial.print(F(" with "));
+    Serial.println(SHIELD_TYPE);
+    Serial.println(ASYNC_WEBSERVER_ESP32_W5500_VERSION);
 
-    /*--WIFI--*/
-    WiFi.mode(WIFI_AP);
-    WiFi.softAP(ssid, password);
-    IP = WiFi.softAPIP();
-    Serial.print("AP IP address: ");
-    Serial.println(IP);
-    Serial.println(psramFound() ? "PSRAM Abilitata" : "PSRAM Disabilitata");
+    AWS_LOGWARN(F("Default SPI pinout:"));
+    AWS_LOGWARN1(F("SPI_HOST:"), ETH_SPI_HOST);
+    AWS_LOGWARN1(F("MOSI:"), MOSI_GPIO);
+    AWS_LOGWARN1(F("MISO:"), MISO_GPIO);
+    AWS_LOGWARN1(F("SCK:"),  SCK_GPIO);
+    AWS_LOGWARN1(F("CS:"),   CS_GPIO);
+    AWS_LOGWARN1(F("INT:"),  INT_GPIO);
+    AWS_LOGWARN1(F("SPI Clock (MHz):"), SPI_CLOCK_MHZ);
+    AWS_LOGWARN(F("========================="));
+
+    // To be called before ETH.begin()
+    ESP32_W5500_onEvent();
+
+    // start the ethernet connection and the server:
+    // Use DHCP dynamic IP and random mac
+    uint16_t index = millis() % NUMBER_OF_MAC;
+
+    delay(1000);
+
+    ETH.begin( MISO_GPIO, MOSI_GPIO, SCK_GPIO, CS_GPIO, INT_GPIO, SPI_CLOCK_MHZ, ETH_SPI_HOST, mac);
+    //ETH.begin( MISO_GPIO, MOSI_GPIO, SCK_GPIO, CS_GPIO, INT_GPIO, SPI_CLOCK_MHZ, ETH_SPI_HOST, mac );
+    //ETH.config(myIP, myGW, mySN, myDNS);
+    ESP32_W5500_waitForConnect();
 
     server_initialize();
 
@@ -141,9 +173,9 @@ void setup() {
     ElegantOTA.onProgress(onOTAProgress);
     ElegantOTA.onEnd(onOTAEnd);
     server.begin();
-    Serial.println("HTTP server started");
+    Serial.print("HTTP server started with IP:");
+    Serial.println(ETH.localIP());
 
-    //initialize();
     /* Setup e verifica comandi CLI */
     set = cli.addCmd("set");
     set.addPositionalArgument("component");
@@ -164,14 +196,13 @@ void setup() {
         Serial.println("Ping was added to the CLI!");
     }
 
-    digitalWrite(LED_DEBUG_RED, HIGH);    // RED
+    digitalWrite(LED_DEBUG_RED, HIGH);      // RED
     digitalWrite(LED_DEBUG_GREEN, HIGH);    // GREEN
-    tone(BUZZER_DEBUG, 300, 100);
     tone(BUZZER_DEBUG, 600, 50);
     tone(BUZZER_DEBUG, 300, 100);
     delay(1000);
     set_pin_function(OUTPUT_ARRAY, sizeof(OUTPUT_ARRAY), LOW);  // Apro tutti gli interruttori
-    digitalWrite(RST_SWITCH, HIGH);    // Disabilito il reset dello switch (Attivo basso)
+    digitalWrite(RST_SWITCH, HIGH);         // Disabilito il reset dello switch (Attivo basso)
 
 }
 

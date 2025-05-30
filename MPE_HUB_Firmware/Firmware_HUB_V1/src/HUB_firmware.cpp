@@ -1,8 +1,6 @@
 #include <HUB_firmware.h>
-#include <SPI.h>
 
 /*--------------ISTANZE--------------*/
-SPIClass spi = SPIClass(HSPI);
 
 /*--------------FUNZIONI------------*/
 
@@ -24,11 +22,17 @@ void set_pin_function(const uint8_t array[], uint8_t size, byte value){
 
 // FUNZIONE PER L'INIZIAIZZAZIONE DI TUTTE LE ISTANZE
 void initialize(){
-    spi.begin(PIN_SCLK, PIN_MISO, PIN_MOSI, PIN_SS); // CLK, MISO, MOSI, SS
-    pinMode(PIN_SS, OUTPUT);
-    digitalWrite(PIN_SS, HIGH);
+    Serial.begin(115200);                                                   // begin porta seriale USB
+    Serial2.begin(115200, SERIAL_8N1, RX_485, TX_485);                      // begin RS485
+
+    Serial.println(psramFound() ? "PSRAM Abilitata" : "PSRAM Disabilitata");
+
+    pinMode(INT_GPIO, INPUT);
+    pinMode(RST_GPIO, OUTPUT);
+    digitalWrite(RST_GPIO, HIGH);
     if(Serial)
         Serial.println("SPI inizializzata.");
+    tone(BUZZER_DEBUG, 300, 100);
 }
 
 // FUNZIONE CHE STAMPA IL TESTO SUL 485
