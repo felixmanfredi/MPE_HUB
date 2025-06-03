@@ -17,9 +17,8 @@
   ],
   "dependencies": [
     {
-      "owner": "esp32async",
-      "name": "ESPAsyncWebServer",
-      "version": "^3.7.3",
+      "owner": "khoih-prog",
+      "name": "AsyncWebServer_ESP32_SC_W5500",
       "platforms": ["espressif8266", "espressif32", "raspberrypi"]
     }
   ],

@@ -66,7 +66,7 @@ _____ _                        _    ___ _____  _
   #if ELEGANTOTA_USE_ASYNC_WEBSERVER == 1
     #include "AsyncTCP.h"
     //#include "ESPAsyncWebServer.h"
-    #include "AsyncWebServer_ESP32_W5500.h"
+    #include "AsyncWebServer_ESP32_SC_W5500.h"
     #define ELEGANTOTA_WEBSERVER AsyncWebServer
   #else
     #include "WiFi.h"

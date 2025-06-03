@@ -1,6 +1,6 @@
 #include <HUB_firmware.h>
 #include <VND70.h>
-#include <AsyncWebServer_ESP32_W5500.h>
+#include <AsyncWebServer_ESP32_SC_W5500.h>
 #include <ElegantOTA.h>
 
 /*------------COMANDI CLI------------*/
@@ -22,7 +22,7 @@ unsigned long ota_progress_millis = 0;
 byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0x01 };
 
 // Select the IP address according to your local network
-IPAddress myIP(192, 168, 0, 232);
+IPAddress myIP(192, 168, 0, 233);
 IPAddress myGW(192, 168, 0, 1);
 IPAddress mySN(255, 255, 255, 0);
 // Google DNS Server IP
@@ -140,7 +140,7 @@ void setup() {
     Serial.print(ARDUINO_BOARD);
     Serial.print(F(" with "));
     Serial.println(SHIELD_TYPE);
-    Serial.println(ASYNC_WEBSERVER_ESP32_W5500_VERSION);
+    Serial.println(ASYNC_WEBSERVER_ESP32_SC_W5500_VERSION);
 
     AWS_LOGWARN(F("Default SPI pinout:"));
     AWS_LOGWARN1(F("SPI_HOST:"), ETH_SPI_HOST);
@@ -162,9 +162,8 @@ void setup() {
     delay(1000);
 
     ETH.begin( MISO_GPIO, MOSI_GPIO, SCK_GPIO, CS_GPIO, INT_GPIO, SPI_CLOCK_MHZ, ETH_SPI_HOST, mac);
-    //ETH.begin( MISO_GPIO, MOSI_GPIO, SCK_GPIO, CS_GPIO, INT_GPIO, SPI_CLOCK_MHZ, ETH_SPI_HOST, mac );
-    //ETH.config(myIP, myGW, mySN, myDNS);
-    ESP32_W5500_waitForConnect();
+    ETH.config(myIP, myGW, mySN, myDNS);
+    //ESP32_W5500_waitForConnect();
 
     server_initialize();
 

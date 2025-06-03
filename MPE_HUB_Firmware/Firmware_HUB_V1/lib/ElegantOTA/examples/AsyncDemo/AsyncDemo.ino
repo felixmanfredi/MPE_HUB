@@ -30,7 +30,8 @@
   #include <WiFi.h>
 #endif
 
-#include <ESPAsyncWebServer.h>
+//#include <ESPAsyncWebServer.h>
+#include "AsyncWebServer_ESP32_SC_W5500.h"
 #include <ElegantOTA.h>
 
 const char* ssid = "........";
