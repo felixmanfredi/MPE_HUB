@@ -1,6 +1,8 @@
 #ifndef HUB_FIRMWARE_H
 #define HUB_FIRMWARE_H
 
+/*--ASSEGNAZIONE DEI PIN PER VERSIONE 1.0 DELL'HUB--*/
+
 #include <Arduino.h>
 #include <SimpleCLI.h>          // Include per includere interfaccia a linea di comando
 #include <ArduinoJson.h>        // Include per la creazione di json
@@ -77,7 +79,7 @@ void set_pin_function(const uint8_t array[], uint8_t size, byte value);
 void initialize();
 
 /* 
-* FUNZIONE CHE STAMPA IL TESTO SUL 485
+* FUNZIONE CHE STAMPA IL TESTO SUL 485 (bisogna esplicitare '\n')
 * @param String il testo da stampare
 */
 void write485(String text);

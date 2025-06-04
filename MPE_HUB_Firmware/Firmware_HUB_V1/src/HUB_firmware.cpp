@@ -24,14 +24,11 @@ void set_pin_function(const uint8_t array[], uint8_t size, byte value){
 void initialize(){
     Serial.begin(115200);                                                   // begin porta seriale USB
     Serial2.begin(115200, SERIAL_8N1, RX_485, TX_485);                      // begin RS485
-
     Serial.println(psramFound() ? "PSRAM Abilitata" : "PSRAM Disabilitata");
 
-    pinMode(INT_GPIO, INPUT);
     pinMode(RST_GPIO, OUTPUT);
     digitalWrite(RST_GPIO, HIGH);
-    if(Serial)
-        Serial.println("SPI inizializzata.");
+    
     tone(BUZZER_DEBUG, 300, 100);
 }
 
@@ -39,8 +36,8 @@ void initialize(){
 void write485(String text){
     digitalWrite(RW_485,HIGH);                      // attivazione scrittura 485
     delay(2);
-    Serial2.println(text);                          // stampa il testo in 485
-    Serial.println(text);                           // stampa il testo sulla seriale
+    Serial2.print(text);                          // stampa il testo in 485
+    Serial.print(text);                           // stampa il testo sulla seriale
     digitalWrite(RW_485,LOW);                       // attivazione lettura 485
     tone(BUZZER_DEBUG, 1000, 20);
 }

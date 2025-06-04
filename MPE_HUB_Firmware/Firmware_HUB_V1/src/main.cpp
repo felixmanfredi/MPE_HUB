@@ -15,6 +15,7 @@ Command help;
 const char* ssid = "HUB_MPE";
 const char* password = "00000000";
 
+IPAddress IP;
 AsyncWebServer server(80);
 
 unsigned long ota_progress_millis = 0;
@@ -77,7 +78,28 @@ void server_initialize(){
         jsonDoc["Chip Temp 12V"] = 23.5;
 
         serializeJson(jsonDoc, jsonString);
-        request->send(200, "application/json", jsonString); // Invio della risposta
+        request->send(200, "application/json", jsonString);             // Invio della risposta
+    });
+
+    server.on("/lamp/power", HTTP_POST, [](AsyncWebServerRequest *request){
+        if (request->hasParam("state") && request->hasParam("power")) {
+            String Status = request->getParam("state")->value();
+            String Power = request->getParam("power")->value();
+            cli.parse("set Lamp " + Status + " " + Power);              // Passo il comando per il cambio di stato e di potenza
+            request->send(200, "text/plain", "Lamp set to: " + Status + " " + Power);
+        } else {
+            request->send(400, "text/plain", "Missing 'state' or 'power' parameter");
+        }
+    });
+
+    server.on("/lamp/reset", HTTP_GET, [](AsyncWebServerRequest *request){
+        write485("reset");                                              // Invio del comando di reset ai flash tramite 485
+        String response = Serial2.readStringUntil('\n');                // Leggo la risposta dal seriale
+        if(Serial2.available()) {
+            request->send(200, "text/plain", "Lamp reset error sent.\n Lamp response: " + response);
+        } else {
+            request->send(200, "text/plain", "Lamp reset error sent.\n No response.");
+        }
     });
 
     server.on("/lamp", HTTP_POST, [](AsyncWebServerRequest *request){
@@ -87,17 +109,6 @@ void server_initialize(){
             request->send(200, "text/plain", "Lamp set to: " + Status);
         } else {
             request->send(400, "text/plain", "Missing 'state' parameter");
-        }
-    });
-
-    server.on("/lamp/power", HTTP_POST, [](AsyncWebServerRequest *request){
-        if (request->hasParam("state") && request->hasParam("power")) {
-            String Status = request->getParam("state")->value();
-            String Power = request->getParam("power")->value();
-            write485("flash standby 2");
-            request->send(200, "text/plain", "Lamp set to: " + Status + Power);
-        } else {
-            request->send(400, "text/plain", "Missing 'state' or 'power' parameter");
         }
     });
 
@@ -136,34 +147,18 @@ void setup() {
     VND70::registerComponent(2, MULTISENSE_24V, ENABLE_0_24V, ENABLE_1_24V, ENABLE_SENS_24V, SEL_0_24V, SEL_1_24V);  // ID=2
     VND70::begin();
 
-    Serial.print(F("\nStart AsyncSimpleServer_ESP32_W5500 on "));
-    Serial.print(ARDUINO_BOARD);
-    Serial.print(F(" with "));
-    Serial.println(SHIELD_TYPE);
-    Serial.println(ASYNC_WEBSERVER_ESP32_SC_W5500_VERSION);
-
-    AWS_LOGWARN(F("Default SPI pinout:"));
-    AWS_LOGWARN1(F("SPI_HOST:"), ETH_SPI_HOST);
-    AWS_LOGWARN1(F("MOSI:"), MOSI_GPIO);
-    AWS_LOGWARN1(F("MISO:"), MISO_GPIO);
-    AWS_LOGWARN1(F("SCK:"),  SCK_GPIO);
-    AWS_LOGWARN1(F("CS:"),   CS_GPIO);
-    AWS_LOGWARN1(F("INT:"),  INT_GPIO);
-    AWS_LOGWARN1(F("SPI Clock (MHz):"), SPI_CLOCK_MHZ);
-    AWS_LOGWARN(F("========================="));
-
-    // To be called before ETH.begin()
     ESP32_W5500_onEvent();
-
-    // start the ethernet connection and the server:
-    // Use DHCP dynamic IP and random mac
-    uint16_t index = millis() % NUMBER_OF_MAC;
-
     delay(1000);
-
     ETH.begin( MISO_GPIO, MOSI_GPIO, SCK_GPIO, CS_GPIO, INT_GPIO, SPI_CLOCK_MHZ, ETH_SPI_HOST, mac);
-    ETH.config(myIP, myGW, mySN, myDNS);
+    //ETH.config(myIP, myGW, mySN, myDNS);
     //ESP32_W5500_waitForConnect();
+
+    /*--WIFI--*/
+    WiFi.mode(WIFI_AP);
+    WiFi.softAP(ssid, password);
+    IP = WiFi.softAPIP();
+    Serial.print("AP IP address: ");
+    Serial.println(IP);
 
     server_initialize();
 
@@ -202,7 +197,6 @@ void setup() {
     delay(1000);
     set_pin_function(OUTPUT_ARRAY, sizeof(OUTPUT_ARRAY), LOW);  // Apro tutti gli interruttori
     digitalWrite(RST_SWITCH, HIGH);         // Disabilito il reset dello switch (Attivo basso)
-
 }
 
 void loop() {
@@ -235,7 +229,7 @@ void loop() {
         if (cmd == ping) {                              // comando di test
             write485("Pong!");
         } else if (cmd == standby) {                    // comando standby
-            write485("Comando ricevuto: Stand-by");
+            //write485("Comando ricevuto: Stand-by");
             VND70::standby(1);
             VND70::standby(2);
         } else if (cmd == set) {                        // comando set
@@ -245,74 +239,76 @@ void loop() {
             String actionValue = actionArg.getValue();
             actionValue.toLowerCase();
             if (compValue == "IPcam"){
-                write485("Comando ricevuto: IPcam ");
+                //write485("Comando ricevuto: IPcam ");
                 digitalWrite(LED_DEBUG_GREEN, HIGH);
                 delay(20);
                 digitalWrite(LED_DEBUG_GREEN, LOW);
                 if (actionValue == "on"){
-                    write485("on");
+                    //write485("on");
                     VND70::channel_0(1, true);
                 } else if (actionValue == "off"){
-                    write485("off");
+                    //write485("off");
                     VND70::channel_0(1, false);
                 }
             } else if (compValue == "BD3D"){
-                write485("Comando ricevuto: BlueDepth ");
+                //write485("Comando ricevuto: BlueDepth ");
                 digitalWrite(LED_DEBUG_GREEN, HIGH);
                 delay(20);
                 digitalWrite(LED_DEBUG_GREEN, LOW);
                 if (actionValue == "on"){
-                    write485("on");
+                    //write485("on");
                     VND70::channel_1(1, true);
                 } else if (actionValue == "off"){
-                    write485("off");
+                    //write485("off");
                     VND70::channel_1(1, false);
                 }
             } else if (compValue == "Lamp"){
-                write485("Comando ricevuto: Lamp ");
+                //write485("Comando ricevuto: Lamp ");
                 digitalWrite(LED_DEBUG_GREEN, HIGH);
                 delay(20);
                 digitalWrite(LED_DEBUG_GREEN, LOW);
                 if (actionValue == "on"){
-                    write485("on");
+                    //write485("on");
                     VND70::channel_0(2, true);
                     VND70::channel_1(2, true);
                 } else if (actionValue == "off"){
-                    write485("off");
+                    //write485("off");
                     VND70::channel_0(2, false);
                     VND70::channel_1(2, false);
+                } else if (actionValue == "reset") {
+                    write485(actionValue);                      // Invio del comando di reset ai flash tramite 485
+                } else if (actionValue == "standby") {
+                    write485("flash " + actionValue);           // Invio del comando di standby ai flash tramite 485
+                } else if (actionValue == "idle") {
+                    write485("flash " + actionValue);           // Invio del comando di idle ai flash tramite 485
+                } else if (actionValue == "torch") {
+                    write485("flash " + actionValue);           // Invio del comando di torch ai flash tramite 485
                 }
+                /*// Controllo se l'argomento "power" è stato fornito
+                if (cmd.countArgs() >= 2) {  // Controllo se l'argomento "power" è stato fornito
+                    Argument powerArg = cmd.getArgument("power");
+                    String powerValue = powerArg.getValue();
+                    write485(" " + powerValue);  // Invio del valore di potenza al flash
+                }*/
+
             } else if (compValue == "Light"){
-                write485("Comando ricevuto: Light ");
+                //write485("Comando ricevuto: Light ");
                 digitalWrite(LED_DEBUG_GREEN, HIGH);
                 delay(20);
                 digitalWrite(LED_DEBUG_GREEN, LOW);
                 if (actionValue == "on"){
-                    write485("on");
-                    VND70::channel_0(1, true);      // Accendo il canale IPcam e Lights
+                    // write485("on");
+                    VND70::channel_0(1, true);          // Accendo il canale IPcam e Lights
                     analogWrite(PWM_LIGHT, 255);
                 } else if (actionValue == "off"){
-                    write485("off");
+                    //write485("off");
                     analogWrite(PWM_LIGHT, 0);
                 }
             }
-            // power: attributo da 0 a 15 che verrà aggiunto alla tensione di default del DCDC (16 step di potenza)
-            /*Argument powerArg = cmd.getArgument("power");
-            int powerValue = powerArg.getValue().toInt();
-            if (powerValue <= 15 && powerValue >= 0);*/ 
         } else if (cmd == help) {
             write485("Help");
             write485(cli.toString());
             
         }
-        /*
-            // Esegui azione 1 sul componente 1
-            VND70::action1(1);
-            delay(1000);
-
-            // Esegui azione 2 sul componente 2
-            VND70::action2(2);
-            delay(1000);
-        */
     }
 }

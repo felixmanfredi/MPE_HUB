@@ -4603,6 +4603,19 @@
 		)
 		(uuid "b244a324-733b-421b-a82e-90c047ee9c9c")
 	)
+	(text "IO45 E IO46 VIETATI\nIO26 VIETATO NELLA CONFIGURAZIONE N4R2 (PSRAM)"
+		(exclude_from_sim no)
+		(at 17.018 19.304 0)
+		(effects
+			(font
+				(size 2 2)
+				(thickness 0.4)
+				(bold yes)
+			)
+			(justify left)
+		)
+		(uuid "d768630d-766e-4e89-b85f-8734b9fd5863")
+	)
 	(text_box "DEBUG"
 		(exclude_from_sim no)
 		(at 300.355 89.535 0)
