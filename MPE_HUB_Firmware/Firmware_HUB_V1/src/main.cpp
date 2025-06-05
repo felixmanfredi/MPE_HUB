@@ -61,7 +61,7 @@ void onOTAEnd(bool success) {
 /*---------SERVER INITIALIZE--------*/
 void server_initialize(){
     server.on("/", HTTP_GET, [](AsyncWebServerRequest *request) {
-        request->send(200, "text/plain", "Flash light BD3D");});
+        request->send(200, "text/plain", "HUB MPE");});
     
     // Definizione dell'endpoint GET su /dati
     server.on("/dati", HTTP_GET, [](AsyncWebServerRequest *request){
@@ -70,32 +70,31 @@ void server_initialize(){
 
         jsonDoc["Current Flash 1"] = VND70::readCurrent(2, FLASH_1_CHANNEL);
         jsonDoc["Current Flash 2"] = VND70::readCurrent(2, FLASH_2_CHANNEL);
-        //jsonDoc["Voltage 24V"] = VND70::readVoltage(2);
-        jsonDoc["Chip Temp 24V"] = 23.5;
+        jsonDoc["Voltage 24V"] = VND70::readVoltage(2);
+        jsonDoc["Chip Temp 24V"] = VND70::readTemperature(2);
         jsonDoc["Current BD3D"] = VND70::readCurrent(1, BD3D_CHANNEL);
         jsonDoc["Current IPCam"] = VND70::readCurrent(1, IPCAM_CHANNEL);
-        //jsonDoc["Voltage 12V"] = VND70::readVoltage(1);
-        jsonDoc["Chip Temp 12V"] = 23.5;
+        jsonDoc["Voltage 12V"] = VND70::readVoltage(1);
+        jsonDoc["Chip Temp 12V"] = VND70::readTemperature(1);
 
         serializeJson(jsonDoc, jsonString);
         request->send(200, "application/json", jsonString);             // Invio della risposta
     });
 
     server.on("/lamp/power", HTTP_POST, [](AsyncWebServerRequest *request){
-        if (request->hasParam("state") && request->hasParam("power")) {
-            String Status = request->getParam("state")->value();
+        if (request->hasParam("power")) {
             String Power = request->getParam("power")->value();
-            cli.parse("set Lamp " + Status + " " + Power);              // Passo il comando per il cambio di stato e di potenza
-            request->send(200, "text/plain", "Lamp set to: " + Status + " " + Power);
+            cli.parse("set Lamp_power " + Power);                       // Passo il comando per il cambio di stato e di potenza
+            request->send(200, "text/plain", "Lamp power set to: " + Power);
         } else {
-            request->send(400, "text/plain", "Missing 'state' or 'power' parameter");
+            request->send(400, "text/plain", "Missing 'power' parameter");
         }
     });
 
     server.on("/lamp/reset", HTTP_GET, [](AsyncWebServerRequest *request){
-        write485("reset");                                              // Invio del comando di reset ai flash tramite 485
-        String response = Serial2.readStringUntil('\n');                // Leggo la risposta dal seriale
+        write485("reset\n");                                                // Invio del comando di reset ai flash tramite 485
         if(Serial2.available()) {
+            String response = Serial2.readStringUntil('\n');                    // Leggo la risposta dal seriale
             request->send(200, "text/plain", "Lamp reset error sent.\n Lamp response: " + response);
         } else {
             request->send(200, "text/plain", "Lamp reset error sent.\n No response.");
@@ -139,8 +138,8 @@ void server_initialize(){
 
 void setup() {
     initialize();
-    declaration_function(OUTPUT_ARRAY, sizeof(OUTPUT_ARRAY), OUTPUT);
-    declaration_function(INPUT_ARRAY, sizeof(INPUT_ARRAY), INPUT);
+    Serial.begin(115200);                                                   // begin porta seriale USB
+    Serial2.begin(115200, SERIAL_8N1, RX_485, TX_485);                        // begin RS485
 
     // Istanze dei due VND70 
     VND70::registerComponent(1, MULTISENSE_12V, ENABLE_0_12V, ENABLE_1_12V, ENABLE_SENS_12V, SEL_0_12V, SEL_1_12V);  // ID=1
@@ -174,7 +173,9 @@ void setup() {
     set = cli.addCmd("set");
     set.addPositionalArgument("component");
     set.addPositionalArgument("action");
-    set.setDescription("Esegui una determianta \'action\' (on - off) su uno specifico \'component\' (IPcam - BD3D - Lamp)");
+    set.setDescription("Esegui una determianta \'action\' (on - off) su uno specifico \'component\' (IPcam - BD3D - Lamp)\n" 
+                        "Esempio: set Lamp on\n"
+                        "Esempio impostazione potenza degli illuminatori: set Lamp_power (0 to 15)");
 
     standby = cli.addCmd("standby");
     standby.setDescription("Porta allo stato standby tutto il sistema");
@@ -203,23 +204,9 @@ void loop() {
 
     ElegantOTA.loop();
 
-    /*  write test
-    if (Serial.available()) {
-        String input = Serial.readStringUntil('\n');
-        Serial.println("# " + input);                   // genera eco
-        digitalWrite(RW_485,HIGH);
-        delay(10);
-        Serial2.print(input + "\n");                         // genera eco
-        delay(10);
-        tone(BUZZER_DEBUG, 1000, 20);
-        cli.parse(input);                               // manda l'input alla CLI
-        tone(BUZZER_DEBUG, 1000, 20);
-    }
-    */
-    
     if (Serial2.available()) {
         String input = Serial2.readStringUntil('\n');
-        //write485("# " + input);                         // genera eco
+        //write485("# " + input + "\n");                         // genera eco
         cli.parse(input);                               // manda l'input alla CLI
     }
 
@@ -278,18 +265,22 @@ void loop() {
                 } else if (actionValue == "reset") {
                     write485(actionValue);                      // Invio del comando di reset ai flash tramite 485
                 } else if (actionValue == "standby") {
-                    write485("flash " + actionValue);           // Invio del comando di standby ai flash tramite 485
+                    write485("flash " + actionValue + "\n");           // Invio del comando di standby ai flash tramite 485
                 } else if (actionValue == "idle") {
-                    write485("flash " + actionValue);           // Invio del comando di idle ai flash tramite 485
+                    write485("flash " + actionValue + "\n");           // Invio del comando di idle ai flash tramite 485
                 } else if (actionValue == "torch") {
-                    write485("flash " + actionValue);           // Invio del comando di torch ai flash tramite 485
+                    write485("flash " + actionValue + "\n");           // Invio del comando di torch ai flash tramite 485
                 }
-                /*// Controllo se l'argomento "power" è stato fornito
-                if (cmd.countArgs() >= 2) {  // Controllo se l'argomento "power" è stato fornito
-                    Argument powerArg = cmd.getArgument("power");
-                    String powerValue = powerArg.getValue();
-                    write485(" " + powerValue);  // Invio del valore di potenza al flash
-                }*/
+
+            } else if (compValue == "Lamp_power") {
+                //write485("Comando ricevuto: Lamp_power ");
+                digitalWrite(LED_DEBUG_GREEN, HIGH);
+                delay(20);
+                digitalWrite(LED_DEBUG_GREEN, LOW);
+                int power = actionValue.toInt();
+                if (power >= 0 && power <= 15) {
+                    write485("power_flash " + String(power)  + "\n");
+                }
 
             } else if (compValue == "Light"){
                 //write485("Comando ricevuto: Light ");

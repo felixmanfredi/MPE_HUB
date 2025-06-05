@@ -49,10 +49,10 @@
 #define NUMBER_OF_MAC      20
 
 // Array per la dichiarazione degli output (tutti questi controlli sono attivi alti)
-const uint8_t OUTPUT_ARRAY[]={TX_485, RW_485, LED_DEBUG_RED, LED_DEBUG_GREEN, BUZZER_DEBUG, RST_SWITCH, PWM_LIGHT};
+const uint8_t OUTPUT_ARRAY[]={RW_485, LED_DEBUG_RED, LED_DEBUG_GREEN, BUZZER_DEBUG, RST_SWITCH, PWM_LIGHT};
 
 // Array per la dichiarazione degli input
-const uint8_t INPUT_ARRAY[]={RX_485};
+const uint8_t INPUT_ARRAY[]={};
 
 /*--------------FUNZIONI-------------*/
 

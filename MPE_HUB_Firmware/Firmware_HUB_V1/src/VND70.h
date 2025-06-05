@@ -38,6 +38,9 @@ class VND70 {
         // Lettura di corrente del componente "ID" sul canale "channel"
         static int16_t readCurrent(uint8_t ID, uint8_t channel);
 
+        // Lettura di temperatura del componente "ID"
+        static int16_t readTemperature(uint8_t ID);
+
     private:
         static const uint8_t MAX_COMPONENTS = 10;
         static VND70Pins components[];

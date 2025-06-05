@@ -59,7 +59,7 @@ void VND70::channel_1(uint8_t ID, bool channel_state) {
 int16_t VND70::readVoltage(uint8_t ID){
     int8_t idx = findIndex(ID);
     digitalWrite(components[idx].SensingEnable, LOW);
-    digitalWrite(components[idx].SEL_0, LOW);          // 11 per leggere la tensione sul chip
+    digitalWrite(components[idx].SEL_0, LOW);           // 11 per leggere la tensione sul chip
     digitalWrite(components[idx].SEL_1, LOW);
     delay(2);
     int16_t temp_reading = analogRead(components[idx].MultiSense);
@@ -80,6 +80,17 @@ int16_t VND70::readCurrent(uint8_t ID, uint8_t channel){
         return -1;
     }
     digitalWrite(components[idx].SensingEnable, LOW);
+    delay(2);
+    int16_t temp_reading = analogRead(components[idx].MultiSense);
+    digitalWrite(components[idx].SensingEnable, HIGH);
+    return temp_reading;
+}
+
+int16_t VND70::readTemperature(uint8_t ID){
+    int8_t idx = findIndex(ID);
+    digitalWrite(components[idx].SensingEnable, LOW);
+    digitalWrite(components[idx].SEL_0, LOW);           // 10 per leggere la tensione sul chip
+    digitalWrite(components[idx].SEL_1, HIGH);
     delay(2);
     int16_t temp_reading = analogRead(components[idx].MultiSense);
     digitalWrite(components[idx].SensingEnable, HIGH);
