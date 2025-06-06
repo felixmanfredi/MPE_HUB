@@ -23,8 +23,8 @@ unsigned long ota_progress_millis = 0;
 byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0x01 };
 
 // Select the IP address according to your local network
-IPAddress myIP(192, 168, 0, 233);
-IPAddress myGW(192, 168, 0, 1);
+IPAddress myIP(192, 168, 1, 231);
+IPAddress myGW(192, 168, 1, 1);
 IPAddress mySN(255, 255, 255, 0);
 // Google DNS Server IP
 IPAddress myDNS(8, 8, 8, 8);
@@ -149,7 +149,7 @@ void setup() {
     ESP32_W5500_onEvent();
     delay(1000);
     ETH.begin( MISO_GPIO, MOSI_GPIO, SCK_GPIO, CS_GPIO, INT_GPIO, SPI_CLOCK_MHZ, ETH_SPI_HOST, mac);
-    //ETH.config(myIP, myGW, mySN, myDNS);
+    ETH.config(myIP, myGW, mySN, myDNS);
     //ESP32_W5500_waitForConnect();
 
     /*--WIFI--*/
