@@ -227,7 +227,10 @@ void loop() {
         String input = Serial2.readStringUntil('\n');
         write485("# " + input + "\n");                         // genera eco
         if (input[0] != '#'){                           // filtro i comandi preceduti da un #
-            cli.parse(input);                           // manda l'input alla CLI
+            //cli.parse(input);                           // manda l'input alla CLI
+        } else {
+            Serial.flush();
+            Serial2.flush();
         }
     }
 
