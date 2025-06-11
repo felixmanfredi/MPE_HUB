@@ -20,12 +20,20 @@ void VND70::begin() {
         pinMode(components[i].SensingEnable, OUTPUT);
         pinMode(components[i].SEL_0, OUTPUT);
         pinMode(components[i].SEL_1, OUTPUT);
-        digitalWrite(components[i].EnableChannel0, LOW);   // C'è un MOSFET intermedio che inverte la logica
-        digitalWrite(components[i].EnableChannel1, LOW);
+        digitalWrite(components[i].EnableChannel0, HIGH);   // C'è un MOSFET intermedio che inverte la logica
+        digitalWrite(components[i].EnableChannel1, HIGH);
         digitalWrite(components[i].SensingEnable, HIGH);
         digitalWrite(components[i].SEL_0, HIGH);
         digitalWrite(components[i].SEL_1, HIGH);
     }
+}
+
+void VND70::ALLon(uint8_t ID) {
+    int8_t idx = findIndex(ID);
+    if (idx < 0) return;
+    digitalWrite(components[idx].EnableChannel0, LOW);
+    digitalWrite(components[idx].EnableChannel1, LOW);
+
 }
 
 void VND70::standby(uint8_t ID) {
@@ -56,18 +64,19 @@ void VND70::channel_1(uint8_t ID, bool channel_state) {
         digitalWrite(components[idx].EnableChannel1, HIGH);
 }
 
-int16_t VND70::readVoltage(uint8_t ID){
+float VND70::readVoltage(uint8_t ID){
     int8_t idx = findIndex(ID);
     digitalWrite(components[idx].SensingEnable, LOW);
+    delay(2);
     digitalWrite(components[idx].SEL_0, LOW);           // 11 per leggere la tensione sul chip
     digitalWrite(components[idx].SEL_1, LOW);
     delay(2);
-    int16_t temp_reading = analogRead(components[idx].MultiSense);
+    float temp_reading = analogRead(components[idx].MultiSense)*3.3/4095;
     digitalWrite(components[idx].SensingEnable, HIGH);
     return temp_reading;
 }
 
-int16_t VND70::readCurrent(uint8_t ID, uint8_t channel){
+float VND70::readCurrent(uint8_t ID, uint8_t channel){
     int8_t idx = findIndex(ID);
     if (channel == 0){
         digitalWrite(components[idx].SEL_0, HIGH);      // 00 per leggere la corrente sul primo canale
@@ -81,18 +90,20 @@ int16_t VND70::readCurrent(uint8_t ID, uint8_t channel){
     }
     digitalWrite(components[idx].SensingEnable, LOW);
     delay(2);
-    int16_t temp_reading = analogRead(components[idx].MultiSense);
+    float temp_reading = analogRead(components[idx].MultiSense)*3.3/4095;
+    delay(2);
     digitalWrite(components[idx].SensingEnable, HIGH);
     return temp_reading;
 }
 
-int16_t VND70::readTemperature(uint8_t ID){
+float VND70::readTemperature(uint8_t ID){
     int8_t idx = findIndex(ID);
-    digitalWrite(components[idx].SensingEnable, LOW);
+    digitalWrite(components[idx].SensingEnable, LOW);    
+    delay(2);
     digitalWrite(components[idx].SEL_0, LOW);           // 10 per leggere la tensione sul chip
     digitalWrite(components[idx].SEL_1, HIGH);
     delay(2);
-    int16_t temp_reading = analogRead(components[idx].MultiSense);
+    float temp_reading = analogRead(components[idx].MultiSense)*3.3/4095;
     digitalWrite(components[idx].SensingEnable, HIGH);
     return temp_reading;
 }

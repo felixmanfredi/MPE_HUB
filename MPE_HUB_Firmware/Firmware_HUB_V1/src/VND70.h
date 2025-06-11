@@ -23,6 +23,9 @@ class VND70 {
         // Inizializza i pin di tutti i componenti registrati
         static void begin();
 
+        // Accende le uscite dell'istenza "ID"
+        static void ALLon(uint8_t ID);
+
         // Spegne le uscite dell'istenza "ID"
         static void standby(uint8_t ID);
 
@@ -33,13 +36,13 @@ class VND70 {
         static void channel_1(uint8_t ID, bool channel_state);
 
         // Lettura di tensione del componente "ID"
-        static int16_t readVoltage(uint8_t ID);
+        static float readVoltage(uint8_t ID);
 
         // Lettura di corrente del componente "ID" sul canale "channel"
-        static int16_t readCurrent(uint8_t ID, uint8_t channel);
+        static float readCurrent(uint8_t ID, uint8_t channel);
 
         // Lettura di temperatura del componente "ID"
-        static int16_t readTemperature(uint8_t ID);
+        static float readTemperature(uint8_t ID);
 
     private:
         static const uint8_t MAX_COMPONENTS = 10;
