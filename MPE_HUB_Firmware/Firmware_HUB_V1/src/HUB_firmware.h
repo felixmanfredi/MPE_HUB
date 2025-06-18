@@ -8,12 +8,14 @@
 #include <ArduinoJson.h>        // Include per la creazione di json
 #include <SPI.h>
 
-#define RST_GPIO            5
-#define INT_GPIO            6
-#define MISO_GPIO           8
-#define MOSI_GPIO           7
-#define SCK_GPIO            9
-#define CS_GPIO             10
+#define SERIAL_SPEED    115200 // baud rate seriale
+
+#define RST_GPIO            5   // Pin di reset verso W5500
+#define INT_GPIO            6   // Pin di interrupt del W5500
+#define MISO_GPIO           8   // Pin MISO SPI
+#define MOSI_GPIO           7   // Pin MOSI SPI
+#define SCK_GPIO            9   // Pin SCK SPI
+#define CS_GPIO             10  // Pin CS SPI
 
 #define TX_485              2   // Pin di tx per 485
 #define RW_485              3   // Pin lettura/scrittura per 485 (LOW->READ) (HIGH->WRITE)
@@ -45,8 +47,6 @@
 #define BD3D_CHANNEL        1   // Canale utilizzato per la BlueDepth
 
 #define _ASYNC_WEBSERVER_LOGLEVEL_       2
-// Enter a MAC address and IP address for your controller below.
-#define NUMBER_OF_MAC      20
 
 // Array per la dichiarazione degli output (tutti questi controlli sono attivi alti)
 const uint8_t OUTPUT_ARRAY[]={RW_485, LED_DEBUG_RED, LED_DEBUG_GREEN, BUZZER_DEBUG, RST_SWITCH, PWM_LIGHT};
@@ -83,5 +83,37 @@ void initialize();
 * @param String il testo da stampare
 */
 void write485(String text);
+
+/*---------------TELNET-------------*/
+
+bool isConnected();
+
+bool connectToWiFi(const char* ssid, const char* password, int max_tries, int pause);
+
+void errorMsg(String error, bool restart);
+
+// (optional) callback functions for telnet events
+void onTelnetConnect(String ip);
+
+void onTelnetDisconnect(String ip);
+
+void onTelnetReconnect(String ip);
+
+void onTelnetConnectionAttempt(String ip);
+
+void onTelnetInput(String str);
+
+void setupTelnet();
+
+/*
+* FUNZIONE CON IL LOOP DI TELNET E VERIFICA SE CI SONO VALORI DA LEGGERE
+*/
+String loopTelnet();
+
+/* 
+* FUNZIONE CHE SCRIVE SU TELNET UNA STRINGA (VA A CAPO)
+* @param String testo da stampare
+*/
+void writeTelnet(String text);
 
 #endif
