@@ -147,7 +147,7 @@ void server_initialize(){
 /*--------------SETUP--------------*/
 
 void setup() {
-    Serial.begin(115200);                                                   // begin porta seriale USB
+    Serial.begin(115200);                                                     // begin porta seriale USB
     Serial2.begin(115200, SERIAL_8N1, RX_485, TX_485);                        // begin RS485
 
     // Istanze dei due VND70 
@@ -206,7 +206,7 @@ void setup() {
     digitalWrite(LED_DEBUG_GREEN, HIGH);    // GREEN
     tone(BUZZER_DEBUG, 600, 50);
     tone(BUZZER_DEBUG, 300, 100);
-    delay(1000);
+    delay(2000);
     VND70::channel_0(1, true);              // Temporizzo le accensioni per evitare assorbimenti elevati
     delay(1000);
     VND70::channel_1(1, true);
@@ -215,19 +215,19 @@ void setup() {
     delay(1000);
     VND70::channel_1(2, true);
     delay(1000);
-    set_pin_function(OUTPUT_ARRAY, sizeof(OUTPUT_ARRAY), LOW);  // Apro tutti gli interruttori
+    set_pin_function(OUTPUT_ARRAY, sizeof(OUTPUT_ARRAY), LOW);  // Porto a LOW tutte le uscite
     digitalWrite(RST_SWITCH, HIGH);         // Disabilito il reset dello switch (Attivo basso)
 }
 
 void loop() {
-
+    delay(5);
     ElegantOTA.loop();
 
     if (Serial2.available()) {
         String input = Serial2.readStringUntil('\n');
-        write485("# " + input + "\n");                         // genera eco
-        if (input[0] != '#'){                           // filtro i comandi preceduti da un #
-            //cli.parse(input);                           // manda l'input alla CLI
+        write485("# " + input + "\n");                      // genera eco
+        if (input[0] != '#'){                               // filtro i comandi preceduti da un #
+            //cli.parse(input);                             // manda l'input alla CLI
         } else {
             Serial.flush();
             Serial2.flush();
