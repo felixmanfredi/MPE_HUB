@@ -4,6 +4,9 @@
 	(generator_version "9.0")
 	(uuid "7ca38163-79a2-458b-9eee-3dbaba33e3e3")
 	(paper "A4")
+	(title_block
+		(date "2025-03-21")
+	)
 	(lib_symbols
 		(symbol "Device:R"
 			(pin_numbers
@@ -2615,7 +2618,7 @@
 		(dnp no)
 		(uuid "bc4c2653-1048-4b42-9b8e-0e1436bf0b3f")
 		(property "Reference" "R41"
-			(at 175.514 58.674 90)
+			(at 176.53 58.674 90)
 			(effects
 				(font
 					(size 1.27 1.27)

@@ -4,6 +4,12 @@
 	(generator_version "9.0")
 	(uuid "04ed20c7-d852-46e1-ad21-65f43de6af03")
 	(paper "A4")
+	(title_block
+		(title "Switch_Ethernet_RTL8305NB")
+		(date "2025-03-21")
+		(rev "1.0")
+		(company "3DResearch")
+	)
 	(lib_symbols
 		(symbol "Device:C"
 			(pin_numbers
@@ -7941,23 +7947,7 @@
 			(fill
 				(type none)
 			)
-			(uuid 64f58250-25ae-45b1-9348-68c7ce643615)
-		)
-	)
-	(rule_area
-		(polyline
-			(pts
-				(xy 125.73 154.305) (xy 125.73 153.035) (xy 157.48 153.035) (xy 157.48 154.305)
-			)
-			(stroke
-				(width 0)
-				(type dash)
-				(color 132 0 132 1)
-			)
-			(fill
-				(type none)
-			)
-			(uuid 6a294f50-b616-4582-a093-24acfeaac730)
+			(uuid 0d39df3c-7fe9-4a45-b0a6-430eafe97083)
 		)
 	)
 	(rule_area
@@ -7973,7 +7963,23 @@
 			(fill
 				(type none)
 			)
-			(uuid 7c01af58-9183-4c9c-903e-cc49a216881f)
+			(uuid 305f6447-4360-4227-96cd-36dd60f276c6)
+		)
+	)
+	(rule_area
+		(polyline
+			(pts
+				(xy 125.73 154.305) (xy 125.73 153.035) (xy 157.48 153.035) (xy 157.48 154.305)
+			)
+			(stroke
+				(width 0)
+				(type dash)
+				(color 132 0 132 1)
+			)
+			(fill
+				(type none)
+			)
+			(uuid a74c2f7c-ce17-4ec9-84e5-3b4d2ce3bfe4)
 		)
 	)
 	(netclass_flag ""

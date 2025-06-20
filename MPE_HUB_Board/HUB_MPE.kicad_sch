@@ -6,7 +6,7 @@
 	(paper "A3")
 	(title_block
 		(title "HUB_MPE")
-		(date "2025-03-24")
+		(date "2025-03-21")
 		(rev "0.1")
 		(company "3DResearch")
 	)
@@ -3120,6 +3120,16 @@
 	)
 	(wire
 		(pts
+			(xy 325.12 217.17) (xy 345.44 217.17)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "09b0e5fd-9b78-4912-96b8-0b45e496750b")
+	)
+	(wire
+		(pts
 			(xy 149.86 176.53) (xy 130.81 176.53)
 		)
 		(stroke
@@ -3127,6 +3137,16 @@
 			(type default)
 		)
 		(uuid "0c206055-45e0-4797-ba7f-19ad5fc38724")
+	)
+	(wire
+		(pts
+			(xy 345.44 193.04) (xy 325.12 193.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0c977625-c708-4289-9b02-c20aa6004e30")
 	)
 	(wire
 		(pts
@@ -3170,6 +3190,16 @@
 	)
 	(wire
 		(pts
+			(xy 345.44 219.71) (xy 325.12 219.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "149083cf-bc8e-4346-b6d7-2d5de89dbb1d")
+	)
+	(wire
+		(pts
 			(xy 345.44 127) (xy 325.12 127)
 		)
 		(stroke
@@ -3210,16 +3240,6 @@
 	)
 	(wire
 		(pts
-			(xy 345.44 193.04) (xy 325.12 193.04)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "1a1fe918-06ff-48c9-9a02-16c3cc081df8")
-	)
-	(wire
-		(pts
 			(xy 350.52 53.34) (xy 347.98 53.34)
 		)
 		(stroke
@@ -3247,16 +3267,6 @@
 			(type default)
 		)
 		(uuid "23f192af-5f35-46c5-a123-662a7eb88eeb")
-	)
-	(wire
-		(pts
-			(xy 345.44 217.17) (xy 325.12 217.17)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "23ffa4f9-d8f1-42c2-baa3-30cfe0f46264")
 	)
 	(wire
 		(pts
@@ -3560,6 +3570,16 @@
 	)
 	(wire
 		(pts
+			(xy 149.86 212.09) (xy 130.81 212.09)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "646748e7-ad60-492e-b37e-7d209111a1f1")
+	)
+	(wire
+		(pts
 			(xy 203.2 226.06) (xy 220.98 226.06)
 		)
 		(stroke
@@ -3730,16 +3750,6 @@
 	)
 	(wire
 		(pts
-			(xy 345.44 190.5) (xy 325.12 190.5)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "81a28d52-d338-4aae-8d13-55858bb8d0de")
-	)
-	(wire
-		(pts
 			(xy 330.2 60.96) (xy 350.52 60.96)
 		)
 		(stroke
@@ -3840,16 +3850,6 @@
 	)
 	(wire
 		(pts
-			(xy 345.44 219.71) (xy 325.12 219.71)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "91c42e79-335e-4bc7-8628-d27fe7beff52")
-	)
-	(wire
-		(pts
 			(xy 203.2 209.55) (xy 220.98 209.55)
 		)
 		(stroke
@@ -3897,6 +3897,16 @@
 			(type default)
 		)
 		(uuid "9c4af3b4-63f9-4e95-92a4-6e8230efab75")
+	)
+	(wire
+		(pts
+			(xy 325.12 190.5) (xy 345.44 190.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9f3115f7-7187-44f5-b062-bd89536904e4")
 	)
 	(wire
 		(pts
@@ -4157,6 +4167,16 @@
 			(type default)
 		)
 		(uuid "cd90bd0a-334a-45c8-89c7-94ef9cfc5305")
+	)
+	(wire
+		(pts
+			(xy 149.86 209.55) (xy 130.81 209.55)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d17b0f7a-68c3-4beb-bac9-0edfb1e077a0")
 	)
 	(wire
 		(pts
@@ -4488,16 +4508,6 @@
 		)
 		(uuid "1adb9e8b-4a76-4bf4-aecb-b74d654d4523")
 	)
-	(label "485_ROV+"
-		(at 325.12 190.5 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "1b6128df-7154-4b78-a837-9188501b939e")
-	)
 	(label "RESET_SWITCH"
 		(at 130.81 228.6 0)
 		(effects
@@ -4507,16 +4517,6 @@
 			(justify left bottom)
 		)
 		(uuid "1ccd1b9f-f552-4089-bc5b-118715179bf7")
-	)
-	(label "485_ROV+"
-		(at 325.12 217.17 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "1e6b3fc0-62b6-47b4-931d-052d14a9c973")
 	)
 	(label "ETH_BD3D_TX-"
 		(at 245.11 105.41 180)
@@ -4587,6 +4587,16 @@
 			(justify right bottom)
 		)
 		(uuid "3660a07b-ab0e-458f-b72e-175314c85fc4")
+	)
+	(label "485_LED+"
+		(at 325.12 217.17 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "37878377-fc66-4b96-b6c1-f824934315ae")
 	)
 	(label "+24V_FLASH1"
 		(at 278.13 201.93 180)
@@ -4798,16 +4808,6 @@
 		)
 		(uuid "74c212ea-a02d-4be0-bfbc-6784eb298d0a")
 	)
-	(label "485_ROV-"
-		(at 325.12 219.71 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "78e18fb2-7ec2-4047-af64-73c913a7dc59")
-	)
 	(label "ETH_IPCAM_TX+"
 		(at 171.45 102.87 0)
 		(effects
@@ -4818,16 +4818,6 @@
 		)
 		(uuid "7b318ca9-76dc-48ca-a606-fecf0cff7505")
 	)
-	(label "485_ROV-"
-		(at 325.12 193.04 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "7bfc0032-46c9-441f-9abd-1dcdb9dc2665")
-	)
 	(label "+24V_FLASH2"
 		(at 278.13 207.01 180)
 		(effects
@@ -4837,6 +4827,16 @@
 			(justify right bottom)
 		)
 		(uuid "7daad1ae-436b-4f22-bbab-00f317f0ee94")
+	)
+	(label "485_LED-"
+		(at 130.81 212.09 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "7eab7ce8-277a-48fb-a14b-bbf77a2fdfd0")
 	)
 	(label "ETH_ROV_RX-"
 		(at 171.45 119.38 0)
@@ -4918,6 +4918,16 @@
 		)
 		(uuid "be401af8-f545-4043-bcd4-904f28849595")
 	)
+	(label "485_LED-"
+		(at 325.12 219.71 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "bfa1bd9f-98a0-4d27-88f4-e4e87136f6c6")
+	)
 	(label "ETH_ESP_TX-"
 		(at 245.11 116.84 180)
 		(effects
@@ -4937,6 +4947,16 @@
 			(justify left bottom)
 		)
 		(uuid "c49337e6-0858-478f-bb6b-9eb3469fe6b7")
+	)
+	(label "485_LED+"
+		(at 325.12 190.5 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "ca186e07-e4a2-42b1-a3f9-b434f3fbb0dd")
 	)
 	(label "485_ROV-"
 		(at 350.52 68.58 180)
@@ -4998,6 +5018,16 @@
 		)
 		(uuid "e3063f1b-c64e-4736-94e6-3a3afddfd543")
 	)
+	(label "485_LED-"
+		(at 325.12 193.04 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "e8e313b6-48de-4b2b-aa0f-358a71b42280")
+	)
 	(label "EXPOSURE"
 		(at 325.12 222.25 0)
 		(effects
@@ -5028,6 +5058,16 @@
 		)
 		(uuid "f99deac8-a6ea-4519-ade3-6c7e69830865")
 	)
+	(label "485_LED+"
+		(at 130.81 209.55 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "fb779153-bfc6-4bbe-aacc-fd2279865c47")
+	)
 	(label "ETH_BD3D_TX+"
 		(at 325.12 153.67 0)
 		(effects
@@ -5037,22 +5077,6 @@
 			(justify left bottom)
 		)
 		(uuid "ff8a5f61-8c8f-411f-8d1f-a71106903e21")
-	)
-	(rule_area
-		(polyline
-			(pts
-				(xy 186.055 97.79) (xy 187.325 97.79) (xy 187.325 124.46) (xy 186.055 124.46)
-			)
-			(stroke
-				(width 0)
-				(type dash)
-				(color 132 0 132 1)
-			)
-			(fill
-				(type none)
-			)
-			(uuid 1ca9c444-4d69-4bb6-b77f-f61c8d99f3fb)
-		)
 	)
 	(rule_area
 		(polyline
@@ -5067,7 +5091,23 @@
 			(fill
 				(type none)
 			)
-			(uuid eced8654-b6b6-4cb1-af57-d44c17daa683)
+			(uuid 520812e4-9081-4d5b-a015-fd410ea08a81)
+		)
+	)
+	(rule_area
+		(polyline
+			(pts
+				(xy 186.055 97.79) (xy 187.325 97.79) (xy 187.325 124.46) (xy 186.055 124.46)
+			)
+			(stroke
+				(width 0)
+				(type dash)
+				(color 132 0 132 1)
+			)
+			(fill
+				(type none)
+			)
+			(uuid c8c18da1-5def-4ae9-a5eb-c964754aeb44)
 		)
 	)
 	(netclass_flag ""
@@ -6250,7 +6290,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Connector_JST:JST_EH_B6B-EH-A_1x06_P2.50mm_Vertical"
+		(property "Footprint" "Connector_JST:JST_VH_B6P-VH-B_1x06_P3.96mm_Vertical"
 			(at 350.52 132.08 0)
 			(effects
 				(font
@@ -6615,7 +6655,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Connector_JST:JST_EH_B3B-EH-A_1x03_P2.50mm_Vertical"
+		(property "Footprint" "Connector_JST:JST_VH_B3P-VH_1x03_P3.96mm_Vertical"
 			(at 350.52 110.49 0)
 			(effects
 				(font
@@ -7484,7 +7524,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Connector_JST:JST_EH_B7B-EH-A_1x07_P2.50mm_Vertical"
+		(property "Footprint" "Connector_JST:JST_VH_B7P-VH-B_1x07_P3.96mm_Vertical"
 			(at 350.52 158.75 0)
 			(effects
 				(font
@@ -9083,26 +9123,6 @@
 				(justify right)
 			)
 		)
-		(pin "485A" bidirectional
-			(at 149.86 201.93 180)
-			(uuid "7209d1df-b8ec-438a-971d-80830d8750c0")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(pin "485B" bidirectional
-			(at 149.86 204.47 180)
-			(uuid "73c63731-6fb1-4f95-9549-5b61a67ae9f9")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
 		(pin "GND_MCU" input
 			(at 149.86 179.07 180)
 			(uuid "7fb91261-4c78-472b-b938-2f66ede34a66")
@@ -9191,6 +9211,46 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
+			)
+		)
+		(pin "485_LED_A" bidirectional
+			(at 149.86 209.55 180)
+			(uuid "91ad1c36-95be-4b4d-8165-1d9a0c19b735")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "485_LED_B" bidirectional
+			(at 149.86 212.09 180)
+			(uuid "7ec0e780-f7c1-4d71-95a9-0143bed891a8")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "485_ROV_A" bidirectional
+			(at 149.86 201.93 180)
+			(uuid "e2b324e3-8644-4640-b11d-85b8ee0698a5")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "485_ROV_B" bidirectional
+			(at 149.86 204.47 180)
+			(uuid "0263b102-208a-4856-895c-7e5782ee0ad5")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
 			)
 		)
 		(instances
