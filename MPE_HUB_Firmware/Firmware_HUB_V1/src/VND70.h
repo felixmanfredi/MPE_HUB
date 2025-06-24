@@ -12,6 +12,8 @@ typedef struct {
     uint8_t SensingEnable;      // [Active HIGH]
     uint8_t SEL_0;              // Sense MUX 0 [Active HIGH]
     uint8_t SEL_1;              // Sense MUX 1 [Active HIGH]
+    bool channel_0_state;    // Stato del canale 0 (true -> acceso / false -> spento)
+    bool channel_1_state;    // Stato del canale 1 (true -> acceso / false -> spento)
 } VND70Pins;
 
 class VND70 {
@@ -43,6 +45,12 @@ class VND70 {
 
         // Lettura di temperatura del componente "ID"
         static float readTemperature(uint8_t ID);
+
+        // Lettura dello stato del canale 0 del componente "ID"
+        static bool channel_0_state(uint8_t ID);
+
+        // Lettura dello stato del canale 1 del componente "ID"
+        static bool channel_1_state(uint8_t ID);
 
     private:
         static const uint8_t MAX_COMPONENTS = 10;

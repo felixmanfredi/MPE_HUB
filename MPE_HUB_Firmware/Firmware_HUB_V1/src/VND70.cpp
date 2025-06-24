@@ -25,6 +25,8 @@ void VND70::begin() {
         digitalWrite(components[i].SensingEnable, HIGH);
         digitalWrite(components[i].SEL_0, HIGH);
         digitalWrite(components[i].SEL_1, HIGH);
+        components[i].channel_0_state = false;
+        components[i].channel_1_state = false;
     }
 }
 
@@ -33,7 +35,8 @@ void VND70::ALLon(uint8_t ID) {
     if (idx < 0) return;
     digitalWrite(components[idx].EnableChannel0, LOW);
     digitalWrite(components[idx].EnableChannel1, LOW);
-
+    components[idx].channel_0_state = true;
+    components[idx].channel_1_state = true;
 }
 
 void VND70::standby(uint8_t ID) {
@@ -44,24 +47,32 @@ void VND70::standby(uint8_t ID) {
     digitalWrite(components[idx].SensingEnable, HIGH);
     digitalWrite(components[idx].SEL_0, HIGH);
     digitalWrite(components[idx].SEL_1, HIGH);
+    components[idx].channel_0_state = false;
+    components[idx].channel_1_state = false;
 }
 
 void VND70::channel_0(uint8_t ID, bool channel_state) {
     int8_t idx = findIndex(ID);
     if (idx < 0) return;
-    if (channel_state)
+    if (channel_state){
         digitalWrite(components[idx].EnableChannel0, LOW);
-    else
+        components[idx].channel_0_state = true;
+    } else {
         digitalWrite(components[idx].EnableChannel0, HIGH);
+        components[idx].channel_0_state = false;
+    }
 }
 
 void VND70::channel_1(uint8_t ID, bool channel_state) {
     int8_t idx = findIndex(ID);
     if (idx < 0) return;
-    if (channel_state)
+    if (channel_state){
         digitalWrite(components[idx].EnableChannel1, LOW);
-    else
+        components[idx].channel_1_state = true;
+    } else {
         digitalWrite(components[idx].EnableChannel1, HIGH);
+        components[idx].channel_1_state = false;
+    }
 }
 
 float VND70::readVoltage(uint8_t ID){
@@ -106,6 +117,18 @@ float VND70::readTemperature(uint8_t ID){
     float temp_reading = analogRead(components[idx].MultiSense)*3.3/4095;
     digitalWrite(components[idx].SensingEnable, HIGH);
     return temp_reading;
+}
+
+bool VND70::channel_0_state(uint8_t ID) {
+    int8_t idx = findIndex(ID);
+    if (idx < 0) return false;
+    return components[idx].channel_0_state;
+}
+
+bool VND70::channel_1_state(uint8_t ID) {
+    int8_t idx = findIndex(ID);
+    if (idx < 0) return false;
+    return components[idx].channel_1_state;
 }
 
 int8_t VND70::findIndex(uint8_t ID) {

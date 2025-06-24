@@ -62,28 +62,33 @@ void onOTAEnd(bool success) {
 
 /*---------SERVER INITIALIZE--------*/
 void server_initialize(){
-    server.on("/", HTTP_PUT, [](AsyncWebServerRequest *request) {
-        request->send(200, "text/plain", "HUB MPE");});
+    server.on("/", HTTP_GET, [](AsyncWebServerRequest *request) {
+        request->send(200, "text/html", MAIN_page);});
+        //request->send(200, "text/plain", "HUB MPE");});
     
     // Definizione dell'endpoint GET su /dati
-    server.on("/dati", HTTP_GET, [](AsyncWebServerRequest *request){
+    server.on("/sensor", HTTP_GET, [](AsyncWebServerRequest *request){
         String jsonString;
         DynamicJsonDocument jsonDoc(2048);                  // Creazione del json
 
-        jsonDoc["Current Flash 1"] = VND70::readCurrent(2, FLASH_1_CHANNEL);
-        jsonDoc["Current Flash 2"] = VND70::readCurrent(2, FLASH_2_CHANNEL);
-        jsonDoc["Voltage 24V"] = VND70::readVoltage(2);
-        jsonDoc["Chip Temp 24V"] = VND70::readTemperature(2);
-        jsonDoc["Current BD3D"] = VND70::readCurrent(1, BD3D_CHANNEL);
-        jsonDoc["Current IPCam"] = VND70::readCurrent(1, IPCAM_CHANNEL);
-        jsonDoc["Voltage 12V"] = VND70::readVoltage(1);
-        jsonDoc["Chip Temp 12V"] = VND70::readTemperature(1);
+        jsonDoc["Current_Flash_1"] = VND70::readCurrent(2, FLASH_1_CHANNEL);
+        jsonDoc["Current_Flash_2"] = VND70::readCurrent(2, FLASH_2_CHANNEL);
+        jsonDoc["Voltage_24V"] = VND70::readVoltage(2);
+        jsonDoc["Chip_Temp_24V"] = VND70::readTemperature(2);
+        jsonDoc["Current_BD3D"] = VND70::readCurrent(1, BD3D_CHANNEL);
+        jsonDoc["Current_IPCam"] = VND70::readCurrent(1, IPCAM_CHANNEL);
+        jsonDoc["Voltage_12V"] = VND70::readVoltage(1);
+        jsonDoc["Chip_Temp_12V"] = VND70::readTemperature(1);
+        jsonDoc["12V_0_State"] = VND70::channel_0_state(1);
+        jsonDoc["12V_1_State"] = VND70::channel_1_state(1);
+        jsonDoc["24V_0_State"] = VND70::channel_0_state(2);
+        jsonDoc["24V_1_State"] = VND70::channel_1_state(2);
 
         serializeJson(jsonDoc, jsonString);
         request->send(200, "application/json", jsonString);             // Invio della risposta
     });
 
-    server.on("/lamp/torch", HTTP_PUT, [](AsyncWebServerRequest *request){
+    server.on("/lamp/torch", HTTP_GET, [](AsyncWebServerRequest *request){
         if (request->hasParam("power")) {
             String Power = request->getParam("power")->value();
             cli.parse("set Lamp_torch " + Power);                       // Passo il comando per il cambio di stato e di potenza
@@ -93,7 +98,7 @@ void server_initialize(){
         }
     });
 
-    server.on("/lamp/power", HTTP_PUT, [](AsyncWebServerRequest *request){
+    server.on("/lamp/power", HTTP_GET, [](AsyncWebServerRequest *request){
         if (request->hasParam("power")) {
             String Power = request->getParam("power")->value();
             cli.parse("set Lamp_power " + Power);                       // Passo il comando per il cambio di stato e di potenza
@@ -113,7 +118,7 @@ void server_initialize(){
         }
     });
 
-    server.on("/lamp", HTTP_PUT, [](AsyncWebServerRequest *request){
+    server.on("/lamp", HTTP_GET, [](AsyncWebServerRequest *request){
         if (request->hasParam("state")) {
             String Status = request->getParam("state")->value();
             cli.parse("set Lamp " + Status);
@@ -123,7 +128,7 @@ void server_initialize(){
         }
     });
 
-    server.on("/IPCam", HTTP_PUT, [](AsyncWebServerRequest *request){
+    server.on("/IPCam", HTTP_GET, [](AsyncWebServerRequest *request){
         if (request->hasParam("state")) {
             String Status = request->getParam("state")->value();
             cli.parse("set IPCam " + Status);
@@ -133,7 +138,7 @@ void server_initialize(){
         }
     });
 
-    server.on("/BD3D", HTTP_PUT, [](AsyncWebServerRequest *request){
+    server.on("/BD3D", HTTP_GET, [](AsyncWebServerRequest *request){
         if (request->hasParam("state")) {
             String Status = request->getParam("state")->value();
             cli.parse("set BD3D " + Status);
@@ -176,9 +181,11 @@ void setCallback(cmd* c) {
         digitalWrite(LED_DEBUG_GREEN, LOW);
         if (actionValue == "on"){
             //write485("on");
+            VND70::channel_1(2, true);
             VND70::channel_1(1, true);
         } else if (actionValue == "off"){
             //write485("off");
+            VND70::channel_0(2, false);
             VND70::channel_1(1, false);
         }
     } else if (compValue == "lamp"){
@@ -212,7 +219,7 @@ void setCallback(cmd* c) {
         digitalWrite(LED_DEBUG_GREEN, LOW);
         int power = actionValue.toInt();
         if (power >= 0 && power <= 15) {
-            write485("power_flash " + String(power)  + "\n");
+            write485("power_flash " + String(power)  + "\n\r");
         }
 
     } else if (compValue == "lamp_torch") {
@@ -222,7 +229,7 @@ void setCallback(cmd* c) {
         digitalWrite(LED_DEBUG_GREEN, LOW);
         int power = actionValue.toInt();
         if (power >= 0 && power <= 3) {
-            write485("torch " + String(power)  + "\n");
+            write485("torch " + String(power)  + "\n\r");
         }
 
     }  else if (compValue == "light"){
@@ -230,13 +237,18 @@ void setCallback(cmd* c) {
         digitalWrite(LED_DEBUG_GREEN, HIGH);
         delay(20);
         digitalWrite(LED_DEBUG_GREEN, LOW);
-        if (actionValue == "on"){
-            // write485("on");
-            VND70::channel_0(1, true);          // Accendo il canale IPcam e Lights
-            analogWrite(PWM_LIGHT, 255);
-        } else if (actionValue == "off"){
-            //write485("off");
-            analogWrite(PWM_LIGHT, 0);
+        int pwm_light = actionValue.toInt();
+        if (pwm_light >= 0 && pwm_light <= 255){        
+            if (pwm_light != 0){
+                // write485("on");
+                VND70::channel_0(1, true);          // Accendo il canale IPcam e Lights
+                analogWrite(PWM_LIGHT, pwm_light);
+            } else {
+                //write485("off");
+                analogWrite(PWM_LIGHT, 0);
+            }
+        } else {
+            write485("PWM light out of pwm range\n\r");
         }
     }
 }
@@ -247,12 +259,6 @@ void standbyCallback(cmd* c) {
     //write485("Comando ricevuto: Stand-by");
     VND70::standby(1);
     VND70::standby(2);
-}
-
-// Callback il comando di test
-void pingCallback(cmd* c) {
-    write485("Pong!\n\r");
-    writeTelnet("Pong!");
 }
 
 void helpCallback(cmd* c){
@@ -320,6 +326,7 @@ void setup() {
     set.setDescription( "Esegui una determianta \'action\' (on - off) su uno specifico \'component\' (IPcam - BD3D - Lamp - Lamp_power - Lamp_torch)\n\r" 
                         "Esempio: \n\r# set Lamp on\n\n\r"
                         "Esempio impostazione modalità illuminatore continuo: \n\r#set Lamp_torch (0 to 3)\n\n\r"
+                        "Esempio impostazione luci ausiliarie: \n\r#set light (0 to 255)\n\n\r"
                         "Esempio impostazione potenza degli illuminatori: \n\r#set Lamp_power (0 to 15)");
 
     standby = cli.addCmd("standby", standbyCallback);
@@ -327,14 +334,6 @@ void setup() {
 
     help = cli.addCommand("help", helpCallback);
     help.setDescription("Panoramica dei comandi");
-
-    ping = cli.addCmd("ping", pingCallback);
-    ping.setDescription("Comando di test");
-    if (!ping) {
-        Serial.println("Something went wrong :(");
-    } else {
-        Serial.println("Ping was added to the CLI!");
-    }
 
     cli.setOnError(errorCallback); // Set error Callback
 
@@ -366,16 +365,5 @@ void loop() {
         write485("# " + input + "\n");                      // genera eco su seriale e 485
         cli.parse(input);                                   // manda l'input alla CLI
     }
-
-    /*if (Serial2.available()) {
-        String input = Serial2.readStringUntil('\n');
-        write485("# " + input + "\n");                      // genera eco
-        if (input[0] != '#'){                               // filtro i comandi preceduti da un #
-            //cli.parse(input);                             // manda l'input alla CLI
-        } else {
-            Serial.flush();
-            Serial2.flush();
-        }
-    }*/
 
 }
