@@ -362,8 +362,12 @@ void loop() {
     String input = loopTelnet();
 
     if (input != "") {
-        write485("# " + input + "\n");                      // genera eco su seriale e 485
+        //write485("# " + input + "\n\r");                    // genera eco su seriale e 485
         cli.parse(input);                                   // manda l'input alla CLI
     }
 
+    if (Serial2.available() > 0){
+        String response = Serial2.readStringUntil('\n'); // Leggo la risposta dal 485
+        writeTelnet("#485: " + response);          // Invia la risposta al client telnet
+    }
 }
