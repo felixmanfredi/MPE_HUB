@@ -29,6 +29,132 @@ IPAddress mySN(255, 255, 255, 0);
 // Google DNS Server IP
 IPAddress myDNS(8, 8, 8, 8);
 
+String jsonString;
+DynamicJsonDocument jsonDoc(2048);                  // Creazione del json
+
+struct flash_wrapper {
+    String power_value = "0";
+    bool flash_action_flag = false;
+    String torch_value = "0";
+    bool torch_action_flag = false;
+}flash_wrapper;
+
+/*------------FUNZIONI---------------*/
+
+void jsonSerialize(){
+    jsonDoc.clear();
+    jsonDoc["Current_Flash_1"] = VND70::readCurrent(2, FLASH_1_CHANNEL);
+    jsonDoc["Current_Flash_2"] = VND70::readCurrent(2, FLASH_2_CHANNEL);
+    jsonDoc["Voltage_24V"] = VND70::readVoltage(2);
+    jsonDoc["Chip_Temp_24V"] = VND70::readTemperature(2);
+    jsonDoc["Current_BD3D"] = VND70::readCurrent(1, BD3D_CHANNEL);
+    jsonDoc["Current_IPCam"] = VND70::readCurrent(1, IPCAM_CHANNEL);
+    jsonDoc["Voltage_12V"] = VND70::readVoltage(1);
+    jsonDoc["Chip_Temp_12V"] = VND70::readTemperature(1);
+    jsonDoc["12V_0_State"] = VND70::channel_0_state(1);
+    jsonDoc["12V_1_State"] = VND70::channel_1_state(1);
+    jsonDoc["24V_0_State"] = VND70::channel_0_state(2);
+    jsonDoc["24V_1_State"] = VND70::channel_1_state(2);
+    serializeJson(jsonDoc, jsonString);
+}
+
+/* COMANDI PER ESECUZIONE SINCRONA */
+
+/*
+* Funzione che imposta lo stato dei componenti
+*/
+void setCommand(String component, String action){
+    if (component == "ipcam"){
+        //write485("Comando ricevuto: IPcam ");
+        digitalWrite(LED_DEBUG_GREEN, HIGH);
+        delay(20);
+        digitalWrite(LED_DEBUG_GREEN, LOW);
+        if (action == "on"){
+            //write485("on");
+            VND70::channel_0(1, true);
+        } else if (action == "off"){
+            //write485("off");
+            VND70::channel_0(1, false);
+        }
+    } else if (component == "bd3d"){
+        //write485("Comando ricevuto: BlueDepth ");
+        digitalWrite(LED_DEBUG_GREEN, HIGH);
+        delay(20);
+        digitalWrite(LED_DEBUG_GREEN, LOW);
+        if (action == "on"){
+            //write485("on");
+            VND70::channel_1(1, true);
+        } else if (action == "off"){
+            //write485("off");
+            VND70::channel_1(1, false);
+        }
+    } else if (component == "lamp"){
+        //write485("Comando ricevuto: Lamp ");
+        digitalWrite(LED_DEBUG_GREEN, HIGH);
+        delay(20);
+        digitalWrite(LED_DEBUG_GREEN, LOW);
+        if (action == "on"){
+            //write485("on");
+            VND70::channel_0(2, true);
+            VND70::channel_1(2, true);
+        } else if (action == "off"){
+            //write485("off");
+            VND70::channel_0(2, false);
+            VND70::channel_1(2, false);
+        } else if (action == "reset") {
+            write485(action);                                // Invio del comando di reset ai flash tramite 485
+        } else if (action == "standby") {
+            write485("\nflash " + action + "\n");            // Invio del comando di standby ai flash tramite 485
+        } else if (action == "idle") {
+            write485("\nflash " + action + "\n");            // Invio del comando di idle ai flash tramite 485
+        } else if (action == "torch") {
+            write485("\nflash " + action + "\n");            // Invio del comando di torch ai flash tramite 485
+        } else if (action == "flash") {
+            write485("\nflash " + action + "\n");            // Invio del comando di flash ai flash tramite 485
+        }
+    } else if (component == "lamp_power") {
+        //write485("Comando ricevuto: Lamp_power ");
+        digitalWrite(LED_DEBUG_GREEN, HIGH);
+        delay(20);
+        digitalWrite(LED_DEBUG_GREEN, LOW);
+        int power = action.toInt();
+        if (power >= 0 && power <= MAX_POWER_FLASH) {
+            write485("power_flash " + action  + "\n\r");
+        }
+
+    } else if (component == "lamp_torch") {
+        //write485("Comando ricevuto: Lamp_power ");
+        digitalWrite(LED_DEBUG_GREEN, HIGH);
+        delay(20);
+        digitalWrite(LED_DEBUG_GREEN, LOW);
+        int power = action.toInt();
+        if (power >= 0 && power <= 3) {
+            write485("torch " + action  + "\n\r");
+        }
+
+    }  else if (component == "light"){
+        //write485("Comando ricevuto: Light ");
+        digitalWrite(LED_DEBUG_GREEN, HIGH);
+        delay(20);
+        digitalWrite(LED_DEBUG_GREEN, LOW);
+        int pwm_light = action.toInt();
+        if (pwm_light >= 0 && pwm_light <= 255){        
+            if (pwm_light != 0){
+                // write485("on");
+                VND70::channel_0(1, true);          // Accendo il canale IPcam e Lights
+                analogWrite(PWM_LIGHT, pwm_light);
+            } else {
+                //write485("off");
+                analogWrite(PWM_LIGHT, 0);
+            }
+        } else {
+            write485("PWM light out of pwm range\n\r");
+        }
+    }
+}
+
+
+
 /*------------OTA UPDATE------------*/
 
 void notFound(AsyncWebServerRequest *request)
@@ -66,33 +192,18 @@ void server_initialize(){
         request->send(200, "text/html", MAIN_page);});
         //request->send(200, "text/plain", "HUB MPE");});
     
-    // Definizione dell'endpoint GET su /dati
     server.on("/sensor", HTTP_GET, [](AsyncWebServerRequest *request){
-        String jsonString;
-        DynamicJsonDocument jsonDoc(2048);                  // Creazione del json
-
-        jsonDoc["Current_Flash_1"] = VND70::readCurrent(2, FLASH_1_CHANNEL);
-        jsonDoc["Current_Flash_2"] = VND70::readCurrent(2, FLASH_2_CHANNEL);
-        jsonDoc["Voltage_24V"] = VND70::readVoltage(2);
-        jsonDoc["Chip_Temp_24V"] = VND70::readTemperature(2);
-        jsonDoc["Current_BD3D"] = VND70::readCurrent(1, BD3D_CHANNEL);
-        jsonDoc["Current_IPCam"] = VND70::readCurrent(1, IPCAM_CHANNEL);
-        jsonDoc["Voltage_12V"] = VND70::readVoltage(1);
-        jsonDoc["Chip_Temp_12V"] = VND70::readTemperature(1);
-        jsonDoc["12V_0_State"] = VND70::channel_0_state(1);
-        jsonDoc["12V_1_State"] = VND70::channel_1_state(1);
-        jsonDoc["24V_0_State"] = VND70::channel_0_state(2);
-        jsonDoc["24V_1_State"] = VND70::channel_1_state(2);
-
-        serializeJson(jsonDoc, jsonString);
         request->send(200, "application/json", jsonString);             // Invio della risposta
     });
 
     server.on("/lamp/torch", HTTP_GET, [](AsyncWebServerRequest *request){
         if (request->hasParam("power")) {
             String Power = request->getParam("power")->value();
-            cli.parse("set Lamp_torch " + Power);                       // Passo il comando per il cambio di stato e di potenza
             request->send(200, "text/plain", "Lamp power set to: " + Power);
+            flash_wrapper.power_value = "0";
+            flash_wrapper.flash_action_flag = false;
+            flash_wrapper.torch_value = Power;
+            flash_wrapper.torch_action_flag = true;
         } else {
             request->send(400, "text/plain", "Missing 'power' parameter");
         }
@@ -101,15 +212,18 @@ void server_initialize(){
     server.on("/lamp/power", HTTP_GET, [](AsyncWebServerRequest *request){
         if (request->hasParam("power")) {
             String Power = request->getParam("power")->value();
-            cli.parse("set Lamp_power " + Power);                       // Passo il comando per il cambio di stato e di potenza
             request->send(200, "text/plain", "Lamp power set to: " + Power);
+            flash_wrapper.power_value = Power;
+            flash_wrapper.flash_action_flag = true;
+            flash_wrapper.torch_value = "0";
+            flash_wrapper.torch_action_flag = false;
         } else {
             request->send(400, "text/plain", "Missing 'power' parameter");
         }
     });
 
     server.on("/lamp/reset", HTTP_GET, [](AsyncWebServerRequest *request){
-        write485("reset\n");                                                // Invio del comando di reset ai flash tramite 485
+        write485("reset\n");                                                    // Invio del comando di reset ai flash tramite 485
         if(Serial2.available()) {
             String response = Serial2.readStringUntil('\n');                    // Leggo la risposta dal seriale
             request->send(200, "text/plain", "Lamp reset error sent.\n Lamp response: " + response);
@@ -162,95 +276,7 @@ void setCallback(cmd* c) {
     Argument actionArg = cmd.getArgument("action");
     String actionValue = actionArg.getValue();
     actionValue.toLowerCase();
-    if (compValue == "ipcam"){
-        //write485("Comando ricevuto: IPcam ");
-        digitalWrite(LED_DEBUG_GREEN, HIGH);
-        delay(20);
-        digitalWrite(LED_DEBUG_GREEN, LOW);
-        if (actionValue == "on"){
-            //write485("on");
-            VND70::channel_0(1, true);
-        } else if (actionValue == "off"){
-            //write485("off");
-            VND70::channel_0(1, false);
-        }
-    } else if (compValue == "bd3d"){
-        //write485("Comando ricevuto: BlueDepth ");
-        digitalWrite(LED_DEBUG_GREEN, HIGH);
-        delay(20);
-        digitalWrite(LED_DEBUG_GREEN, LOW);
-        if (actionValue == "on"){
-            //write485("on");
-            VND70::channel_1(2, true);
-            VND70::channel_1(1, true);
-        } else if (actionValue == "off"){
-            //write485("off");
-            VND70::channel_0(2, false);
-            VND70::channel_1(1, false);
-        }
-    } else if (compValue == "lamp"){
-        //write485("Comando ricevuto: Lamp ");
-        digitalWrite(LED_DEBUG_GREEN, HIGH);
-        delay(20);
-        digitalWrite(LED_DEBUG_GREEN, LOW);
-        if (actionValue == "on"){
-            //write485("on");
-            //VND70::channel_0(2, true);
-            VND70::channel_1(2, true);
-        } else if (actionValue == "off"){
-            //write485("off");
-            //VND70::channel_0(2, false);
-            VND70::channel_1(2, false);
-        } else if (actionValue == "reset") {
-            write485(actionValue);                              // Invio del comando di reset ai flash tramite 485
-        } else if (actionValue == "standby") {
-            write485("\nflash " + actionValue + "\n");            // Invio del comando di standby ai flash tramite 485
-        } else if (actionValue == "idle") {
-            write485("\nflash " + actionValue + "\n");            // Invio del comando di idle ai flash tramite 485
-        } else if (actionValue == "torch") {
-            write485("\nflash " + actionValue + "\n");            // Invio del comando di torch ai flash tramite 485
-        } else if (actionValue == "flash") {
-            write485("\nflash " + actionValue + "\n");            // Invio del comando di flash ai flash tramite 485
-        }
-    } else if (compValue == "lamp_power") {
-        //write485("Comando ricevuto: Lamp_power ");
-        digitalWrite(LED_DEBUG_GREEN, HIGH);
-        delay(20);
-        digitalWrite(LED_DEBUG_GREEN, LOW);
-        int power = actionValue.toInt();
-        if (power >= 0 && power <= 15) {
-            write485("power_flash " + String(power)  + "\n\r");
-        }
-
-    } else if (compValue == "lamp_torch") {
-        //write485("Comando ricevuto: Lamp_power ");
-        digitalWrite(LED_DEBUG_GREEN, HIGH);
-        delay(20);
-        digitalWrite(LED_DEBUG_GREEN, LOW);
-        int power = actionValue.toInt();
-        if (power >= 0 && power <= 3) {
-            write485("torch " + String(power)  + "\n\r");
-        }
-
-    }  else if (compValue == "light"){
-        //write485("Comando ricevuto: Light ");
-        digitalWrite(LED_DEBUG_GREEN, HIGH);
-        delay(20);
-        digitalWrite(LED_DEBUG_GREEN, LOW);
-        int pwm_light = actionValue.toInt();
-        if (pwm_light >= 0 && pwm_light <= 255){        
-            if (pwm_light != 0){
-                // write485("on");
-                VND70::channel_0(1, true);          // Accendo il canale IPcam e Lights
-                analogWrite(PWM_LIGHT, pwm_light);
-            } else {
-                //write485("off");
-                analogWrite(PWM_LIGHT, 0);
-            }
-        } else {
-            write485("PWM light out of pwm range\n\r");
-        }
-    }
+    setCommand(compValue, actionValue); // Esegue il comando set
 }
 
 // Callback per la modalità standby
@@ -327,7 +353,7 @@ void setup() {
                         "Esempio: \n\r# set Lamp on\n\n\r"
                         "Esempio impostazione modalità illuminatore continuo: \n\r#set Lamp_torch (0 to 3)\n\n\r"
                         "Esempio impostazione luci ausiliarie: \n\r#set light (0 to 255)\n\n\r"
-                        "Esempio impostazione potenza degli illuminatori: \n\r#set Lamp_power (0 to 15)");
+                        "Esempio impostazione potenza degli illuminatori: \n\r#set Lamp_power (0 to 4)");
 
     standby = cli.addCmd("standby", standbyCallback);
     standby.setDescription("Porta allo stato standby tutto il sistema");
@@ -361,13 +387,29 @@ void loop() {
     ElegantOTA.loop();
     String input = loopTelnet();
 
+    jsonSerialize();
+
+    if (flash_wrapper.flash_action_flag) {
+        flash_wrapper.flash_action_flag = false;
+        setCommand("lamp_power", flash_wrapper.power_value); // Imposta lo stato dell'illuminatore
+    }
+    if (flash_wrapper.torch_action_flag) {
+        flash_wrapper.torch_action_flag = false;
+        setCommand("lamp_torch", flash_wrapper.torch_value); // Imposta lo stato dell'illuminatore
+    }
+
+
     if (input != "") {
-        //write485("# " + input + "\n\r");                    // genera eco su seriale e 485
+        //write485("# " + input + "\n\r");                  // genera eco su seriale e 485
         cli.parse(input);                                   // manda l'input alla CLI
     }
 
-    if (Serial2.available() > 0){
+    if (Serial2.available() > 3){
         String response = Serial2.readStringUntil('\n'); // Leggo la risposta dal 485
-        writeTelnet("#485: " + response);          // Invia la risposta al client telnet
+        if (response[0] != ' ')
+            writeTelnet("#485: " + response);          // Invia la risposta al client telnet
+    } else {
+        while (Serial2.available())
+            Serial2.read();
     }
 }

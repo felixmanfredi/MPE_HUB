@@ -46,6 +46,9 @@
 #define IPCAM_CHANNEL       0   // Canale utilizzato per l'IPCam
 #define BD3D_CHANNEL        1   // Canale utilizzato per la BlueDepth
 
+#define MAX_POWER_FLASH     4   // Massima potenza impostabile del flash
+#define MAX_POWER_TORCH     3   // Massima potenza impostabile in modalità torcia
+
 #define _ASYNC_WEBSERVER_LOGLEVEL_       2
 
 // Array per la dichiarazione degli output (tutti questi controlli sono attivi alti)
