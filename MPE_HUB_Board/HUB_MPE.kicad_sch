@@ -1671,6 +1671,174 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "easyeda2kicad:17-21SUYC_TR8"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "LED"
+				(at 0 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "17-21SUYC/TR8"
+				(at 0 -5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "easyeda2kicad:LED0805-R-RD"
+				(at 0 -7.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://lcsc.com/product-detail/Light-Emitting-Diodes-LED_Yellow-light-0805-Highlighted_C2296.html"
+				(at 0 -10.16 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "LCSC Part" "C2296"
+				(at 0 -12.7 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "17-21SUYC_TR8_0_1"
+				(polyline
+					(pts
+						(xy -3.81 3.3) (xy -2.79 2.79) (xy -3.3 2.29) (xy -3.81 3.3)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.79 4.32) (xy -1.78 3.81) (xy -2.29 3.3) (xy -2.79 4.32)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.03 1.52) (xy -3.81 3.3)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 2.03) (xy -1.27 -2.03)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.02 2.54) (xy -2.79 4.32)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -1.52) (xy -1.27 0) (xy 1.27 1.78) (xy 1.27 -1.52)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin unspecified line
+					(at -5.08 0 0)
+					(length 3.81)
+					(name "-"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at 5.08 0 180)
+					(length 3.81)
+					(name "+"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "easyeda2kicad:FC-2012HRK-620D"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -3270,16 +3438,6 @@
 	)
 	(wire
 		(pts
-			(xy 203.2 181.61) (xy 220.98 181.61)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "24e86240-e811-4caa-bfc5-56cf30f6058c")
-	)
-	(wire
-		(pts
 			(xy 330.2 55.88) (xy 350.52 55.88)
 		)
 		(stroke
@@ -3847,16 +4005,6 @@
 			(type default)
 		)
 		(uuid "9139fe16-6ba4-4d46-9566-dbd6527a2d9c")
-	)
-	(wire
-		(pts
-			(xy 203.2 209.55) (xy 220.98 209.55)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "930d9c39-cc74-4869-a18f-07f8f416dfe7")
 	)
 	(wire
 		(pts
@@ -5091,7 +5239,7 @@
 			(fill
 				(type none)
 			)
-			(uuid 520812e4-9081-4d5b-a015-fd410ea08a81)
+			(uuid 23b32112-8c55-400c-9f62-97b8f442073c)
 		)
 	)
 	(rule_area
@@ -5107,7 +5255,7 @@
 			(fill
 				(type none)
 			)
-			(uuid c8c18da1-5def-4ae9-a5eb-c964754aeb44)
+			(uuid 60172552-9d95-4c55-aefc-e95fe9a373b0)
 		)
 	)
 	(netclass_flag ""
@@ -5527,6 +5675,82 @@
 			(project "HUB_MPE"
 				(path "/6490f62d-7c0a-4455-8633-837f094f0a1c"
 					(reference "#PWR017")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "easyeda2kicad:17-21SUYC_TR8")
+		(at 96.52 63.5 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "1b8b6e26-3a27-4a57-911f-cd8daca127c9")
+		(property "Reference" "LED2"
+			(at 92.202 65.024 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "0805_YELLOW"
+			(at 97.79 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "easyeda2kicad:LED0805-R-RD"
+			(at 96.52 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://lcsc.com/product-detail/Light-Emitting-Diodes-LED_Yellow-light-0805-Highlighted_C2296.html"
+			(at 96.52 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 96.52 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part" "C2296"
+			(at 96.52 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "8bccb3d9-6e48-4c73-8344-2bc7b8920757")
+		)
+		(pin "2"
+			(uuid "c2d4696c-5187-401f-9ed4-1d43c3ce5d6d")
+		)
+		(instances
+			(project ""
+				(path "/6490f62d-7c0a-4455-8633-837f094f0a1c"
+					(reference "LED2")
 					(unit 1)
 				)
 			)
@@ -7713,93 +7937,6 @@
 		)
 	)
 	(symbol
-		(lib_id "easyeda2kicad:FC-2012HRK-620D")
-		(at 96.52 63.5 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "d4a58879-d975-487e-a961-54d43d838c0b")
-		(property "Reference" "LED2"
-			(at 95.25 64.77 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "0805_RED"
-			(at 101.854 59.944 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "easyeda2kicad:LED0805-R-RD"
-			(at 96.52 55.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://lcsc.com/product-detail/Light-Emitting-Diodes-LED_Red-LED-SMDLED-80-180mcd_C84256.html"
-			(at 96.52 53.34 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 96.52 63.5 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part" "C84256"
-			(at 96.52 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C84256"
-			(at 95.25 64.77 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "5b13bba8-21f8-4f0c-a839-99deb2a7ec9f")
-		)
-		(pin "1"
-			(uuid "282a9124-591c-4b3c-97dd-f1c19232d097")
-		)
-		(instances
-			(project "HUB_MPE"
-				(path "/6490f62d-7c0a-4455-8633-837f094f0a1c"
-					(reference "LED2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Connector_Generic:Conn_01x05")
 		(at 350.52 193.04 0)
 		(unit 1)
@@ -8537,16 +8674,6 @@
 				(justify left)
 			)
 		)
-		(pin "SE" input
-			(at 220.98 209.55 180)
-			(uuid "2e71b0ce-e47b-4788-8e8e-f1027fc04a54")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
 		(instances
 			(project "HUB_MPE"
 				(path "/6490f62d-7c0a-4455-8633-837f094f0a1c"
@@ -8934,16 +9061,6 @@
 		(pin "SEL_1" input
 			(at 220.98 179.07 180)
 			(uuid "b2bfa748-8124-418d-85f2-185bac1df945")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(pin "SE" input
-			(at 220.98 181.61 180)
-			(uuid "0d465e82-7381-4b79-a8aa-ec19e4ea2961")
 			(effects
 				(font
 					(size 1.27 1.27)

@@ -792,46 +792,6 @@
     [
       "6c690dc6-2924-45bb-9fe4-ad7635e5b003",
       "Ethernet_Module"
-    ],
-    [
-      "386a62b4-61d0-4f03-9780-56b2fcb1603a",
-      "MOSFET_CTRL"
-    ],
-    [
-      "ca2079b1-060f-4219-9a7e-d75eaeaaf329",
-      "MOSFET_CTRL1"
-    ],
-    [
-      "ca2079b1-060f-4219-9a7e-d75eaeaaf329",
-      "MOSFET_CTRL1"
-    ],
-    [
-      "f7066322-e500-40a9-9932-e3009dc8caae",
-      "MOSFET_CTRL2"
-    ],
-    [
-      "f7066322-e500-40a9-9932-e3009dc8caae",
-      "MOSFET_CTRL2"
-    ],
-    [
-      "bdc3dd53-4069-41bb-9db5-219d5a331fbb",
-      "MOSFET_CTRL3"
-    ],
-    [
-      "bdc3dd53-4069-41bb-9db5-219d5a331fbb",
-      "MOSFET_CTRL3"
-    ],
-    [
-      "3b3113c0-0ef0-4494-b7fc-26d3b7a06a5d",
-      "MOSFET_CTRL4"
-    ],
-    [
-      "3b3113c0-0ef0-4494-b7fc-26d3b7a06a5d",
-      "MOSFET_CTRL4"
-    ],
-    [
-      "386a62b4-61d0-4f03-9780-56b2fcb1603a",
-      "MOSFET_CTRL"
     ]
   ],
   "text_variables": {}
