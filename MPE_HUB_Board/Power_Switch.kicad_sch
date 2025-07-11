@@ -8,153 +8,6 @@
 		(date "2025-03-21")
 	)
 	(lib_symbols
-		(symbol "CC0603KRX7R9BB104_2"
-			(pin_names
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "C"
-				(at 0 5.08 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "CC0603KRX7R9BB104"
-				(at 0 -5.08 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" "easyeda2kicad:C0603"
-				(at 0 -7.62 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "https://lcsc.com/product-detail/Multilayer-Ceramic-Capacitors-MLCC-SMD-SMT_100nF-104-10-50V_C14663.html"
-				(at 0 -10.16 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "LCSC Part" "C14663"
-				(at 0 -12.7 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "CC0603KRX7R9BB104_2_0_1"
-				(polyline
-					(pts
-						(xy -0.51 0) (xy -2.54 0)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -0.51 -2.03) (xy -0.51 2.03)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.51 2.03) (xy 0.51 -2.03)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.54 0) (xy 0.51 0)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(pin unspecified line
-					(at -5.08 0 0)
-					(length 2.54)
-					(name "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin unspecified line
-					(at 5.08 0 180)
-					(length 2.54)
-					(name "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "Device:R"
 			(pin_numbers
 				(hide yes)
@@ -950,19 +803,6 @@
 		(uuid 10758b7b-5383-4398-abd0-995e9a1fc435)
 	)
 	(rectangle
-		(start 87.63 100.965)
-		(end 100.33 132.08)
-		(stroke
-			(width 0)
-			(type dot)
-			(color 0 132 0 1)
-		)
-		(fill
-			(type none)
-		)
-		(uuid 159dbcc6-6097-4cc2-8b6b-313b04178b8f)
-	)
-	(rectangle
 		(start 102.235 100.965)
 		(end 116.205 132.08)
 		(stroke
@@ -1099,27 +939,6 @@
 		)
 		(uuid "861a8ab3-5c41-4e02-99e7-b47de022a72b")
 	)
-	(text_box "EXTERNAL CAP"
-		(exclude_from_sim no)
-		(at 87.63 127 0)
-		(size 12.7 5.08)
-		(margins 0.9525 0.9525 0.9525 0.9525)
-		(stroke
-			(width 0)
-			(type solid)
-			(color 0 132 0 1)
-		)
-		(fill
-			(type none)
-		)
-		(effects
-			(font
-				(size 1.27 1.27)
-				(color 0 132 0 1)
-			)
-		)
-		(uuid "92a1995d-7274-48d5-8153-5dfafbab7e95")
-	)
 	(text_box "LED CHANNEL_1"
 		(exclude_from_sim no)
 		(at 229.235 144.145 0)
@@ -1177,12 +996,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "3d1f6b17-631b-4b39-9180-1bfc96540d9b")
-	)
-	(junction
-		(at 93.98 88.9)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "6e56b2c2-cd11-4f50-a21f-0b518c7d10c0")
 	)
 	(junction
 		(at 194.31 78.74)
@@ -1253,16 +1066,6 @@
 			(type default)
 		)
 		(uuid "11ff99f2-d3da-416e-afcd-5a2d17a9f34e")
-	)
-	(wire
-		(pts
-			(xy 93.98 115.57) (xy 93.98 120.65)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "13935de9-7e9f-495e-82b3-eaaa719d03ca")
 	)
 	(wire
 		(pts
@@ -1403,26 +1206,6 @@
 			(type default)
 		)
 		(uuid "686a67a7-ee70-4ade-ae7d-2a743b8abbef")
-	)
-	(wire
-		(pts
-			(xy 74.93 88.9) (xy 93.98 88.9)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "69d38643-4c45-4816-a58b-17b17d89f8f0")
-	)
-	(wire
-		(pts
-			(xy 93.98 88.9) (xy 93.98 105.41)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "6e7de71e-0969-4056-93d7-ef4f2e8f584f")
 	)
 	(wire
 		(pts
@@ -1586,7 +1369,7 @@
 	)
 	(wire
 		(pts
-			(xy 93.98 88.9) (xy 109.22 88.9)
+			(xy 100.33 88.9) (xy 109.22 88.9)
 		)
 		(stroke
 			(width 0)
@@ -1686,7 +1469,7 @@
 	)
 	(hierarchical_label "MultiSense"
 		(shape output)
-		(at 74.93 88.9 180)
+		(at 100.33 88.9 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1892,98 +1675,6 @@
 				)
 				(path "/6490f62d-7c0a-4455-8633-837f094f0a1c/36a1afe1-9d7e-4453-8bd5-557c8a4303ef"
 					(reference "#PWR051")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_name "CC0603KRX7R9BB104_2")
-		(lib_id "easyeda2kicad:CC0603KRX7R9BB104")
-		(at 93.98 110.49 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "057d2b6a-6712-47b7-bbe2-2b48058e98a0")
-		(property "Reference" "C38"
-			(at 95.504 105.156 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "100nf"
-			(at 91.186 103.632 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
-			(at 101.6 110.49 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://lcsc.com/product-detail/Multilayer-Ceramic-Capacitors-MLCC-SMD-SMT_100nF-104-10-50V_C14663.html"
-			(at 104.14 110.49 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 93.98 110.49 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part" "C14663"
-			(at 106.68 110.49 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C14663"
-			(at 95.885 107.95 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "184d20a9-eea7-4439-b632-5956d861238e")
-		)
-		(pin "2"
-			(uuid "71216d6d-ffc3-40c0-a76d-a49046f81cb6")
-		)
-		(instances
-			(project "HUB_MPE"
-				(path "/6490f62d-7c0a-4455-8633-837f094f0a1c/26b9dfe9-c957-43ca-ba2b-36e349e2ebb9"
-					(reference "C39")
-					(unit 1)
-				)
-				(path "/6490f62d-7c0a-4455-8633-837f094f0a1c/36a1afe1-9d7e-4453-8bd5-557c8a4303ef"
-					(reference "C38")
 					(unit 1)
 				)
 			)
@@ -2678,75 +2369,6 @@
 				)
 				(path "/6490f62d-7c0a-4455-8633-837f094f0a1c/36a1afe1-9d7e-4453-8bd5-557c8a4303ef"
 					(reference "#PWR053")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 93.98 120.65 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "bc3b4695-1c89-437b-ba54-688477b11b8c")
-		(property "Reference" "#PWR083"
-			(at 93.98 127 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 93.98 124.46 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 93.98 120.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 93.98 120.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 93.98 120.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "a2723c07-231c-45bf-acc9-a9f5641f4f8a")
-		)
-		(instances
-			(project "HUB_MPE"
-				(path "/6490f62d-7c0a-4455-8633-837f094f0a1c/26b9dfe9-c957-43ca-ba2b-36e349e2ebb9"
-					(reference "#PWR084")
-					(unit 1)
-				)
-				(path "/6490f62d-7c0a-4455-8633-837f094f0a1c/36a1afe1-9d7e-4453-8bd5-557c8a4303ef"
-					(reference "#PWR083")
 					(unit 1)
 				)
 			)
