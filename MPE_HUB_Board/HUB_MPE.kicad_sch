@@ -3125,6 +3125,10 @@
 		(uuid "03af1a49-8d00-4070-a56b-5e268ad0f7fd")
 	)
 	(no_connect
+		(at 245.11 132.08)
+		(uuid "242a7aea-eac7-4695-99dd-34b438770de6")
+	)
+	(no_connect
 		(at 360.68 241.3)
 		(uuid "29026b47-774f-475b-96ce-77956632dcfc")
 	)
@@ -3261,16 +3265,6 @@
 			(type default)
 		)
 		(uuid "15a8f706-ab46-4e9d-815b-c5547b6971af")
-	)
-	(wire
-		(pts
-			(xy 149.86 228.6) (xy 130.81 228.6)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "16a7aa34-4a71-4858-8b48-06950d47880b")
 	)
 	(wire
 		(pts
@@ -4752,16 +4746,6 @@
 		)
 		(uuid "1adb9e8b-4a76-4bf4-aecb-b74d654d4523")
 	)
-	(label "RESET_SWITCH"
-		(at 130.81 228.6 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "1ccd1b9f-f552-4089-bc5b-118715179bf7")
-	)
 	(label "485_LED2_+"
 		(at 130.81 217.17 0)
 		(effects
@@ -4921,16 +4905,6 @@
 			(justify right bottom)
 		)
 		(uuid "54d6552b-f083-42e9-ac4a-c5d7dac38183")
-	)
-	(label "RESET_SWITCH"
-		(at 245.11 132.08 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "56a4340a-c9b3-45e1-b9e5-b3b41d4540cf")
 	)
 	(label "+12V_MULTISENSE"
 		(at 130.81 173.99 0)
@@ -5325,22 +5299,6 @@
 	(rule_area
 		(polyline
 			(pts
-				(xy 186.055 97.79) (xy 187.325 97.79) (xy 187.325 124.46) (xy 186.055 124.46)
-			)
-			(stroke
-				(width 0)
-				(type dash)
-				(color 132 0 132 1)
-			)
-			(fill
-				(type none)
-			)
-			(uuid 5b823dc1-2ddb-4bc5-88fe-759ad91302a5)
-		)
-	)
-	(rule_area
-		(polyline
-			(pts
 				(xy 227.965 97.79) (xy 229.235 97.79) (xy 229.235 124.46) (xy 227.965 124.46)
 			)
 			(stroke
@@ -5351,7 +5309,23 @@
 			(fill
 				(type none)
 			)
-			(uuid a564a723-443a-4f56-812d-a58e97666184)
+			(uuid 538e7180-5ff9-487a-8b35-1993eac00e77)
+		)
+	)
+	(rule_area
+		(polyline
+			(pts
+				(xy 186.055 97.79) (xy 187.325 97.79) (xy 187.325 124.46) (xy 186.055 124.46)
+			)
+			(stroke
+				(width 0)
+				(type dash)
+				(color 132 0 132 1)
+			)
+			(fill
+				(type none)
+			)
+			(uuid 5996d07f-b4e7-46ca-970b-c3f94ad12f8e)
 		)
 	)
 	(netclass_flag ""
@@ -9684,16 +9658,6 @@
 		(pin "PWM_LIGHT" output
 			(at 149.86 231.14 180)
 			(uuid "517badee-5453-4899-8fa4-b0c53a34bf0c")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(pin "~{RESET_SWITCH}" output
-			(at 149.86 228.6 180)
-			(uuid "bb7903bf-64d5-4493-bf0b-a0efbfe797e1")
 			(effects
 				(font
 					(size 1.27 1.27)

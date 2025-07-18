@@ -11,6 +11,252 @@
 		(company "3DResearch")
 	)
 	(lib_symbols
+		(symbol "1N4148W_C81598_1"
+			(pin_names
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "D"
+				(at 0 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "1N4148W_C81598"
+				(at 0 -5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "jlcpcb_parts:SOD-123F_L2.7-W1.6-LS3.8-RD"
+				(at 0 -7.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://lcsc.com/product-detail/Switching-Diode_1N4148W_C81598.html"
+				(at 0 -10.16 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "LCSC Part" "C81598"
+				(at 0 -12.7 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "1N4148W_C81598_1_0_1"
+				(polyline
+					(pts
+						(xy -1.27 -1.52) (xy -1.27 1.52)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 1.52) (xy -1.27 0) (xy 1.27 -1.52) (xy 1.27 1.52)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin unspecified line
+					(at -5.08 0 0)
+					(length 3.81)
+					(name "K"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at 5.08 0 180)
+					(length 3.81)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "1N4148W_C81598_2"
+			(pin_names
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "D"
+				(at 0 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "1N4148W_C81598"
+				(at 0 -5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "jlcpcb_parts:SOD-123F_L2.7-W1.6-LS3.8-RD"
+				(at 0 -7.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://lcsc.com/product-detail/Switching-Diode_1N4148W_C81598.html"
+				(at 0 -10.16 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "LCSC Part" "C81598"
+				(at 0 -12.7 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "1N4148W_C81598_2_0_1"
+				(polyline
+					(pts
+						(xy -1.27 -1.52) (xy -1.27 1.52)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 1.52) (xy -1.27 0) (xy 1.27 -1.52) (xy 1.27 1.52)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin unspecified line
+					(at -5.08 0 0)
+					(length 3.81)
+					(name "K"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at 5.08 0 180)
+					(length 3.81)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "CC0603KRX7R9BB104_1"
 			(pin_names
 				(hide yes)
@@ -2008,129 +2254,6 @@
 						)
 					)
 					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "easyeda2kicad:1N4148WT4"
-			(pin_names
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "D"
-				(at 0 5.08 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "1N4148W T4"
-				(at 0 -5.08 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" "easyeda2kicad:SOD-123_L2.8-W1.8-LS3.7-RD"
-				(at 0 -7.62 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "https://lcsc.com/product-detail/Switching-Diode_1N4148W-T4_C2099.html"
-				(at 0 -10.16 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "LCSC Part" "C2099"
-				(at 0 -12.7 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "1N4148WT4_0_1"
-				(polyline
-					(pts
-						(xy -1.27 -1.52) (xy -1.27 1.52)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.27 1.52) (xy -1.27 0) (xy 1.27 -1.52) (xy 1.27 1.52)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
-				(pin unspecified line
-					(at -5.08 0 0)
-					(length 3.81)
-					(name "K"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin unspecified line
-					(at 5.08 0 180)
-					(length 3.81)
-					(name "A"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -4251,232 +4374,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "easyeda2kicad:MAX3485ESA"
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "U"
-				(at 0 8.89 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "MAX3485ESA"
-				(at 0 -8.89 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" "easyeda2kicad:SOP-8_L5.0-W4.0-P1.27-LS6.0-BL"
-				(at 0 -11.43 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "https://lcsc.com/product-detail/RS-485-RS-422-ICs_UMW-Youtai-Semiconductor-Co-Ltd-MAX3485ESA_C668204.html"
-				(at 0 -13.97 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "LCSC Part" "C668204"
-				(at 0 -16.51 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "MAX3485ESA_0_1"
-				(rectangle
-					(start -6.35 6.35)
-					(end 6.35 -6.35)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
-				(circle
-					(center -5.08 5.08)
-					(radius 0.38)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(pin unspecified line
-					(at -8.89 3.81 0)
-					(length 2.54)
-					(name "RO"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin unspecified line
-					(at -8.89 1.27 0)
-					(length 2.54)
-					(name "#RE"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin unspecified line
-					(at -8.89 -1.27 0)
-					(length 2.54)
-					(name "DE"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin unspecified line
-					(at -8.89 -3.81 0)
-					(length 2.54)
-					(name "DI"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin unspecified line
-					(at 8.89 3.81 180)
-					(length 2.54)
-					(name "VCC"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "8"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin unspecified line
-					(at 8.89 1.27 180)
-					(length 2.54)
-					(name "B"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "7"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin unspecified line
-					(at 8.89 -1.27 180)
-					(length 2.54)
-					(name "A"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "6"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin unspecified line
-					(at 8.89 -3.81 180)
-					(length 2.54)
-					(name "GND"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "5"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "easyeda2kicad:MLT-8530"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -4683,6 +4580,221 @@
 						)
 					)
 					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "easyeda2kicad:SN65HVD72DR"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "U"
+				(at 0 8.89 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "SN65HVD72DR"
+				(at 0 -8.89 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "easyeda2kicad:SOIC-8_L5.0-W4.0-P1.27-LS6.0-BL"
+				(at 0 -11.43 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://lcsc.com/product-detail/RS-485-RS-422_TI_SN65HVD72DR_SN65HVD72DR_C48125.html"
+				(at 0 -13.97 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "LCSC Part" "C48125"
+				(at 0 -16.51 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "SN65HVD72DR_0_1"
+				(rectangle
+					(start -5.08 6.35)
+					(end 5.08 -6.35)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin unspecified line
+					(at -10.16 3.81 0)
+					(length 5.08)
+					(name "RO"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at -10.16 1.27 0)
+					(length 5.08)
+					(name "~{RE}"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at -10.16 -1.27 0)
+					(length 5.08)
+					(name "DE"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at -10.16 -3.81 0)
+					(length 5.08)
+					(name "DI"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at 10.16 3.81 180)
+					(length 5.08)
+					(name "VCC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "8"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at 10.16 1.27 180)
+					(length 5.08)
+					(name "B"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at 10.16 -1.27 180)
+					(length 5.08)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at 10.16 -3.81 180)
+					(length 5.08)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -5667,6 +5779,618 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "jlcpcb_parts:1N4148W_C81598"
+			(pin_names
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "D"
+				(at 0 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "1N4148W_C81598"
+				(at 0 -5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "jlcpcb_parts:SOD-123F_L2.7-W1.6-LS3.8-RD"
+				(at 0 -7.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://lcsc.com/product-detail/Switching-Diode_1N4148W_C81598.html"
+				(at 0 -10.16 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "LCSC Part" "C81598"
+				(at 0 -12.7 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "1N4148W_C81598_0_1"
+				(polyline
+					(pts
+						(xy -1.27 -1.52) (xy -1.27 1.52)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 1.52) (xy -1.27 0) (xy 1.27 -1.52) (xy 1.27 1.52)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin unspecified line
+					(at -5.08 0 0)
+					(length 3.81)
+					(name "K"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at 5.08 0 180)
+					(length 3.81)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "jlcpcb_parts:CC0603KRX7R9BB104"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "C"
+				(at 0 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "CC0603KRX7R9BB104"
+				(at 0 -5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "jlcpcb_parts:C0603"
+				(at 0 -7.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://lcsc.com/product-detail/Multilayer-Ceramic-Capacitors-MLCC-SMD-SMT_100nF-104-10-50V_C14663.html"
+				(at 0 -10.16 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "LCSC Part" "C14663"
+				(at 0 -12.7 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "CC0603KRX7R9BB104_0_1"
+				(polyline
+					(pts
+						(xy -0.51 0) (xy -2.54 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -0.51 -2.03) (xy -0.51 2.03)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.51 2.03) (xy 0.51 -2.03)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 0) (xy 0.51 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin unspecified line
+					(at -5.08 0 0)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at 5.08 0 180)
+					(length 2.54)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "jlcpcb_parts:CD4093BM"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "U"
+				(at 0 12.7 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "CD4093BM"
+				(at 0 -12.7 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "jlcpcb_parts:SOIC-14_L8.7-W3.9-P1.27-LS6.0-BL"
+				(at 0 -15.24 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://lcsc.com/product-detail/4000-Series_TI_CD4093BM_CD4093BM_C160714.html"
+				(at 0 -17.78 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "LCSC Part" "C160714"
+				(at 0 -20.32 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "CD4093BM_0_1"
+				(rectangle
+					(start -7.62 10.67)
+					(end 7.62 -10.67)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(circle
+					(center -6.35 9.4)
+					(radius 0.38)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center -6.35 9.4)
+					(radius 0.38)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin unspecified line
+					(at -10.16 7.62 0)
+					(length 2.54)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at -10.16 5.08 0)
+					(length 2.54)
+					(name "B"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at -10.16 2.54 0)
+					(length 2.54)
+					(name "J"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at -10.16 0 0)
+					(length 2.54)
+					(name "K"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at -10.16 -2.54 0)
+					(length 2.54)
+					(name "C"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at -10.16 -5.08 0)
+					(length 2.54)
+					(name "D"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at -10.16 -7.62 0)
+					(length 2.54)
+					(name "VSS"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at 10.16 7.62 180)
+					(length 2.54)
+					(name "VDD"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "14"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at 10.16 5.08 180)
+					(length 2.54)
+					(name "H"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "13"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at 10.16 2.54 180)
+					(length 2.54)
+					(name "G"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "12"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at 10.16 0 180)
+					(length 2.54)
+					(name "M"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "11"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at 10.16 -2.54 180)
+					(length 2.54)
+					(name "L"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "10"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at 10.16 -5.08 180)
+					(length 2.54)
+					(name "F"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "9"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at 10.16 -7.62 180)
+					(length 2.54)
+					(name "E"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "8"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "power:GND"
 			(power)
 			(pin_numbers
@@ -5768,6 +6492,30 @@
 			)
 			(embedded_fonts no)
 		)
+	)
+	(rectangle
+		(start 124.46 15.875)
+		(end 296.545 78.74)
+		(stroke
+			(width 0.2)
+			(type dash)
+		)
+		(fill
+			(type none)
+		)
+		(uuid 669b67c5-4eba-4dc7-b205-1b48da6dfce9)
+	)
+	(rectangle
+		(start 132.715 31.75)
+		(end 156.21 70.485)
+		(stroke
+			(width 0)
+			(type dot)
+		)
+		(fill
+			(type none)
+		)
+		(uuid 6d044cf2-c808-4ea0-bb09-93436ff720b8)
 	)
 	(rectangle
 		(start 300.355 15.875)
@@ -5889,6 +6637,25 @@
 			)
 		)
 		(uuid "fb52a349-6993-4c2c-ab80-33dc8d6d0c00")
+	)
+	(text_box "I due terminali per il monitoraggio d'acqua saranno due piste intorno la scheda."
+		(exclude_from_sim no)
+		(at 132.715 59.69 0)
+		(size 23.495 10.795)
+		(margins 0.9525 0.9525 0.9525 0.9525)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(fill
+			(type none)
+		)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "318290e8-fdb4-46bc-b5e6-c22f917fc780")
 	)
 	(text_box "INTERFACCIA RS485 ROV"
 		(exclude_from_sim no)
@@ -6127,6 +6894,12 @@
 		(uuid "2edd3102-d89b-44b6-b9e9-f260196c0dee")
 	)
 	(junction
+		(at 212.09 67.31)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "32f77d11-7b47-4e72-b9dc-75422a364a20")
+	)
+	(junction
 		(at 41.91 106.68)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -6211,6 +6984,12 @@
 		(uuid "6fc10abb-6ac7-46c6-96d0-c4e2580f41b9")
 	)
 	(junction
+		(at 212.09 52.07)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "733302d5-0bbe-40fb-932b-61965dc0db6f")
+	)
+	(junction
 		(at 91.44 162.56)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -6235,10 +7014,22 @@
 		(uuid "7c22c3fd-95d7-4260-b576-8cfc50ceced9")
 	)
 	(junction
+		(at 198.12 41.91)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "7d42576b-2073-427a-9456-2e50bea063b0")
+	)
+	(junction
 		(at 91.44 250.19)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "7ea1556c-c98e-47ff-9394-7a907bbec6f8")
+	)
+	(junction
+		(at 205.74 67.31)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "82557a9b-a620-45b5-9e3a-4be86a35456e")
 	)
 	(junction
 		(at 45.72 36.83)
@@ -6271,6 +7062,12 @@
 		(uuid "8dbe3829-49b1-4030-a374-825445b022e4")
 	)
 	(junction
+		(at 222.25 67.31)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "8e132e6d-3910-4776-9722-14b7ca2bddcd")
+	)
+	(junction
 		(at 45.72 54.61)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -6281,6 +7078,18 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "8f4ef550-440c-459b-98fb-2ff9a229bf14")
+	)
+	(junction
+		(at 205.74 52.07)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "9570de51-90a3-4e6c-9c40-e92d92fa98db")
+	)
+	(junction
+		(at 220.98 41.91)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "9a36d43c-d87c-4c7e-b94a-b794f0ace0cc")
 	)
 	(junction
 		(at 91.44 83.82)
@@ -6301,6 +7110,12 @@
 		(uuid "9d9eec48-79a6-419c-8f7b-9e6d8b4c99a1")
 	)
 	(junction
+		(at 222.25 52.07)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "a0783d45-fc09-40f4-88c2-e26a23f5ea59")
+	)
+	(junction
 		(at 363.22 231.14)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -6311,6 +7126,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "b32de0bd-a0f4-4241-a1c6-1e22b1c708c5")
+	)
+	(junction
+		(at 184.15 52.07)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b4e5c6c5-3a35-4be1-ab19-3a8436dfc525")
 	)
 	(junction
 		(at 33.02 171.45)
@@ -6329,6 +7150,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "c9ed9a6a-60e5-4d1e-989b-a8170b4d9d2c")
+	)
+	(junction
+		(at 210.82 41.91)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "ca4ab052-9253-4747-8113-21deb98b71b0")
 	)
 	(junction
 		(at 48.26 240.03)
@@ -6409,6 +7236,12 @@
 		(uuid "e9aae33c-3278-4841-aecb-f1aa954b1181")
 	)
 	(junction
+		(at 248.92 57.15)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "ea0c4781-8f1a-4350-8087-c2b51aac3da8")
+	)
+	(junction
 		(at 226.06 138.43)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -6423,8 +7256,16 @@
 		(uuid "2b1dfab5-1cfc-4cb2-8011-ae2f6a7ef630")
 	)
 	(no_connect
+		(at 245.11 49.53)
+		(uuid "2bf1612d-a2dc-4edd-aa03-0f24ccdf46cd")
+	)
+	(no_connect
 		(at 223.52 163.83)
 		(uuid "477898fa-9860-4011-85a9-bb5a1a9c9ae6")
+	)
+	(no_connect
+		(at 134.62 41.91)
+		(uuid "4bbfa78a-5dbd-4c84-8bf1-ed9b9ebe20d6")
 	)
 	(no_connect
 		(at 377.19 53.34)
@@ -6449,6 +7290,18 @@
 	(no_connect
 		(at 223.52 173.99)
 		(uuid "b65174bf-2651-4bb7-ae0c-f9f08fdcb742")
+	)
+	(no_connect
+		(at 134.62 52.07)
+		(uuid "eaf5ccce-025d-456a-92ff-17c387e06730")
+	)
+	(no_connect
+		(at 245.11 46.99)
+		(uuid "ec0851a2-a6d2-41bf-b3de-7eb70567eac4")
+	)
+	(no_connect
+		(at 245.11 44.45)
+		(uuid "ed5326a0-3be8-4b70-8032-547b279744e1")
 	)
 	(no_connect
 		(at 223.52 171.45)
@@ -6507,6 +7360,16 @@
 			(type default)
 		)
 		(uuid "050d3f86-5ea7-4364-b8bf-64fcf254f36e")
+	)
+	(wire
+		(pts
+			(xy 184.15 67.31) (xy 205.74 67.31)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "05477073-a9d0-4e10-a969-00c8cdd6a631")
 	)
 	(wire
 		(pts
@@ -6580,6 +7443,16 @@
 	)
 	(wire
 		(pts
+			(xy 222.25 54.61) (xy 222.25 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0c04f4df-8bfb-4392-862b-abdb906c49cd")
+	)
+	(wire
+		(pts
 			(xy 91.44 250.19) (xy 104.14 250.19)
 		)
 		(stroke
@@ -6637,6 +7510,16 @@
 			(type default)
 		)
 		(uuid "11793646-6601-4128-a995-39fbf4ba43ca")
+	)
+	(wire
+		(pts
+			(xy 205.74 52.07) (xy 205.74 53.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "11ae0f30-01f8-443a-bd3c-b5da5808b530")
 	)
 	(wire
 		(pts
@@ -6780,6 +7663,16 @@
 	)
 	(wire
 		(pts
+			(xy 222.25 67.31) (xy 212.09 67.31)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "19aa22a8-fe2f-4464-93ad-ce06d2c08d04")
+	)
+	(wire
+		(pts
 			(xy 91.44 83.82) (xy 91.44 85.09)
 		)
 		(stroke
@@ -6827,6 +7720,16 @@
 			(type default)
 		)
 		(uuid "1be06a66-3ad3-4864-b749-9dce1ecdc483")
+	)
+	(wire
+		(pts
+			(xy 245.11 54.61) (xy 248.92 54.61)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1beea2e4-4ad4-4284-a373-2a49c1d90c3e")
 	)
 	(wire
 		(pts
@@ -6930,6 +7833,16 @@
 	)
 	(wire
 		(pts
+			(xy 248.92 63.5) (xy 248.92 57.15)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "21ee7bd4-443c-44d3-8a9c-82d58f3e162c")
+	)
+	(wire
+		(pts
 			(xy 240.03 186.69) (xy 223.52 186.69)
 		)
 		(stroke
@@ -7020,6 +7933,16 @@
 	)
 	(wire
 		(pts
+			(xy 224.79 46.99) (xy 198.12 46.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "272c2569-f0bf-4e2e-8ec0-adc40db043be")
+	)
+	(wire
+		(pts
 			(xy 68.58 83.82) (xy 71.12 83.82)
 		)
 		(stroke
@@ -7040,6 +7963,16 @@
 	)
 	(wire
 		(pts
+			(xy 69.85 167.64) (xy 71.12 167.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "29bd02f4-909f-4896-af27-3cd077daec1f")
+	)
+	(wire
+		(pts
 			(xy 226.06 128.27) (xy 226.06 130.81)
 		)
 		(stroke
@@ -7057,6 +7990,16 @@
 			(type default)
 		)
 		(uuid "2a6ed64a-222c-451a-8579-f0ac92920b14")
+	)
+	(wire
+		(pts
+			(xy 219.71 49.53) (xy 219.71 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2b469877-bf70-4da8-9a1f-1cd26dea335f")
 	)
 	(wire
 		(pts
@@ -7200,6 +8143,16 @@
 	)
 	(wire
 		(pts
+			(xy 210.82 41.91) (xy 220.98 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "37fdc964-5310-4195-b9e5-c852d2ebea91")
+	)
+	(wire
+		(pts
 			(xy 381 60.96) (xy 381 59.69)
 		)
 		(stroke
@@ -7250,6 +8203,26 @@
 	)
 	(wire
 		(pts
+			(xy 198.12 46.99) (xy 198.12 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3b4699f1-5619-4ee8-bc06-3baf53b68642")
+	)
+	(wire
+		(pts
+			(xy 245.11 52.07) (xy 261.62 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3b50d820-b93b-4138-8bd2-900a115d482c")
+	)
+	(wire
+		(pts
 			(xy 226.06 146.05) (xy 226.06 148.59)
 		)
 		(stroke
@@ -7257,6 +8230,16 @@
 			(type default)
 		)
 		(uuid "3b9511f1-5edd-4b6d-b816-0da76a4b73d1")
+	)
+	(wire
+		(pts
+			(xy 224.79 57.15) (xy 222.25 57.15)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3bc0bb45-daad-4dea-9379-9f6eba6b313d")
 	)
 	(wire
 		(pts
@@ -7287,6 +8270,16 @@
 			(type default)
 		)
 		(uuid "3c75c610-4d36-4c7e-8b95-450b49a15f47")
+	)
+	(wire
+		(pts
+			(xy 219.71 63.5) (xy 248.92 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3cb2cfcc-f727-4423-b05d-a5ee28b0eef0")
 	)
 	(wire
 		(pts
@@ -7347,6 +8340,16 @@
 			(type default)
 		)
 		(uuid "4499153f-04dc-4dfb-8728-0057de3952cf")
+	)
+	(wire
+		(pts
+			(xy 220.98 44.45) (xy 220.98 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "457dd9ef-b455-44aa-8cee-0305529f6a01")
 	)
 	(wire
 		(pts
@@ -7520,13 +8523,13 @@
 	)
 	(wire
 		(pts
-			(xy 67.31 99.06) (xy 71.12 99.06)
+			(xy 245.11 41.91) (xy 251.46 41.91)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "535208e4-4486-4b00-a4a4-60835da138fc")
+		(uuid "5369e216-1601-4e6e-987a-bbb10f6f4f3f")
 	)
 	(wire
 		(pts
@@ -7547,6 +8550,16 @@
 			(type default)
 		)
 		(uuid "551348f6-9e6c-4b02-bff2-a27665134947")
+	)
+	(wire
+		(pts
+			(xy 69.85 238.76) (xy 76.2 238.76)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "56fa7f9e-2b7f-4898-9200-839406731a63")
 	)
 	(wire
 		(pts
@@ -7610,6 +8623,16 @@
 	)
 	(wire
 		(pts
+			(xy 224.79 54.61) (xy 222.25 54.61)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5c3e5386-8178-4560-bc39-f531a0224d6c")
+	)
+	(wire
+		(pts
 			(xy 76.2 93.98) (xy 76.2 101.6)
 		)
 		(stroke
@@ -7617,6 +8640,16 @@
 			(type default)
 		)
 		(uuid "5d1b5289-7d06-49be-b535-7b1311a4a53b")
+	)
+	(wire
+		(pts
+			(xy 198.12 41.91) (xy 195.58 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5dfb6477-70e8-49f2-9232-f7c407b19705")
 	)
 	(wire
 		(pts
@@ -7637,6 +8670,16 @@
 			(type default)
 		)
 		(uuid "5f750e47-173f-4201-b92b-defd45765866")
+	)
+	(wire
+		(pts
+			(xy 184.15 52.07) (xy 184.15 54.61)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5f91f8a2-7c8a-4438-876c-2e9ddaac547c")
 	)
 	(wire
 		(pts
@@ -7687,6 +8730,26 @@
 			(type default)
 		)
 		(uuid "61e2b1f4-f39c-4daa-b2ed-94b68204a7a1")
+	)
+	(wire
+		(pts
+			(xy 134.62 41.91) (xy 185.42 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "62237d40-3169-49a2-b275-290c7fe2a2d8")
+	)
+	(wire
+		(pts
+			(xy 69.85 99.06) (xy 71.12 99.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6237e0ca-2616-4266-b960-47ffc716d0e8")
 	)
 	(wire
 		(pts
@@ -7770,16 +8833,6 @@
 	)
 	(wire
 		(pts
-			(xy 67.31 170.18) (xy 76.2 170.18)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "666ddd62-32b6-4678-b961-007f890e7c6c")
-	)
-	(wire
-		(pts
 			(xy 71.12 152.4) (xy 71.12 167.64)
 		)
 		(stroke
@@ -7800,6 +8853,16 @@
 	)
 	(wire
 		(pts
+			(xy 212.09 52.07) (xy 222.25 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "67b19375-f771-4fc1-ace4-7cd8b664daff")
+	)
+	(wire
+		(pts
 			(xy 24.13 167.64) (xy 24.13 176.53)
 		)
 		(stroke
@@ -7807,6 +8870,16 @@
 			(type default)
 		)
 		(uuid "69605b3d-786a-4558-b785-9f6403f3125f")
+	)
+	(wire
+		(pts
+			(xy 212.09 67.31) (xy 205.74 67.31)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "69c1dd24-4b30-4280-8f5b-189afc125600")
 	)
 	(wire
 		(pts
@@ -7830,6 +8903,16 @@
 	)
 	(wire
 		(pts
+			(xy 205.74 52.07) (xy 212.09 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6b0c86c6-a1e8-4a53-8687-7c4c0a1fb786")
+	)
+	(wire
+		(pts
 			(xy 368.3 186.69) (xy 372.11 186.69)
 		)
 		(stroke
@@ -7837,6 +8920,36 @@
 			(type default)
 		)
 		(uuid "6b76c57d-36f1-40ec-9372-5b29f907e95d")
+	)
+	(wire
+		(pts
+			(xy 69.85 236.22) (xy 71.12 236.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6bca2a4b-2041-489f-8a6f-ee9c866fbb5e")
+	)
+	(wire
+		(pts
+			(xy 208.28 41.91) (xy 210.82 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6bf19ff4-4ab9-4e55-9ef9-b4b7f10cb3ed")
+	)
+	(wire
+		(pts
+			(xy 245.11 57.15) (xy 248.92 57.15)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6c2379df-7613-41dc-b29f-e2f0e8afb3b9")
 	)
 	(wire
 		(pts
@@ -7867,6 +8980,16 @@
 			(type default)
 		)
 		(uuid "713c236c-4a22-43ed-b54e-c9f6134bf27c")
+	)
+	(wire
+		(pts
+			(xy 212.09 54.61) (xy 212.09 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "728058c1-df5f-473a-9468-1a911da004ed")
 	)
 	(wire
 		(pts
@@ -7907,6 +9030,26 @@
 			(type default)
 		)
 		(uuid "743f05bc-7f06-4fde-a1ba-f1c30e0802a8")
+	)
+	(wire
+		(pts
+			(xy 205.74 63.5) (xy 205.74 67.31)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "74e84d83-9af5-4488-85b1-7c21a6f085c3")
+	)
+	(wire
+		(pts
+			(xy 210.82 41.91) (xy 210.82 40.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "75281159-b39b-4b8d-92ea-e169c4bb7405")
 	)
 	(wire
 		(pts
@@ -7960,7 +9103,7 @@
 	)
 	(wire
 		(pts
-			(xy 76.2 241.3) (xy 67.31 241.3)
+			(xy 76.2 241.3) (xy 69.85 241.3)
 		)
 		(stroke
 			(width 0)
@@ -8100,7 +9243,7 @@
 	)
 	(wire
 		(pts
-			(xy 71.12 175.26) (xy 67.31 175.26)
+			(xy 71.12 175.26) (xy 69.85 175.26)
 		)
 		(stroke
 			(width 0)
@@ -8237,16 +9380,6 @@
 			(type default)
 		)
 		(uuid "8976a20a-e684-47e6-859a-c4a998d89025")
-	)
-	(wire
-		(pts
-			(xy 67.31 101.6) (xy 76.2 101.6)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "89aab9eb-c851-42bf-a6c3-d2b559a73f6b")
 	)
 	(wire
 		(pts
@@ -8430,6 +9563,16 @@
 	)
 	(wire
 		(pts
+			(xy 210.82 27.94) (xy 210.82 30.48)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9726f968-3b0f-4d25-8af0-602359d7a5db")
+	)
+	(wire
+		(pts
 			(xy 240.03 181.61) (xy 223.52 181.61)
 		)
 		(stroke
@@ -8440,6 +9583,16 @@
 	)
 	(wire
 		(pts
+			(xy 248.92 57.15) (xy 248.92 54.61)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "97f4117d-cbfe-4476-a1c2-e5d0ec02a0b7")
+	)
+	(wire
+		(pts
 			(xy 350.52 228.6) (xy 340.36 228.6)
 		)
 		(stroke
@@ -8447,6 +9600,16 @@
 			(type default)
 		)
 		(uuid "983e41fa-173f-48d3-9a28-c4924e6180c5")
+	)
+	(wire
+		(pts
+			(xy 184.15 64.77) (xy 184.15 67.31)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "984f5b08-7ab8-42f0-9c5f-d704ab6b6941")
 	)
 	(wire
 		(pts
@@ -8540,6 +9703,16 @@
 	)
 	(wire
 		(pts
+			(xy 222.25 52.07) (xy 224.79 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9e07bf81-ac4f-4cf9-85b4-a18f03762f87")
+	)
+	(wire
+		(pts
 			(xy 91.44 172.72) (xy 91.44 171.45)
 		)
 		(stroke
@@ -8560,7 +9733,7 @@
 	)
 	(wire
 		(pts
-			(xy 71.12 243.84) (xy 67.31 243.84)
+			(xy 71.12 243.84) (xy 69.85 243.84)
 		)
 		(stroke
 			(width 0)
@@ -8610,6 +9783,16 @@
 	)
 	(wire
 		(pts
+			(xy 184.15 52.07) (xy 186.69 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a09385d7-4382-46f9-adf4-6305b4fbaa3f")
+	)
+	(wire
+		(pts
 			(xy 240.03 179.07) (xy 223.52 179.07)
 		)
 		(stroke
@@ -8630,6 +9813,16 @@
 	)
 	(wire
 		(pts
+			(xy 223.52 189.23) (xy 240.03 189.23)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a1bfe580-0078-4b98-bfcb-d22ec4b4380e")
+	)
+	(wire
+		(pts
 			(xy 236.22 279.4) (xy 238.76 279.4)
 		)
 		(stroke
@@ -8647,6 +9840,16 @@
 			(type default)
 		)
 		(uuid "a2e7d783-cf35-4194-84fc-c8ac563ecc02")
+	)
+	(wire
+		(pts
+			(xy 134.62 52.07) (xy 171.45 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a30ba32d-63a5-440a-afa2-bc675b032ccd")
 	)
 	(wire
 		(pts
@@ -8720,6 +9923,26 @@
 	)
 	(wire
 		(pts
+			(xy 69.85 101.6) (xy 76.2 101.6)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a5fd751f-71ec-4b6b-965e-1c9ba4e0715e")
+	)
+	(wire
+		(pts
+			(xy 224.79 44.45) (xy 220.98 44.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a70775d6-d275-482a-a0eb-6cbb12b49e14")
+	)
+	(wire
+		(pts
 			(xy 24.13 167.64) (xy 49.53 167.64)
 		)
 		(stroke
@@ -8727,6 +9950,16 @@
 			(type default)
 		)
 		(uuid "a8275a42-4bbe-4b0d-82e2-cecd83d521de")
+	)
+	(wire
+		(pts
+			(xy 69.85 170.18) (xy 76.2 170.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a86bda50-4f4d-460e-9d8b-f80293ba8bbf")
 	)
 	(wire
 		(pts
@@ -8760,13 +9993,13 @@
 	)
 	(wire
 		(pts
-			(xy 67.31 238.76) (xy 76.2 238.76)
+			(xy 196.85 52.07) (xy 205.74 52.07)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "ab727eb3-5adb-4e9b-a34b-22b9ca4292e7")
+		(uuid "ac25d3d2-984a-43d4-a090-6dbacd420104")
 	)
 	(wire
 		(pts
@@ -8787,6 +10020,16 @@
 			(type default)
 		)
 		(uuid "ad11ada8-158d-4ab4-97f9-6f1ba1aedf4f")
+	)
+	(wire
+		(pts
+			(xy 220.98 41.91) (xy 224.79 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "adc456dd-c472-4109-baf4-573aa0945c9f")
 	)
 	(wire
 		(pts
@@ -8817,6 +10060,16 @@
 			(type default)
 		)
 		(uuid "af78f5b4-b2f7-487c-b6c8-5d2c374745ef")
+	)
+	(wire
+		(pts
+			(xy 200.66 41.91) (xy 198.12 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b2084071-e03d-45cb-a8a0-ce9bbcde7a35")
 	)
 	(wire
 		(pts
@@ -8920,7 +10173,7 @@
 	)
 	(wire
 		(pts
-			(xy 71.12 106.68) (xy 67.31 106.68)
+			(xy 71.12 106.68) (xy 69.85 106.68)
 		)
 		(stroke
 			(width 0)
@@ -8980,26 +10233,6 @@
 	)
 	(wire
 		(pts
-			(xy 223.52 189.23) (xy 240.03 189.23)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "be427ee7-8f99-4fd8-9b07-04d054dd02a6")
-	)
-	(wire
-		(pts
-			(xy 67.31 236.22) (xy 71.12 236.22)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "be564da9-85e0-4344-94f8-2fe7bac6f69f")
-	)
-	(wire
-		(pts
 			(xy 48.26 170.18) (xy 48.26 171.45)
 		)
 		(stroke
@@ -9027,6 +10260,16 @@
 			(type default)
 		)
 		(uuid "c03897ec-bf5c-4f09-808c-92d3b18d61b0")
+	)
+	(wire
+		(pts
+			(xy 223.52 67.31) (xy 222.25 67.31)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c1a873e8-f825-4943-baeb-57b2c74cfc0d")
 	)
 	(wire
 		(pts
@@ -9070,6 +10313,16 @@
 	)
 	(wire
 		(pts
+			(xy 181.61 52.07) (xy 184.15 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c274086d-7c68-4553-9921-890d4dea74e9")
+	)
+	(wire
+		(pts
 			(xy 91.44 123.19) (xy 96.52 123.19)
 		)
 		(stroke
@@ -9110,6 +10363,16 @@
 	)
 	(wire
 		(pts
+			(xy 212.09 67.31) (xy 212.09 62.23)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c5d0328d-8320-41a1-bd21-c749dff9f582")
+	)
+	(wire
+		(pts
 			(xy 379.73 231.14) (xy 381 231.14)
 		)
 		(stroke
@@ -9120,7 +10383,7 @@
 	)
 	(wire
 		(pts
-			(xy 76.2 172.72) (xy 67.31 172.72)
+			(xy 76.2 172.72) (xy 69.85 172.72)
 		)
 		(stroke
 			(width 0)
@@ -9227,6 +10490,16 @@
 			(type default)
 		)
 		(uuid "cead0d28-b697-4ac4-aa9b-0ea8d4cc0bff")
+	)
+	(wire
+		(pts
+			(xy 346.71 151.13) (xy 347.98 151.13)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cf72c561-8c1f-45b6-9c2a-6493f4840f9f")
 	)
 	(wire
 		(pts
@@ -9420,13 +10693,23 @@
 	)
 	(wire
 		(pts
-			(xy 76.2 104.14) (xy 67.31 104.14)
+			(xy 76.2 104.14) (xy 69.85 104.14)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "dc4e9f16-51c4-4589-bc8a-1535aaa5c442")
+	)
+	(wire
+		(pts
+			(xy 222.25 57.15) (xy 222.25 67.31)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dcddc8e5-078d-4459-ad06-5b7713d69f93")
 	)
 	(wire
 		(pts
@@ -9467,6 +10750,16 @@
 			(type default)
 		)
 		(uuid "df3aa843-564c-4e1b-ac7b-41a37e8dd12b")
+	)
+	(wire
+		(pts
+			(xy 224.79 49.53) (xy 219.71 49.53)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e1f7b477-7999-4152-931f-885adf2aa4ce")
 	)
 	(wire
 		(pts
@@ -9700,7 +10993,7 @@
 	)
 	(wire
 		(pts
-			(xy 331.47 151.13) (xy 347.98 151.13)
+			(xy 331.47 151.13) (xy 339.09 151.13)
 		)
 		(stroke
 			(width 0)
@@ -9780,16 +11073,6 @@
 	)
 	(wire
 		(pts
-			(xy 67.31 167.64) (xy 71.12 167.64)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f7de2ea8-7d6d-4f15-95d2-165ef336ae73")
-	)
-	(wire
-		(pts
 			(xy 351.79 118.11) (xy 354.33 118.11)
 		)
 		(stroke
@@ -9847,6 +11130,16 @@
 			(type default)
 		)
 		(uuid "ffac5a4d-3c55-4a13-9847-d8fefb372f62")
+	)
+	(wire
+		(pts
+			(xy 214.63 27.94) (xy 210.82 27.94)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ffb7ffc7-550f-4e27-a725-36a5b254467d")
 	)
 	(label "TX1_485_ROV"
 		(at 36.83 243.84 0)
@@ -10018,6 +11311,26 @@
 		)
 		(uuid "56898ec5-1c30-4502-b256-95551267959b")
 	)
+	(label "DOWNTRACE_WATER"
+		(at 137.16 52.07 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "58e11a48-f281-426b-8fe4-06e3dbb7521d")
+	)
+	(label "WATER_PROBE"
+		(at 240.03 189.23 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "603f6d96-058c-474c-9935-68e31a76e584")
+	)
 	(label "RX2_485_LED1"
 		(at 17.78 167.64 0)
 		(effects
@@ -10068,6 +11381,16 @@
 		)
 		(uuid "6e407f37-c993-4d6c-890d-30677f726714")
 	)
+	(label "WATER_PROBE"
+		(at 261.62 52.07 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "71696c89-3c0d-4261-a8dd-fc6119d718cc")
+	)
 	(label "USB_VBUS"
 		(at 327.66 199.39 0)
 		(effects
@@ -10097,6 +11420,16 @@
 			(justify right bottom)
 		)
 		(uuid "7ce395c7-2d70-495d-b90d-e91890149532")
+	)
+	(label "UPTRACE_WATER"
+		(at 137.16 41.91 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "7dfbc550-c0ae-4478-a4c2-62e1f1f3ab02")
 	)
 	(label "BOOT"
 		(at 269.24 262.89 180)
@@ -10614,6 +11947,20 @@
 		)
 		(uuid "3b5e5f79-d171-4a56-9e6a-62f32fbf25ca")
 	)
+	(hierarchical_label "GND_MCU"
+		(shape input)
+		(at 214.63 27.94 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+				(bold yes)
+				(color 0 0 0 1)
+			)
+			(justify left)
+		)
+		(uuid "44c90d54-2674-4d62-a45f-8000fa4e669f")
+	)
 	(hierarchical_label "RSTn"
 		(shape output)
 		(at 184.15 143.51 180)
@@ -10788,6 +12135,20 @@
 			(justify right)
 		)
 		(uuid "6456bf49-4846-478d-b435-bd1b3b9a9379")
+	)
+	(hierarchical_label "3V3_MCU"
+		(shape input)
+		(at 251.46 41.91 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+				(bold yes)
+				(color 255 80 0 1)
+			)
+			(justify left)
+		)
+		(uuid "6591b136-fa95-48c6-ace9-0f055f88f11d")
 	)
 	(hierarchical_label "PWM_LIGHT"
 		(shape output)
@@ -11221,16 +12582,19 @@
 		)
 		(uuid "ca4bcb21-ee2a-40f7-ae4f-2eb89859dcd5")
 	)
-	(hierarchical_label "~{RESET_SWITCH}"
-		(shape output)
-		(at 240.03 189.23 0)
+	(hierarchical_label "GND_MCU"
+		(shape input)
+		(at 223.52 67.31 0)
 		(effects
 			(font
 				(size 1.27 1.27)
+				(thickness 0.254)
+				(bold yes)
+				(color 0 0 0 1)
 			)
 			(justify left)
 		)
-		(uuid "cbeecfdc-bf7d-485f-809f-e2f93a0b79cb")
+		(uuid "d07e7245-8644-48ff-9ef4-f70a533c0712")
 	)
 	(hierarchical_label "GND_MCU"
 		(shape input)
@@ -11427,7 +12791,7 @@
 	(rule_area
 		(polyline
 			(pts
-				(xy 119.38 147.32) (xy 119.38 213.36) (xy 15.24 213.36) (xy 15.24 147.32)
+				(xy 119.38 215.9) (xy 119.38 281.94) (xy 15.24 281.94) (xy 15.24 215.9)
 			)
 			(stroke
 				(width 0)
@@ -11437,7 +12801,7 @@
 			(fill
 				(type none)
 			)
-			(uuid 0aa77a89-a81b-41cc-bb97-d313e4d7070d)
+			(uuid 34a21c82-e38d-4911-948d-c686f69a674f)
 		)
 	)
 	(rule_area
@@ -11453,13 +12817,13 @@
 			(fill
 				(type none)
 			)
-			(uuid 6858a710-bcc7-464b-a7ec-1ff2433cfa3d)
+			(uuid 6dd46522-3d9f-4961-a31b-0d105171abb6)
 		)
 	)
 	(rule_area
 		(polyline
 			(pts
-				(xy 119.38 215.9) (xy 119.38 281.94) (xy 15.24 281.94) (xy 15.24 215.9)
+				(xy 119.38 147.32) (xy 119.38 213.36) (xy 15.24 213.36) (xy 15.24 147.32)
 			)
 			(stroke
 				(width 0)
@@ -11469,7 +12833,7 @@
 			(fill
 				(type none)
 			)
-			(uuid ada22d7a-6dba-4d89-8518-50b56abf9757)
+			(uuid d737e06a-c4fd-441a-b72b-57f9257b6928)
 		)
 	)
 	(netclass_flag ""
@@ -11811,110 +13175,6 @@
 			(project "HUB_MPE"
 				(path "/6490f62d-7c0a-4455-8633-837f094f0a1c/3b7f2e06-c9f7-4573-9db8-5dfac1ade51e"
 					(reference "C38")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "easyeda2kicad:MAX3485ESA")
-		(at 58.42 240.03 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "0a0304bb-9bc0-4238-b7d7-ee76827f7b34")
-		(property "Reference" "U8"
-			(at 58.42 228.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "MAX3485ESA"
-			(at 58.42 231.14 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "easyeda2kicad:SOP-8_L5.0-W4.0-P1.27-LS6.0-BL"
-			(at 58.42 251.46 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://lcsc.com/product-detail/RS-485-RS-422-ICs_UMW-Youtai-Semiconductor-Co-Ltd-MAX3485ESA_C668204.html"
-			(at 58.42 254 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 58.42 240.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part" "C668204"
-			(at 58.42 256.54 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C668204"
-			(at 58.42 228.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "7"
-			(uuid "93ae09a2-495f-47bc-9258-ea2b5683f151")
-		)
-		(pin "5"
-			(uuid "ffdda4f4-f385-4f1b-8b13-221df32b92e2")
-		)
-		(pin "6"
-			(uuid "115769d8-739d-48b0-a89a-19d3fa6a7415")
-		)
-		(pin "8"
-			(uuid "591a59a2-1c28-4b8b-b5af-204b69381a48")
-		)
-		(pin "1"
-			(uuid "462ee1a0-23ae-4783-89d6-f74575e0104a")
-		)
-		(pin "4"
-			(uuid "ae653f57-2d27-4947-b4c2-3de0e6136fe9")
-		)
-		(pin "2"
-			(uuid "89b73f1e-138c-4a3e-9de6-960e21125268")
-		)
-		(pin "3"
-			(uuid "8d1fef91-85c9-40f8-8bd1-66caf2fd1661")
-		)
-		(instances
-			(project "HUB_MPE"
-				(path "/6490f62d-7c0a-4455-8633-837f094f0a1c/3b7f2e06-c9f7-4573-9db8-5dfac1ade51e"
-					(reference "U8")
 					(unit 1)
 				)
 			)
@@ -12421,6 +13681,91 @@
 			(project "HUB_MPE"
 				(path "/6490f62d-7c0a-4455-8633-837f094f0a1c/3b7f2e06-c9f7-4573-9db8-5dfac1ade51e"
 					(reference "R90")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 342.9 151.13 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "228f6f85-c566-4284-8cf4-26961120b34e")
+		(property "Reference" "R110"
+			(at 342.9 148.59 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "220"
+			(at 342.9 151.13 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 342.9 149.352 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 342.9 151.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 342.9 151.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part" "C22962"
+			(at 342.9 151.13 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C22962"
+			(at 342.9 153.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "700d4bcc-899c-4e4a-9982-465057b35afe")
+		)
+		(pin "2"
+			(uuid "5a13a254-4c12-4e6c-8484-0b0c8b1c0e04")
+		)
+		(instances
+			(project "HUB_MPE"
+				(path "/6490f62d-7c0a-4455-8633-837f094f0a1c/3b7f2e06-c9f7-4573-9db8-5dfac1ade51e"
+					(reference "R110")
 					(unit 1)
 				)
 			)
@@ -13030,6 +14375,164 @@
 		)
 	)
 	(symbol
+		(lib_id "jlcpcb_parts:1N4148W_C81598")
+		(at 184.15 59.69 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "3553eac3-ab61-42da-b3b4-addeefd34660")
+		(property "Reference" "D4"
+			(at 186.69 58.4199 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1N4148W"
+			(at 186.69 60.9599 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "easyeda2kicad:SOD-123F_L2.7-W1.6-LS3.8-RD"
+			(at 176.53 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://lcsc.com/product-detail/Switching-Diode_1N4148W_C81598.html"
+			(at 173.99 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 184.15 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part" "C81598"
+			(at 171.45 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d7e6163d-18fc-4473-b737-6548562f21a0")
+		)
+		(pin "2"
+			(uuid "7d9bfada-9fe7-45a3-9265-e7ddba2c4d60")
+		)
+		(instances
+			(project "HUB_MPE"
+				(path "/6490f62d-7c0a-4455-8633-837f094f0a1c/3b7f2e06-c9f7-4573-9db8-5dfac1ade51e"
+					(reference "D4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "jlcpcb_parts:CC0603KRX7R9BB104")
+		(at 176.53 52.07 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "3e79fd03-d6e0-4627-bc04-b6b4b18abf7f")
+		(property "Reference" "C74"
+			(at 171.196 55.118 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "3.3nF"
+			(at 173.736 48.514 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 176.53 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://lcsc.com/product-detail/Multilayer-Ceramic-Capacitors-MLCC-SMD-SMT_100nF-104-10-50V_C14663.html"
+			(at 176.53 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 176.53 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part" "C1613"
+			(at 176.53 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "26f94097-4b2a-464d-85bf-ff6eaf405b4e")
+		)
+		(pin "2"
+			(uuid "a27f2104-39b3-40da-a262-03280940d7aa")
+		)
+		(instances
+			(project "HUB_MPE"
+				(path "/6490f62d-7c0a-4455-8633-837f094f0a1c/3b7f2e06-c9f7-4573-9db8-5dfac1ade51e"
+					(reference "C74")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:R")
 		(at 347.98 118.11 270)
 		(unit 1)
@@ -13626,6 +15129,85 @@
 		)
 	)
 	(symbol
+		(lib_name "1N4148W_C81598_1")
+		(lib_id "jlcpcb_parts:1N4148W_C81598")
+		(at 355.6 138.43 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "54e4fa12-849b-4b1a-8173-52e6dacda408")
+		(property "Reference" "D1"
+			(at 351.028 137.922 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1N4148W"
+			(at 344.678 139.954 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "easyeda2kicad:SOD-123F_L2.7-W1.6-LS3.8-RD"
+			(at 347.98 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://lcsc.com/product-detail/Switching-Diode_1N4148W_C81598.html"
+			(at 345.44 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 355.6 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part" "C81598"
+			(at 342.9 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "200f41de-0382-41f9-9078-b69830b2d43a")
+		)
+		(pin "2"
+			(uuid "b63614ff-e993-4f45-884d-a91e691e5eee")
+		)
+		(instances
+			(project "HUB_MPE"
+				(path "/6490f62d-7c0a-4455-8633-837f094f0a1c/3b7f2e06-c9f7-4573-9db8-5dfac1ade51e"
+					(reference "D1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "easyeda2kicad:CL31A226KAHNNNE")
 		(at 54.61 45.72 90)
 		(unit 1)
@@ -13801,110 +15383,6 @@
 		)
 	)
 	(symbol
-		(lib_id "easyeda2kicad:MAX3485ESA")
-		(at 58.42 102.87 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "5b7783bd-34ad-4116-a483-6a8eeddc9bf2")
-		(property "Reference" "U3"
-			(at 58.42 91.44 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "MAX3485ESA"
-			(at 58.42 93.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "easyeda2kicad:SOP-8_L5.0-W4.0-P1.27-LS6.0-BL"
-			(at 58.42 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://lcsc.com/product-detail/RS-485-RS-422-ICs_UMW-Youtai-Semiconductor-Co-Ltd-MAX3485ESA_C668204.html"
-			(at 58.42 116.84 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 58.42 102.87 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part" "C668204"
-			(at 58.42 119.38 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C668204"
-			(at 58.42 91.44 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "7"
-			(uuid "a28ff2fc-56e5-4a7f-902a-2ec3fc544342")
-		)
-		(pin "5"
-			(uuid "dd7f94db-f645-41ec-bcaa-672f1d72de00")
-		)
-		(pin "6"
-			(uuid "ea20559b-6f0b-4151-9483-bec7e5fd29b4")
-		)
-		(pin "8"
-			(uuid "72e8f8eb-960c-4971-b0aa-06e5d1eadee5")
-		)
-		(pin "1"
-			(uuid "49fed42d-a75c-488e-bcf1-8af6c9cf1081")
-		)
-		(pin "4"
-			(uuid "0b8e6ed8-ec0b-4fed-b505-a3a40ab0565c")
-		)
-		(pin "2"
-			(uuid "5bbd0336-dff7-4c17-842f-366a692cecf6")
-		)
-		(pin "3"
-			(uuid "9a77f8f5-3d05-4e3a-83b5-8b991141190e")
-		)
-		(instances
-			(project "HUB_MPE"
-				(path "/6490f62d-7c0a-4455-8633-837f094f0a1c/3b7f2e06-c9f7-4573-9db8-5dfac1ade51e"
-					(reference "U3")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:R")
 		(at 347.98 106.68 270)
 		(unit 1)
@@ -13984,6 +15462,85 @@
 			(project "HUB_MPE"
 				(path "/6490f62d-7c0a-4455-8633-837f094f0a1c/3b7f2e06-c9f7-4573-9db8-5dfac1ade51e"
 					(reference "R34")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "jlcpcb_parts:CC0603KRX7R9BB104")
+		(at 205.74 58.42 270)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "60805252-3703-4b1f-b949-4b7f356e9009")
+		(property "Reference" "C76"
+			(at 201.676 53.848 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "3.3nF"
+			(at 201.676 60.198 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 198.12 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://lcsc.com/product-detail/Multilayer-Ceramic-Capacitors-MLCC-SMD-SMT_100nF-104-10-50V_C14663.html"
+			(at 195.58 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 205.74 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part" "C1613"
+			(at 193.04 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "8ddc6666-4b17-4a1e-af28-0d9c1ddbc7c5")
+		)
+		(pin "2"
+			(uuid "3b08ceed-eac5-4cef-9063-144aa3b07a39")
+		)
+		(instances
+			(project "HUB_MPE"
+				(path "/6490f62d-7c0a-4455-8633-837f094f0a1c/3b7f2e06-c9f7-4573-9db8-5dfac1ade51e"
+					(reference "C76")
 					(unit 1)
 				)
 			)
@@ -14219,6 +15776,119 @@
 			(project "HUB_MPE"
 				(path "/6490f62d-7c0a-4455-8633-837f094f0a1c/3b7f2e06-c9f7-4573-9db8-5dfac1ade51e"
 					(reference "R102")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "jlcpcb_parts:CD4093BM")
+		(at 234.95 49.53 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "70e67c7e-9d0c-4eea-aadf-fdc14408fcbd")
+		(property "Reference" "U8"
+			(at 234.95 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "CD4093BM"
+			(at 234.95 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "easyeda2kicad:SOIC-14_L8.7-W3.9-P1.27-LS6.0-BL"
+			(at 234.95 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://lcsc.com/product-detail/4000-Series_TI_CD4093BM_CD4093BM_C160714.html"
+			(at 234.95 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 234.95 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part" "C160714"
+			(at 234.95 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "4"
+			(uuid "bdc6847c-5d37-4334-b64c-10318789cff9")
+		)
+		(pin "11"
+			(uuid "1e4a87e7-7391-40c5-b2e7-76d331110e19")
+		)
+		(pin "10"
+			(uuid "6530ab2c-64de-4eaf-be91-3ec7b1ff7754")
+		)
+		(pin "12"
+			(uuid "c42f7b78-d473-4717-9678-a204e07ade20")
+		)
+		(pin "7"
+			(uuid "478ddfea-ec71-493e-8a2d-9bf6c0640a5e")
+		)
+		(pin "9"
+			(uuid "4e5486b9-7e85-45c5-aee9-4444e8334d53")
+		)
+		(pin "6"
+			(uuid "adc13c65-0b52-4801-b26e-a1259b456199")
+		)
+		(pin "14"
+			(uuid "a2c8bc46-1bac-400c-85d9-9760c54a5d4c")
+		)
+		(pin "8"
+			(uuid "83d95faf-20bd-400d-8dc4-f0d1d64f704a")
+		)
+		(pin "13"
+			(uuid "49447f68-1d64-4117-8616-46ce81f05cf4")
+		)
+		(pin "3"
+			(uuid "180806bc-dea7-4a4d-8c67-2b2ba7d3552e")
+		)
+		(pin "1"
+			(uuid "8c342bfa-ee89-460a-a366-eba63807adcc")
+		)
+		(pin "2"
+			(uuid "0fb9727f-1724-4e55-ba70-78d564a623e3")
+		)
+		(pin "5"
+			(uuid "1facb824-eedf-4e2b-8618-e58ca0d83d77")
+		)
+		(instances
+			(project "HUB_MPE"
+				(path "/6490f62d-7c0a-4455-8633-837f094f0a1c/3b7f2e06-c9f7-4573-9db8-5dfac1ade51e"
+					(reference "U8")
 					(unit 1)
 				)
 			)
@@ -14875,6 +16545,82 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 212.09 58.42 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "8cc4fedd-d27e-44f4-865c-963c42cc6bc0")
+		(property "Reference" "R113"
+			(at 214.63 58.42 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "1M"
+			(at 212.09 58.42 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "easyeda2kicad:R0603"
+			(at 210.312 58.42 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 212.09 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 212.09 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part" "C2907115"
+			(at 212.09 58.42 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "11a02c2d-294f-4d07-b96b-648b3dda16f7")
+		)
+		(pin "2"
+			(uuid "5cb569c1-649b-4019-9d0d-b2e6a9eb49cf")
+		)
+		(instances
+			(project "HUB_MPE"
+				(path "/6490f62d-7c0a-4455-8633-837f094f0a1c/3b7f2e06-c9f7-4573-9db8-5dfac1ade51e"
+					(reference "R113")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "easyeda2kicad:ADS1015IDGSR")
 		(at 364.49 48.26 0)
 		(unit 1)
@@ -15064,6 +16810,84 @@
 		)
 	)
 	(symbol
+		(lib_name "1N4148W_C81598_2")
+		(lib_id "jlcpcb_parts:1N4148W_C81598")
+		(at 191.77 52.07 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "9033d58b-af20-42b2-8a63-92f6aa85121e")
+		(property "Reference" "D5"
+			(at 191.77 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "1N4148W"
+			(at 191.77 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "easyeda2kicad:SOD-123F_L2.7-W1.6-LS3.8-RD"
+			(at 191.77 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://lcsc.com/product-detail/Switching-Diode_1N4148W_C81598.html"
+			(at 191.77 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 191.77 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part" "C81598"
+			(at 191.77 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "37069c8c-a276-4644-8bd5-4e6cfc21a279")
+		)
+		(pin "2"
+			(uuid "1fbd712b-09fa-4878-9bc8-ed179616bd69")
+		)
+		(instances
+			(project "HUB_MPE"
+				(path "/6490f62d-7c0a-4455-8633-837f094f0a1c/3b7f2e06-c9f7-4573-9db8-5dfac1ade51e"
+					(reference "D5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Jumper:SolderJumper_2_Open")
 		(at 259.08 270.51 90)
 		(unit 1)
@@ -15205,93 +17029,6 @@
 			(project "HUB_MPE"
 				(path "/6490f62d-7c0a-4455-8633-837f094f0a1c/3b7f2e06-c9f7-4573-9db8-5dfac1ade51e"
 					(reference "R27")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "easyeda2kicad:1N4148WT4")
-		(at 355.6 138.43 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "92b49049-4d8d-4f7e-8386-24cb0463963d")
-		(property "Reference" "D1"
-			(at 347.98 138.43 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "1N4148W T4"
-			(at 340.868 140.716 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "easyeda2kicad:SOD-123_L2.8-W1.8-LS3.7-RD"
-			(at 347.98 138.43 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://lcsc.com/product-detail/Switching-Diode_1N4148W-T4_C2099.html"
-			(at 345.44 138.43 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 355.6 138.43 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part" "C2099"
-			(at 342.9 138.43 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C2099"
-			(at 347.98 138.43 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "74200fb7-a8ab-4ce0-b446-370fb0573298")
-		)
-		(pin "1"
-			(uuid "f3891bdf-26b5-4093-bf9a-6bcc1b11ee40")
-		)
-		(instances
-			(project "HUB_MPE"
-				(path "/6490f62d-7c0a-4455-8633-837f094f0a1c/3b7f2e06-c9f7-4573-9db8-5dfac1ade51e"
-					(reference "D1")
 					(unit 1)
 				)
 			)
@@ -15532,6 +17269,85 @@
 			(project "HUB_MPE"
 				(path "/6490f62d-7c0a-4455-8633-837f094f0a1c/3b7f2e06-c9f7-4573-9db8-5dfac1ade51e"
 					(reference "R111")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "jlcpcb_parts:CC0603KRX7R9BB104")
+		(at 210.82 35.56 90)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "a81014f2-b1a9-4364-a737-03da9c780da8")
+		(property "Reference" "C77"
+			(at 207.264 37.846 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "1.8nF"
+			(at 207.264 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 218.44 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://lcsc.com/product-detail/Multilayer-Ceramic-Capacitors-MLCC-SMD-SMT_100nF-104-10-50V_C14663.html"
+			(at 220.98 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 210.82 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part" "C1599"
+			(at 223.52 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c17cbc8d-2eae-4b2d-b521-9975ca9487e0")
+		)
+		(pin "2"
+			(uuid "90348e1b-2408-4a96-8fe0-dfff0d760609")
+		)
+		(instances
+			(project "HUB_MPE"
+				(path "/6490f62d-7c0a-4455-8633-837f094f0a1c/3b7f2e06-c9f7-4573-9db8-5dfac1ade51e"
+					(reference "C77")
 					(unit 1)
 				)
 			)
@@ -16343,110 +18159,6 @@
 		)
 	)
 	(symbol
-		(lib_id "easyeda2kicad:MAX3485ESA")
-		(at 58.42 171.45 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "bdad3f4d-63e6-4cfb-89cf-b9725a70531e")
-		(property "Reference" "U10"
-			(at 58.42 160.02 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "MAX3485ESA"
-			(at 58.42 162.56 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "easyeda2kicad:SOP-8_L5.0-W4.0-P1.27-LS6.0-BL"
-			(at 58.42 182.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://lcsc.com/product-detail/RS-485-RS-422-ICs_UMW-Youtai-Semiconductor-Co-Ltd-MAX3485ESA_C668204.html"
-			(at 58.42 185.42 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 58.42 171.45 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part" "C668204"
-			(at 58.42 187.96 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C668204"
-			(at 58.42 160.02 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "7"
-			(uuid "090debfc-57a6-4000-a25e-108fedec3005")
-		)
-		(pin "5"
-			(uuid "521ed067-3f5b-4cab-a298-1ad31cdc0253")
-		)
-		(pin "6"
-			(uuid "54ba90f9-3d5c-40d7-adb0-344ef317b7b2")
-		)
-		(pin "8"
-			(uuid "d4d99da0-eb49-4582-857e-3ca44f9c67a3")
-		)
-		(pin "1"
-			(uuid "a73102b2-2c91-45cb-a95f-dcb1f5ce8259")
-		)
-		(pin "4"
-			(uuid "9245339f-b67d-4bf6-899f-5971d96ffc1e")
-		)
-		(pin "2"
-			(uuid "148b1bac-ae4c-4114-99c2-d4b1b8437345")
-		)
-		(pin "3"
-			(uuid "d385829d-0a6e-4d4e-9319-82976f53e2fa")
-		)
-		(instances
-			(project "HUB_MPE"
-				(path "/6490f62d-7c0a-4455-8633-837f094f0a1c/3b7f2e06-c9f7-4573-9db8-5dfac1ade51e"
-					(reference "U10")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:C")
 		(at 248.92 270.51 0)
 		(unit 1)
@@ -16528,6 +18240,101 @@
 			(project "HUB_MPE"
 				(path "/6490f62d-7c0a-4455-8633-837f094f0a1c/3b7f2e06-c9f7-4573-9db8-5dfac1ade51e"
 					(reference "C47")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "easyeda2kicad:SN65HVD72DR")
+		(at 59.69 171.45 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "c51d0e45-0ee3-4ae8-b33e-4db877e4175c")
+		(property "Reference" "U10"
+			(at 59.69 160.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SN65HVD72DR"
+			(at 59.69 162.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "easyeda2kicad:SOP-8_L5.0-W4.0-P1.27-LS6.0-BL"
+			(at 59.69 182.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://lcsc.com/product-detail/RS-485-RS-422_TI_SN65HVD72DR_SN65HVD72DR_C48125.html"
+			(at 59.69 185.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 59.69 171.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part" "C48125"
+			(at 59.69 187.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "6"
+			(uuid "dd950a15-16bc-4a42-8f60-a912e180f6b7")
+		)
+		(pin "3"
+			(uuid "53c232e0-736f-45ae-9486-22dd541a3c9b")
+		)
+		(pin "4"
+			(uuid "554bd172-581f-4075-a8a4-73b74f5a9497")
+		)
+		(pin "8"
+			(uuid "28f2d008-e15e-4630-862a-38f93bbcb07c")
+		)
+		(pin "7"
+			(uuid "a228d8d9-b24b-413e-9ce7-1b268eceb2a0")
+		)
+		(pin "1"
+			(uuid "22e7873d-1ce7-41d3-b298-109cd5c5b366")
+		)
+		(pin "2"
+			(uuid "eb135639-bc32-4a19-909b-be2a69e04662")
+		)
+		(pin "5"
+			(uuid "0ee73bb1-6fe2-44dc-a430-76598bf89c13")
+		)
+		(instances
+			(project "HUB_MPE"
+				(path "/6490f62d-7c0a-4455-8633-837f094f0a1c/3b7f2e06-c9f7-4573-9db8-5dfac1ade51e"
+					(reference "U10")
 					(unit 1)
 				)
 			)
@@ -17211,6 +19018,180 @@
 		)
 	)
 	(symbol
+		(lib_id "jlcpcb_parts:CC0603KRX7R9BB104")
+		(at 190.5 41.91 0)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "de510e21-2556-4ac1-bbb3-2d98934f5211")
+		(property "Reference" "C75"
+			(at 195.072 37.846 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "3.3nF"
+			(at 188.722 37.846 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 190.5 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://lcsc.com/product-detail/Multilayer-Ceramic-Capacitors-MLCC-SMD-SMT_100nF-104-10-50V_C14663.html"
+			(at 190.5 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 190.5 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part" "C1613"
+			(at 190.5 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e268a938-526e-45d0-bdb4-dedadf830798")
+		)
+		(pin "2"
+			(uuid "8d11f3dd-e357-48f2-86eb-dc34c2b51646")
+		)
+		(instances
+			(project "HUB_MPE"
+				(path "/6490f62d-7c0a-4455-8633-837f094f0a1c/3b7f2e06-c9f7-4573-9db8-5dfac1ade51e"
+					(reference "C75")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "easyeda2kicad:SN65HVD72DR")
+		(at 59.69 102.87 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "df9acb36-3bdb-4304-88b8-19d7e17f671c")
+		(property "Reference" "U3"
+			(at 59.69 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SN65HVD72DR"
+			(at 59.69 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "easyeda2kicad:SOP-8_L5.0-W4.0-P1.27-LS6.0-BL"
+			(at 59.69 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://lcsc.com/product-detail/RS-485-RS-422_TI_SN65HVD72DR_SN65HVD72DR_C48125.html"
+			(at 59.69 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 59.69 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part" "C48125"
+			(at 59.69 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "6"
+			(uuid "7d355eda-8e10-4f59-a8c7-f85dd0d8f8e9")
+		)
+		(pin "3"
+			(uuid "9883afad-9e00-47f1-ade5-e509a3500ba3")
+		)
+		(pin "4"
+			(uuid "47e49aa2-8371-4e93-96bb-27fc9a088f1e")
+		)
+		(pin "8"
+			(uuid "5daa6793-c793-4db8-9ea3-37c748994f10")
+		)
+		(pin "7"
+			(uuid "c65a2723-d1e4-4452-9a4a-b74911720d67")
+		)
+		(pin "1"
+			(uuid "1feb828e-28f4-4ab1-8f21-ac03232f67f8")
+		)
+		(pin "2"
+			(uuid "70c24d14-c71c-4451-b30f-631b7015e161")
+		)
+		(pin "5"
+			(uuid "6b549975-9f4f-40a9-b68e-1c34b872dc3f")
+		)
+		(instances
+			(project ""
+				(path "/6490f62d-7c0a-4455-8633-837f094f0a1c/3b7f2e06-c9f7-4573-9db8-5dfac1ade51e"
+					(reference "U3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:R")
 		(at 24.13 248.92 180)
 		(unit 1)
@@ -17535,6 +19516,178 @@
 			(project "HUB_MPE"
 				(path "/6490f62d-7c0a-4455-8633-837f094f0a1c/3b7f2e06-c9f7-4573-9db8-5dfac1ade51e"
 					(reference "R37")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "easyeda2kicad:SN65HVD72DR")
+		(at 59.69 240.03 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "eec120a4-2a7b-4004-8bf4-352bc41357cd")
+		(property "Reference" "U12"
+			(at 59.69 228.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SN65HVD72DR"
+			(at 59.69 231.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "easyeda2kicad:SOP-8_L5.0-W4.0-P1.27-LS6.0-BL"
+			(at 59.69 251.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://lcsc.com/product-detail/RS-485-RS-422_TI_SN65HVD72DR_SN65HVD72DR_C48125.html"
+			(at 59.69 254 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 59.69 240.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part" "C48125"
+			(at 59.69 256.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "6"
+			(uuid "1ded9795-a716-4d80-9490-41f9b4f15a79")
+		)
+		(pin "3"
+			(uuid "4c5c1333-c569-4084-a1b2-ad96596db1d2")
+		)
+		(pin "4"
+			(uuid "4ee6080c-8de4-4409-9203-36075f5cc41a")
+		)
+		(pin "8"
+			(uuid "6455eca6-2375-4ac5-9d5f-7f8a028dbd38")
+		)
+		(pin "7"
+			(uuid "ea09ba5d-a2c9-4f2d-b9af-620c5543baa4")
+		)
+		(pin "1"
+			(uuid "3d15ca8b-ff3e-4b3a-ace3-eb3077740289")
+		)
+		(pin "2"
+			(uuid "0bdd72e3-6909-4bd3-9d7f-a6dc5ee462f5")
+		)
+		(pin "5"
+			(uuid "1536d569-988d-44e8-8db4-73ec52676ee7")
+		)
+		(instances
+			(project "HUB_MPE"
+				(path "/6490f62d-7c0a-4455-8633-837f094f0a1c/3b7f2e06-c9f7-4573-9db8-5dfac1ade51e"
+					(reference "U12")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 204.47 41.91 90)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "f027dd5b-6ca7-41bc-89b7-fd6110f73153")
+		(property "Reference" "R112"
+			(at 204.47 44.45 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "560K"
+			(at 204.47 41.91 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "easyeda2kicad:R0603"
+			(at 204.47 40.132 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 204.47 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 204.47 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part" "C23203"
+			(at 204.47 41.91 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "98b318ea-aa57-416c-95cf-dc0fc314e5b9")
+		)
+		(pin "2"
+			(uuid "d269e81c-8901-49d4-bf20-3c288abd988e")
+		)
+		(instances
+			(project "HUB_MPE"
+				(path "/6490f62d-7c0a-4455-8633-837f094f0a1c/3b7f2e06-c9f7-4573-9db8-5dfac1ade51e"
+					(reference "R112")
 					(unit 1)
 				)
 			)
