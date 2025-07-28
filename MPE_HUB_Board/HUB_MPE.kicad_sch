@@ -2078,142 +2078,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "easyeda2kicad:K7803M-1000R3_C2916516"
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "U"
-				(at 0 7.62 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "K7803M-1000R3_C2916516"
-				(at 0 -7.62 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" "easyeda2kicad:PWRM-TH_DEXU_K78XXM-1000R3_XXXXXX"
-				(at 0 -10.16 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "LCSC Part" "C2916516"
-				(at 0 -12.7 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "K7803M-1000R3_C2916516_0_1"
-				(rectangle
-					(start -2.54 5.08)
-					(end 5.84 -5.59)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
-				(circle
-					(center -1.78 4.32)
-					(radius 0.38)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(pin power_in line
-					(at -5.08 2.54 0)
-					(length 2.54)
-					(name "Vin"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin power_out line
-					(at -5.08 0 0)
-					(length 2.54)
-					(name "GND"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin power_out line
-					(at -5.08 -2.54 0)
-					(length 2.54)
-					(name "+Vo"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "power:+12V"
 			(power)
 			(pin_numbers
@@ -3061,10 +2925,10 @@
 		(uuid "33a0d907-58c7-4c27-85fd-7838d43b69a7")
 	)
 	(junction
-		(at 66.04 35.56)
+		(at 48.26 46.99)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "4cf517f7-208b-4923-8fa5-4bfd6ff6fd05")
+		(uuid "644db9ae-9411-4e96-b75b-80c0a1020444")
 	)
 	(junction
 		(at 48.26 44.45)
@@ -3268,13 +3132,13 @@
 	)
 	(wire
 		(pts
-			(xy 71.12 38.1) (xy 74.93 38.1)
+			(xy 41.91 46.99) (xy 48.26 46.99)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "17d20308-24cb-4920-9003-a216676dc226")
+		(uuid "1764b8e7-90cd-44c2-93b8-25102b9553a5")
 	)
 	(wire
 		(pts
@@ -3355,6 +3219,16 @@
 			(type default)
 		)
 		(uuid "2374d339-5981-4503-bf03-9bc7fa6a4865")
+	)
+	(wire
+		(pts
+			(xy 74.93 36.83) (xy 74.93 38.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "23d8d0bd-56b4-4ee1-9e15-a8d1d368d820")
 	)
 	(wire
 		(pts
@@ -3455,16 +3329,6 @@
 			(type default)
 		)
 		(uuid "344cfde3-f472-4215-bab7-5290b4e18c74")
-	)
-	(wire
-		(pts
-			(xy 66.04 35.56) (xy 66.04 43.18)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "36775307-1e45-4af5-af95-33f0e670d6b7")
 	)
 	(wire
 		(pts
@@ -3698,7 +3562,7 @@
 	)
 	(wire
 		(pts
-			(xy 48.26 44.45) (xy 48.26 48.26)
+			(xy 48.26 44.45) (xy 48.26 46.99)
 		)
 		(stroke
 			(width 0)
@@ -4088,7 +3952,7 @@
 	)
 	(wire
 		(pts
-			(xy 80.01 38.1) (xy 82.55 38.1)
+			(xy 80.01 38.1) (xy 85.09 38.1)
 		)
 		(stroke
 			(width 0)
@@ -4155,6 +4019,16 @@
 			(type default)
 		)
 		(uuid "b24f5630-bba1-4d0b-9998-22febe73f905")
+	)
+	(wire
+		(pts
+			(xy 71.12 38.1) (xy 74.93 38.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b397fd93-b2bb-42f8-8d09-88b984a4afcb")
 	)
 	(wire
 		(pts
@@ -4358,7 +4232,7 @@
 	)
 	(wire
 		(pts
-			(xy 52.07 33.02) (xy 82.55 33.02)
+			(xy 52.07 33.02) (xy 85.09 33.02)
 		)
 		(stroke
 			(width 0)
@@ -4418,16 +4292,6 @@
 	)
 	(wire
 		(pts
-			(xy 66.04 35.56) (xy 82.55 35.56)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "dbdcc3a1-2cc2-4e9f-b080-d95cca313cad")
-	)
-	(wire
-		(pts
 			(xy 144.78 168.91) (xy 144.78 171.45)
 		)
 		(stroke
@@ -4445,16 +4309,6 @@
 			(type default)
 		)
 		(uuid "dc3db2d6-062b-4e33-a96e-6ef7dfceedb7")
-	)
-	(wire
-		(pts
-			(xy 74.93 43.18) (xy 74.93 38.1)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "df04c78e-429f-4b98-87dd-3a1ff12972d2")
 	)
 	(wire
 		(pts
@@ -4545,6 +4399,16 @@
 			(type default)
 		)
 		(uuid "ec2da0f6-970c-416a-b883-034f7ee57c02")
+	)
+	(wire
+		(pts
+			(xy 48.26 46.99) (xy 48.26 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ee1ccdc5-bcd5-450c-adc9-82c3e5d1c2b0")
 	)
 	(wire
 		(pts
@@ -4665,16 +4529,6 @@
 			(type default)
 		)
 		(uuid "fc424fba-6bb7-40d8-9e70-41ef62b970a3")
-	)
-	(wire
-		(pts
-			(xy 64.77 35.56) (xy 66.04 35.56)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "fd915362-3cdb-4527-aed6-915abb25f4db")
 	)
 	(wire
 		(pts
@@ -5881,96 +5735,6 @@
 		)
 	)
 	(symbol
-		(lib_id "easyeda2kicad:K7803M-1000R3_C2916516")
-		(at 87.63 35.56 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "1e7640f2-a3e8-41a9-bc64-73e0a8c8021e")
-		(property "Reference" "U1"
-			(at 87.122 28.194 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "K7803M-1000R3"
-			(at 86.106 42.672 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "easyeda2kicad:PWRM-TH_DEXU_K78XXM-1000R3_XXXXXX"
-			(at 87.63 45.72 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 87.63 35.56 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 87.63 35.56 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part" "C2916516"
-			(at 87.63 48.26 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C2916516"
-			(at 95.25 34.5449 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "3"
-			(uuid "6e0322c3-96f4-47a2-9906-f152f8a263f3")
-		)
-		(pin "1"
-			(uuid "801944d2-addf-493f-b59a-ae6d1d5bf24a")
-		)
-		(pin "2"
-			(uuid "21926ed3-e896-446d-a6d0-00de7c3c4b63")
-		)
-		(instances
-			(project "HUB_MPE"
-				(path "/6490f62d-7c0a-4455-8633-837f094f0a1c"
-					(reference "U1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:+12V")
 		(at 350.52 46.99 0)
 		(unit 1)
@@ -6038,8 +5802,8 @@
 	)
 	(symbol
 		(lib_id "Connector:TestPoint_Probe")
-		(at 66.04 43.18 90)
-		(mirror x)
+		(at 41.91 46.99 0)
+		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -6047,7 +5811,7 @@
 		(dnp no)
 		(uuid "3892fe82-a3f9-4039-b7fb-30eb6b5f4e24")
 		(property "Reference" "TP5"
-			(at 63.1824 46.99 0)
+			(at 39.37 46.99 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6056,7 +5820,7 @@
 			)
 		)
 		(property "Value" "TestPoint_Probe"
-			(at 65.7224 46.99 0)
+			(at 38.1 46.6724 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6066,7 +5830,7 @@
 			)
 		)
 		(property "Footprint" "easyeda2kicad:TEST-TH_BD2.54-P1.39"
-			(at 66.04 48.26 0)
+			(at 36.83 46.99 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6075,7 +5839,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 66.04 48.26 0)
+			(at 36.83 46.99 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6084,7 +5848,7 @@
 			)
 		)
 		(property "Description" "test point (alternative probe-style design)"
-			(at 66.04 43.18 0)
+			(at 41.91 46.99 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6093,7 +5857,7 @@
 			)
 		)
 		(property "LCSC" "C238122"
-			(at 66.04 43.18 0)
+			(at 41.91 46.99 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7251,8 +7015,8 @@
 	)
 	(symbol
 		(lib_id "Connector:TestPoint_Probe")
-		(at 74.93 43.18 90)
-		(mirror x)
+		(at 71.12 38.1 0)
+		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -7260,7 +7024,7 @@
 		(dnp no)
 		(uuid "9b0ee543-2cc9-4bc2-b311-4b2b1958935b")
 		(property "Reference" "TP6"
-			(at 72.0724 46.99 0)
+			(at 68.834 38.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7269,7 +7033,7 @@
 			)
 		)
 		(property "Value" "TestPoint_Probe"
-			(at 74.6124 46.99 0)
+			(at 67.31 37.7824 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7279,7 +7043,7 @@
 			)
 		)
 		(property "Footprint" "easyeda2kicad:TEST-TH_BD2.54-P1.39"
-			(at 74.93 48.26 0)
+			(at 66.04 38.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7288,7 +7052,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 74.93 48.26 0)
+			(at 66.04 38.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7297,7 +7061,7 @@
 			)
 		)
 		(property "Description" "test point (alternative probe-style design)"
-			(at 74.93 43.18 0)
+			(at 71.12 38.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7306,7 +7070,7 @@
 			)
 		)
 		(property "LCSC" "C238122"
-			(at 74.93 43.18 0)
+			(at 71.12 38.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7394,7 +7158,7 @@
 	)
 	(symbol
 		(lib_id "power:+3.3V")
-		(at 71.12 38.1 90)
+		(at 74.93 36.83 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -7402,7 +7166,7 @@
 		(dnp no)
 		(uuid "9b6c732f-a132-463d-bd03-ed1775ac7e80")
 		(property "Reference" "#PWR03"
-			(at 74.93 38.1 0)
+			(at 74.93 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7411,7 +7175,7 @@
 			)
 		)
 		(property "Value" "+3.3V"
-			(at 72.898 40.64 90)
+			(at 75.946 35.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7420,7 +7184,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 71.12 38.1 0)
+			(at 74.93 36.83 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7429,7 +7193,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 71.12 38.1 0)
+			(at 74.93 36.83 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7438,7 +7202,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
-			(at 71.12 38.1 0)
+			(at 74.93 36.83 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8579,71 +8343,6 @@
 			(project "HUB_MPE"
 				(path "/6490f62d-7c0a-4455-8633-837f094f0a1c"
 					(reference "J7")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 64.77 35.56 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "df1c0b2a-86d6-4a7b-8d2f-3cdafcf01f5d")
-		(property "Reference" "#PWR02"
-			(at 58.42 35.56 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 59.69 35.56 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 64.77 35.56 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 64.77 35.56 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 64.77 35.56 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "d77dd0fa-9b42-49ac-993d-11e18e1d946c")
-		)
-		(instances
-			(project "HUB_MPE"
-				(path "/6490f62d-7c0a-4455-8633-837f094f0a1c"
-					(reference "#PWR02")
 					(unit 1)
 				)
 			)
@@ -9951,6 +9650,68 @@
 			(project "HUB_MPE"
 				(path "/6490f62d-7c0a-4455-8633-837f094f0a1c"
 					(page "6")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 85.09 29.845)
+		(size 20.32 11.43)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "74bf24c6-c8e7-4bc4-abe4-8696d2a79ca0")
+		(property "Sheetname" "PSU_3V3"
+			(at 85.09 29.1334 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "PSU_3V3.kicad_sch"
+			(at 85.09 41.8596 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "3V3_PSU_OUT" output
+			(at 85.09 38.1 180)
+			(uuid "4e51de90-1df1-420d-a9f0-0942c8eaa91d")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "V_IN_TO_3V3" input
+			(at 85.09 33.02 180)
+			(uuid "7f270221-618d-4547-be1b-13968df8d1f0")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(instances
+			(project "HUB_MPE"
+				(path "/6490f62d-7c0a-4455-8633-837f094f0a1c"
+					(page "7")
 				)
 			)
 		)

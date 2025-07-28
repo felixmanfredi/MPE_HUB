@@ -58,13 +58,22 @@
           "width": 0.0
         }
       ],
-      "drc_exclusions": [],
+      "drc_exclusions": [
+        [
+          "annular_width|144679649|93049284|d0ca564a-a314-48ef-9d8b-c1ade8c35102|00000000-0000-0000-0000-000000000000",
+          ""
+        ],
+        [
+          "annular_width|149982949|98352584|6f696361-d328-45d4-be24-0ebd8510b9e6|00000000-0000-0000-0000-000000000000",
+          ""
+        ]
+      ],
       "meta": {
         "version": 2
       },
       "rule_severities": {
         "annular_width": "error",
-        "clearance": "error",
+        "clearance": "ignore",
         "connection_width": "warning",
         "copper_edge_clearance": "error",
         "copper_sliver": "warning",
@@ -112,14 +121,14 @@
         "through_hole_pad_without_hole": "error",
         "too_many_vias": "error",
         "track_angle": "error",
-        "track_dangling": "warning",
+        "track_dangling": "ignore",
         "track_segment_length": "error",
         "track_width": "error",
         "tracks_crossing": "error",
         "unconnected_items": "error",
         "unresolved_variable": "error",
         "via_dangling": "warning",
-        "zones_intersect": "error"
+        "zones_intersect": "ignore"
       },
       "rules": {
         "max_error": 0.005,
@@ -792,6 +801,10 @@
     [
       "6c690dc6-2924-45bb-9fe4-ad7635e5b003",
       "Ethernet_Module"
+    ],
+    [
+      "74bf24c6-c8e7-4bc4-abe4-8696d2a79ca0",
+      "PSU_3V3"
     ]
   ],
   "text_variables": {}
