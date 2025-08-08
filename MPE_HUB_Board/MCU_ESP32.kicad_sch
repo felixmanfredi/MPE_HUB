@@ -1956,6 +1956,153 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Kicad_JLCPCB_Library:CL21A226MAQNNNE"
+			(pin_names
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "C"
+				(at 0 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "CL21A226MAQNNNE"
+				(at 0 -5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "Kicad_JLCPCB_Library:C0805"
+				(at 0 -7.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://lcsc.com/product-detail/Multilayer-Ceramic-Capacitors-MLCC-SMD-SMT_SAMSUNG_CL21A226MAQNNNE_22uF-226-20-25V_C45783.html"
+				(at 0 -10.16 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "LCSC Part" "C45783"
+				(at 0 -12.7 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "CL21A226MAQNNNE_0_1"
+				(polyline
+					(pts
+						(xy -0.51 0) (xy -2.54 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -0.51 -2.03) (xy -0.51 2.03)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.51 2.03) (xy 0.51 -2.03)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 0) (xy 0.51 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin unspecified line
+					(at -5.08 0 0)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at 5.08 0 180)
+					(length 2.54)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Regulator_Linear:AMS1117-3.3"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -2516,153 +2663,6 @@
 						)
 					)
 					(number "6"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "easyeda2kicad:CL31A226KAHNNNE"
-			(pin_names
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "C"
-				(at 0 5.08 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "CL31A226KAHNNNE"
-				(at 0 -5.08 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" "easyeda2kicad:C1206"
-				(at 0 -7.62 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "https://lcsc.com/product-detail/Multilayer-Ceramic-Capacitors-MLCC-SMD-SMT_SAMSUNG_CL31A226KAHNNNE_22uF-226-10-25V_C12891.html"
-				(at 0 -10.16 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "LCSC Part" "C12891"
-				(at 0 -12.7 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "CL31A226KAHNNNE_0_1"
-				(polyline
-					(pts
-						(xy -1.27 0) (xy -0.51 0)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -0.51 2.03) (xy -0.51 -2.03)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.51 2.03) (xy 0.51 -2.03)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.51 0) (xy 1.27 0)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(pin input line
-					(at -3.81 0 0)
-					(length 2.54)
-					(name "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at 3.81 0 180)
-					(length 2.54)
-					(name "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -7903,16 +7903,6 @@
 	)
 	(wire
 		(pts
-			(xy 54.61 41.91) (xy 54.61 36.83)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "2520593f-ed31-4971-a398-a328c7fd4615")
-	)
-	(wire
-		(pts
 			(xy 76.2 162.56) (xy 76.2 170.18)
 		)
 		(stroke
@@ -9823,6 +9813,16 @@
 	)
 	(wire
 		(pts
+			(xy 54.61 40.64) (xy 54.61 36.83)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a217e617-3fc3-4456-8713-b9083ca35a23")
+	)
+	(wire
+		(pts
 			(xy 236.22 279.4) (xy 238.76 279.4)
 		)
 		(stroke
@@ -10423,7 +10423,7 @@
 	)
 	(wire
 		(pts
-			(xy 54.61 54.61) (xy 54.61 49.53)
+			(xy 54.61 54.61) (xy 54.61 50.8)
 		)
 		(stroke
 			(width 0)
@@ -12791,22 +12791,6 @@
 	(rule_area
 		(polyline
 			(pts
-				(xy 119.38 215.9) (xy 119.38 281.94) (xy 15.24 281.94) (xy 15.24 215.9)
-			)
-			(stroke
-				(width 0)
-				(type dash)
-				(color 0 132 0 1)
-			)
-			(fill
-				(type none)
-			)
-			(uuid 34a21c82-e38d-4911-948d-c686f69a674f)
-		)
-	)
-	(rule_area
-		(polyline
-			(pts
 				(xy 119.38 78.74) (xy 119.38 144.78) (xy 15.24 144.78) (xy 15.24 78.74)
 			)
 			(stroke
@@ -12817,7 +12801,23 @@
 			(fill
 				(type none)
 			)
-			(uuid 6dd46522-3d9f-4961-a31b-0d105171abb6)
+			(uuid 84f6cf88-f71f-48bc-bea7-1daeaccf2d16)
+		)
+	)
+	(rule_area
+		(polyline
+			(pts
+				(xy 119.38 215.9) (xy 119.38 281.94) (xy 15.24 281.94) (xy 15.24 215.9)
+			)
+			(stroke
+				(width 0)
+				(type dash)
+				(color 0 132 0 1)
+			)
+			(fill
+				(type none)
+			)
+			(uuid 990e1a1d-782c-4538-a8b7-09152e27db48)
 		)
 	)
 	(rule_area
@@ -12833,7 +12833,7 @@
 			(fill
 				(type none)
 			)
-			(uuid d737e06a-c4fd-441a-b72b-57f9257b6928)
+			(uuid f6acc0dd-8c4b-49bb-a017-13975796ac1b)
 		)
 	)
 	(netclass_flag ""
@@ -13453,7 +13453,7 @@
 		(dnp no)
 		(uuid "1573bd49-fbe4-4f59-a8aa-b4ddfc7744a7")
 		(property "Reference" "LED13"
-			(at 353.314 119.38 0)
+			(at 351.79 119.38 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14438,6 +14438,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C81598"
+			(at 186.69 58.4199 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "d7e6163d-18fc-4473-b737-6548562f21a0")
 		)
@@ -14510,6 +14519,15 @@
 		)
 		(property "LCSC Part" "C1613"
 			(at 176.53 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C1613"
+			(at 171.196 55.118 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15192,6 +15210,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C81598"
+			(at 351.028 137.922 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "200f41de-0382-41f9-9078-b69830b2d43a")
 		)
@@ -15202,93 +15229,6 @@
 			(project "HUB_MPE"
 				(path "/6490f62d-7c0a-4455-8633-837f094f0a1c/3b7f2e06-c9f7-4573-9db8-5dfac1ade51e"
 					(reference "D1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "easyeda2kicad:CL31A226KAHNNNE")
-		(at 54.61 45.72 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "551110dd-d39d-4a43-824f-751a153851c2")
-		(property "Reference" "C43"
-			(at 54.61 44.196 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "22uF"
-			(at 54.61 47.498 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
-			(at 62.23 45.72 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://lcsc.com/product-detail/Multilayer-Ceramic-Capacitors-MLCC-SMD-SMT_SAMSUNG_CL31A226KAHNNNE_22uF-226-10-25V_C12891.html"
-			(at 64.77 45.72 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 54.61 45.72 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part" "C12891"
-			(at 67.31 45.72 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C12891"
-			(at 54.61 44.196 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "875b9158-3f2c-4b40-8273-f5ffe882b73f")
-		)
-		(pin "2"
-			(uuid "d88ba595-5051-46bb-97d5-864751906ef2")
-		)
-		(instances
-			(project "HUB_MPE"
-				(path "/6490f62d-7c0a-4455-8633-837f094f0a1c/3b7f2e06-c9f7-4573-9db8-5dfac1ade51e"
-					(reference "C43")
 					(unit 1)
 				)
 			)
@@ -15524,6 +15464,15 @@
 		)
 		(property "LCSC Part" "C1613"
 			(at 193.04 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C1613"
+			(at 201.676 53.848 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15784,7 +15733,6 @@
 	(symbol
 		(lib_id "jlcpcb_parts:CD4093BM")
 		(at 234.95 49.53 0)
-		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -15836,6 +15784,15 @@
 		)
 		(property "LCSC Part" "C160714"
 			(at 234.95 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C160714"
+			(at 234.95 34.29 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16202,6 +16159,15 @@
 		)
 		(property "LCSC Part" "C844519"
 			(at 82.55 260.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C844519"
+			(at 82.55 247.65 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16605,6 +16571,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C2907115"
+			(at 214.63 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "11a02c2d-294f-4d07-b96b-648b3dda16f7")
 		)
@@ -16675,6 +16650,15 @@
 		)
 		(property "LCSC Part" "C193969"
 			(at 364.49 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C193969"
+			(at 364.49 35.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16865,6 +16849,15 @@
 		)
 		(property "LCSC Part" "C81598"
 			(at 191.77 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C81598"
+			(at 191.77 45.72 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17089,6 +17082,15 @@
 		)
 		(property "LCSC Part" "C844519"
 			(at 82.55 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C844519"
+			(at 82.55 91.44 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17331,6 +17333,15 @@
 		)
 		(property "LCSC Part" "C1599"
 			(at 223.52 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C1599"
+			(at 207.264 37.846 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17667,6 +17678,15 @@
 		)
 		(property "LCSC Part" "C844519"
 			(at 82.55 191.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C844519"
+			(at 82.55 179.07 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18078,6 +18098,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C844519"
+			(at 82.55 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "f540a82d-9ccc-4b1d-8a74-0e5fb8ac587f")
 		)
@@ -18300,6 +18329,15 @@
 		)
 		(property "LCSC Part" "C48125"
 			(at 59.69 187.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C48125"
+			(at 59.69 160.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19081,6 +19119,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C1613"
+			(at 195.072 37.846 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "e268a938-526e-45d0-bdb4-dedadf830798")
 		)
@@ -19151,6 +19198,15 @@
 		)
 		(property "LCSC Part" "C48125"
 			(at 59.69 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C48125"
+			(at 59.69 91.44 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19506,6 +19562,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C23186"
+			(at 331.978 180.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "6dc282bc-a07b-407c-8998-96347728dacc")
 		)
@@ -19576,6 +19641,15 @@
 		)
 		(property "LCSC Part" "C48125"
 			(at 59.69 256.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C48125"
+			(at 59.69 228.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19678,6 +19752,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C23203"
+			(at 204.47 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "98b318ea-aa57-416c-95cf-dc0fc314e5b9")
 		)
@@ -19741,6 +19824,15 @@
 		)
 		(property "Description" "Resistor"
 			(at 339.09 201.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C23186"
+			(at 331.978 200.66 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19937,6 +20029,93 @@
 		)
 	)
 	(symbol
+		(lib_id "Kicad_JLCPCB_Library:CL21A226MAQNNNE")
+		(at 54.61 45.72 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "f858a4ca-953a-44b3-acf1-2512f367e104")
+		(property "Reference" "C43"
+			(at 55.372 43.942 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "22uF 25V"
+			(at 55.372 47.752 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
+			(at 62.23 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://lcsc.com/product-detail/Multilayer-Ceramic-Capacitors-MLCC-SMD-SMT_SAMSUNG_CL21A226MAQNNNE_22uF-226-20-25V_C45783.html"
+			(at 64.77 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 54.61 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part" "C45783"
+			(at 67.31 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C45783"
+			(at 55.372 43.942 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "0930e200-6664-4ed5-b5ed-12b2e56a4de6")
+		)
+		(pin "2"
+			(uuid "c6c569b0-5cf3-4d51-bca4-4fa5a22a6250")
+		)
+		(instances
+			(project "HUB_MPE"
+				(path "/6490f62d-7c0a-4455-8633-837f094f0a1c/3b7f2e06-c9f7-4573-9db8-5dfac1ade51e"
+					(reference "C43")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "easyeda2kicad:TYPEC-303-ACP16")
 		(at 351.79 195.58 0)
 		(unit 1)
@@ -19991,6 +20170,15 @@
 		)
 		(property "LCSC Part" "C720628"
 			(at 351.79 227.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C720628"
+			(at 354.965 168.91 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20165,7 +20353,7 @@
 		(dnp no)
 		(uuid "f9f39c54-2ce0-4fd7-ac80-eb62742afafb")
 		(property "Reference" "LED12"
-			(at 353.314 107.95 0)
+			(at 352.044 107.95 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20391,6 +20579,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C844519"
+			(at 82.55 228.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "d4d98caa-b1b7-4775-b458-9a9cd7298144")
 		)
@@ -20461,6 +20658,15 @@
 		)
 		(property "LCSC Part" "C844519"
 			(at 82.55 172.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C844519"
+			(at 82.55 160.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
