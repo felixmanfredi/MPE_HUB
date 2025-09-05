@@ -1,0 +1,7 @@
+standby
+set Lamp on
+set Lamp off
+set BD3D on
+set BD3D off
+set IPcam on
+set IPcam off
