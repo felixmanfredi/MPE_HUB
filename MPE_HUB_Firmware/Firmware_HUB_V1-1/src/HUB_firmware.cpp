@@ -1,6 +1,7 @@
 #include <HUB_firmware.h>
 #include "ESPTelnetStream.h"
 #include "driver/gpio.h"
+#include <log.h>
 
 /*--------------ISTANZE--------------*/
 ESPTelnetStream telnet;
@@ -11,6 +12,43 @@ Adafruit_ADS1015 ads;
 HardwareSerial SerialROV(0);
 HardwareSerial SerialLampSX(1);
 HardwareSerial SerialLampDX(2);
+
+// Dichiarazione della struct contenente le variabili di sistema
+systemStatusStruct systemStatus;
+
+// Creo un'istanza del logger per scrivere e leggere sul file "log.txt"
+Logger logger("/log.txt");
+
+const char* WarningNames[WARNING_LAST_INDEX] = {      // stringhe associate ai nomi dei warning
+    "UNDERVOLTAGE_12V",
+    "OVERVOLTAGE_12V",
+    "OVERTEMP_12V",
+    "UNDERVOLTAGE_24V",
+    "OVERVOLTAGE_24V",
+    "OVERTEMP_24V",
+    "OVERCURRENT_IPCAM",
+    "OVERCURRENT_BD3D",
+    "OVERCURRENT_LAMPSX",
+    "OVERCURRENT_LAMPDX",
+    "LAMPSX_DISCONNECTED",
+    "LAMPDX_DISCONNECTED"
+};
+
+const char* ErrorNames[ERROR_LAST_INDEX] = {          // stringhe associate ai nomi degli errori
+    "UNDERVOLTAGE_12V",
+    "OVERVOLTAGE_12V",
+    "OVERTEMP_12V",
+    "UNDERVOLTAGE_24V",
+    "OVERVOLTAGE_24V",
+    "OVERTEMP_24V",
+    "OVERCURRENT_IPCAM",
+    "OVERCURRENT_BD3D",
+    "OVERCURRENT_LAMPSX",
+    "OVERCURRENT_LAMPDX",
+    "WATER_LEAK_DETECTED"
+};
+
+// TODO aggiungere funzione per avviare una procedura di spegnimento in caso di errori
 
 /*--------------FUNZIONI------------*/
 
@@ -57,12 +95,31 @@ void initialize(){
   /* Setup EEPROM */
   EEPROM.begin(EEPROM_SIZE);                      // inizializzo la memoria da utilizzare
   /* Stampa ID */
-  char id_num[ID_NUM_SIZE];
-  EEPROM.readBytes(ADDR_ID_NUM, id_num, ID_NUM_SIZE);                           // Legge l'ID salvato nella EEPROM
-  if (isLetter(id_num[0]) & isLetter(id_num[1]) & isLetter(id_num[2])) {        // Se l'ID è valido allora lo stampa
-    writeTelnet("Device ID: " + String(id_num));                                // Stampa l'ID del dispositivo
+  EEPROM.readBytes(ADDR_ID_NUM, systemStatus.ID, ID_NUM_SIZE);                          // Legge l'ID salvato nella EEPROM
+  if (systemStatus.ID[0] == 'H' && systemStatus.ID[1] == 'B' && systemStatus.ID[2] == 'S' && systemStatus.ID[3] == 'W') {   // Se l'ID è valido allora lo stampa
+    writeTelnet("Device ID: " + String(systemStatus.ID));                               // Stampa l'ID del dispositivo
+    write485ROV("HUB Device ID: " + String(systemStatus.ID) + "\n\r");                  // Invia l'ID del dispositivo al ROV
   } else {
     writeTelnet("Device ID not valid");
+  }
+
+  /*
+  // COMANDO PER RESETTARE IL CONTATORE DEI CICLI DI ACCENSIONE 
+  EEPROM.writeByte(ADDR_FIRST_CYCLE,0);
+  EEPROM.commit();
+  */
+
+  if (EEPROM.readByte(ADDR_FIRST_CYCLE) != FIRST_CYCLE_KEY) {     // Controlla se è il primo avvio
+    EEPROM.writeByte(ADDR_FIRST_CYCLE, FIRST_CYCLE_KEY);          // Scrive la chiave per indicare che non è più il primo avvio
+    EEPROM.put(ADDR_POWER_CYCLE, systemStatus.power_cycle_count); // Inizializza il contatore dei cicli di accensione a 0
+    EEPROM.commit();                                              // Salva le modifiche nella EEPROM
+  } else {  // Non è il primo avvio, incrementa il contatore dei cicli di accensione
+    EEPROM.get(ADDR_POWER_CYCLE, systemStatus.power_cycle_count);            // Legge il contatore dei cicli di accensione
+    if (systemStatus.power_cycle_count < 65535) {                            // Evita overflow del contatore
+      systemStatus.power_cycle_count++;
+      EEPROM.put(ADDR_POWER_CYCLE, systemStatus.power_cycle_count);          // Aggiorna il contatore
+      EEPROM.commit();                                            // Salva le modifiche nella EEPROM
+    }
   }
 
   /* Setup ADC */
@@ -75,23 +132,212 @@ void initialize(){
 
   pinMode(RST_GPIO, OUTPUT);
   digitalWrite(RST_GPIO, HIGH);
-  
+
+  // ------------ Filesystem --------------
+  if(!logger.begin(false)) {                // Prova a montare il filesystem
+    write485ROV("HUB Mount failed\n\r");    // Se fallisce, messaggio di errore
+    return;
+  }
+
+  #ifdef LOG_DEBUG
+    logger.checkFS(telnet);
+  #endif
+
+  // FIXME implementare funzione di logging iniziale
+  //logger.log("\n\r# " + String(systemStatus.power_cycle_count) + "\n\r"); // Scrive nel log il numero di avvi della scheda
+  // TODO aggiungere logging periodico e in caso di errore
+
   tone(BUZZER_DEBUG, 300, 100);
 }
+
+void systemStatusCheck(){
+  // Resetta tutti gli elementi a false (0)
+  memset(systemStatus.WarningFlags, 0, sizeof(systemStatus.WarningFlags));
+  memset(systemStatus.ErrorFlags, 0, sizeof(systemStatus.ErrorFlags));
+
+
+  // Check Overtemp
+  if (systemStatus.ic12V_temperature > WARNING_OVERTEMP_12V_THRESHOLD){
+    systemStatus.WarningFlags[WARNING_OVERTEMP_12V] = true;
+  } else systemStatus.WarningFlags[WARNING_OVERTEMP_12V] = false;
+  
+  if (systemStatus.ic12V_temperature > ERROR_OVERTEMP_12V_THRESHOLD){
+    systemStatus.ErrorFlags[ERROR_OVERTEMP_12V] = true;
+  } else systemStatus.ErrorFlags[ERROR_OVERTEMP_12V] = false;
+  
+  if (systemStatus.ic24V_temperature > WARNING_OVERTEMP_24V_THRESHOLD){
+    systemStatus.WarningFlags[WARNING_OVERTEMP_24V] = true;
+  } else systemStatus.WarningFlags[WARNING_OVERTEMP_24V] = false;
+  
+  if (systemStatus.ic24V_temperature > ERROR_OVERTEMP_24V_THRESHOLD){
+    systemStatus.ErrorFlags[ERROR_OVERTEMP_24V] = true;
+  } else systemStatus.ErrorFlags[ERROR_OVERTEMP_24V] = false;
+
+
+  // Check Undervoltage
+  if (systemStatus.ic12V_voltage < WARNING_UNDERVOLTAGE_12V_THRESHOLD){
+    systemStatus.WarningFlags[WARNING_UNDERVOLTAGE_12V] = true;
+  } else systemStatus.WarningFlags[WARNING_UNDERVOLTAGE_12V] = false;
+  
+  if (systemStatus.ic12V_voltage < ERROR_UNDERVOLTAGE_12V_THRESHOLD){
+    systemStatus.ErrorFlags[ERROR_UNDERVOLTAGE_12V] = true;
+  } else systemStatus.ErrorFlags[ERROR_UNDERVOLTAGE_12V] = false;
+  
+  if (systemStatus.ic24V_voltage < WARNING_UNDERVOLTAGE_24V_THRESHOLD){
+    systemStatus.WarningFlags[WARNING_UNDERVOLTAGE_24V] = true;
+  } else systemStatus.WarningFlags[WARNING_UNDERVOLTAGE_24V] = false;
+  
+  if (systemStatus.ic24V_voltage < ERROR_UNDERVOLTAGE_24V_THRESHOLD){
+    systemStatus.ErrorFlags[ERROR_UNDERVOLTAGE_24V] = true;
+  } else systemStatus.ErrorFlags[ERROR_UNDERVOLTAGE_24V] = false;
+  
+
+  // Check Overvoltage
+  if (systemStatus.ic12V_voltage > WARNING_OVERVOLTAGE_12V_THRESHOLD){
+    systemStatus.WarningFlags[WARNING_OVERVOLTAGE_12V] = true;
+  } else systemStatus.WarningFlags[WARNING_OVERVOLTAGE_12V] = false;
+
+  if (systemStatus.ic12V_voltage > ERROR_OVERVOLTAGE_12V_THRESHOLD){
+    systemStatus.ErrorFlags[ERROR_OVERVOLTAGE_12V] = true;
+  } else systemStatus.ErrorFlags[ERROR_OVERVOLTAGE_12V] = false;
+
+  if (systemStatus.ic24V_voltage > WARNING_OVERVOLTAGE_24V_THRESHOLD){
+    systemStatus.WarningFlags[WARNING_OVERVOLTAGE_24V] = true;
+  } else systemStatus.WarningFlags[WARNING_OVERVOLTAGE_24V] = false;
+
+  if (systemStatus.ic24V_voltage > ERROR_OVERVOLTAGE_24V_THRESHOLD){
+    systemStatus.ErrorFlags[ERROR_OVERVOLTAGE_24V] = true;
+  } else systemStatus.ErrorFlags[ERROR_OVERVOLTAGE_24V] = false;
+
+
+  // Check Overcurrent
+  if (systemStatus.ipcam_current > WARNING_OVERCURRENT_IPCAM_THRESHOLD){
+    systemStatus.WarningFlags[WARNING_OVERCURRENT_IPCAM] = true;
+  } else systemStatus.WarningFlags[WARNING_OVERCURRENT_IPCAM] = false;
+  
+  if (systemStatus.ipcam_current > ERROR_OVERCURRENT_IPCAM_THRESHOLD){
+    systemStatus.ErrorFlags[ERROR_OVERCURRENT_IPCAM] = true;
+  } else systemStatus.ErrorFlags[ERROR_OVERCURRENT_IPCAM] = false;
+  
+  if (systemStatus.bd3d_current > WARNING_OVERCURRENT_BD3D_THRESHOLD){
+    systemStatus.WarningFlags[WARNING_OVERCURRENT_BD3D] = true;
+  } else systemStatus.WarningFlags[WARNING_OVERCURRENT_BD3D] = false;
+  
+  if (systemStatus.bd3d_current > ERROR_OVERCURRENT_BD3D_THRESHOLD){
+    systemStatus.ErrorFlags[ERROR_OVERCURRENT_BD3D] = true;
+  } else systemStatus.ErrorFlags[ERROR_OVERCURRENT_BD3D] = false;
+  
+  if (systemStatus.lamp1_current > WARNING_OVERCURRENT_LAMPSX_THRESHOLD){
+    systemStatus.WarningFlags[WARNING_OVERCURRENT_LAMPSX] = true;
+  } else systemStatus.WarningFlags[WARNING_OVERCURRENT_LAMPSX] = false;
+  
+  if (systemStatus.lamp1_current > ERROR_OVERCURRENT_LAMPSX_THRESHOLD){
+    systemStatus.ErrorFlags[ERROR_OVERCURRENT_LAMPSX] = true;
+  } else systemStatus.ErrorFlags[ERROR_OVERCURRENT_LAMPSX] = false;
+  
+  if (systemStatus.lamp2_current > WARNING_OVERCURRENT_LAMPDX_THRESHOLD){
+    systemStatus.WarningFlags[WARNING_OVERCURRENT_LAMPDX] = true;
+  } else systemStatus.WarningFlags[WARNING_OVERCURRENT_LAMPDX] = false;
+  
+  if (systemStatus.lamp2_current > ERROR_OVERCURRENT_LAMPDX_THRESHOLD){
+    systemStatus.ErrorFlags[ERROR_OVERCURRENT_LAMPDX] = true;
+  } else systemStatus.ErrorFlags[ERROR_OVERCURRENT_LAMPDX] = false;
+
+
+  // Verifico che la lampada SX rispondano ogni "LAMP_COMMUNICATION_TIMEOUT" millisecondi (se la lampada è accesa)
+  if (millis() - systemStatus.last_lampSX_comm_time > LAMP_COMMUNICATION_TIMEOUT && systemStatus.ic24V_C0_state) {
+    systemStatus.WarningFlags[WARNING_LAMPSX_DISCONNECTED] = true;
+  }
+  else systemStatus.WarningFlags[WARNING_LAMPSX_DISCONNECTED] = false;
+
+
+  // Verifico che la lampada DX rispondano ogni "LAMP_COMMUNICATION_TIMEOUT" millisecondi (se la lampada è accesa)
+  if (millis() - systemStatus.last_lampDX_comm_time > LAMP_COMMUNICATION_TIMEOUT && systemStatus.ic24V_C1_state) {
+    systemStatus.WarningFlags[WARNING_LAMPDX_DISCONNECTED] = true;
+  } else systemStatus.WarningFlags[WARNING_LAMPDX_DISCONNECTED] = false;
+
+
+  // Water leak detection
+  if (digitalRead(WATER_PROBE_PIN) == HIGH){
+    systemStatus.ErrorFlags[ERROR_WATER_LEAK_DETECTED] = true;
+  } else systemStatus.ErrorFlags[ERROR_WATER_LEAK_DETECTED] = false;
+
+  #ifdef DEBUG_STATUS
+    // Stampa a terminale lo stato dei warning e degli errori ogni "PRINT_ERROR_TIMER" millisecondi
+    if (millis() - systemStatus.last_error_print_time > PRINT_ERROR_TIMER){
+      printSystemStatus();
+      systemStatus.last_error_print_time = millis();
+    }
+  #endif
+
+}
+
+void printSystemStatus() {
+    writeTelnet("\n\r----- SYSTEM STATUS -----");
+
+    writeTelnet("ID:" + String(systemStatus.ID) + "\r");
+
+    writeTelnet("Power cycle count:" + String(systemStatus.power_cycle_count));
+
+    writeTelnet("OTA progress (ms):" + String(systemStatus.ota_progress_millis));
+
+    writeTelnet("Last Lamp SX comm time:" + String(systemStatus.last_lampSX_comm_time));
+    writeTelnet("Last Lamp DX comm time:" + String(systemStatus.last_lampDX_comm_time));
+
+    writeTelnet("Lamp1 current:" + String(systemStatus.lamp1_current));
+    writeTelnet("Lamp2 current:" + String(systemStatus.lamp2_current));
+
+    writeTelnet("IC 24V voltage:" + String(systemStatus.ic24V_voltage));
+    writeTelnet("IC 24V temperature:" + String(systemStatus.ic24V_temperature));
+
+    writeTelnet("IC 24V C0 state:" + String(systemStatus.ic24V_C0_state ? "ON" : "OFF"));
+    writeTelnet("IC 24V C1 state:" + String(systemStatus.ic24V_C1_state ? "ON" : "OFF"));
+
+    writeTelnet("BD3D current:" + String(systemStatus.bd3d_current));
+    writeTelnet("IPCam current:" + String(systemStatus.ipcam_current));
+
+    writeTelnet("IC 12V voltage:" + String(systemStatus.ic12V_voltage));
+    writeTelnet("IC 12V temperature:" + String(systemStatus.ic12V_temperature));
+
+    writeTelnet("IC 12V C0 state:" + String(systemStatus.ic12V_C0_state ? "ON" : "OFF"));
+    writeTelnet("IC 12V C1 state:" + String(systemStatus.ic12V_C1_state ? "ON" : "OFF"));
+
+    writeTelnet("ID print flag:" + String(systemStatus.id_print_flag ? "TRUE" : "FALSE"));
+    writeTelnet("Lamp reset flag:" + String(systemStatus.lamp_reset_flag ? "TRUE" : "FALSE"));
+
+    writeTelnet("Warnings:");
+    for (int i = 0; i < WARNING_LAST_INDEX; i++) {
+        writeTelnet(String("  " + String(WarningNames[i]) + ": " + (systemStatus.WarningFlags[i] ? "TRUE" : "FALSE")).c_str());
+    }
+
+    writeTelnet("Errors:");
+    for (int i = 0; i < ERROR_LAST_INDEX; i++) {
+        writeTelnet(String("  " + String(ErrorNames[i]) + ": " + (systemStatus.ErrorFlags[i] ? "TRUE" : "FALSE")).c_str());
+    }
+
+    #ifdef LOG_DEBUG
+      writeTelnet("--------------------------\n\r");
+      logger.readAll(telnet);   // Invia il contenuto del log alla telnet
+      writeTelnet("-------++++++++++++-------\n\r");
+      logger.checkFS(telnet);   // Stampo le info della memoria
+    #endif
+}
+
 
 // FUNZIONE PER CONVERTIRE VELOCEMENTE LA LETTURA ANALOGICA DI UN PIN DALL'ADC [V]
 float getAnalogueVoltage(uint8_t pin_number){
   int16_t voltage_reading = ads.readADC_SingleEnded(pin_number);
-  float divider = (R2_ADC_DIVIDER + R1_ADC_DIVIDER)/(R2_ADC_DIVIDER);
-  float voltage_conversion = ads.computeVolts(voltage_reading)*divider;
+  float voltage_divider = (float)(R2_ADC_DIVIDER + R1_ADC_DIVIDER)/(float)(R2_ADC_DIVIDER);
+  float current_divider = (float)(R1_ADC_DIVIDER + R2_ADC_DIVIDER + RC_ADC_DIVIDER)/(float)(R1_ADC_DIVIDER + R2_ADC_DIVIDER);
+  float voltage_conversion = ads.computeVolts(voltage_reading)*voltage_divider*current_divider;
   return voltage_conversion;
 }
 
 // FUNZIONE CHE STAMPA TUTTE LE TENSIONI LETTE DALL'ADC
 void print_ADC(){
   writeTelnet("ADC Voltage reading: ");
-  writeTelnet(String(ads.readADC_SingleEnded(MULTISENSE_12V_ADC_PIN)) + " RAW -> DCDC internal \t" + String(getAnalogueVoltage(MULTISENSE_12V_ADC_PIN)) + " Volt -> DCDC internal");
-  writeTelnet(String(ads.readADC_SingleEnded(MULTISENSE_24V_ADC_PIN)) + " RAW -> DCDC out \t" + String(getAnalogueVoltage(MULTISENSE_24V_ADC_PIN)) + " Volt -> DCDC out");
+  writeTelnet(String(ads.readADC_SingleEnded(MULTISENSE_12V_ADC_PIN)) + " RAW -> Multisense 12V \t" + String(getAnalogueVoltage(MULTISENSE_12V_ADC_PIN)) + " Volt -> Multisense 12V");
+  writeTelnet(String(ads.readADC_SingleEnded(MULTISENSE_24V_ADC_PIN)) + " RAW -> Multisense 24V \t" + String(getAnalogueVoltage(MULTISENSE_24V_ADC_PIN)) + " Volt -> Multisense 24V");
 }
 
 // FUNZIONE CHE STAMPA IL TESTO SUL 485 DEDICATO AL ROV
@@ -151,11 +397,6 @@ void scanI2C(){
   }
 }
 
-// FUNZIONE CHE VERIFICA SE UN CARATTERE è UNA LETTERA
-bool isLetter(char c) {
-  return (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z');
-}
-
 // FUNZIONE CHE INOLTRA IL COMANDO DI RESET ALLE LAMPADE TRAMITE 485
 void resetLamp(){
   write485LampSX("reset\n\r");                        // Invio del comando di reset ai flash tramite 485
@@ -168,6 +409,19 @@ void blinkDebugLED(uint8_t pin){
   digitalWrite(pin, HIGH);
   delay(BLINK_DELAY_TIME);
   digitalWrite(pin, LOW);
+}
+
+String getHTMLpage(){
+  String html_String = "";
+  File file = LittleFS.open("/index.html", "r");
+  if(!file){
+    writeTelnet("Failed to open index.html");
+  }
+  while(file.available()){
+      html_String += char(file.read());
+  }
+  file.close();
+  return html_String;
 }
 
 /*---------------TELNET-------------*/

@@ -1,3 +1,7 @@
 Sono state cambiate le dipendenze di elegantOTA da ["owner": "esp32async", "name": "ESPAsyncWebServer"] a ["owner": "khoih-prog", "name": "AsyncWebServer_ESP32_SC_W5500"].
+
 Nella libreria elegantOTA, in ogni punto in cui veniva inclusa la libreria ESPAsyncWebServer è stat sostituita con AsyncWebServer_ESP32_SC_W5500.h.
-Nei punti in cui viene richiamata "esp32async/AsyncTCP" è stata sotituita con "me-no-dev/AsyncTCP"
+
+Nei punti in cui viene richiamata "esp32async/AsyncTCP" è stata sotituita con "me-no-dev/AsyncTCP".
+
+Nella libreria SimpleFTPServer nel file FtpServerKey viene sostituito "DEFAULT_STORAGE_TYPE_ESP32 STORAGE_FFAT" con "DEFAULT_STORAGE_TYPE_ESP32 STORAGE_LITTLEFS" per far funzionare il server con littleFS.

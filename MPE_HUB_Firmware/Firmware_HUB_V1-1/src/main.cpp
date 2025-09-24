@@ -1,7 +1,10 @@
 #include <VND70.h>
 #include <HUB_firmware.h>
 #include <AsyncWebServer_ESP32_SC_W5500.h>
+#include <SimpleFTPServer.h>
 #include <ElegantOTA.h>
+
+// TODO resettare tutta la flash prima di usare coem definitivo
 
 /*------------COMANDI CLI------------*/
 SimpleCLI cli;                                  // Oggetto per CLI
@@ -20,29 +23,6 @@ const char* password = "00000000";
 IPAddress IP;
 AsyncWebServer server(80);
 
-struct systemStatus {
-    unsigned long ota_progress_millis = 0;
-    unsigned long last_lampSX_comm_time = 0;
-    unsigned long last_lampDX_comm_time = 0;
-    bool lampSX_isAlive = false;
-    bool lampDX_isAlive = false;
-    float lamp1_current;
-    float lamp2_current;
-    float ic24V_voltage;
-    float ic24V_temperature;
-    bool  ic24V_C0_state;
-    bool  ic24V_C1_state;
-    float bd3d_current;
-    float ipcam_current;
-    float ic12V_voltage;
-    float ic12V_temperature;
-    bool  ic12V_C0_state;
-    bool  ic12V_C1_state;
-    uint8_t last_error = 0;
-    bool id_print_flag = false;             // flag per la stampa dell'ID
-    bool lamp_reset_flag = false;           // flag per il reset delle lampade
-} systemStatus;
-
 byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0x01 };
 
 // Select the IP address according to your local network
@@ -51,6 +31,9 @@ IPAddress myGW(192, 168, 1, 1);
 IPAddress mySN(255, 255, 255, 0);
 // Google DNS Server IP
 IPAddress myDNS(8, 8, 8, 8);
+
+// FTP server instance
+FtpServer ftpSrv;
 
 String jsonString;
 DynamicJsonDocument jsonDoc(4096);                  // Creazione del json
@@ -70,35 +53,34 @@ struct id_num_wrapper {
 /*------------FUNZIONI---------------*/
 
 void jsonSerialize(){
-    
-    systemStatus.lamp1_current = VND70::readCurrent(2, FLASH_1_CHANNEL);
-    systemStatus.lamp2_current = VND70::readCurrent(2, FLASH_2_CHANNEL);
-    systemStatus.ic24V_voltage = VND70::readVoltage(2);
-    systemStatus.ic24V_temperature = VND70::readTemperature(2);
-    systemStatus.ic24V_temperature = getAnalogueVoltage(MULTISENSE_24V_ADC_PIN);
-    systemStatus.ic24V_C0_state = VND70::channel_0_state(2);
-    systemStatus.ic24V_C1_state = VND70::channel_1_state(2);
 
-    systemStatus.bd3d_current = VND70::readCurrent(1, BD3D_CHANNEL);
-    systemStatus.ipcam_current = VND70::readCurrent(1, IPCAM_CHANNEL);
-    systemStatus.ic12V_voltage = VND70::readVoltage(1);
-    systemStatus.ic12V_temperature = VND70::readTemperature(1);
-    systemStatus.ic12V_C0_state = VND70::channel_0_state(1);
-    systemStatus.ic12V_C1_state = VND70::channel_1_state(1);
+    systemStatus.lamp1_current      = VND70::readCurrent(2, FLASH_1_CHANNEL);
+    systemStatus.lamp2_current      = VND70::readCurrent(2, FLASH_2_CHANNEL);
+    systemStatus.ic24V_voltage      = VND70::readVoltage(2);
+    systemStatus.ic24V_temperature  = VND70::readTemperature(2);
+    systemStatus.ic24V_C0_state     = VND70::channel_0_state(2);
+    systemStatus.ic24V_C1_state     = VND70::channel_1_state(2);
+
+    systemStatus.bd3d_current       = VND70::readCurrent(1, BD3D_CHANNEL);
+    systemStatus.ipcam_current      = VND70::readCurrent(1, IPCAM_CHANNEL);
+    systemStatus.ic12V_voltage      = VND70::readVoltage(1);
+    systemStatus.ic12V_temperature  = VND70::readTemperature(1);
+    systemStatus.ic12V_C0_state     = VND70::channel_0_state(1);
+    systemStatus.ic12V_C1_state     = VND70::channel_1_state(1);
 
     jsonDoc.clear();
-    jsonDoc["Current_Flash_1"] = systemStatus.lamp1_current;
-    jsonDoc["Current_Flash_2"] = systemStatus.lamp2_current;
-    jsonDoc["Voltage_24V"] = systemStatus.ic24V_voltage;
-    jsonDoc["Chip_Temp_24V"] = systemStatus.ic24V_temperature;
-    jsonDoc["24V_0_State"] = systemStatus.ic24V_C0_state;
-    jsonDoc["24V_1_State"] = systemStatus.ic24V_C1_state;
-    jsonDoc["Current_BD3D"] = systemStatus.bd3d_current;
-    jsonDoc["Current_IPCam"] = systemStatus.ipcam_current;
-    jsonDoc["Voltage_12V"] = systemStatus.ic12V_voltage;
-    jsonDoc["Chip_Temp_12V"] = systemStatus.ic12V_temperature;
-    jsonDoc["12V_0_State"] = systemStatus.ic12V_C0_state;
-    jsonDoc["12V_1_State"] = systemStatus.ic12V_C1_state;
+    jsonDoc["Current_Flash_1"]  = systemStatus.lamp1_current;
+    jsonDoc["Current_Flash_2"]  = systemStatus.lamp2_current;
+    jsonDoc["Voltage_24V"]      = systemStatus.ic24V_voltage;
+    jsonDoc["Chip_Temp_24V"]    = systemStatus.ic24V_temperature;
+    jsonDoc["24V_0_State"]      = systemStatus.ic24V_C0_state;
+    jsonDoc["24V_1_State"]      = systemStatus.ic24V_C1_state;
+    jsonDoc["Current_BD3D"]     = systemStatus.bd3d_current;
+    jsonDoc["Current_IPCam"]    = systemStatus.ipcam_current;
+    jsonDoc["Voltage_12V"]      = systemStatus.ic12V_voltage;
+    jsonDoc["Chip_Temp_12V"]    = systemStatus.ic12V_temperature;
+    jsonDoc["12V_0_State"]      = systemStatus.ic12V_C0_state;
+    jsonDoc["12V_1_State"]      = systemStatus.ic12V_C1_state;
     serializeJson(jsonDoc, jsonString);
 }
 
@@ -208,11 +190,13 @@ void setCommand(String component, String action){
 }
 
 void ID_setCommand(char id_num[ID_NUM_SIZE]){
-    if (isLetter(id_num[0]) && isLetter(id_num[1]) && isLetter(id_num[2])){ // Verifica che i primi 3 caratteri siano lettere
-        writeTelnet("# Comando ricevuto: ID_SET " + String(id_num));          // Stampa l'ID ricevuto
+    if (id_num[0] == 'H' && id_num[1] == 'B' && id_num[2] == 'S' && id_num[3] == 'W'){    // Verifica che si riferisca all'HUB
+        writeTelnet("# Comando ricevuto: ID_SET " + String(id_num));        // Stampa l'ID ricevuto
+        id_num [ID_NUM_SIZE - 1] = '\0';                                    // Aggiungo il terminatore di stringa
         EEPROM.writeBytes(ADDR_ID_NUM, id_num, ID_NUM_SIZE);                // Salva l'ID nella EEPROM
         EEPROM.commit();
-        EEPROM.readBytes(ADDR_ID_NUM, id_num, ID_NUM_SIZE);     // Legge l'ID salvato nella EEPROM
+        memset(id_num, 0, ID_NUM_SIZE);                                     // resetto la stringa
+        EEPROM.readBytes(ADDR_ID_NUM, id_num, ID_NUM_SIZE);                 // Legge l'ID salvato nella EEPROM
         writeTelnet("# ID_NUM salvato: " + String(id_num));
     }
     else {
@@ -221,12 +205,13 @@ void ID_setCommand(char id_num[ID_NUM_SIZE]){
 }
 
 void ID_printCommand(){
-    char id_num[ID_NUM_SIZE];
+    char id_num[ID_NUM_SIZE] = {0};
     EEPROM.readBytes(ADDR_ID_NUM, id_num, ID_NUM_SIZE);     // Legge l'ID salvato nella EEPROM
+    id_num[ID_NUM_SIZE - 1] = '\0';                         // Aggiungo il terminatore di stringa
     writeTelnet("ID del dispositivo: " + String(id_num));   // Stampa l'ID del dispositivo
 }
 
-/*------------OTA UPDATE------------*/
+/*-------------------------------------- OTA UPDATE --------------------------------------*/
 
 void notFound(AsyncWebServerRequest *request)
 {
@@ -257,11 +242,12 @@ void onOTAEnd(bool success) {
     // <Add your own code here>
 }
 
-/*---------SERVER INITIALIZE--------*/
+/*-------------------------------------- SERVER INITIALIZE -----------------------------------------*/
 void server_initialize(){
     server.on("/", HTTP_GET, [](AsyncWebServerRequest *request) {
-        request->send(200, "text/html", MAIN_page);});
-        //request->send(200, "text/plain", "HUB MPE");});
+        request->send(200, "text/html", getHTMLpage());});      // HTML in littlefs
+        //request->send(200, "text/html", MAIN_page);});        // HTML in .h
+        //request->send(200, "text/plain", "HUB MPE");});       // simple page
     
     server.on("/sensor", HTTP_GET, [](AsyncWebServerRequest *request){
         request->send(200, "application/json", jsonString);             // Invio della risposta
@@ -348,7 +334,58 @@ void server_initialize(){
     server.onNotFound(notFound);
 }
 
-/* --------------CLI-------------- */
+/* ------------------------------------------- FTP ------------------------------------------- */
+
+void _callback(FtpOperation ftpOperation, unsigned int freeSpace, unsigned int totalSpace){
+  switch (ftpOperation) {
+    case FTP_CONNECT:
+      Serial.println(F("FTP: Connected!"));
+      break;
+    case FTP_DISCONNECT:
+      Serial.println(F("FTP: Disconnected!"));
+      break;
+    case FTP_FREE_SPACE_CHANGE:
+      Serial.printf("FTP: Free space change, free %u of %u!\n", freeSpace, totalSpace);
+      break;
+    default:
+      break;
+  }
+};
+void _transferCallback(FtpTransferOperation ftpOperation, const char* name, unsigned int transferredSize){
+  switch (ftpOperation) {
+    case FTP_UPLOAD_START:
+      Serial.println(F("FTP: Upload start!"));
+      break;
+    case FTP_UPLOAD:
+      Serial.printf("FTP: Upload of file %s byte %u\n", name, transferredSize);
+      break;
+    case FTP_TRANSFER_STOP:
+      Serial.println(F("FTP: Finish transfer!"));
+      break;
+    case FTP_TRANSFER_ERROR:
+      Serial.println(F("FTP: Transfer error!"));
+      break;
+    default:
+      break;
+  }
+
+  /* FTP_UPLOAD_START = 0,
+   * FTP_UPLOAD = 1,
+   *
+   * FTP_DOWNLOAD_START = 2,
+   * FTP_DOWNLOAD = 3,
+   *
+   * FTP_TRANSFER_STOP = 4,
+   * FTP_DOWNLOAD_STOP = 4,
+   * FTP_UPLOAD_STOP = 4,
+   *
+   * FTP_TRANSFER_ERROR = 5,
+   * FTP_DOWNLOAD_ERROR = 5,
+   * FTP_UPLOAD_ERROR = 5
+   */
+};
+
+/* ------------------------------------------- CLI ------------------------------------------- */
 
 // Callback per il comando set
 void setCallback(cmd* c) {
@@ -426,6 +463,9 @@ void setup() {
     IP = WiFi.softAPIP();
     //SerialROV.print("AP IP address: ");
     //SerialROV.println(IP);
+    ftpSrv.setCallback(_callback);
+    ftpSrv.setTransferCallback(_transferCallback);
+    ftpSrv.begin("HUB_MPE","1999");    //username, password for ftp.   (default 21, 50009 for PASV)
 
     server_initialize();
 
@@ -490,31 +530,12 @@ void loop() {
     #endif
     delay(5);
     ElegantOTA.loop();
+    ftpSrv.handleFTP();
     String input = loopTelnet();
 
     jsonSerialize();
 
-    // Verifico che la lampada SX rispondano ogni "LAMP_COMMUNICATION_TIMEOUT" millisecondi (se la lampada è accesa)
-    if (millis() - systemStatus.last_lampSX_comm_time > LAMP_COMMUNICATION_TIMEOUT && systemStatus.ic24V_C0_state) {
-        systemStatus.lampSX_isAlive = false;
-        write485ROV("ERROR: LampSX not responding\n\r");
-        writeTelnet("ERROR: LampSX not responding");
-        systemStatus.last_lampSX_comm_time = millis(); // Evito di mandare troppi messaggi di errore
-    }
-    else {
-        systemStatus.lampSX_isAlive = true;
-    }
-
-    // Verifico che la lampada DX rispondano ogni "LAMP_COMMUNICATION_TIMEOUT" millisecondi (se la lampada è accesa)
-    if (millis() - systemStatus.last_lampDX_comm_time > LAMP_COMMUNICATION_TIMEOUT && systemStatus.ic24V_C1_state) {
-        systemStatus.lampDX_isAlive = false;
-        write485ROV("ERROR: LampDX not responding\n\r");
-        writeTelnet("ERROR: LampDX not responding");
-        systemStatus.last_lampDX_comm_time = millis(); // Evito di mandare troppi messaggi di errore
-    }
-    else {
-        systemStatus.lampDX_isAlive = true;
-    }
+    systemStatusCheck();
 
     if (flash_wrapper.flash_action_flag) {
         flash_wrapper.flash_action_flag = false;

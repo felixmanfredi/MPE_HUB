@@ -28,6 +28,9 @@ class VND70 {
         // Accende le uscite dell'istenza "ID"
         static void ALLon(uint8_t ID);
 
+        // Accende le uscite dell'istenza "ID"
+        static void ALLoff(uint8_t ID);
+
         // Spegne le uscite dell'istenza "ID"
         static void standby(uint8_t ID);
 
@@ -59,9 +62,13 @@ class VND70 {
         static const uint8_t MAX_COMPONENTS = 10;
         static VND70Pins components[];
         static uint8_t count;
-
-        // Trova l’indice in components[] dato un ID
-        static int8_t findIndex(uint8_t ID);
+        static const uint8_t VoltageSenseMultiplier = 4;         // Moltiplicatore per la lettura della tensione (Vcc/4)
+        static const uint16_t CurrentSenseMultiplier = 1200;     // Moltiplicatore per la lettura della corrente [in realtà è non lineare con la corrente]
+        static const uint16_t CurrentResistor = 1000;            // Valore della resistenza di sensing della corrente (in Ohm)
+        static constexpr float TemperatureDivider = -5.5f;       // Moltiplicatore per la lettura della temperatura (mV/K)
+        static const int8_t TemperatureOffset_T0 = 25;           // Offset per la lettura della temperatura (°C)
+        static constexpr float Temperature_Volt_T0 = 2070;       // Tensione a 25°C (mV)
+        static int8_t findIndex(uint8_t ID);                     // Trova l’indice in components[] dato un ID
 };
 
 #endif

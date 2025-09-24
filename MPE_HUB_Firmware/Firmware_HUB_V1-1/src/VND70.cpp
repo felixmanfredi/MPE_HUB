@@ -38,6 +38,15 @@ void VND70::ALLon(uint8_t ID) {
     components[idx].channel_1_state = true;
 }
 
+void VND70::ALLoff(uint8_t ID) {
+    int8_t idx = findIndex(ID);
+    if (idx < 0) return;
+    digitalWrite(components[idx].EnableChannel0, LOW);
+    digitalWrite(components[idx].EnableChannel1, LOW);
+    components[idx].channel_0_state = false;
+    components[idx].channel_1_state = false;
+}
+
 void VND70::standby(uint8_t ID) {
     int8_t idx = findIndex(ID);
     if (idx < 0) return;
@@ -79,7 +88,7 @@ float VND70::readVoltage(uint8_t ID){
     digitalWrite(components[idx].SEL_1, HIGH);
     delay(5);
     float temp_reading = getAnalogueVoltage(components[idx].MultiSense);
-    return temp_reading*8;      // da datsheet Vsense = Vcc/8
+    return temp_reading*VoltageSenseMultiplier;      // da datasheet Vsense = Vcc/4 (a volte parla anche di Vcc/8...)
 }
 
 float VND70::readCurrent(uint8_t ID, uint8_t channel){
@@ -88,23 +97,24 @@ float VND70::readCurrent(uint8_t ID, uint8_t channel){
         digitalWrite(components[idx].SEL_0, LOW);      // 00 per leggere la corrente sul primo canale
         digitalWrite(components[idx].SEL_1, LOW);
     } else if (channel == 1){
-        digitalWrite(components[idx].SEL_0, LOW);      // 01 per leggere la corrente sul secondo canale
-        digitalWrite(components[idx].SEL_1, HIGH);
+        digitalWrite(components[idx].SEL_0, HIGH);      // 01 per leggere la corrente sul secondo canale
+        digitalWrite(components[idx].SEL_1, LOW);
     } else {
         writeTelnet("Lettura di corrente fallita, canale è diverso da 0 o 1");
         return -1;
     }
     delay(5);
-    float temp_reading = getAnalogueVoltage(components[idx].MultiSense);
+    float temp_reading = getAnalogueVoltage(components[idx].MultiSense)*CurrentSenseMultiplier/CurrentResistor;
     return temp_reading;
 }
 
 float VND70::readTemperature(uint8_t ID){
     int8_t idx = findIndex(ID);
-    digitalWrite(components[idx].SEL_0, HIGH);           // 10 per leggere la tensione sul chip
-    digitalWrite(components[idx].SEL_1, LOW);
+    digitalWrite(components[idx].SEL_0, LOW);           // 10 per leggere la temperatura sul chip
+    digitalWrite(components[idx].SEL_1, HIGH);
     delay(5);
-    float temp_reading = getAnalogueVoltage(components[idx].MultiSense);
+    float temp_voltage_reading = getAnalogueVoltage(components[idx].MultiSense)*1000;
+    float temp_reading = TemperatureOffset_T0 + ((temp_voltage_reading - Temperature_Volt_T0)/TemperatureDivider);
     return temp_reading;
 }
 
