@@ -1,8 +1,6 @@
 #ifndef HUB_FIRMWARE_H
 #define HUB_FIRMWARE_H
 
-/*--ASSEGNAZIONE DEI PIN PER VERSIONE 1.0 DELL'HUB--*/
-
 #include <Arduino.h>
 #include <Wire.h>
 #include <SimpleCLI.h>          // Include per includere interfaccia a linea di comando
@@ -10,6 +8,7 @@
 #include <SPI.h>
 #include <Adafruit_ADS1X15.h>   // Include per l'ADC I2C
 #include <EEPROM.h>             // Include library to read and write from flash memory
+#include <RS485.h>
 
 
 //#define DEBUG                 // Abilita le stampe di debug
@@ -34,6 +33,10 @@
 #define MOSI_GPIO           7   // Pin MOSI SPI
 #define SCK_GPIO            9   // Pin SCK SPI
 #define CS_GPIO             10  // Pin CS SPI
+
+#define PRINT_485DELAY_TIME     10  // Millisecondi di attesa per scrivere sui bus 485
+#define LAMP_CHECK_STATUS_TIMER 100 // Quanti millisecondi passano tra un controllo delle lampade e il successivo
+#define MIN_RX_BYTE_485         3   // Numero minimo di byte da leggere per considerare valido un messaggioo sul bus 485
 
 #define RX_485_LED_SX       2   // Pin di rx per 485 del flash di sinistra (Flash 1 sulla scheda)
 #define RW_485_LED_SX       3   // Pin lettura/scrittura per 485 (LOW->READ) (HIGH->WRITE) (Flash 1 sulla scheda)
@@ -77,15 +80,16 @@
 #define _ASYNC_WEBSERVER_LOGLEVEL_       2
 
 #define ADC_ADDR            0x4B// Indirizzo I2C per l'ADC 4 canali
-#define R1_ADC_DIVIDER      10  // Valore della prima resistenza del partitore per la lettura da ADC
-#define R2_ADC_DIVIDER      20  // Valore della seconda resistenza del partitore (su cui avviene la lettura)
-#define RC_ADC_DIVIDER      1   // Valore della prima resistenza del partitore per la lettura da ADC
+#define R1_ADC_DIVIDER      10  // Valore della prima resistenza del partitore per la lettura da ADC [kOhm]
+#define R2_ADC_DIVIDER      20  // Valore della seconda resistenza del partitore (su cui avviene la lettura) [kOhm]
+#define RC_ADC_DIVIDER      1   // Valore della prima resistenza del partitore per la lettura da ADC [kOhm]
 
 #define BLINK_DELAY_TIME    10  // Tempo di lampeggio del led di debug in ms
 
 // ---------- Gestione Warning ed errori ---------------
 #define PRINT_ERROR_TIMER                   5000    // Intervallo tra una stampa degli errori e la successiva [mS]
 #define LAMP_COMMUNICATION_TIMEOUT          6500    // Tempo massimo di attesa per la comunicazione con le lampade in ms
+#define LOG_INTERVAL                        900000  // Intervallo di log dei dati di sistema in ms
 
 #define WARNING_UNDERVOLTAGE_12V_THRESHOLD  11  // Soglia di warning undervoltage per l'alimentazione 12V [V]
 #define WARNING_OVERVOLTAGE_12V_THRESHOLD   13  // Soglia di warning overvoltage per l'alimentazione 12V [V]
@@ -99,14 +103,14 @@
 #define WARNING_OVERCURRENT_LAMPSX_THRESHOLD  2500 // Soglia di warning overcurrent per l'alimentazione 24V Lampada SX [mA]
 #define WARNING_OVERCURRENT_LAMPDX_THRESHOLD  2500 // Soglia di warning overcurrent per l'alimentazione 24V Lampada DX [mA]
 
-#define ERROR_UNDERVOLTAGE_12V_THRESHOLD    10  // Soglia di errore undervoltage per l'alimentazione 12V [V]
-#define ERROR_OVERVOLTAGE_12V_THRESHOLD     14  // Soglia di errore overvoltage per l'alimentazione 12V [V]
+#define ERROR_UNDERVOLTAGE_12V_THRESHOLD    5   // Soglia di errore undervoltage per l'alimentazione 12V [V]
+#define ERROR_OVERVOLTAGE_12V_THRESHOLD     15  // Soglia di errore overvoltage per l'alimentazione 12V [V]
 #define ERROR_OVERTEMP_12V_THRESHOLD        70  // Soglia di errore overtemperature per l'alimentazione 12V [°C]
 #define ERROR_OVERCURRENT_IPCAM_THRESHOLD   2000 // Soglia di errore overcurrent per l'alimentazione 12V IPCAM [mA]
 #define ERROR_OVERCURRENT_BD3D_THRESHOLD    5000 // Soglia di errore overcurrent per l'alimentazione 12V BD3D [mA]
 
-#define ERROR_UNDERVOLTAGE_24V_THRESHOLD    20  // Soglia di errore undervoltage per l'alimentazione 24V [V]
-#define ERROR_OVERVOLTAGE_24V_THRESHOLD     28  // Soglia di errore overvoltage per l'alimentazione 24V [V]
+#define ERROR_UNDERVOLTAGE_24V_THRESHOLD    15  // Soglia di errore undervoltage per l'alimentazione 24V [V]
+#define ERROR_OVERVOLTAGE_24V_THRESHOLD     30  // Soglia di errore overvoltage per l'alimentazione 24V [V]
 #define ERROR_OVERTEMP_24V_THRESHOLD        70  // Soglia di errore overtemperature per l'alimentazione 24V [°C]
 #define ERROR_OVERCURRENT_LAMPSX_THRESHOLD  3500 // Soglia di errore overcurrent per l'alimentazione 24V Lampada SX [mA]
 #define ERROR_OVERCURRENT_LAMPDX_THRESHOLD  3500 // Soglia di errore overcurrent per l'alimentazione 24V Lampada DX [mA]
@@ -156,14 +160,18 @@ extern HardwareSerial SerialROV;
 extern HardwareSerial SerialLampSX;
 extern HardwareSerial SerialLampDX;
 
+extern RS485Bus ROV485;
+extern RS485Bus LampSX485;
+extern RS485Bus LampDX485;
+
 // Dichiarazione della struct contenente le variabili di sistema
 struct systemStatusStruct {
-    char ID[ID_NUM_SIZE] = {0};
+    char ID[ID_NUM_SIZE] = {0};                         // ID univoco della scheda
+    char Board_REV[ID_NUM_SIZE] = "1.1.0";
+    char FW_VERS[ID_NUM_SIZE] = "1.2.1";
     uint16_t power_cycle_count = 0;                     // Numero di avii della scheda
-    unsigned long ota_progress_millis = 0;
     unsigned long last_lampSX_comm_time = 0;
     unsigned long last_lampDX_comm_time = 0;
-    unsigned long last_error_print_time = 0;
     float lamp1_current = 0.0f;
     float lamp2_current = 0.0f;
     float ic24V_voltage = 0.0f;
@@ -176,10 +184,23 @@ struct systemStatusStruct {
     float ic12V_temperature = 0.0f;
     bool  ic12V_C0_state = false;
     bool  ic12V_C1_state = false;
-    bool id_print_flag = false;                         // flag per la stampa dell'ID
     bool lamp_reset_flag = false;                       // flag per il reset delle lampade
+    bool lampSX_Ready = false;                          // flag che indica se la lampada SX è pronta allo scatto
+    bool lampDX_Ready = false;                          // flag che indica se la lampada DX è pronta allo scatto
+    char ID_lampSX[ID_NUM_SIZE] = {0};                  // ID della lampada connessa a SX
+    char ID_lampDX[ID_NUM_SIZE] = {0};                  // ID della lampada connessa a DX
     bool WarningFlags[WARNING_LAST_INDEX] = {false};    // Array per i flag di warning
     bool ErrorFlags[ERROR_LAST_INDEX] = {false};        // Array per i flag di errori
+
+    // da non stampare
+    unsigned long last_log_time = 0;                    // Tempo dell'ultimo log effettuato
+    unsigned long ota_progress_millis = 0;
+    unsigned long last_error_print_time = 0;            // Tempo dell'ultima stampa degli errori
+    unsigned long last_lamp_check_time = 0;             // Tempo dell'ultimo controllo delle lampade
+    bool id_print_flag = false;                         // flag per la stampa dell'ID
+    bool warning_detected = false;                      // flag che indica se è presente un warning
+    bool error_detected = false;                        // flag che indica se è presente un errore critico
+    bool isLampID_set = false;                          // flag che è true se sono stati letti gli ID dalle lampade
 };
 
 extern systemStatusStruct systemStatus;
@@ -209,6 +230,17 @@ void set_pin_function(const uint8_t array[], uint8_t size, byte value);
 void initialize();
 
 /*
+* FUNZIONE PER IL SETUP DELLA EEPROM (LETTURA SCRITTURA VARIABILI DI SISTEMA INIZIALI)
+*/
+void EEPROM_Setup();
+
+/*
+* FUNZIONE CHE LOGGA GLI ERRORI CRITICI SOLO UNA VOLTA
+* @param uint8_t codice dell'errore
+*/
+void processError(uint8_t ErrorCode);
+
+/*
 * FUNZIONI PER RILEVARE I WARNING E GLI ERRORI DEL SISTEMA
 */
 void systemStatusCheck();
@@ -217,6 +249,11 @@ void systemStatusCheck();
 * FUNZIONE CHE STAMPA LO STATUS DI TUTTI I WARNING E GLI ERRORI
 */
 void printSystemStatus();
+
+/*
+* FUNZIONE PER LOGGARE I DATI DI SISTEMA IN UN FORMATO CSV
+*/
+void logSystemData();
 
 /* 
 * FUNZIONE PER CONVERTIRE VELOCEMENTE LA LETTURA ANALOGICA DI UN PIN DALL'ADC [V]
@@ -230,28 +267,20 @@ float getAnalogueVoltage(uint8_t pin_number);
 */
 void print_ADC();
 
-/* 
-* FUNZIONE CHE STAMPA IL TESTO SUL 485 DEDICATO AL ROV (bisogna esplicitare '\n e \r')
-* @param String il testo da stampare
-*/
-void write485ROV(String text);
-
-/* 
-* FUNZIONE CHE STAMPA IL TESTO SUL 485 DEDICATO ALLA LAMPADA SX (bisogna esplicitare '\n e \r')
-* @param String il testo da stampare
-*/
-void write485LampSX(String text);
-
 /*
-* FUNZIONE CHE STAMPA IL TESTO SUL 485 DEDICATO ALLA LAMPADA DX (bisogna esplicitare '\n e \r')
-* @param String il testo da stampare
+* FUNZIONE CHE CHIEDE L'ID ALLE LAMPADE CONNESSE E LO METTE IN MEMORIA
 */
-void write485LampDX(String text);
+bool readLampID();
 
 /* 
 * FUNZIONE PER SCANSIONARE TUTTI I DISPOSITIVI SUL BUS I2C
 */
 void scanI2C();
+
+/*
+* FUNZIONE CHE CONTROLLA SE LE LAMPADE SONO PRONTE ALLO SCATTO
+*/
+void FlashReadyCheck();
 
 /*
 * FUNZIONE CHE INOLTRA IL COMANDO DI RESET ALLE LAMPADE TRAMITE 485
@@ -264,6 +293,10 @@ void resetLamp();
 */
 void blinkDebugLED(uint8_t pin);
 
+/*
+* FUNZIONE CHE RESTITUISCE LA PAGINA HTML PER L'INTERFACCIA WEB
+* @return String la pagina HTML
+*/
 String getHTMLpage();
 
 /*---------------TELNET-------------*/
@@ -279,11 +312,13 @@ void onTelnetConnect(String ip);
 
 void onTelnetDisconnect(String ip);
 
+/*
 void onTelnetReconnect(String ip);
 
 void onTelnetConnectionAttempt(String ip);
 
 void onTelnetInput(String str);
+*/
 
 void setupTelnet();
 
@@ -297,5 +332,10 @@ String loopTelnet();
 * @param String testo da stampare
 */
 void writeTelnet(String text);
+
+/**
+ * FUNZIONE CHE STAMPA SU TELNET I BUS 485 SE TROVA DEI DATI DA LEGGERE
+ */
+void print485onTelnet();
 
 #endif

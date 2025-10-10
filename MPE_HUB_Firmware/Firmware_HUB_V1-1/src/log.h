@@ -12,6 +12,7 @@ public:
     void log(const String &data);
     void readAll(Stream &out);
     void checkFS(Stream &out);
+    unsigned long lastlogtime = 0;
 
 private:
     const char* _filename;

@@ -176,6 +176,85 @@
         transform: translateX(26px);
         }
 
+        .lamp-status-card {
+            display: flex;
+            width: auto;
+            flex-direction: column;
+            gap: 10px;
+            padding: 15px;
+            background: #ffffff;
+            border: 1px solid #e5e9f0;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            margin-top: 0px;
+            margin-right: 0px;
+            margin-left: 0px;
+        }
+
+        .lamp-block {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding: 10px;
+            background: rgba(0, 120, 215, 0.03);
+            border-radius: 10px;
+        }
+
+        .lamp-id {
+            font-weight: bold;
+            color: #0078d7;
+        }
+
+        .lamp-info-row {
+            display: grid;
+            grid-template-columns: 1fr 4fr 4fr;
+            align-items: center;
+            text-align: center;
+            gap: 12px;
+        }
+
+        .dot {
+            height: 18px;
+            width: 18px;
+            border-radius: 50%;
+            display: inline-block;
+            background-color: gray;
+            box-shadow: 0 0 3px rgba(0,0,0,0.2);
+        }
+
+        .dot.green { background-color: #00c853; } 
+        .dot.red { background-color: #d50000; }
+
+        .lamp-label {
+            font-weight: 500;
+            color: #222;
+        }
+
+        .lamp-ready {
+            font-weight: 600;
+            color: #555;
+        }
+
+        .lamp-ready.ready { color: #00c8c8; }
+        .lamp-ready.not-ready { color: #d5b500; }
+
+
+        .footer-info {
+            margin-top: 40px;
+            font-size: 0.95em;
+            font-weight: 600;
+            color: #444;
+            padding: 12px;
+            border-top: 1px solid #ddd;
+
+            display: flex;
+            justify-content: space-around; /* distribuisce equamente */
+            text-align: center;
+        }
+        .footer-info span{
+            margin: 10px;
+        }
+
   </style>
 
   <script>
@@ -193,11 +272,22 @@
             document.getElementById("Current_IPCam").innerHTML = data.Current_IPCam.toFixed(2) + " A";
             document.getElementById("Voltage_12V").innerHTML = data.Voltage_12V.toFixed(2) + " V";
             document.getElementById("Chip_Temp_12V").innerHTML = data.Chip_Temp_12V.toFixed(2) + " C";
+            document.getElementById("Board_ID").textContent = data.Board_ID || "--";
+            document.getElementById("Board_Rev").textContent = data.Board_REV || "--";
+            document.getElementById("FW_Version").textContent = data.FW_VERS || "--";
+            document.getElementById("LampSX_ID").textContent = data.LampSX_ID || "--";
+            document.getElementById("LampDX_ID").textContent = data.LampDX_ID || "--";
+
 
             refreshSwitch("12V_0", data["12V_0_State"]);
             refreshSwitch("12V_1", data["12V_1_State"]);
             refreshSwitch("24V_0", data["24V_0_State"]);
             refreshSwitch("24V_1", data["24V_1_State"]);
+
+            setDot("LampSX_Disconnected", data.LampSX_Disconnected);
+            setReady("LampSX_ready", data.LampSX_Ready);
+            setDot("LampDX_Disconnected", data.LampDX_Disconnected);
+            setReady("LampDX_ready", data.LampDX_Ready);
             })
             .catch(err => console.error("Errore nel fetch:", err));
     }
@@ -209,6 +299,21 @@
 
         checkbox.checked = state;
         label.textContent = `${getDeviceLabel(device)} ${state ? 'ON' : 'OFF'}`;
+    }
+
+    function setDot(id, state) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.classList.remove("red", "green");
+        el.classList.add(state ? "red" : "green");
+    }
+
+    function setReady(id, state) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.classList.remove("ready", "not-ready");
+        el.textContent = state ? "Ready" : "Not Ready";
+        el.classList.add(state ? "ready" : "not-ready");
     }
 
     function toggleState(el) {
@@ -327,6 +432,27 @@
                 </div>
 
                 <div class="card">
+                    <div class="card lamp-status-card">
+                        <!-- Lamp SX -->
+                        <div class="lamp-block">
+                            <div class="lamp-id">ID: <span id="LampSX_ID">--</span></div>
+                            <div class="lamp-info-row">
+                                <span class="dot" id="LampSX_Disconnected"></span>
+                                <span class="lamp-label">Lamp SX</span>
+                                <span class="lamp-ready" id="LampSX_ready">--</span>
+                            </div>
+                        </div>
+                        <!-- Lamp DX -->
+                        <div class="lamp-block">
+                            <div class="lamp-id">ID: <span id="LampDX_ID">--</span></div>
+                            <div class="lamp-info-row">
+                                <span class="dot" id="LampDX_Disconnected"></span>
+                                <span class="lamp-label">Lamp DX</span>
+                                <span class="lamp-ready" id="LampDX_ready">--</span>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="button-row">
                         <button onclick="torchON()"><i class="fas fa-sun"></i> TORCH ON</button>
                         <button onclick="torchOFF()"><i class="fas fa-moon"></i> TORCH OFF</button>
@@ -334,6 +460,11 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="footer-info">
+            <span>ID: <span id="Board_ID"></span></span>
+            <span>Revisione: <span id="Board_Rev"></span></span>
+            <span>Firmware: <span id="FW_Version"></span></span>
         </div>
     </div>
 </body>

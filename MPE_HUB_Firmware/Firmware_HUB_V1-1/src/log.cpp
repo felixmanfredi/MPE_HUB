@@ -22,6 +22,7 @@ void Logger::log(const String &data) {
         //Serial.println("Errore apertura file per append");
         return;
     }
+    lastlogtime = millis();
     file.println(data); // Scrive i dati e va a capo
     file.close();       // Chiude il file
 }

@@ -3,6 +3,8 @@
 #include "driver/gpio.h"
 #include <log.h>
 
+// TODO aggiungere NTP per avere l'ora esatta (con connessione interneet o con un server su jetson)
+
 /*--------------ISTANZE--------------*/
 ESPTelnetStream telnet;
 uint16_t  port = 23;
@@ -12,6 +14,10 @@ Adafruit_ADS1015 ads;
 HardwareSerial SerialROV(0);
 HardwareSerial SerialLampSX(1);
 HardwareSerial SerialLampDX(2);
+
+RS485Bus ROV485(SerialROV, RW_485_ROV);
+RS485Bus LampSX485(SerialLampSX, RW_485_LED_SX);
+RS485Bus LampDX485(SerialLampDX, RW_485_LED_DX);
 
 // Dichiarazione della struct contenente le variabili di sistema
 systemStatusStruct systemStatus;
@@ -48,13 +54,13 @@ const char* ErrorNames[ERROR_LAST_INDEX] = {          // stringhe associate ai n
     "WATER_LEAK_DETECTED"
 };
 
-// TODO aggiungere funzione per avviare una procedura di spegnimento in caso di errori
+bool alreadyLogged[ERROR_LAST_INDEX] = {false}; // Array per tenere traccia degli errori già registrati
 
 /*--------------FUNZIONI------------*/
 
 // FUNZIONE PER LA DICHIARAZIONE DI PIN CONTENUTI IN UN ARRAY
 void declaration_function(const uint8_t array[], uint8_t size,  byte type){
-    int index_variable = 0;
+    uint8_t index_variable = 0;
     for (index_variable=0; index_variable< size; index_variable++){
         pinMode(array[index_variable], type);
     }
@@ -62,7 +68,7 @@ void declaration_function(const uint8_t array[], uint8_t size,  byte type){
 
 // FUNZIONE PER IMPOSTARE IL VALORE DEI PIN CONTENUTI IN UN ARRAY
 void set_pin_function(const uint8_t array[], uint8_t size, byte value){
-    int index_variable = 0;
+    uint8_t index_variable = 0;
     for (index_variable=0; index_variable< size; index_variable++){
         digitalWrite(array[index_variable], value);
     }
@@ -71,15 +77,15 @@ void set_pin_function(const uint8_t array[], uint8_t size, byte value){
 // FUNZIONE PER L'INIZIALIZZAZIONE DI TUTTE LE ISTANZE
 void initialize(){
   // Inizializzazione PWM per PWM_LIGHT
-  ledcSetup(0, 5000, 8); // Canale 0, frequenza 5kHz, risoluzione 8 bit
-  ledcAttachPin(PWM_LIGHT, 0); // Associa PWM_LIGHT al canale 0
+  ledcSetup(0, 5000, 8);          // Canale 0, frequenza 5kHz, risoluzione 8 bit, per PWM
+  ledcAttachPin(PWM_LIGHT, 0);    // Associa PWM_LIGHT al canale 0
 
   declaration_function(OUTPUT_ARRAY, sizeof(OUTPUT_ARRAY), OUTPUT);
   set_pin_function(OUTPUT_ARRAY, sizeof(OUTPUT_ARRAY), LOW);
   declaration_function(INPUT_ARRAY, sizeof(INPUT_ARRAY), INPUT);
 
   //Serial.begin(SERIAL_SPEED);
-  SerialROV.begin(SERIAL_SPEED, SERIAL_8N1, RX_485_ROV, TX_485_ROV);          // begin RS485 ROV
+  SerialROV.begin(SERIAL_SPEED, SERIAL_8N1, RX_485_ROV, TX_485_ROV);           // begin RS485 ROV
   SerialLampSX.begin(SERIAL_SPEED, SERIAL_8N1, RX_485_LED_SX, TX_485_LED_SX);  // begin RS485 LED SX
   SerialLampDX.begin(SERIAL_SPEED, SERIAL_8N1, RX_485_LED_DX, TX_485_LED_DX);  // begin RS485 LED DX
 
@@ -92,13 +98,42 @@ void initialize(){
 
   //Serial.println(psramFound() ? "PSRAM Abilitata" : "PSRAM Disabilitata");
 
-  /* Setup EEPROM */
+  EEPROM_Setup(); // Inizializza la EEPROM
+
+  /* Setup ADC */
+  if (!ads.begin(ADC_ADDR, &Wire)) {
+    writeTelnet("Failed to initialize ADS.\n\r");
+  } else {
+    writeTelnet("ADS initialized successfully.\n\r");
+    ads.setGain(GAIN_ONE);
+  }
+
+  pinMode(RST_GPIO, OUTPUT);
+  digitalWrite(RST_GPIO, HIGH);
+
+  // ------------ Filesystem --------------
+  if(!logger.begin(false)) {                // Prova a montare il filesystem
+    ROV485.sendMessageNoResponse("HUB Mount failed\n\r");    // Se fallisce, messaggio di errore
+    return;
+  }
+
+  #ifdef LOG_DEBUG
+    logger.checkFS(telnet);
+  #endif
+
+  logger.log("\n\r# " + String(systemStatus.power_cycle_count)); // Scrive nel log il numero di avvi della scheda
+
+  tone(BUZZER_DEBUG, 300, 100);
+}
+
+// FUNZIONE PER IL SETUP DELLA EEPROM (LETTURA SCRITTURA VARIABILI DI SISTEMA INIZIALI)
+void EEPROM_Setup(){
   EEPROM.begin(EEPROM_SIZE);                      // inizializzo la memoria da utilizzare
   /* Stampa ID */
   EEPROM.readBytes(ADDR_ID_NUM, systemStatus.ID, ID_NUM_SIZE);                          // Legge l'ID salvato nella EEPROM
   if (systemStatus.ID[0] == 'H' && systemStatus.ID[1] == 'B' && systemStatus.ID[2] == 'S' && systemStatus.ID[3] == 'W') {   // Se l'ID è valido allora lo stampa
     writeTelnet("Device ID: " + String(systemStatus.ID));                               // Stampa l'ID del dispositivo
-    write485ROV("HUB Device ID: " + String(systemStatus.ID) + "\n\r");                  // Invia l'ID del dispositivo al ROV
+    ROV485.sendMessageNoResponse("HUB Device ID: " + String(systemStatus.ID) + "\n\r");                  // Invia l'ID del dispositivo al ROV
   } else {
     writeTelnet("Device ID not valid");
   }
@@ -121,155 +156,159 @@ void initialize(){
       EEPROM.commit();                                            // Salva le modifiche nella EEPROM
     }
   }
+}
 
-  /* Setup ADC */
-  if (!ads.begin(ADC_ADDR, &Wire)) {
-    writeTelnet("Failed to initialize ADS.\n\r");
-  } else {
-    writeTelnet("ADS initialized successfully.\n\r");
-    ads.setGain(GAIN_ONE);
+void processWarning(uint8_t WarningCode){
+  systemStatus.WarningFlags[WarningCode] = true;
+  systemStatus.warning_detected = true;
+}
+
+void processError(uint8_t ErrorCode){
+  systemStatus.ErrorFlags[ErrorCode] = true;
+  systemStatus.error_detected = true;
+  if (!alreadyLogged[ErrorCode]){
+    logger.log(String(ErrorNames[ErrorCode]));
+    logSystemData(); // Logga i dati di sistema al momento dell'errore
+    alreadyLogged[ErrorCode] = true;
   }
-
-  pinMode(RST_GPIO, OUTPUT);
-  digitalWrite(RST_GPIO, HIGH);
-
-  // ------------ Filesystem --------------
-  if(!logger.begin(false)) {                // Prova a montare il filesystem
-    write485ROV("HUB Mount failed\n\r");    // Se fallisce, messaggio di errore
-    return;
-  }
-
-  #ifdef LOG_DEBUG
-    logger.checkFS(telnet);
-  #endif
-
-  // FIXME implementare funzione di logging iniziale
-  //logger.log("\n\r# " + String(systemStatus.power_cycle_count) + "\n\r"); // Scrive nel log il numero di avvi della scheda
-  // TODO aggiungere logging periodico e in caso di errore
-
-  tone(BUZZER_DEBUG, 300, 100);
 }
 
 void systemStatusCheck(){
-  // Resetta tutti gli elementi a false (0)
-  memset(systemStatus.WarningFlags, 0, sizeof(systemStatus.WarningFlags));
-  memset(systemStatus.ErrorFlags, 0, sizeof(systemStatus.ErrorFlags));
-
+  systemStatus.warning_detected = false;
+  systemStatus.error_detected = false;
 
   // Check Overtemp
   if (systemStatus.ic12V_temperature > WARNING_OVERTEMP_12V_THRESHOLD){
-    systemStatus.WarningFlags[WARNING_OVERTEMP_12V] = true;
+    processWarning(WARNING_OVERTEMP_12V);
   } else systemStatus.WarningFlags[WARNING_OVERTEMP_12V] = false;
   
   if (systemStatus.ic12V_temperature > ERROR_OVERTEMP_12V_THRESHOLD){
-    systemStatus.ErrorFlags[ERROR_OVERTEMP_12V] = true;
+    processError(ERROR_OVERTEMP_12V);
   } else systemStatus.ErrorFlags[ERROR_OVERTEMP_12V] = false;
   
   if (systemStatus.ic24V_temperature > WARNING_OVERTEMP_24V_THRESHOLD){
-    systemStatus.WarningFlags[WARNING_OVERTEMP_24V] = true;
+    processWarning(WARNING_OVERTEMP_24V);
   } else systemStatus.WarningFlags[WARNING_OVERTEMP_24V] = false;
   
   if (systemStatus.ic24V_temperature > ERROR_OVERTEMP_24V_THRESHOLD){
-    systemStatus.ErrorFlags[ERROR_OVERTEMP_24V] = true;
+    processError(ERROR_OVERTEMP_24V);
   } else systemStatus.ErrorFlags[ERROR_OVERTEMP_24V] = false;
 
 
   // Check Undervoltage
   if (systemStatus.ic12V_voltage < WARNING_UNDERVOLTAGE_12V_THRESHOLD){
-    systemStatus.WarningFlags[WARNING_UNDERVOLTAGE_12V] = true;
+    processWarning(WARNING_UNDERVOLTAGE_12V);
   } else systemStatus.WarningFlags[WARNING_UNDERVOLTAGE_12V] = false;
   
   if (systemStatus.ic12V_voltage < ERROR_UNDERVOLTAGE_12V_THRESHOLD){
-    systemStatus.ErrorFlags[ERROR_UNDERVOLTAGE_12V] = true;
+    processError(ERROR_UNDERVOLTAGE_12V);
   } else systemStatus.ErrorFlags[ERROR_UNDERVOLTAGE_12V] = false;
   
   if (systemStatus.ic24V_voltage < WARNING_UNDERVOLTAGE_24V_THRESHOLD){
-    systemStatus.WarningFlags[WARNING_UNDERVOLTAGE_24V] = true;
+    processWarning(WARNING_UNDERVOLTAGE_24V);
   } else systemStatus.WarningFlags[WARNING_UNDERVOLTAGE_24V] = false;
   
   if (systemStatus.ic24V_voltage < ERROR_UNDERVOLTAGE_24V_THRESHOLD){
-    systemStatus.ErrorFlags[ERROR_UNDERVOLTAGE_24V] = true;
+    processError(ERROR_UNDERVOLTAGE_24V);
   } else systemStatus.ErrorFlags[ERROR_UNDERVOLTAGE_24V] = false;
   
 
   // Check Overvoltage
   if (systemStatus.ic12V_voltage > WARNING_OVERVOLTAGE_12V_THRESHOLD){
-    systemStatus.WarningFlags[WARNING_OVERVOLTAGE_12V] = true;
+    processWarning(WARNING_OVERVOLTAGE_12V);
   } else systemStatus.WarningFlags[WARNING_OVERVOLTAGE_12V] = false;
 
   if (systemStatus.ic12V_voltage > ERROR_OVERVOLTAGE_12V_THRESHOLD){
-    systemStatus.ErrorFlags[ERROR_OVERVOLTAGE_12V] = true;
+    processError(ERROR_OVERVOLTAGE_12V);
   } else systemStatus.ErrorFlags[ERROR_OVERVOLTAGE_12V] = false;
 
   if (systemStatus.ic24V_voltage > WARNING_OVERVOLTAGE_24V_THRESHOLD){
-    systemStatus.WarningFlags[WARNING_OVERVOLTAGE_24V] = true;
+    processWarning(WARNING_OVERVOLTAGE_24V);
   } else systemStatus.WarningFlags[WARNING_OVERVOLTAGE_24V] = false;
 
   if (systemStatus.ic24V_voltage > ERROR_OVERVOLTAGE_24V_THRESHOLD){
-    systemStatus.ErrorFlags[ERROR_OVERVOLTAGE_24V] = true;
+    processError(ERROR_OVERVOLTAGE_24V);
   } else systemStatus.ErrorFlags[ERROR_OVERVOLTAGE_24V] = false;
 
 
   // Check Overcurrent
   if (systemStatus.ipcam_current > WARNING_OVERCURRENT_IPCAM_THRESHOLD){
-    systemStatus.WarningFlags[WARNING_OVERCURRENT_IPCAM] = true;
+    processWarning(WARNING_OVERCURRENT_IPCAM);
   } else systemStatus.WarningFlags[WARNING_OVERCURRENT_IPCAM] = false;
   
   if (systemStatus.ipcam_current > ERROR_OVERCURRENT_IPCAM_THRESHOLD){
-    systemStatus.ErrorFlags[ERROR_OVERCURRENT_IPCAM] = true;
+    processError(ERROR_OVERCURRENT_IPCAM);
   } else systemStatus.ErrorFlags[ERROR_OVERCURRENT_IPCAM] = false;
   
   if (systemStatus.bd3d_current > WARNING_OVERCURRENT_BD3D_THRESHOLD){
-    systemStatus.WarningFlags[WARNING_OVERCURRENT_BD3D] = true;
+    processWarning(WARNING_OVERCURRENT_BD3D);
   } else systemStatus.WarningFlags[WARNING_OVERCURRENT_BD3D] = false;
   
   if (systemStatus.bd3d_current > ERROR_OVERCURRENT_BD3D_THRESHOLD){
-    systemStatus.ErrorFlags[ERROR_OVERCURRENT_BD3D] = true;
+    processError(ERROR_OVERCURRENT_BD3D);
   } else systemStatus.ErrorFlags[ERROR_OVERCURRENT_BD3D] = false;
   
   if (systemStatus.lamp1_current > WARNING_OVERCURRENT_LAMPSX_THRESHOLD){
-    systemStatus.WarningFlags[WARNING_OVERCURRENT_LAMPSX] = true;
+    processWarning(WARNING_OVERCURRENT_LAMPSX);
   } else systemStatus.WarningFlags[WARNING_OVERCURRENT_LAMPSX] = false;
   
   if (systemStatus.lamp1_current > ERROR_OVERCURRENT_LAMPSX_THRESHOLD){
-    systemStatus.ErrorFlags[ERROR_OVERCURRENT_LAMPSX] = true;
+    processError(ERROR_OVERCURRENT_LAMPSX);
   } else systemStatus.ErrorFlags[ERROR_OVERCURRENT_LAMPSX] = false;
   
   if (systemStatus.lamp2_current > WARNING_OVERCURRENT_LAMPDX_THRESHOLD){
-    systemStatus.WarningFlags[WARNING_OVERCURRENT_LAMPDX] = true;
+    processWarning(WARNING_OVERCURRENT_LAMPDX);
   } else systemStatus.WarningFlags[WARNING_OVERCURRENT_LAMPDX] = false;
   
   if (systemStatus.lamp2_current > ERROR_OVERCURRENT_LAMPDX_THRESHOLD){
-    systemStatus.ErrorFlags[ERROR_OVERCURRENT_LAMPDX] = true;
+    processError(ERROR_OVERCURRENT_LAMPDX);
   } else systemStatus.ErrorFlags[ERROR_OVERCURRENT_LAMPDX] = false;
 
 
-  // Verifico che la lampada SX rispondano ogni "LAMP_COMMUNICATION_TIMEOUT" millisecondi (se la lampada è accesa)
-  if (millis() - systemStatus.last_lampSX_comm_time > LAMP_COMMUNICATION_TIMEOUT && systemStatus.ic24V_C0_state) {
-    systemStatus.WarningFlags[WARNING_LAMPSX_DISCONNECTED] = true;
-  }
-  else systemStatus.WarningFlags[WARNING_LAMPSX_DISCONNECTED] = false;
+  // Verifico che la lampada SX rispondano ogni "LAMP_COMMUNICATION_TIMEOUT" millisecondi
+  if (millis() - systemStatus.last_lampSX_comm_time > LAMP_COMMUNICATION_TIMEOUT) {
+    processWarning(WARNING_LAMPSX_DISCONNECTED);
+  } else systemStatus.WarningFlags[WARNING_LAMPSX_DISCONNECTED] = false;
 
 
-  // Verifico che la lampada DX rispondano ogni "LAMP_COMMUNICATION_TIMEOUT" millisecondi (se la lampada è accesa)
-  if (millis() - systemStatus.last_lampDX_comm_time > LAMP_COMMUNICATION_TIMEOUT && systemStatus.ic24V_C1_state) {
-    systemStatus.WarningFlags[WARNING_LAMPDX_DISCONNECTED] = true;
+  // Verifico che la lampada DX rispondano ogni "LAMP_COMMUNICATION_TIMEOUT" millisecondi
+  if (millis() - systemStatus.last_lampDX_comm_time > LAMP_COMMUNICATION_TIMEOUT) {
+    processWarning(WARNING_LAMPDX_DISCONNECTED);
   } else systemStatus.WarningFlags[WARNING_LAMPDX_DISCONNECTED] = false;
 
 
   // Water leak detection
   if (digitalRead(WATER_PROBE_PIN) == HIGH){
-    systemStatus.ErrorFlags[ERROR_WATER_LEAK_DETECTED] = true;
+    processError(ERROR_WATER_LEAK_DETECTED);
   } else systemStatus.ErrorFlags[ERROR_WATER_LEAK_DETECTED] = false;
 
-  #ifdef DEBUG_STATUS
-    // Stampa a terminale lo stato dei warning e degli errori ogni "PRINT_ERROR_TIMER" millisecondi
-    if (millis() - systemStatus.last_error_print_time > PRINT_ERROR_TIMER){
-      printSystemStatus();
-      systemStatus.last_error_print_time = millis();
-    }
-  #endif
+  if (millis() - logger.lastlogtime > LOG_INTERVAL) {
+    systemStatus.last_log_time = millis();
+    logSystemData(); // Logga i dati di sistema in un formato CSV
+  }
 
+  // Stampa a sul 485 del ROV lo stato dei warning e degli errori ogni "PRINT_ERROR_TIMER" millisecondi
+  if (millis() - systemStatus.last_error_print_time > PRINT_ERROR_TIMER){
+    systemStatus.last_error_print_time = millis();
+
+    if (systemStatus.warning_detected) {
+      for (int i = 0; i < WARNING_LAST_INDEX; i++) {
+        if (systemStatus.WarningFlags[i])
+          ROV485.sendMessageNoResponse("\n\r" + String(WarningNames[i]) + ": " + (systemStatus.WarningFlags[i] ? "TRUE" : "FALSE"));
+      }
+    }
+
+    if (systemStatus.error_detected) {
+      for (int i = 0; i < ERROR_LAST_INDEX; i++) {
+        if (systemStatus.ErrorFlags[i])
+          ROV485.sendMessageNoResponse("\n\r" + String(ErrorNames[i]) + ": " + (systemStatus.ErrorFlags[i] ? "TRUE" : "FALSE"));
+      }
+    }
+
+    #ifdef DEBUG_STATUS
+      printSystemStatus();
+    #endif
+  }
 }
 
 void printSystemStatus() {
@@ -304,6 +343,8 @@ void printSystemStatus() {
 
     writeTelnet("ID print flag:" + String(systemStatus.id_print_flag ? "TRUE" : "FALSE"));
     writeTelnet("Lamp reset flag:" + String(systemStatus.lamp_reset_flag ? "TRUE" : "FALSE"));
+    writeTelnet("Lamp SX Ready:" + String(systemStatus.lampSX_Ready ? "TRUE" : "FALSE"));
+    writeTelnet("Lamp DX Ready:" + String(systemStatus.lampDX_Ready ? "TRUE" : "FALSE"));
 
     writeTelnet("Warnings:");
     for (int i = 0; i < WARNING_LAST_INDEX; i++) {
@@ -323,6 +364,43 @@ void printSystemStatus() {
     #endif
 }
 
+void logSystemData(){
+    String out;
+    // Riga di intestazione per il file CSV
+    //String header = "Millis,ID,PowerCycle,LampSX,LampDX,Lamp1C,Lamp2C,24VV,24VT,24C0,24C1,BD3D,IPCam,12VV,12VT,12C0,12C1,LRF,LSReady,LDReady";
+
+    out  = String(millis());
+    out += "," + String(systemStatus.ID);
+    out += "," + String(systemStatus.power_cycle_count);
+    out += "," + String(systemStatus.last_lampSX_comm_time);
+    out += "," + String(systemStatus.last_lampDX_comm_time);
+    out += "," + String(systemStatus.lamp1_current, 2);
+    out += "," + String(systemStatus.lamp2_current, 2);
+    out += "," + String(systemStatus.ic24V_voltage, 2);
+    out += "," + String(systemStatus.ic24V_temperature, 1);
+    out += "," + String(systemStatus.ic24V_C0_state);
+    out += "," + String(systemStatus.ic24V_C1_state);
+    out += "," + String(systemStatus.bd3d_current, 2);
+    out += "," + String(systemStatus.ipcam_current, 2);
+    out += "," + String(systemStatus.ic12V_voltage, 2);
+    out += "," + String(systemStatus.ic12V_temperature, 1);
+    out += "," + String(systemStatus.ic12V_C0_state);
+    out += "," + String(systemStatus.ic12V_C1_state);
+    out += "," + String(systemStatus.lamp_reset_flag);
+    out += "," + String(systemStatus.lampSX_Ready);
+    out += "," + String(systemStatus.lampDX_Ready);
+
+    for (int i = 0; i < WARNING_LAST_INDEX; i++) {
+        out += "," + String(systemStatus.WarningFlags[i]);
+    }
+    for (int i = 0; i < ERROR_LAST_INDEX; i++) {
+        out += "," + String(systemStatus.ErrorFlags[i]);
+    }
+    out += "\n\r";
+
+    logger.log(out); // Scrive la riga di dati nel file di log
+}
+
 
 // FUNZIONE PER CONVERTIRE VELOCEMENTE LA LETTURA ANALOGICA DI UN PIN DALL'ADC [V]
 float getAnalogueVoltage(uint8_t pin_number){
@@ -340,28 +418,27 @@ void print_ADC(){
   writeTelnet(String(ads.readADC_SingleEnded(MULTISENSE_24V_ADC_PIN)) + " RAW -> Multisense 24V \t" + String(getAnalogueVoltage(MULTISENSE_24V_ADC_PIN)) + " Volt -> Multisense 24V");
 }
 
-// FUNZIONE CHE STAMPA IL TESTO SUL 485 DEDICATO AL ROV
-void write485ROV(String text){
-    digitalWrite(RW_485_ROV,HIGH);                  // attivazione scrittura 485
-    SerialROV.print(text);                          // stampa il testo in 485
-    delay(10);                                      // attesa per completamento trasmissione
-    digitalWrite(RW_485_ROV,LOW);                   // attivazione lettura 485
-}
+// FUNZIONE CHE CHIEDE L'ID ALLE LAMPADE CONNESSE E LO METTE IN MEMORIA
+bool readLampID(){
+  bool sx_flag = false, dx_flag = false;
 
-// FUNZIONE CHE STAMPA IL TESTO SUL 485 DEDICATO ALLA LAMPADA SX
-void write485LampSX(String text){
-    digitalWrite(RW_485_LED_SX,HIGH);               // attivazione scrittura 485
-    SerialLampSX.print(text);                       // stampa il testo in 485
-    delay(10);                                      // attesa per completamento trasmissione
-    digitalWrite(RW_485_LED_SX,LOW);                // attivazione lettura 485
-}
+  String responseSX = LampSX485.sendMessage("id_print\r\n");                // Mi faccio inviare l'ID dalle lampade
+  String responseDX = LampDX485.sendMessage("id_print\r\n");                // Mi faccio inviare l'ID dalle lampade
 
-// FUNZIONE CHE STAMPA IL TESTO SUL 485 DEDICATO ALLA LAMPADA DX
-void write485LampDX(String text){
-    digitalWrite(RW_485_LED_DX,HIGH);               // attivazione scrittura 485
-    SerialLampDX.print(text);                       // stampa il testo in 485
-    delay(10);                                      // attesa per completamento trasmissione
-    digitalWrite(RW_485_LED_DX,LOW);                // attivazione lettura 485
+  writeTelnet("LAMPSX_ID: " + responseSX);
+  writeTelnet("LAMPDX_ID: " + responseDX);
+
+  if (responseSX.startsWith("FLSH")){
+    strcpy(systemStatus.ID_lampSX, responseSX.c_str());
+    sx_flag = true;
+  }
+
+  if (responseDX.startsWith("FLSH")){
+    strcpy(systemStatus.ID_lampDX, responseDX.c_str());
+    dx_flag = true;
+  }
+
+  return sx_flag | dx_flag;
 }
 
 // FUNZIONE PER SCANSIONARE TUTTI I DISPOSITIVI SUL BUS
@@ -397,12 +474,30 @@ void scanI2C(){
   }
 }
 
+void FlashReadyCheck(){
+
+  String responseSX = LampSX485.sendMessage("status\r\n");                        // Invio del comando di status al flash DX tramite 485
+  if (responseSX.indexOf("11") != -1){  // Se la risposta contiene "11" significa che la lampada è pronta allo scatto
+    systemStatus.last_lampSX_comm_time = millis();
+    systemStatus.lampSX_Ready = true;
+  }
+  else systemStatus.lampSX_Ready = false;
+
+  String responseDX = LampDX485.sendMessage("status\r\n");                        // Invio del comando di status al flash SX tramite 485
+  if (responseDX.indexOf("11") != -1){  // Se la risposta contiene "11" significa che la lampada è pronta allo scatto
+    systemStatus.last_lampDX_comm_time = millis();
+    systemStatus.lampDX_Ready = true;
+  }
+  else systemStatus.lampDX_Ready = false;
+
+}
+
 // FUNZIONE CHE INOLTRA IL COMANDO DI RESET ALLE LAMPADE TRAMITE 485
 void resetLamp(){
-  write485LampSX("reset\n\r");                        // Invio del comando di reset ai flash tramite 485
-  write485LampDX("reset\n\r");                        // Invio del comando di reset ai flash tramite 485
-  write485ROV("Lamp reset sent\n\r");                 // Invio del comando di reset effettuato al ROV tramite 485
-  writeTelnet("Lamp reset sent");                     // Stampa il comando di reset effettuato sulla telnet
+  LampSX485.sendMessageNoResponse("reset\n\r");                     // Invio del comando di reset ai flash tramite 485
+  LampDX485.sendMessageNoResponse("reset\n\r");                     // Invio del comando di reset ai flash tramite 485
+  ROV485.sendMessageNoResponse("Lamp reset sent\n\r");              // Invio del comando di reset effettuato al ROV tramite 485
+  writeTelnet("Lamp reset sent");                                   // Stampa il comando di reset effettuato sulla telnet
 }
 
 void blinkDebugLED(uint8_t pin){
@@ -413,9 +508,9 @@ void blinkDebugLED(uint8_t pin){
 
 String getHTMLpage(){
   String html_String = "";
-  File file = LittleFS.open("/index.html", "r");
+  File file = LittleFS.open("/ui.html", "r");
   if(!file){
-    writeTelnet("Failed to open index.html");
+    writeTelnet("Failed to open ui.html");
   }
   while(file.available()){
       html_String += char(file.read());
@@ -474,28 +569,21 @@ void onTelnetConnect(String ip) {
 /* ------------------------------------------------- */
 
 void onTelnetDisconnect(String ip) {
-  //Serial.print("- Telnet: ");
-  //Serial.print(ip);
-  //Serial.println(" disconnected");
+  telnet.println("- Telnet: " + ip + " disconnected");
 }
 
-/* ------------------------------------------------- */
-
+/*
 void onTelnetReconnect(String ip) {
   //Serial.print("- Telnet: ");
   //Serial.print(ip);
   //Serial.println(" reconnected");
 }
 
-/* ------------------------------------------------- */
-
 void onTelnetConnectionAttempt(String ip) {
   //Serial.print("- Telnet: ");
   //Serial.print(ip);
   //Serial.println(" tried to connected");
 }
-
-/* ------------------------------------------------- */
 
 void onTelnetInput(String str) {
   // checks for a certain command
@@ -510,16 +598,16 @@ void onTelnetInput(String str) {
     telnet.println(str);
   }
 }
+  */
 
 void setupTelnet() {  
   // passing on functions for various telnet events
   telnet.onConnect(onTelnetConnect);
-  telnet.onConnectionAttempt(onTelnetConnectionAttempt);
-  telnet.onReconnect(onTelnetReconnect);
   telnet.onDisconnect(onTelnetDisconnect);
-  telnet.onInputReceived(onTelnetInput);
+  //telnet.onConnectionAttempt(onTelnetConnectionAttempt);
+  //telnet.onReconnect(onTelnetReconnect);
+  //telnet.onInputReceived(onTelnetInput);
 
-  //Serial.print("- Telnet: ");
   if (telnet.begin(port)) {
     //Serial.println("running");
   } else {
@@ -542,6 +630,22 @@ String loopTelnet() {
 
 // FUNZIONE CHE SCRIVE SU TELNET UNA STRINGA
 void writeTelnet(String text){
-  blinkDebugLED(LED_DEBUG_GREEN);
   telnet.println(text);
+}
+
+// FUNZIONE CHE STAMPA SU TELNET I BUS 485 SE TROVA DEI DATI DA LEGGERE
+void print485onTelnet(){
+  String response = "";
+
+  response = ROV485.checkMessage(MIN_RX_BYTE_485);
+  if (response != "")
+    writeTelnet(response);
+
+  response = LampSX485.checkMessage(MIN_RX_BYTE_485);
+  if (response != "")
+    writeTelnet(response);
+
+  response = LampDX485.checkMessage(MIN_RX_BYTE_485);
+  if (response != "")
+    writeTelnet(response);
 }

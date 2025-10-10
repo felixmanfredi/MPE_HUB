@@ -11,7 +11,8 @@
         "initializer_list": "cpp",
         "regex": "cpp",
         "memory": "cpp",
-        "random": "cpp"
+        "random": "cpp",
+        "cstring": "cpp"
     },
     "todo-tree.tree.scanMode": "workspace",
     "todo-tree.tree.showBadges": false

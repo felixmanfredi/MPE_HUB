@@ -1,8 +1,8 @@
 #include <VND70.h>
 #include <HUB_firmware.h>
 #include <AsyncWebServer_ESP32_SC_W5500.h>
-#include <SimpleFTPServer.h>
 #include <ElegantOTA.h>
+#include <SimpleFTPServer.h>
 
 // TODO resettare tutta la flash prima di usare coem definitivo
 
@@ -43,7 +43,7 @@ struct flash_wrapper {
     bool flash_action_flag = false;
     String torch_value = "0";
     bool torch_action_flag = false;
-}flash_wrapper;
+} flash_wrapper;
 
 struct id_num_wrapper {
     char value[ID_NUM_SIZE] = {0};  // Inizializzazione dell'ID
@@ -53,6 +53,8 @@ struct id_num_wrapper {
 /*------------FUNZIONI---------------*/
 
 void jsonSerialize(){
+
+    jsonDoc.clear();
 
     systemStatus.lamp1_current      = VND70::readCurrent(2, FLASH_1_CHANNEL);
     systemStatus.lamp2_current      = VND70::readCurrent(2, FLASH_2_CHANNEL);
@@ -69,18 +71,28 @@ void jsonSerialize(){
     systemStatus.ic12V_C1_state     = VND70::channel_1_state(1);
 
     jsonDoc.clear();
-    jsonDoc["Current_Flash_1"]  = systemStatus.lamp1_current;
-    jsonDoc["Current_Flash_2"]  = systemStatus.lamp2_current;
-    jsonDoc["Voltage_24V"]      = systemStatus.ic24V_voltage;
-    jsonDoc["Chip_Temp_24V"]    = systemStatus.ic24V_temperature;
-    jsonDoc["24V_0_State"]      = systemStatus.ic24V_C0_state;
-    jsonDoc["24V_1_State"]      = systemStatus.ic24V_C1_state;
-    jsonDoc["Current_BD3D"]     = systemStatus.bd3d_current;
-    jsonDoc["Current_IPCam"]    = systemStatus.ipcam_current;
-    jsonDoc["Voltage_12V"]      = systemStatus.ic12V_voltage;
-    jsonDoc["Chip_Temp_12V"]    = systemStatus.ic12V_temperature;
-    jsonDoc["12V_0_State"]      = systemStatus.ic12V_C0_state;
-    jsonDoc["12V_1_State"]      = systemStatus.ic12V_C1_state;
+
+    jsonDoc["Board_ID"]             = systemStatus.ID;
+    jsonDoc["Board_REV"]            = systemStatus.Board_REV;
+    jsonDoc["FW_VERS"]              = systemStatus.FW_VERS;
+    jsonDoc["Current_Flash_1"]      = systemStatus.lamp1_current;
+    jsonDoc["Current_Flash_2"]      = systemStatus.lamp2_current;
+    jsonDoc["Voltage_24V"]          = systemStatus.ic24V_voltage;
+    jsonDoc["Chip_Temp_24V"]        = systemStatus.ic24V_temperature;
+    jsonDoc["24V_0_State"]          = systemStatus.ic24V_C0_state;
+    jsonDoc["24V_1_State"]          = systemStatus.ic24V_C1_state;
+    jsonDoc["Current_BD3D"]         = systemStatus.bd3d_current;
+    jsonDoc["Current_IPCam"]        = systemStatus.ipcam_current;
+    jsonDoc["Voltage_12V"]          = systemStatus.ic12V_voltage;
+    jsonDoc["Chip_Temp_12V"]        = systemStatus.ic12V_temperature;
+    jsonDoc["12V_0_State"]          = systemStatus.ic12V_C0_state;
+    jsonDoc["12V_1_State"]          = systemStatus.ic12V_C1_state;
+    jsonDoc["LampSX_ID"]            = String(systemStatus.ID_lampSX);
+    jsonDoc["LampDX_ID"]            = String(systemStatus.ID_lampDX);
+    jsonDoc["LampSX_Disconnected"]  = systemStatus.WarningFlags[WARNING_LAMPSX_DISCONNECTED];
+    jsonDoc["LampDX_Disconnected"]  = systemStatus.WarningFlags[WARNING_LAMPDX_DISCONNECTED];
+    jsonDoc["LampSX_Ready"]         = systemStatus.lampSX_Ready;
+    jsonDoc["LampDX_Ready"]         = systemStatus.lampDX_Ready;
     serializeJson(jsonDoc, jsonString);
 }
 
@@ -91,100 +103,86 @@ void jsonSerialize(){
 */
 void setCommand(String component, String action){
     if (component == "ipcam"){
-        //write485("Comando ricevuto: IPcam ");
         blinkDebugLED(LED_DEBUG_GREEN);
         if (action == "on"){
-            //write485("on");
             VND70::channel_0(1, true);
         } else if (action == "off"){
-            //write485("off");
             VND70::channel_0(1, false);
         }
         
     } else if (component == "bd3d"){
-        //write485("Comando ricevuto: BlueDepth ");
         blinkDebugLED(LED_DEBUG_GREEN);
         if (action == "on"){
-            //write485("on");
             VND70::channel_1(1, true);
         } else if (action == "off"){
-            //write485("off");
             VND70::channel_1(1, false);
         }
 
     } else if (component == "lampsx"){
-        //write485("Comando ricevuto: LampSX ");
         blinkDebugLED(LED_DEBUG_GREEN);
         if (action == "on"){
-            //write485("on");
             VND70::channel_0(2, true);
-        } else if (action == "off"){
-            //write485("off");
+            LampSX485.enableBus();
+        } else if (action == "off"){        // Spengo la lampada e disattivo il bus 485
             VND70::channel_0(2, false);
+            LampSX485.disableBus();
         }
 
     } else if (component == "lampdx"){
-        //write485("Comando ricevuto: LampDX ");
         blinkDebugLED(LED_DEBUG_GREEN);
         if (action == "on"){
-            //write485("on");
             VND70::channel_1(2, true);
-        } else if (action == "off"){
-            //write485("off");
+            LampDX485.enableBus();
+        } else if (action == "off"){        // Spengo la lampada e disattivo il bus 485
             VND70::channel_1(2, false);
+            LampDX485.disableBus();
         }
-
     } else if (component == "lamp"){
-        //write485("Comando ricevuto: Lamp ");
         blinkDebugLED(LED_DEBUG_GREEN);
         if (action == "reset") {
             resetLamp();
         } else if (action == "standby") {
-            write485LampSX("\nflash " + action + "\n\r");            // Invio del comando di standby ai flash tramite 485
-            write485LampDX("\nflash " + action + "\n\r");            // Invio del comando di standby ai flash tramite 485
+            LampSX485.sendMessageNoResponse("\nflash " + action + "\n\r");            // Invio del comando di standby ai flash tramite 485
+            LampDX485.sendMessageNoResponse("\nflash " + action + "\n\r");            // Invio del comando di standby ai flash tramite 485
         } else if (action == "idle") {
-            write485LampSX("\nflash " + action + "\n\r");            // Invio del comando di idle ai flash tramite 485
-            write485LampDX("\nflash " + action + "\n\r");            // Invio del comando di idle ai flash tramite 485
+            LampSX485.sendMessageNoResponse("\nflash " + action + "\n\r");            // Invio del comando di idle ai flash tramite 485
+            LampDX485.sendMessageNoResponse("\nflash " + action + "\n\r");            // Invio del comando di idle ai flash tramite 485
         } else if (action == "flash") {
-            write485LampSX("\nflash " + action + "\n\r");            // Invio del comando di flash ai flash tramite 485
-            write485LampDX("\nflash " + action + "\n\r");            // Invio del comando di flash ai flash tramite 485
+            LampSX485.sendMessageNoResponse("\nflash " + action + "\n\r");            // Invio del comando di flash ai flash tramite 485
+            LampDX485.sendMessageNoResponse("\nflash " + action + "\n\r");            // Invio del comando di flash ai flash tramite 485
         }
 
     } else if (component == "lamp_power") {
-        //write485("Comando ricevuto: Lamp_power ");
         blinkDebugLED(LED_DEBUG_GREEN);
         int power = action.toInt();
         if (power >= 0 && power <= MAX_POWER_FLASH) {
-            write485LampSX("power_flash " + action  + "\n\r");
-            write485LampDX("power_flash " + action  + "\n\r");
+            LampSX485.sendMessageNoResponse("power_flash " + action  + "\n\r");
+            LampDX485.sendMessageNoResponse("power_flash " + action  + "\n\r");
         }
 
     } else if (component == "lamp_torch") {
-        //write485("Comando ricevuto: Lamp_power ");
         blinkDebugLED(LED_DEBUG_GREEN);
         int power = action.toInt();
         if (power == 0){
-            write485LampSX("torch 0\n\r");
-            write485LampDX("torch 0\n\r");
+            LampSX485.sendMessageNoResponse("torch 0\n\r");
+            LampDX485.sendMessageNoResponse("torch 0\n\r");
         } else if (power == 1) {
-            write485LampSX("torch 1\n\r");
-            write485LampDX("torch 1\n\r");
+            LampSX485.sendMessageNoResponse("torch 1\n\r");
+            LampDX485.sendMessageNoResponse("torch 1\n\r");
         }
 
     }  else if (component == "light"){
-        //write485("Comando ricevuto: Light ");
         blinkDebugLED(LED_DEBUG_GREEN);
         int pwm_light = action.toInt();
         if (pwm_light >= 0 && pwm_light <= 255){        
             if (pwm_light != 0){
-                // write485("on");
                 VND70::channel_0(1, true);          // Accendo il canale IPcam e Lights
                 ledcWrite(0, pwm_light);
             } else {
                 ledcWrite(0, 0);                    // spegni PWM
             }
         } else {
-            write485ROV("PWM light out of pwm range\n\r");
+            ROV485.sendMessageNoResponse("PWM light out of pwm range\n\r");
         }
     }
 }
@@ -213,8 +211,7 @@ void ID_printCommand(){
 
 /*-------------------------------------- OTA UPDATE --------------------------------------*/
 
-void notFound(AsyncWebServerRequest *request)
-{
+void notFound(AsyncWebServerRequest *request) {
     request->send(404, "text/plain", "Not found");
 }
 
@@ -243,6 +240,7 @@ void onOTAEnd(bool success) {
 }
 
 /*-------------------------------------- SERVER INITIALIZE -----------------------------------------*/
+// TODO aggiungere stato flash e seriali
 void server_initialize(){
     server.on("/", HTTP_GET, [](AsyncWebServerRequest *request) {
         request->send(200, "text/html", getHTMLpage());});      // HTML in littlefs
@@ -351,6 +349,7 @@ void _callback(FtpOperation ftpOperation, unsigned int freeSpace, unsigned int t
       break;
   }
 };
+
 void _transferCallback(FtpTransferOperation ftpOperation, const char* name, unsigned int transferredSize){
   switch (ftpOperation) {
     case FTP_UPLOAD_START:
@@ -509,7 +508,7 @@ void setup() {
     digitalWrite(LED_DEBUG_GREEN, HIGH);    // GREEN
     tone(BUZZER_DEBUG, 600, 50);
     tone(BUZZER_DEBUG, 300, 100);
-    delay(2000);
+    delay(1000);
     VND70::channel_0(1, true);              // Temporizzo le accensioni per evitare assorbimenti elevati
     delay(1000);
     VND70::channel_1(1, true);
@@ -517,17 +516,23 @@ void setup() {
     VND70::channel_0(2, true);
     delay(1000);
     VND70::channel_1(2, true);
-    delay(1000);
-    set_pin_function(OUTPUT_ARRAY, sizeof(OUTPUT_ARRAY), LOW);  // Porto a LOW tutte le uscite
     tone(BUZZER_DEBUG, 600, 100);
     tone(BUZZER_DEBUG, 1200, 200);
+
+    delay(5000);
+    set_pin_function(OUTPUT_ARRAY, sizeof(OUTPUT_ARRAY), LOW);  // Porto a LOW tutte le uscite
+    tone(BUZZER_DEBUG, 1200, 100);
+    tone(BUZZER_DEBUG, 1800, 200);
 }
+
+bool id_not_set = false;
 
 void loop() {
     #ifdef DEBUG
         scanI2C();
         print_ADC();
     #endif
+
     delay(5);
     ElegantOTA.loop();
     ftpSrv.handleFTP();
@@ -536,6 +541,13 @@ void loop() {
     jsonSerialize();
 
     systemStatusCheck();
+
+    // TODO aggiungere funzione per avviare una procedura di spegnimento in caso di errori
+    if (systemStatus.error_detected){
+        digitalWrite(LED_DEBUG_RED, HIGH);     // Accendo il LED rosso
+    } else {
+        digitalWrite(LED_DEBUG_RED, LOW);      // Spengo il LED rosso
+    }
 
     if (flash_wrapper.flash_action_flag) {
         flash_wrapper.flash_action_flag = false;
@@ -569,33 +581,14 @@ void loop() {
         cli.parse(input);                                    // manda l'input alla CLI
     }
 
-    if (SerialROV.available() > 3){
-        String response = SerialROV.readStringUntil('\n'); // Leggo la risposta dal 485
-        if (response[0] != ' ' && response[0] != '#')
-            writeTelnet("#485ROV: " + response);          // Invia la risposta al client telnet
-    } else {
-        while (SerialROV.available())
-            SerialROV.read();
-    }
+    print485onTelnet();             // Rimando su telnet i messaggi che arrivano dai 485
 
-    if (SerialLampSX.available() > 3){
-        String response = SerialLampSX.readStringUntil('\n'); // Leggo la risposta dal 485
-        systemStatus.last_lampSX_comm_time = millis();
-        if (response[0] != ' ' && response[0] != '#')
-            writeTelnet("#485LampSX: " + response);          // Invia la risposta al client telnet
-    } else {
-        while (SerialLampSX.available())
-            SerialLampSX.read();
-    }
+    if (millis() - systemStatus.last_lamp_check_time > LAMP_CHECK_STATUS_TIMER){
+        systemStatus.last_lamp_check_time = millis();
+        FlashReadyCheck(); // Controlla se le lampade sono pronte allo scatto
 
-    if (SerialLampDX.available() > 3){
-        String response = SerialLampDX.readStringUntil('\n'); // Leggo la risposta dal 485
-        systemStatus.last_lampDX_comm_time = millis();
-        if (response[0] != ' ' && response[0] != '#')
-            writeTelnet("#485LampDX: " + response);          // Invia la risposta al client telnet
-    } else {
-        while (SerialLampDX.available())
-            SerialLampDX.read();
+        if (!systemStatus.isLampID_set)
+            systemStatus.isLampID_set = readLampID();
     }
 
 }

@@ -38,15 +38,6 @@ void VND70::ALLon(uint8_t ID) {
     components[idx].channel_1_state = true;
 }
 
-void VND70::ALLoff(uint8_t ID) {
-    int8_t idx = findIndex(ID);
-    if (idx < 0) return;
-    digitalWrite(components[idx].EnableChannel0, LOW);
-    digitalWrite(components[idx].EnableChannel1, LOW);
-    components[idx].channel_0_state = false;
-    components[idx].channel_1_state = false;
-}
-
 void VND70::standby(uint8_t ID) {
     int8_t idx = findIndex(ID);
     if (idx < 0) return;
@@ -114,6 +105,7 @@ float VND70::readTemperature(uint8_t ID){
     digitalWrite(components[idx].SEL_1, HIGH);
     delay(5);
     float temp_voltage_reading = getAnalogueVoltage(components[idx].MultiSense)*1000;
+    if (temp_voltage_reading < 100) return -273; // Se la lettura è inferiore a 0.1V, ritorna -273°C (valore non valido)
     float temp_reading = TemperatureOffset_T0 + ((temp_voltage_reading - Temperature_Volt_T0)/TemperatureDivider);
     return temp_reading;
 }
