@@ -12,7 +12,7 @@
 
 
 //#define DEBUG                 // Abilita le stampe di debug
-#define DEBUG_STATUS          // Abilita la stampa su telnet dello stato del sistema
+//#define DEBUG_STATUS          // Abilita la stampa su telnet dello stato del sistema
 //#define LOG_DEBUG             // Abilita la stampa dei log su telnet e la stampa dello stato del filesystem
 //#define ECO485                // Abilita l'eco dei comandi ricevuti sulla CLI al 485 del ROV
 
@@ -168,8 +168,8 @@ extern RS485Bus LampDX485;
 struct systemStatusStruct {
     char ID[ID_NUM_SIZE] = {0};                         // ID univoco della scheda
     char Board_REV[ID_NUM_SIZE] = "1.1.0";
-    char FW_VERS[ID_NUM_SIZE] = "1.2.1";
-    uint16_t power_cycle_count = 0;                     // Numero di avii della scheda
+    char FW_VERS[ID_NUM_SIZE] = "1.3.2";
+    uint16_t power_cycle_count = 0;                     // Numero di avvi della scheda
     unsigned long last_lampSX_comm_time = 0;
     unsigned long last_lampDX_comm_time = 0;
     float lamp1_current = 0.0f;
@@ -178,6 +178,7 @@ struct systemStatusStruct {
     float ic24V_temperature = 0.0f;
     bool  ic24V_C0_state = false;
     bool  ic24V_C1_state = false;
+    bool  is_torch_mode = false;                       // Indica se le lampade sono in modalità torcia
     float bd3d_current = 0.0f;
     float ipcam_current = 0.0f;
     float ic12V_voltage = 0.0f;
@@ -207,7 +208,7 @@ extern systemStatusStruct systemStatus;
 
 /*--------------FUNZIONI-------------*/
 
-/*
+/**
 * FUNZIONE PER INIZIALIZZARE I PIN CONTENUTI IN UN ARRAY
 * @param uint8_t array contenete i pin da inizializzare
 * @param uint8_t dimensione dell'array [sizeof(array_da_inizializzare)]
@@ -215,7 +216,7 @@ extern systemStatusStruct systemStatus;
 */
 void declaration_function(const uint8_t array[], uint8_t size, byte type);
 
-/*
+/**
 * FUNZIONE PER IMPOSTARE IL VALORE DEI PIN CONTENUTI IN UN ARRAY
 * @param uint8_t array contenete i pin da impostare
 * @param uint8_t dimensione dell'array [sizeof(array_da_impostare)]
@@ -223,81 +224,87 @@ void declaration_function(const uint8_t array[], uint8_t size, byte type);
 */
 void set_pin_function(const uint8_t array[], uint8_t size, byte value);
 
-/*
+/**
 * FUNZIONE PER L'INIZIALIZZAZIONE DI TUTTE LE ISTANZE
-*
 */
 void initialize();
 
-/*
+/**
 * FUNZIONE PER IL SETUP DELLA EEPROM (LETTURA SCRITTURA VARIABILI DI SISTEMA INIZIALI)
 */
 void EEPROM_Setup();
 
-/*
+/**
 * FUNZIONE CHE LOGGA GLI ERRORI CRITICI SOLO UNA VOLTA
 * @param uint8_t codice dell'errore
 */
 void processError(uint8_t ErrorCode);
 
-/*
+/**
 * FUNZIONI PER RILEVARE I WARNING E GLI ERRORI DEL SISTEMA
 */
 void systemStatusCheck();
 
-/*
+/**
 * FUNZIONE CHE STAMPA LO STATUS DI TUTTI I WARNING E GLI ERRORI
 */
 void printSystemStatus();
 
-/*
+/**
 * FUNZIONE PER LOGGARE I DATI DI SISTEMA IN UN FORMATO CSV
 */
 void logSystemData();
 
-/* 
+/**
 * FUNZIONE PER CONVERTIRE VELOCEMENTE LA LETTURA ANALOGICA DI UN PIN DALL'ADC [V]
 * @return float valore di tensione letto dall'ADC, convertito in funzione del partitore impostato
 * @param uint8_t numero del pin analogico da leggere
 */
 float getAnalogueVoltage(uint8_t pin_number);
 
-/*
+/**
 * FUNZIONE CHE STAMPA TUTTE LE TENSIONI LETTE DALL'ADC
 */
 void print_ADC();
 
-/*
+/**
 * FUNZIONE CHE CHIEDE L'ID ALLE LAMPADE CONNESSE E LO METTE IN MEMORIA
 */
 bool readLampID();
 
-/* 
+/**
 * FUNZIONE PER SCANSIONARE TUTTI I DISPOSITIVI SUL BUS I2C
 */
 void scanI2C();
 
-/*
+/**
 * FUNZIONE CHE CONTROLLA SE LE LAMPADE SONO PRONTE ALLO SCATTO
 */
 void FlashReadyCheck();
 
-/*
+/**
 * FUNZIONE CHE INOLTRA IL COMANDO DI RESET ALLE LAMPADE TRAMITE 485
 */
 void resetLamp();
 
-/*
+/**
 * FUNZIONE CHE LAMPEGGIA IL LED DI DEBUG
 * @param uint8_t pin il pin del led di debug da far lampeggiare
 */
 void blinkDebugLED(uint8_t pin);
 
-/*
+/**
 * FUNZIONE CHE RESTITUISCE LA PAGINA HTML PER L'INTERFACCIA WEB
 * @return String la pagina HTML
 */
 String getHTMLpage();
+
+/**
+* FUNZIONE CHE VERIFICA SE L'ID PASSATO SIA VALIDO
+* @param char l'ID che deve essere verificato
+* @return bool true se è valido
+*/
+bool checkID(char ID_to_check[ID_NUM_SIZE]);
 
 /*---------------TELNET-------------*/
 

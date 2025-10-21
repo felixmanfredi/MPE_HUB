@@ -3,7 +3,7 @@
 #include "driver/gpio.h"
 #include <log.h>
 
-// TODO aggiungere NTP per avere l'ora esatta (con connessione interneet o con un server su jetson)
+// TODO aggiungere NTP per avere l'ora esatta (con connessione internet o con un server su jetson)
 
 /*--------------ISTANZE--------------*/
 ESPTelnetStream telnet;
@@ -112,7 +112,7 @@ void initialize(){
   digitalWrite(RST_GPIO, HIGH);
 
   // ------------ Filesystem --------------
-  if(!logger.begin(false)) {                // Prova a montare il filesystem
+  if(!logger.begin(true)) {                // Prova a montare il filesystem
     ROV485.sendMessageNoResponse("HUB Mount failed\n\r");    // Se fallisce, messaggio di errore
     return;
   }
@@ -131,9 +131,9 @@ void EEPROM_Setup(){
   EEPROM.begin(EEPROM_SIZE);                      // inizializzo la memoria da utilizzare
   /* Stampa ID */
   EEPROM.readBytes(ADDR_ID_NUM, systemStatus.ID, ID_NUM_SIZE);                          // Legge l'ID salvato nella EEPROM
-  if (systemStatus.ID[0] == 'H' && systemStatus.ID[1] == 'B' && systemStatus.ID[2] == 'S' && systemStatus.ID[3] == 'W') {   // Se l'ID è valido allora lo stampa
+  if (checkID(systemStatus.ID)) {                                                       // Verifico che l'ID sia valido
     writeTelnet("Device ID: " + String(systemStatus.ID));                               // Stampa l'ID del dispositivo
-    ROV485.sendMessageNoResponse("HUB Device ID: " + String(systemStatus.ID) + "\n\r");                  // Invia l'ID del dispositivo al ROV
+    ROV485.sendMessageNoResponse("HUB Device ID: " + String(systemStatus.ID) + "\n\r"); // Invia l'ID del dispositivo al ROV
   } else {
     writeTelnet("Device ID not valid");
   }
@@ -428,17 +428,17 @@ bool readLampID(){
   writeTelnet("LAMPSX_ID: " + responseSX);
   writeTelnet("LAMPDX_ID: " + responseDX);
 
-  if (responseSX.startsWith("FLSH")){
+  if (responseSX.startsWith("FLS")){
     strcpy(systemStatus.ID_lampSX, responseSX.c_str());
     sx_flag = true;
   }
 
-  if (responseDX.startsWith("FLSH")){
+  if (responseDX.startsWith("FLS")){
     strcpy(systemStatus.ID_lampDX, responseDX.c_str());
     dx_flag = true;
   }
 
-  return sx_flag | dx_flag;
+  return sx_flag || dx_flag;
 }
 
 // FUNZIONE PER SCANSIONARE TUTTI I DISPOSITIVI SUL BUS
@@ -475,20 +475,39 @@ void scanI2C(){
 }
 
 void FlashReadyCheck(){
+  bool is_lampsx_torch = false, is_lampdx_torch = false;
 
   String responseSX = LampSX485.sendMessage("status\r\n");                        // Invio del comando di status al flash DX tramite 485
-  if (responseSX.indexOf("11") != -1){  // Se la risposta contiene "11" significa che la lampada è pronta allo scatto
+  if (responseSX == "1111"){            // Se la risposta è "1111" significa che la lampada è pronta allo scatto
     systemStatus.last_lampSX_comm_time = millis();
     systemStatus.lampSX_Ready = true;
   }
-  else systemStatus.lampSX_Ready = false;
+  else if (responseSX == "0101"){       // Se la risposta è "0101" significa che la lampada è in modalità torcia
+    systemStatus.last_lampSX_comm_time = millis();
+    systemStatus.lampSX_Ready = false;
+    is_lampsx_torch = true;
+  }
+  else if (responseSX == "0000"){
+    systemStatus.last_lampSX_comm_time = millis();
+    systemStatus.lampSX_Ready = false;
+  }
 
   String responseDX = LampDX485.sendMessage("status\r\n");                        // Invio del comando di status al flash SX tramite 485
-  if (responseDX.indexOf("11") != -1){  // Se la risposta contiene "11" significa che la lampada è pronta allo scatto
+  if (responseDX == "1111"){            // Se la risposta è "1111" significa che la lampada è pronta allo scatto
     systemStatus.last_lampDX_comm_time = millis();
     systemStatus.lampDX_Ready = true;
   }
-  else systemStatus.lampDX_Ready = false;
+  else if (responseDX == "0101"){       // Se la risposta è "0101" significa che la lampada è in modalità torcia
+    systemStatus.last_lampDX_comm_time = millis();
+    systemStatus.lampDX_Ready = false;
+    is_lampdx_torch = true;
+  }
+  else if (responseDX == "0000"){
+    systemStatus.last_lampDX_comm_time = millis();
+    systemStatus.lampDX_Ready = false;
+  }
+
+  systemStatus.is_torch_mode = is_lampsx_torch || is_lampdx_torch;
 
 }
 
@@ -517,6 +536,11 @@ String getHTMLpage(){
   }
   file.close();
   return html_String;
+}
+
+// FUNZIONE CHE VERIFICA SE L'ID PASSATO SIA VALIDO
+bool checkID(char ID_to_check[ID_NUM_SIZE]){
+  return (ID_to_check[0] == 'H' & ID_to_check[1] == 'U' & ID_to_check[2] == 'B');
 }
 
 /*---------------TELNET-------------*/

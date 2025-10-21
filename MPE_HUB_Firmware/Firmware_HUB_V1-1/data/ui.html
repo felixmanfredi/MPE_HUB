@@ -333,7 +333,10 @@
     }
 
     function sendReset() {
-        fetch("/lamp/reset");
+        fetch("/lamp/reset")
+            .then(res => res.text())
+            .then(data => console.log("Risposta dal server:", data))
+            .catch(err => console.error("Errore:", err));
     }
 
     function torchON() {
@@ -345,6 +348,13 @@
 
     function torchOFF() {
         fetch("/lamp/torch?power=0")
+            .then(res => res.text())
+            .then(data => console.log("Risposta dal server:", data))
+            .catch(err => console.error("Errore:", err));
+    }
+
+    function flash() {
+        fetch("/lamp?state=flash")
             .then(res => res.text())
             .then(data => console.log("Risposta dal server:", data))
             .catch(err => console.error("Errore:", err));
@@ -454,6 +464,7 @@
                     </div>
 
                     <div class="button-row">
+                        <button onclick="flash()"><i class="fas fa-bolt"></i> FLASH</button>
                         <button onclick="torchON()"><i class="fas fa-sun"></i> TORCH ON</button>
                         <button onclick="torchOFF()"><i class="fas fa-moon"></i> TORCH OFF</button>
                         <button onclick="sendReset()"><i class="fas fa-undo"></i> RESET</button>

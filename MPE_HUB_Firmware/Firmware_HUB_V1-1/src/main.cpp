@@ -93,6 +93,7 @@ void jsonSerialize(){
     jsonDoc["LampDX_Disconnected"]  = systemStatus.WarningFlags[WARNING_LAMPDX_DISCONNECTED];
     jsonDoc["LampSX_Ready"]         = systemStatus.lampSX_Ready;
     jsonDoc["LampDX_Ready"]         = systemStatus.lampDX_Ready;
+    jsonDoc["Is_Torch_Mode"]        = systemStatus.is_torch_mode;
     serializeJson(jsonDoc, jsonString);
 }
 
@@ -188,7 +189,7 @@ void setCommand(String component, String action){
 }
 
 void ID_setCommand(char id_num[ID_NUM_SIZE]){
-    if (id_num[0] == 'H' && id_num[1] == 'B' && id_num[2] == 'S' && id_num[3] == 'W'){    // Verifica che si riferisca all'HUB
+    if (checkID(id_num)){    // Verifica che si riferisca all'HUB
         writeTelnet("# Comando ricevuto: ID_SET " + String(id_num));        // Stampa l'ID ricevuto
         id_num [ID_NUM_SIZE - 1] = '\0';                                    // Aggiungo il terminatore di stringa
         EEPROM.writeBytes(ADDR_ID_NUM, id_num, ID_NUM_SIZE);                // Salva l'ID nella EEPROM
@@ -278,32 +279,15 @@ void server_initialize(){
     });
 
     server.on("/lamp/reset", HTTP_GET, [](AsyncWebServerRequest *request){
-
         systemStatus.lamp_reset_flag = true; // Imposto il flag per eseguire il reset delle lampade nel loop principale
-
-        if(SerialROV.available()) {
-            String response = SerialROV.readStringUntil('\n');                    // Leggo la risposta dal seriale
-            request->send(200, "text/plain", "Lamp reset error sent.\n Lamp response: " + response);
-        } else {
-            request->send(200, "text/plain", "Lamp reset error sent.\n No response.");
-        }
+        request->send(200, "text/plain", "Lamp reset error sent.\n No response.");
     });
 
-    server.on("/lampSX", HTTP_GET, [](AsyncWebServerRequest *request){
+    server.on("/lamp", HTTP_GET, [](AsyncWebServerRequest *request){
         if (request->hasParam("state")) {
             String Status = request->getParam("state")->value();
-            cli.parse("set LampSX " + Status);
-            request->send(200, "text/plain", "LampSX set to: " + Status);
-        } else {
-            request->send(400, "text/plain", "Missing 'state' parameter");
-        }
-    });
-
-    server.on("/lampDX", HTTP_GET, [](AsyncWebServerRequest *request){
-        if (request->hasParam("state")) {
-            String Status = request->getParam("state")->value();
-            cli.parse("set LampDX " + Status);
-            request->send(200, "text/plain", "LampDX set to: " + Status);
+            cli.parse("set Lamp " + Status);
+            request->send(200, "text/plain", "Lamp set to: " + Status);
         } else {
             request->send(400, "text/plain", "Missing 'state' parameter");
         }
@@ -486,7 +470,7 @@ void setup() {
     set.addPositionalArgument("action");
     set.setDescription( "Esegui una determianta \'action\' (on - off) su uno specifico \'component\' (IPcam - BD3D - Lamp - Lamp_power - Lamp_torch)\n\r" 
                         "Esempio: \n\r# set Lamp on\n\n\r"
-                        "Esempio impostazione modalità illuminatore continuo: \n\r#set Lamp_torch (0 to 3)\n\n\r"
+                        "Esempio impostazione modalità illuminatore continuo: \n\r#set Lamp_torch (0 -> off ; 1 -> on)\n\n\r"
                         "Esempio impostazione luci ausiliarie: \n\r#set light (0 to 255)\n\n\r"
                         "Esempio impostazione potenza degli illuminatori: \n\r#set Lamp_power (0 to 4)");
 
