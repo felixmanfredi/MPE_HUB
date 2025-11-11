@@ -491,6 +491,7 @@ void FlashReadyCheck(){
     systemStatus.last_lampSX_comm_time = millis();
     systemStatus.lampSX_Ready = false;
   }
+  else systemStatus.lampSX_Ready = false;
 
   String responseDX = LampDX485.sendMessage("status\r\n");                        // Invio del comando di status al flash SX tramite 485
   if (responseDX == "1111"){            // Se la risposta è "1111" significa che la lampada è pronta allo scatto
@@ -506,6 +507,7 @@ void FlashReadyCheck(){
     systemStatus.last_lampDX_comm_time = millis();
     systemStatus.lampDX_Ready = false;
   }
+  else systemStatus.lampDX_Ready = false;
 
   systemStatus.is_torch_mode = is_lampsx_torch || is_lampdx_torch;
 

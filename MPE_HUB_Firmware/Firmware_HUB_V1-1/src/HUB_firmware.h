@@ -168,7 +168,7 @@ extern RS485Bus LampDX485;
 struct systemStatusStruct {
     char ID[ID_NUM_SIZE] = {0};                         // ID univoco della scheda
     char Board_REV[ID_NUM_SIZE] = "1.1.0";
-    char FW_VERS[ID_NUM_SIZE] = "1.3.2";
+    char FW_VERS[ID_NUM_SIZE] = "1.3.4";
     uint16_t power_cycle_count = 0;                     // Numero di avvi della scheda
     unsigned long last_lampSX_comm_time = 0;
     unsigned long last_lampDX_comm_time = 0;

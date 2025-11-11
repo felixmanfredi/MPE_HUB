@@ -293,6 +293,26 @@ void server_initialize(){
         }
     });
 
+    server.on("/lampSX", HTTP_GET, [](AsyncWebServerRequest *request){
+        if (request->hasParam("state")) {
+            String Status = request->getParam("state")->value();
+            cli.parse("set LampSX " + Status);
+            request->send(200, "text/plain", "LampSX set to: " + Status);
+        } else {
+            request->send(400, "text/plain", "Missing 'state' parameter");
+        }
+    });
+
+    server.on("/lampDX", HTTP_GET, [](AsyncWebServerRequest *request){
+        if (request->hasParam("state")) {
+            String Status = request->getParam("state")->value();
+            cli.parse("set LampDX " + Status);
+            request->send(200, "text/plain", "LampDX set to: " + Status);
+        } else {
+            request->send(400, "text/plain", "Missing 'state' parameter");
+        }
+    });
+
     server.on("/IPCam", HTTP_GET, [](AsyncWebServerRequest *request){
         if (request->hasParam("state")) {
             String Status = request->getParam("state")->value();
